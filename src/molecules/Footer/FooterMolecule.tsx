@@ -20,12 +20,12 @@ class FooterMolecule extends React.PureComponent<IProps, any> {
       children,
     } = this.props;
     return (
-      <div
+      <footer
         data-test={this.props['data-test']}
         className={cx(css`background: ${COLORS.BLACK.DARKER}`, className)}
       >
         {children}
-      </div>
+      </footer>
     );
   }
 }

@@ -511,7 +511,7 @@ var FooterMolecule = /** @class */ (function (_super) {
     }
     FooterMolecule.prototype.render = function () {
         var _a = this.props, _b = _a.className, className = _b === void 0 ? '' : _b, children = _a.children;
-        return (React.createElement("div", { "data-test": this.props['data-test'], className: emotion.cx(emotion.css(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["background: ", ""], ["background: ", ""])), COLORS.BLACK.DARKER), className) }, children));
+        return (React.createElement("footer", { "data-test": this.props['data-test'], className: emotion.cx(emotion.css(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["background: ", ""], ["background: ", ""])), COLORS.BLACK.DARKER), className) }, children));
     };
     return FooterMolecule;
 }(React.PureComponent));
