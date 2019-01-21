@@ -70,7 +70,7 @@ const CourseProgressCardMolecule = ({
       }
       `, className)}
     >
-      <CardAtom className={cx(`pb3 relative flex ${small ? 'flex-column' : 'flex-row'} align-center justify-${small ? 'start' : 'start'}`, hoverableCard, css`${small ? '' : 'height: auto'}`)}>
+      <CardAtom className={cx(`pb3 relative flex ${small ? 'flex-column h-100' : 'flex-row'} align-center justify-${small ? 'start' : 'start'}`, hoverableCard, css`${small ? '' : 'height: auto'}`)}>
         <div className={cx('w-100 br2 absolute', css`
           height: 8px;
           top: 0;
