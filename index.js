@@ -444,7 +444,6 @@ var hoverableCard$1 = emotion.css(templateObject_1$e || (templateObject_1$e = __
 var beginnerColor$1 = '#2F80ED';
 var intermediateColor$1 = '#FB529F';
 var expertColor$1 = '#7143BF';
-// const starColor = '#F8BA32';
 var generateColorByDifficulty$1 = function (difficulty) {
     switch (difficulty.toUpperCase()) {
         case 'EXPERT': return expertColor$1;
@@ -464,26 +463,10 @@ var generateGradientByDifficulty$1 = function (difficulty) {
         default: return beginnerGradient$1;
     }
 };
-// const courseRating = (ratings: any): any => {
-//   let rating;
-//   if (ratings.length !== 0) {
-//     const reducer = (accumulator: any, currentValue: any) => accumulator + currentValue;
-//     rating = Math.floor(ratings.map((r: any) => parseInt(r.rating, 10)).reduce(reducer) / ratings.length);
-//   }
-//   return rating;
-// };
 var CourseProgressCardMolecule = function (_a) {
-    var  
-    // slug = '',
-    _b = _a.title, 
-    // slug = '',
-    title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.description, description = _d === void 0 ? '' : _d, _e = _a.level, level = _e === void 0 ? { name: '', label: '' } : _e, _f = _a.linkTo, small = _a.small, 
-    // category,
-    _g = _a.className, 
-    // category,
-    className = _g === void 0 ? '' : _g, _h = _a.coverImage, _j = _a.metadata;
+    var _b = _a.title, title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.description, description = _d === void 0 ? '' : _d, _e = _a.level, level = _e === void 0 ? { name: '', label: '' } : _e, _f = _a.ProgressBarComponent, ProgressBarComponent = _f === void 0 ? null : _f, _g = _a.FooterComponent, FooterComponent = _g === void 0 ? null : _g, small = _a.small, _h = _a.className, className = _h === void 0 ? '' : _h;
     return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
-        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column' : 'flex-row') + " align-center justify-" + (small ? 'center' : 'start'), hoverableCard$1, emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
+        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$1, emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
             React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "], ["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "])), generateGradientByDifficulty$1(level.name))) }),
             React.createElement("div", { className: "flex flex-column justify-start" },
                 React.createElement("div", { className: "flex flex-column mt3 ph3 " + (small ? 'pv1' : 'pv3 pr3') + " w-100" },
@@ -495,12 +478,11 @@ var CourseProgressCardMolecule = function (_a) {
                     React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_9$2 || (templateObject_9$2 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.LIGHTER)) },
                         description.slice(0, 80),
                         description.length > 80 && '...'),
-                    React.createElement("div", { className: emotion.cx('mt3 mb2 relative br3 w-100', emotion.css(templateObject_10$2 || (templateObject_10$2 = __makeTemplateObject(["\n              height: 6px;\n              background: ", "\n            "], ["\n              height: 6px;\n              background: ", "\n            "])), COLORS.GREY.NORMAL)) },
-                        React.createElement("div", { className: emotion.cx('absolute br3 top-0 left-0', emotion.css(templateObject_11$2 || (templateObject_11$2 = __makeTemplateObject(["\n                width: ", "%;\n                height: 6px;\n                background: ", "\n              "], ["\n                width: ", "%;\n                height: 6px;\n                background: ", "\n              "])), Number(0.8) * 100, COLORS.GREEN.NORMAL)) })),
-                    React.createElement(ButtonAtom, { className: "self-end mt2", type: "SMALL_PRIMARY" }, "Lanjutkan"))))));
+                    React.createElement(ProgressBarComponent, null),
+                    React.createElement(FooterComponent, null))))));
 };
 CourseProgressCardMolecule.displayName = 'CourseProgressCardMolecule';
-var templateObject_1$e, templateObject_2$9, templateObject_3$5, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2, templateObject_10$2, templateObject_11$2;
+var templateObject_1$e, templateObject_2$9, templateObject_3$5, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2;
 
 var FooterMolecule = /** @class */ (function (_super) {
     __extends(FooterMolecule, _super);

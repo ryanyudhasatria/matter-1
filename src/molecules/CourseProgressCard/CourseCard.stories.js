@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 
 import styles from '../../styles';
+import { ButtonAtom } from '../../atoms/Button/ButtonAtom';
+import { ProgressBarAtom } from '../../atoms/ProgressBar/ProgressBarAtom';
 import { CourseProgressCardMolecule } from './CourseProgressCardMolecule';
 
 storiesOf('Molecule.CourseProgressCard', module)
@@ -23,8 +25,16 @@ storiesOf('Molecule.CourseProgressCard', module)
         level={{ name: 'Beginner', label: 'Beginner '}}
         instructor="Riza Fahmi"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
+        ProgressBarComponent={() => (
+          <ProgressBarAtom progress={0.5} className="mv3" />
+        )}
+        FooterComponent={() => (
+          <ButtonAtom className="self-end mt2" type="SMALL_PRIMARY">
+            Lanjutkan
+          </ButtonAtom>
+        )}
       />
-      <CourseProgressCardMolecule
+      {/* <CourseProgressCardMolecule
         small
         className="ml3"
         title="Team Engagement: Dimulai dari Hal-Hal Kecil"
@@ -45,6 +55,6 @@ storiesOf('Molecule.CourseProgressCard', module)
         title="Learn How to Learn Programming"
         level={{ name: 'Expert', label: 'Expert '}}
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
-      />
+      /> */}
     </div>
   )));

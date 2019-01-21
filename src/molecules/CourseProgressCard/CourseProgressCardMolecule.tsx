@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { css, cx } from 'emotion';
-// import Image from 'react-shimmer';
 
 //@ts-ignore
 import COLORS from '../../constants/colors';
 
 import {
-  ButtonAtom,
   CardAtom,
-  // IconAtom,
   TextAtom,
-  // ImageAtom,
 } from '../../atoms';
 
 const hoverableCard = css`
@@ -26,9 +22,6 @@ const hoverableCard = css`
 const beginnerColor = '#2F80ED';
 const intermediateColor = '#FB529F';
 const expertColor = '#7143BF';
-
-
-// const starColor = '#F8BA32';
 
 const generateColorByDifficulty = (difficulty: any) => {
   switch (difficulty.toUpperCase()) {
@@ -52,29 +45,15 @@ const generateGradientByDifficulty = (difficulty: any) => {
   }
 };
 
-
-// const courseRating = (ratings: any): any => {
-//   let rating;
-//   if (ratings.length !== 0) {
-//     const reducer = (accumulator: any, currentValue: any) => accumulator + currentValue;
-//     rating = Math.floor(ratings.map((r: any) => parseInt(r.rating, 10)).reduce(reducer) / ratings.length);
-//   }
-//   return rating;
-// };
-
 const CourseProgressCardMolecule = ({
-  // slug = '',
   title = '',
   instructor = 'KODE Team',
   description = '',
   level = { name: '', label: '' },
-  linkTo = '',
+  ProgressBarComponent = null,
+  FooterComponent = null,
   small,
-  // category,
   className = '',
-  coverImage = '',
-  metadata = null,
-  // ratings = [],
 }: any) => {
   return (
     <div
@@ -91,7 +70,7 @@ const CourseProgressCardMolecule = ({
       }
       `, className)}
     >
-      <CardAtom className={cx(`pb3 relative flex ${small ? 'flex-column' : 'flex-row'} align-center justify-${small ? 'center' : 'start'}`, hoverableCard, css`${small ? '' : 'height: auto'}`)}>
+      <CardAtom className={cx(`pb3 relative flex ${small ? 'flex-column' : 'flex-row'} align-center justify-${small ? 'start' : 'start'}`, hoverableCard, css`${small ? '' : 'height: auto'}`)}>
         <div className={cx('w-100 br2 absolute', css`
           height: 8px;
           top: 0;
@@ -123,21 +102,8 @@ const CourseProgressCardMolecule = ({
               {description.slice(0, 80)}
               {description.length > 80 && '...'}
             </TextAtom>
-            <div className={cx('mt3 mb2 relative br3 w-100', css`
-              height: 6px;
-              background: ${COLORS.GREY.NORMAL}
-            `)}
-            >
-              <div className={cx('absolute br3 top-0 left-0', css`
-                width: ${Number(0.8) * 100}%;
-                height: 6px;
-                background: ${COLORS.GREEN.NORMAL}
-              `)}
-              />
-            </div>
-            <ButtonAtom className="self-end mt2" type="SMALL_PRIMARY">
-              Lanjutkan
-            </ButtonAtom>
+            <ProgressBarComponent />
+            <FooterComponent />
           </div>
         </div>
       </CardAtom>
