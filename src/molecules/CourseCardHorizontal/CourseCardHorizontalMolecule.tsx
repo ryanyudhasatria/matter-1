@@ -87,7 +87,7 @@ const CourseCardHorizontalMolecule = ({
     <div
       className={cx('flex flex-column', css`
       width: ${small ? '40%' : '90%'};
-      min-width: ${small ? '250px' : '90%'};
+      min-width: ${small ? '600px' : '90%'};
       @media only screen and (max-width: 968px) {
         width: ${small ? '55%' : '100%'};
         min-width: ${small ? '250px' : '100%'};
