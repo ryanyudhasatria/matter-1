@@ -12,6 +12,9 @@ import {
   // ImageAtom,
 } from '../../atoms';
 
+import * as iconLeft from './clock.png';
+import * as iconCenter from './star.png';
+
 const hoverableCard = css`
   transition: all 0.2s ease-out;
   box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);
@@ -66,14 +69,12 @@ const CourseCardHorizontalMolecule = ({
   title = '',
   instructor = 'KODE Team',
   category = '',
-  jabatan = '',
-  perusahaan = '',
+  instructorRole = '',
+  collaborator = '',
   description = '',
-  jam_terbang = '',
-  point = '',
-  review = '',
-  icon_left = '',
-  icon_center = '',
+  duration = '',
+  rating = '',
+  reviewCounts = '',  
   level = { name: '', label: '' },
   linkTo = '',
   small,
@@ -81,8 +82,10 @@ const CourseCardHorizontalMolecule = ({
   className = '',
   coverImage = '',
   metadata = null,
+  ActionButtonComponent = () => null,
   // ratings = [],
 }: any) => {
+
   return (
     <div
       className={cx('flex flex-column', css`
@@ -109,9 +112,9 @@ const CourseCardHorizontalMolecule = ({
             `)}
             />
             <div className="dt mw7 bb b--black-10 center pt0 pb5 pv5-m pr3-ns pl3-ns pv4-ns"> 
-            <div className={cx('db dtc-ns v-mid-ns')}
+            <div className={cx('db dtc-ns v-top-ns')}
             >
-                <img
+                <div
                     className={cx('mw7 br3', css`                        
                         min-height: 180px;
                         width: 13rem;
@@ -138,29 +141,76 @@ const CourseCardHorizontalMolecule = ({
                         </span>                        
                     </TextAtom>  
                     <TextAtom size="S" className={cx('db mt3 mt3 lh-copy', css`color: ${COLORS.BLACK.LIGHTER}`)}>
-                        {description.slice(0, 100)}
-                        {description.length > 100 && '...'}
+                       { description 
+                         ?
+                         <span>
+                             {description.slice(0, 100)}
+                             {description.length > 100 && '...'} 
+                         </span>                         
+                         :
+                         null
+                       } 
                     </TextAtom>
-                    <TextAtom size="S" className={`db mt3 f6 lh-copy ${small ? '' : 'mt3'}`}>
-                        <span className={cx('fw6 f7 db pt2-ns', css`color: ${COLORS.BLACK.LIGHT}`)}>PENGAJAR</span>  
-                        <div className={cx('lh-copy')}>
-                            <b>{instructor} &nbsp;</b>
-                            <span>{jabatan}</span>
-                            <b>&nbsp;{perusahaan}</b>
-                        </div>
+                    <TextAtom size="S" className={`db mt3 f6 lh-copy ${small ? '' : 'mt3'}`}>                          
+                       
+                            { instructor
+                                ?
+                                    <div className={cx('lh-copy')}>
+                                        <span className={cx('fw6 f7 db pt2-ns', css`color: ${COLORS.BLACK.LIGHT}`)}>PENGAJAR</span>
+                                        <b>{instructor} &nbsp;</b>
+                                        <span>{instructorRole}</span>
+                                    </div>
+                                : 
+                                    <div className={cx('lh-copy')}>
+                                        
+                                    </div>
+                            }
+
+                            {
+                                collaborator 
+                                ?
+                                    <div className={cx('lh-copy')}>
+                                        <span>In collaboration with </span>
+                                        <b>{collaborator}</b>                                        
+                                    </div>
+                                : 
+                                    <div className={cx('lh-copy')}>
+                                        
+                                    </div>
+                            }
+                        
                     </TextAtom>                    
             </div>                             
         </div>
-            <div className="dt pt2"> 
-                <div className="dt dt--fixed">
+            <div className="dt pv3 flex"> 
+                <div className="dt dt--fixed">               
+                    
+                    {
+                        duration 
+                        ?
+                            <div className="dtc tc ">
+                                <img className={cx('', css`vertical-align: middle`)} src={iconLeft}/> <b>{duration}</b> of learning time
+                            </div>
+                        :
+                            <div className="dtc tc ">
+                              
+                            </div>
+                    }
+                        
+                   {
+                        rating 
+                        ?
+                            <div className="dtc tc ">
+                                <img className={cx('', css`vertical-align: middle; padding-top: -2px;`)} src={iconCenter}/> <b>{rating} <span className="mh1">·</span></b> <b className={cx('underline-ns', css`color: ${COLORS.PURPLE.NORMAL}`)}>{reviewCounts} Reviews</b>
+                            </div>
+                        :
+                            <div className="dtc tc ">
+                                
+                            </div>
+
+                   }
                     <div className="dtc tc ">
-                        <img className={cx('', css`vertical-align: middle`)} src={icon_left}/> <b>{jam_terbang}</b> of learning time
-                    </div>
-                    <div className="dtc tc ">
-                        <img className={cx('', css`vertical-align: middle; padding-top: -2px;`)} src={icon_center}/> <b>{point} <span className="mh1">·</span></b> <b className={cx('underline-ns', css`color: ${COLORS.PURPLE.NORMAL}`)}>{review} Reviews</b>
-                    </div>
-                    <div className="dtc tc ">
-                    <a className={cx('f6 link dim br-pill ph3 pv2 mb2 dib white', css`background: ${COLORS.GREY.LIGHT}; color: ${COLORS.BLACK.NORMAL}`)} href="#0"><b>Lebih lanjut</b></a>
+                        <ActionButtonComponent />
                     </div>
                 </div>
         </div>
