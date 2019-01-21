@@ -20,7 +20,7 @@ storiesOf('Atom.Avatar', module)
     (() => (
         <AvatarAtom 
             type={text('Type', 'SMALL_CIRCLE')}
-            src='http://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg'
+            src='ahttp://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg'
             alt='john'
         />
   )))
@@ -50,7 +50,7 @@ storiesOf('Atom.Avatar', module)
       (() => (
         <AvatarAtom 
             type={text('Type', 'LARGE_CIRCLE')}
-            src='http://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg'
+            src='ahttp://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg'
             alt='john'
         />
   )))
@@ -80,7 +80,7 @@ storiesOf('Atom.Avatar', module)
     (() => (
       <AvatarAtom
           type={text('Type', 'REGULAR_ROUNDED')}
-          src='http://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg'
+          src='ahttp://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg'
           alt='john'
       />
   )))
