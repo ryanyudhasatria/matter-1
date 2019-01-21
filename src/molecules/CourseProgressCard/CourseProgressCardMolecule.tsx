@@ -50,8 +50,8 @@ const CourseProgressCardMolecule = ({
   instructor = 'KODE Team',
   description = '',
   level = { name: '', label: '' },
-  ProgressBarComponent = null,
-  FooterComponent = null,
+  ProgressBarComponent = () => null,
+  FooterComponent = () => null,
   small,
   className = '',
 }: any) => {
