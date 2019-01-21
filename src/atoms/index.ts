@@ -2,6 +2,7 @@ import { AnchorTextAtom } from './AnchorText/AnchorTextAtom';
 import { AvatarAtom } from './Avatar/AvatarAtom';
 import { ButtonAtom } from './Button/ButtonAtom';
 import { CardAtom } from './Card/CardAtom';
+import { CardHorizontalAtom } from './CardHorizontal/CardHorizontalAtom';
 import { ClassroomHeaderAtom } from './ClassroomHeader/ClassroomHeaderAtom';
 // import { CourseTypeAtom } from './CourseType/CourseTypeAtom';
 import { H1Atom } from './H1/H1Atom';
@@ -18,6 +19,7 @@ export {
   AvatarAtom,
   ButtonAtom,
   CardAtom,
+  CardHorizontalAtom,
   ClassroomHeaderAtom,
   // CourseTypeAtom,
   H1Atom,
