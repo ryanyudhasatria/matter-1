@@ -5,6 +5,8 @@ import { cx, css } from 'emotion';
 import COLORS from '../../constants/colors';
 import { TextAtom } from '../Text/TextAtom';
 
+import * as placeholderImage from './placeholder-image.png';
+
 const avatarCircle  = 'border-radius: 100%;';
 
 const avatarRounded = 'border-radius: .25rem;';
@@ -68,19 +70,26 @@ interface IProps {
 }
 
 class AvatarAtom extends React.PureComponent<IProps, any> {
-    state = {}
+    state = {}    
+
+    noImage = (e: any) => {
+        e.target.onerror = null;
+        e.target.src = placeholderImage;   
+    }
 
     render(){
         const {
             type = '',
             className = '',    
             alt,
-            src,
+            src = this.props.src,                      
             name = 'User',
-        } = this.props;
+        } = this.props;        
+
         if (src) {
             return (
-                <img
+                <img            
+                    onError={this.noImage.bind(this)}
                     src={src}
                     alt={alt}
                     data-test={this.props['data-test']}
