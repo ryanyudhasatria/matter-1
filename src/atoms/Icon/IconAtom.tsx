@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cx } from 'emotion';
 
-import '../../assets/fa.all.min.css';
+import '../../assets/fonts.css';
 
 const TYPES = {
   DEFAULT: 'DEFAULT',
