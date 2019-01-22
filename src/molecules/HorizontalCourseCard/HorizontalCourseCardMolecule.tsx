@@ -6,7 +6,7 @@ import { css, cx } from 'emotion';
 import COLORS from '../../constants/colors';
 
 import {
-  CardHorizontalAtom,
+  CardAtom,
   // IconAtom,
   TextAtom,
   // ImageAtom,
@@ -64,7 +64,7 @@ const generateGradientByDifficulty = (difficulty: any) => {
 //   return rating;
 // };
 
-const CourseCardHorizontalMolecule = ({
+const HorizontalCourseCardMolecule = ({
   // slug = '',
   title = '',
   instructor = 'KODE Team',
@@ -101,7 +101,7 @@ const CourseCardHorizontalMolecule = ({
       }
       `, className)}
     >
-      <CardHorizontalAtom className={cx(`relative flex ${small ? 'flex-column' : 'flex-row'} align-center justify-${small ? 'center' : 'start'}`, hoverableCard, css`${small ? '' : 'height: auto'}`)}>
+      <CardAtom className={cx(`relative flex ${small ? 'flex-column' : 'flex-row'} align-center justify-${small ? 'center' : 'start'}`, hoverableCard, css`${small ? '' : 'height: auto'}`)}>
             <div className={cx('w-100 br2 absolute', css`
             height: 8px;
             top: 0;
@@ -134,7 +134,7 @@ const CourseCardHorizontalMolecule = ({
                         {title}
                     </TextAtom>
                     <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
-                        <span className={cx('fw6 db pt2-ns', css`color: ${COLORS.BLACK.LIGHT}`)}>
+                        <span className={cx('fw6 db pt2-ns ', css`color: ${COLORS.BLACK.LIGHT}`)}>
                             {category.toUpperCase()}
                                 <span className={cx('mh1 fw6', css`color: ${COLORS.BLACK.LIGHT}`)}>·</span>
                                 <span className={cx('fw6', css`color: ${generateColorByDifficulty(level.name)}`)}>{level.label.toUpperCase()}</span>
@@ -214,11 +214,11 @@ const CourseCardHorizontalMolecule = ({
                     </div>
                 </div>
         </div>
-      </CardHorizontalAtom>
+      </CardAtom>
     </div>
   );
 };
 
-CourseCardHorizontalMolecule.displayName = 'CourseCardHorizontalMolecule';
+HorizontalCourseCardMolecule.displayName = 'HorizontalCourseCardMolecule';
 
-export { CourseCardHorizontalMolecule };
+export { HorizontalCourseCardMolecule };

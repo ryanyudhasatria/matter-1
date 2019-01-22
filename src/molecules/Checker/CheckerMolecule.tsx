@@ -9,15 +9,11 @@ import '../../assets/fa.all.min.css';
 const TYPES_LIST = {
     NORMAL: css`
         background: ${COLORS.GREY.LIGHT};
-        color: ${COLORS.BLACK.DARKER};
-        font-weight: bold;
-        padding: 10px;        
+        color: ${COLORS.BLACK.DARKER};       
     `,
     SELECTED: css`
         background: ${COLORS.GREEN.NORMAL};
         color: ${COLORS.WHITE.NORMAL};
-        font-weight: bold;
-        padding: 10px;
     `,
 };
 
@@ -38,7 +34,7 @@ const CheckerMolecule = (props: IProps = {
     let faIconType
 
     return (
-        <a className={cx('f6 link dim br-pill ph3 pv2 mb2 dib white bg-black', TYPES_LIST[props.type], props.className)}>
+        <a className={cx('f6 link dim br-pill ph3 pa3 w-10 tc fw7 mb2 dib white bg-black', TYPES_LIST[props.type], props.className)}>
             {props.description} <i className={cx(`${faIconType} fa-${props.name}`, props.className)}></i>
         </a>
     )

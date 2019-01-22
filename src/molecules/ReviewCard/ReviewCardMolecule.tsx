@@ -6,7 +6,8 @@ import COLORS from '../../constants/colors';
 
 import {
     AvatarAtom,
-    CardAtom,    
+    CardAtom,   
+    IconAtom, 
 } from '../../atoms';
 
 const avatarCircle  = 'border-radius: 100%;';
@@ -38,13 +39,12 @@ interface IProps {
     typeCard?:string,
     src?: string,
     alt?: string,
-    children?: any,
     name: string,
     date: string,
     rating: any,
     description?:string,
     profileImage:string,
-    stars: any,
+    level: any,
 }
 
 class ReviewCardMolecule extends React.PureComponent<IProps, any>{
@@ -56,7 +56,6 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any>{
             type = '',
             typeCard = '',
             className = '',
-            // children,
             src,
             alt,
             name,
@@ -65,11 +64,10 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any>{
             description
         } = this.props;
 
-        let stars = [];
-
-        for (let i = 5; i < i; i++){
-            stars.push(<span key={i} className="fa fa-star">f</span>)
-        }
+        var indents = [];
+            for (var i = 0; i < this.props.level; i++) {
+                indents.push(<span className='indent' key={i}></span>);
+            }
 
         return(
             <CardAtom
@@ -91,9 +89,28 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any>{
                     </div>                        
                 </div>                    
                     <div className="dib v-mid">
-                        <div className=" ">
-                            {rating}
-                           <div>{stars}</div>
+                        {rating}
+                        <div className="">                           
+                           <IconAtom 
+                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              name="star"
+                           />
+                           <IconAtom 
+                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              name="star"
+                           />
+                           <IconAtom 
+                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              name="star"
+                           />
+                           <IconAtom 
+                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              name="star"
+                           />
+                           <IconAtom 
+                              className={cx('', css`color: ${COLORS.BLACK.LIGHTEST}`)}
+                              name="star"
+                           />
                         </div>                         
                          <p className={cx('db f6')}>
                          {description}
