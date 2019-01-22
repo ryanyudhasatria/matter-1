@@ -12,8 +12,8 @@ const TYPES = {
 
 interface IProps {
   type? : string
-  name: string
-  className: string
+  name?: string
+  className?: string
 }
 
 const IconAtom = (props: IProps = {

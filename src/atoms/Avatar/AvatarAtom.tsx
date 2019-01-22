@@ -66,7 +66,7 @@ interface IProps {
     src?: string,
     alt?: string,
     name?: string,
-    children: any,
+    children?: any,
 }
 
 class AvatarAtom extends React.PureComponent<IProps, any> {

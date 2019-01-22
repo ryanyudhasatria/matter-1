@@ -27,5 +27,5 @@ storiesOf('Atom.Icon', module)
       `,
     })
     (() => (
-    <IconAtom name={text('Name', 'user')} type={text('Type', 'LIGHT')} />
+    <IconAtom name={text('Name', 'user')} type={text('Type', 'REGULAR')} />
   )));
