@@ -88,27 +88,26 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any>{
                         <p className={cx('f6 lh-copy', css`margin:0`)}>{date}</p>
                     </div>                        
                 </div>                    
-                    <div className="dib v-mid">
-                        {rating}
-                        <div className="">                           
+                    <div className="dib v-mid">                      
+                        <div className="">                            
                            <IconAtom 
-                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              className={cx('', css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHTEST}`)}
                               name="star"
                            />
                            <IconAtom 
-                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              className={cx('', css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHTEST}`)}
                               name="star"
                            />
                            <IconAtom 
-                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              className={cx('', css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHTEST}`)}
                               name="star"
                            />
                            <IconAtom 
-                              className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}
+                              className={cx('', css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHTEST}`)}
                               name="star"
                            />
                            <IconAtom 
-                              className={cx('', css`color: ${COLORS.BLACK.LIGHTEST}`)}
+                              className={cx('', css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHTEST}`)}
                               name="star"
                            />
                         </div>                         

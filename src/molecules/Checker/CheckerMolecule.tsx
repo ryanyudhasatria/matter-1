@@ -5,7 +5,8 @@ import { cx, css } from 'emotion';
 import COLORS from '../../constants/colors';
 
 import {
-    IconAtom
+    IconAtom,
+    ButtonAtom
 } from '../../atoms';
 
 const TYPES_LIST = {
@@ -38,9 +39,9 @@ const CheckerMolecule = (props: IProps = {
 
 
     return (
-        <a className={cx('f6 link dim br-pill ph3 pa3 w-10 tc fw7 mb2 dib white bg-black', TYPES_LIST[props.type], props.className)}>
-            {props.description} <IconAtom name={props.nameIcon} />
-        </a>
+        <ButtonAtom className={cx('f6 link dim br-pill ph3 pa3 w-10 tc fw7 mb2 dib', TYPES_LIST[props.type], props.className)}>
+            {props.description} <IconAtom className="fr" name={props.nameIcon} />
+        </ButtonAtom>
     )
 }
 export { CheckerMolecule };
