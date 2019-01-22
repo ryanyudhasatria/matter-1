@@ -9,28 +9,6 @@ import {
     CardAtom,    
 } from '../../atoms';
 
-const avatarRounded = 'border-radius: .25rem;';
-
-const CARD_TYPES = {
-    GREY: css`
-      display: inline-flex;
-      background: ${COLORS.GREY.LIGHTER};
-      border-radius: 8px;
-      box-shadow: none;
-      width: 25rem;
-      padding: 30px;
-    `,
-};
-
-const TYPES_LIST = {
-    REGULAR_ROUNDED: css`
-        ${avatarRounded}
-        background: ${COLORS.RED.NORMAL};
-        width: 48px;
-        height: 48px;
-    `,
-};
-
 interface IProps {
     className?: any,
     'data-test'?: any,
@@ -51,10 +29,6 @@ class TeacherCardMolecule extends React.PureComponent<IProps, any>{
 
     render(){
         const {
-            type = '',
-            typeCard = '',
-            className = '',
-            // children,
             src,
             alt,
             name,
@@ -64,7 +38,8 @@ class TeacherCardMolecule extends React.PureComponent<IProps, any>{
 
         return(
             <CardAtom
-                className={cx('', CARD_TYPES[typeCard], className)}
+                className="flex w-25 pa3"
+                type="GREY"
                 data-test={this.props['data-test']}                
             >
                 <div>
@@ -73,7 +48,7 @@ class TeacherCardMolecule extends React.PureComponent<IProps, any>{
                         <AvatarAtom 
                             src={src}
                             alt={alt}
-                            className={cx('', (TYPES_LIST[type]), className)}
+                            type="REGULAR_CIRCLE"
                         />
                     </div>
                     <div className="fl">
