@@ -108,9 +108,6 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
                 `, 'flex flex-column items-center justify-center'
                 , className)}
                 unselectable="on"
-                onselectstart="return false;"
-                // @ts-ignore
-                onMouseDown="return false;"
                 >
                     <TextAtom size="L" className={cx('fw7', css`color: ${COLORS.WHITE.NORMAL}`)}>
                         {generateInitial(name)}
