@@ -8,6 +8,7 @@ import { text } from '@storybook/addon-knobs';
 import styles from '../../styles';
 import { CheckerMolecule } from './CheckerMolecule';
 
+
 storiesOf('Molecule.CheckerMolecule', module)
     .add(
         'Checker',
@@ -21,11 +22,13 @@ storiesOf('Molecule.CheckerMolecule', module)
             <div>
                 <CheckerMolecule 
                     type={text('Type', 'NORMAL')}
-                    name="Front End"
+                    name={text('Name', 'user')}
+                    description="Front End"
                 /> 
                 <CheckerMolecule 
-                    type={text('Type', 'SELECTED')}
-                    name="Front End"
+                    type={text('Type', 'SELECTED')}                    
+                    name={text('Name', 'user')}
+                    description="Back End"
                 />      
             </div>
                                    

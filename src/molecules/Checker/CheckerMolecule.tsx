@@ -4,6 +4,8 @@ import { cx, css } from 'emotion';
 //@ts-ignore
 import COLORS from '../../constants/colors';
 
+import '../../assets/fa.all.min.css';
+
 const TYPES_LIST = {
     NORMAL: css`
         background: ${COLORS.GREY.LIGHT};
@@ -22,24 +24,23 @@ const TYPES_LIST = {
 interface IProps {
     className?: any,
     'data-test'?: any,
-    type?: string,
+    type?: any,
     name?: string,
+    description?: string,
 }
 
-class CheckerMolecule extends React.PureComponent<IProps, any>{
-    state = {}
+const CheckerMolecule = (props: IProps = {
+    name: '',
+    type: '',
+    className: '',
+    description: '',
+}) => {
+    let faIconType
 
-    render(){
-        const {
-            type = '',
-            className = '',
-            name,
-        } = this.props;
-
-        return(
-               <a className={cx('f6 link dim br-pill ph3 pv2 mb2 dib white bg-black w4 tc', css``, (TYPES_LIST[type]), className)} href="#0">{name}</a>          
-        )
-    }
+    return (
+        <a className={cx('f6 link dim br-pill ph3 pv2 mb2 dib white bg-black', TYPES_LIST[props.type], props.className)}>
+            {props.description} <i className={cx(`${faIconType} fa-${props.name}`, props.className)}></i>
+        </a>
+    )
 }
-
 export { CheckerMolecule };

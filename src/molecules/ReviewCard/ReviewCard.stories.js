@@ -24,7 +24,8 @@ storiesOf('Molecule.ReviewCard', module)
                 alt='john'
                 name="Tom T"
                 date="Finish the course 5 month ago"
-                rating="rating icon"
+                rating="5"
+                stars="4"
                 description="The course is quite valuable, as it is rigorous and provides me an opportunity to learn and practice applying cutting edge skills. The personalized feedback provided on the submitted projects is encouraging and provides me insight in areas where I find challenging."
             />                        
     )));

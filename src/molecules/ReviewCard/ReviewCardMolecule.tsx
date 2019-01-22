@@ -44,10 +44,12 @@ interface IProps {
     rating: any,
     description?:string,
     profileImage:string,
+    stars: any,
 }
 
 class ReviewCardMolecule extends React.PureComponent<IProps, any>{
     state = {}
+    
 
     render(){
         const {
@@ -62,6 +64,12 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any>{
             rating,
             description
         } = this.props;
+
+        let stars = [];
+
+        for (let i = 5; i < i; i++){
+            stars.push(<span key={i} className="fa fa-star">f</span>)
+        }
 
         return(
             <CardAtom
@@ -85,6 +93,7 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any>{
                     <div className="dib v-mid">
                         <div className=" ">
                             {rating}
+                           <div>{stars}</div>
                         </div>                         
                          <p className={cx('db f6')}>
                          {description}
