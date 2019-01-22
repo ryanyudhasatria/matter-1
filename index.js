@@ -185,9 +185,7 @@ var AvatarAtom = /** @class */ (function (_super) {
             return (React.createElement("img", { onError: this.noImage.bind(this), src: src, alt: alt, "data-test": this.props['data-test'], className: emotion.cx((TYPES_LIST[type]), className) }));
         }
         else {
-            return (React.createElement("div", { "data-test": this.props['data-test'], className: emotion.cx((TYPES_LIST[type]), emotion.css(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n                -moz-user-select: none;\n                -webkit-user-select: none;\n                -ms-user-select:none;\n                user-select:none;\n                -o-user-select:none;\n                "], ["\n                -moz-user-select: none;\n                -webkit-user-select: none;\n                -ms-user-select:none;\n                user-select:none;\n                -o-user-select:none;\n                "]))), 'flex flex-column items-center justify-center', className), unselectable: "on", onselectstart: "return false;", 
-                // @ts-ignore
-                onMouseDown: "return false;" },
+            return (React.createElement("div", { "data-test": this.props['data-test'], className: emotion.cx((TYPES_LIST[type]), emotion.css(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n                -moz-user-select: none;\n                -webkit-user-select: none;\n                -ms-user-select:none;\n                user-select:none;\n                -o-user-select:none;\n                "], ["\n                -moz-user-select: none;\n                -webkit-user-select: none;\n                -ms-user-select:none;\n                user-select:none;\n                -o-user-select:none;\n                "]))), 'flex flex-column items-center justify-center', className), unselectable: "on" },
                 React.createElement(TextAtom, { size: "L", className: emotion.cx('fw7', emotion.css(templateObject_8 || (templateObject_8 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.WHITE.NORMAL)) }, generateInitial(name))));
         }
     };
