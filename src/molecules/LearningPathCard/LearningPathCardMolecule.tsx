@@ -32,7 +32,7 @@ const generateGradientByDifficulty = (difficulty: any) => {
   }
 };
 
-const SkillAssessmentCardMolecule = ({
+const LearningPathCardMolecule = ({
   title = '',
   instructor = 'KODE Team',
   description = '',
@@ -91,6 +91,6 @@ const SkillAssessmentCardMolecule = ({
   );
 };
 
-SkillAssessmentCardMolecule.displayName = 'SkillAssessmentCardMolecule';
+LearningPathCardMolecule.displayName = 'LearningPathCardMolecule';
 
-export { SkillAssessmentCardMolecule };
+export { LearningPathCardMolecule };

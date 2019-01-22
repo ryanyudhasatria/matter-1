@@ -4,9 +4,9 @@ import { withInfo } from '@storybook/addon-info';
 
 import styles from '../../styles';
 import { ButtonAtom } from '../../atoms/Button/ButtonAtom';
-import { SkillAssessmentCardMolecule } from './SkillAssessmentCardMolecule';
+import { LearningPathCardMolecule } from './LearningPathCardMolecule';
 
-storiesOf('Molecule.SkillAssessmentCard', module)
+storiesOf('Molecule.LearningPathCard', module)
   .add(
     'Basic Course Card Molecule',
     withInfo({
@@ -17,7 +17,7 @@ storiesOf('Molecule.SkillAssessmentCard', module)
     })
     (() => (
     <div className="flex flex-row pa4 w-100 ba b--silver">
-      <SkillAssessmentCardMolecule
+      <LearningPathCardMolecule
         small
         className="ml3"
         title="React Developer Mastery Assessment"

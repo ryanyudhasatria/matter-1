@@ -19,6 +19,8 @@ import { AlertMolecule } from './molecules/Alert/AlertMolecule';
 import { AnimatedButtonMolecule } from './molecules/AnimatedButton/AnimatedButtonMolecule';
 import { CourseCardMolecule } from './molecules/CourseCard/CourseCardMolecule';
 import { CourseProgressCardMolecule } from './molecules/CourseProgressCard/CourseProgressCardMolecule';
+import { SkillAssessmentCardMolecule } from './molecules/SkillAssessmentCard/SkillAssessmentCardMolecule';
+import { LearningPathCardMolecule } from './molecules/LearningPathCard/LearningPathCardMolecule';
 import { FooterMolecule } from './molecules/Footer/FooterMolecule';
 import { LoaderMolecule } from './molecules/Loader/LoaderMolecule';
 
@@ -45,6 +47,8 @@ export {
   AlertMolecule,
   AnimatedButtonMolecule,
   CourseCardMolecule,
+  SkillAssessmentCardMolecule,
+  LearningPathCardMolecule,
   CourseProgressCardMolecule,
   FooterMolecule,
   LoaderMolecule,
