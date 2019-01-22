@@ -25,9 +25,9 @@ const SMALL_SIZES = {
 };
 
 interface IProps {
-  size: string
-  className: string
-  children: React.ReactNode
+  size?: string
+  className?: string
+  children?: React.ReactNode
 }
 
 const textStyle = (props: { size: string }) => css`
