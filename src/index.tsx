@@ -1,6 +1,6 @@
 import {
   AnchorTextAtom,
-  AvatarAtom,
+  // AvatarAtom,
   ButtonAtom,
   CardAtom,
   ClassroomHeaderAtom,
@@ -30,7 +30,7 @@ import { LearningTimeBarChartOrganism } from './organisms/LearningTimeBarChart/L
 export {
   // ATOMS
   AnchorTextAtom,
-  AvatarAtom,
+  // AvatarAtom,
   ButtonAtom,
   CardAtom,
   ClassroomHeaderAtom,

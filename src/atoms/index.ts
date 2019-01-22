@@ -1,5 +1,5 @@
 import { AnchorTextAtom } from './AnchorText/AnchorTextAtom';
-import { AvatarAtom } from './Avatar/AvatarAtom';
+// import { AvatarAtom } from './Avatar/AvatarAtom';
 import { ButtonAtom } from './Button/ButtonAtom';
 import { CardAtom } from './Card/CardAtom';
 import { CardHorizontalAtom } from './CardHorizontal/CardHorizontalAtom';
@@ -16,7 +16,7 @@ import { TextAtom } from './Text/TextAtom';
 
 export {
   AnchorTextAtom,
-  AvatarAtom,
+  // AvatarAtom,
   ButtonAtom,
   CardAtom,
   CardHorizontalAtom,
