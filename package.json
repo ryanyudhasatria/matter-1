@@ -2,7 +2,7 @@
   "name": "kode-matter",
   "version": "0.1.0",
   "main": "index.js",
-  "author": "Adhy Wiranata <adhy@kode.id>",
+  "author": "KODE Engineer",
   "license": "MIT",
   "devDependencies": {
     "@storybook/addon-actions": "^4.1.6",
