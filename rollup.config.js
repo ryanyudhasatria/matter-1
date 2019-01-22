@@ -1,6 +1,5 @@
 import typescript from 'rollup-plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
-// import image from 'rollup-plugin-image';
 
 
 export default {
@@ -15,6 +14,5 @@ export default {
     postcss({
       plugins: []
     }),
-    // image(),
   ]
 }

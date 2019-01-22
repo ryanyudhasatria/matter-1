@@ -1,15 +1,14 @@
 import {
   AnchorTextAtom,
-  // AvatarAtom,
+  AvatarAtom,
   ButtonAtom,
   CardAtom,
   ClassroomHeaderAtom,
-  // CourseTypeAtom,
   H1Atom,
   H2Atom,
   H3Atom,
-  // IconAtom,
-  // ImageAtom,
+  IconAtom,
+  ImageAtom,
   LinkTextAtom,
   ProgressBarAtom,
   TextAtom,
@@ -18,9 +17,12 @@ import {
 import { AlertMolecule } from './molecules/Alert/AlertMolecule';
 import { AnimatedButtonMolecule } from './molecules/AnimatedButton/AnimatedButtonMolecule';
 import { CourseCardMolecule } from './molecules/CourseCard/CourseCardMolecule';
+// import { HorizontalCourseCardMolecule } from './molecules/HorizontalCourseCard/HorizontalCourseCardMolecule';
 import { CourseProgressCardMolecule } from './molecules/CourseProgressCard/CourseProgressCardMolecule';
 import { SkillAssessmentCardMolecule } from './molecules/SkillAssessmentCard/SkillAssessmentCardMolecule';
 import { LearningPathCardMolecule } from './molecules/LearningPathCard/LearningPathCardMolecule';
+import { TeacherCardMolecule } from './molecules/TeacherCard/TeacherCardMolecule';
+import { ReviewCardMolecule } from './molecules/ReviewCard/ReviewCardMolecule';
 import { FooterMolecule } from './molecules/Footer/FooterMolecule';
 import { LoaderMolecule } from './molecules/Loader/LoaderMolecule';
 
@@ -30,7 +32,7 @@ import { LearningTimeBarChartOrganism } from './organisms/LearningTimeBarChart/L
 export {
   // ATOMS
   AnchorTextAtom,
-  // AvatarAtom,
+  AvatarAtom,
   ButtonAtom,
   CardAtom,
   ClassroomHeaderAtom,
@@ -38,8 +40,8 @@ export {
   H1Atom,
   H2Atom,
   H3Atom,
-  // IconAtom,
-  // ImageAtom,
+  IconAtom,
+  ImageAtom,
   LinkTextAtom,
   ProgressBarAtom,
   TextAtom,
@@ -47,9 +49,12 @@ export {
   AlertMolecule,
   AnimatedButtonMolecule,
   CourseCardMolecule,
+  // HorizontalCourseCardMolecule,
   SkillAssessmentCardMolecule,
   LearningPathCardMolecule,
   CourseProgressCardMolecule,
+  TeacherCardMolecule,
+  ReviewCardMolecule,
   FooterMolecule,
   LoaderMolecule,
   // ORGANISMS
