@@ -22,12 +22,12 @@ storiesOf('Molecule.CheckerMolecule', module)
             <div>
                 <CheckerMolecule 
                     type={text('Type', 'NORMAL')}
-                    name={text('Name', 'user')}
+                    nameIcon="plus"
                     description="Front End"
                 /> 
                 <CheckerMolecule 
                     type={text('Type', 'SELECTED')}                    
-                    name={text('Name', 'user')}
+                    nameIcon="check"
                     description="Back End"
                 />      
             </div>

@@ -4,7 +4,9 @@ import { cx, css } from 'emotion';
 //@ts-ignore
 import COLORS from '../../constants/colors';
 
-import '../../assets/fa.all.min.css';
+import {
+    IconAtom
+} from '../../atoms';
 
 const TYPES_LIST = {
     NORMAL: css`
@@ -23,6 +25,7 @@ interface IProps {
     type?: any,
     name?: string,
     description?: string,
+    nameIcon: string,
 }
 
 const CheckerMolecule = (props: IProps = {
@@ -30,12 +33,13 @@ const CheckerMolecule = (props: IProps = {
     type: '',
     className: '',
     description: '',
+    nameIcon: '',
 }) => {
-    let faIconType
+
 
     return (
         <a className={cx('f6 link dim br-pill ph3 pa3 w-10 tc fw7 mb2 dib white bg-black', TYPES_LIST[props.type], props.className)}>
-            {props.description} <i className={cx(`${faIconType} fa-${props.name}`, props.className)}></i>
+            {props.description} <IconAtom name={props.nameIcon} />
         </a>
     )
 }
