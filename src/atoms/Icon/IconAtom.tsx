@@ -24,13 +24,13 @@ const IconAtom = (props: IProps = {
   let faIconType;
 
   switch (props.type) {
-    case TYPES.REGULAR: faIconType = 'far'; break;
-    case TYPES.LIGHT: faIconType = 'fal'; break;
+    case TYPES.REGULAR: faIconType = 'foawer'; break;
+    case TYPES.LIGHT: faIconType = 'foawel'; break;
     case TYPES.DEFAULT:
-    default: faIconType = 'fa';
+    default: faIconType = 'foawe';
   }
 
-  return <i className={cx(`${faIconType} fa-${props.name}`, props.className)} />;
+  return <i className={cx(`${faIconType} foawe-${props.name}`, props.className)} />;
 };
 
 
