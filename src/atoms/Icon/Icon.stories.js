@@ -16,7 +16,23 @@ storiesOf('Atom.Icon', module)
       `,
     })
     (() => (
-    <IconAtom name={text('Name', 'user')} />
+    <div>
+      <IconAtom 
+        name={text('Name', 'address-book')} 
+        type={text('Type', 'LIGHT')}
+        size="6x"
+      />
+      <IconAtom 
+        name={text('Name', 'archive')} 
+        type={text('Type', 'LIGHT')}
+        size="5x"
+      />
+      <IconAtom 
+        name={text('Name', 'arrow-alt-circle-down')} 
+        type={text('Type', 'LIGHT')}
+        size="4x"
+      />      
+    </div>
   )))
   .add(
     'Default Icon with Type Identifier',
@@ -27,5 +43,9 @@ storiesOf('Atom.Icon', module)
       `,
     })
     (() => (
-    <IconAtom name={text('Name', 'user')} type={text('Type', 'REGULAR')} />
+      <IconAtom 
+        name={text('Name', 'AddressBook')} 
+        type={text('Type', 'LIGHT')}
+        size="1x"
+      />
   )));
