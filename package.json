@@ -1,7 +1,8 @@
 {
   "name": "kode-matter",
-  "version": "1.0.0",
+  "version": "0.2.1",
   "main": "index.js",
+  "author": "KODE Engineer",
   "license": "MIT",
   "devDependencies": {
     "@storybook/addon-actions": "^4.1.6",

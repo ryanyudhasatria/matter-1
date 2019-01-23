@@ -19,19 +19,6 @@ const hoverableCard = css`
   }
 `;
 
-const beginnerColor = '#2F80ED';
-const intermediateColor = '#FB529F';
-const expertColor = '#7143BF';
-
-const generateColorByDifficulty = (difficulty: any) => {
-  switch (difficulty.toUpperCase()) {
-    case 'EXPERT': return expertColor;
-    case 'INTERMEDIATE': return intermediateColor;
-    case 'BEGINNER':
-    default: return beginnerColor;
-  }
-};
-
 const beginnerGradient = 'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
 const intermediateGradient = 'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
 const expertGradient = 'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
@@ -45,7 +32,7 @@ const generateGradientByDifficulty = (difficulty: any) => {
   }
 };
 
-const CourseProgressCardMolecule = ({
+const LearningPathCardMolecule = ({
   title = '',
   instructor = 'KODE Team',
   description = '',
@@ -91,16 +78,9 @@ const CourseProgressCardMolecule = ({
             >
               {title}
             </TextAtom>
-            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
-              <span className={cx('fw6', css`color: ${COLORS.BLACK.LIGHT}`)}>
-                {instructor.toUpperCase()}
-              </span>
-              <span className={cx('mh1 fw6', css`color: ${COLORS.BLACK.LIGHT}`)}>·</span>
-              <span className={cx('fw6', css`color: ${generateColorByDifficulty(level.name)}`)}>{level.label.toUpperCase()}</span>
-            </TextAtom>
             <TextAtom size="S" className={cx('mt3 lh-copy', css`color: ${COLORS.BLACK.LIGHTER}`)}>
-              {description.slice(0, 80)}
-              {description.length > 80 && '...'}
+              {description.slice(0, 100)}
+              {description.length > 100 && '...'}
             </TextAtom>
             <ProgressBarComponent />
             <FooterComponent />
@@ -111,6 +91,6 @@ const CourseProgressCardMolecule = ({
   );
 };
 
-CourseProgressCardMolecule.displayName = 'CourseProgressCardMolecule';
+LearningPathCardMolecule.displayName = 'LearningPathCardMolecule';
 
-export { CourseProgressCardMolecule };
+export { LearningPathCardMolecule };

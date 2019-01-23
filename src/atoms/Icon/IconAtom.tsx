@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { cx } from 'emotion';
 
-// import '../../assets/fa.all.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faIcon from '@fortawesome/free-solid-svg-icons'
 
@@ -35,10 +34,10 @@ const IconAtom = (props: IProps = {
   let faIconType;
 
   switch (props.type) {
-    case TYPES.REGULAR: faIconType = 'far'; break;
-    case TYPES.LIGHT: faIconType = 'fal'; break;
+    case TYPES.REGULAR: faIconType = 'foawer'; break;
+    case TYPES.LIGHT: faIconType = 'foawel'; break;
     case TYPES.DEFAULT:
-    default: faIconType = 'fa';
+    default: faIconType = 'foawe';
   }
 
   return (
@@ -47,7 +46,7 @@ const IconAtom = (props: IProps = {
           size={props.size}
           className={cx(`${faIconType} fa-${props.name}`, props.className)}  
       />
-  )
+  );
 };
 
 

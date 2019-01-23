@@ -5,8 +5,6 @@ import { cx, css } from 'emotion';
 import COLORS from '../../constants/colors';
 import { TextAtom } from '../Text/TextAtom';
 
-import * as placeholderImage from './placeholder-image.png';
-
 const avatarCircle  = 'border-radius: 100%;';
 
 const avatarRounded = 'border-radius: .25rem;';
@@ -74,7 +72,7 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
 
     noImage = (e: any) => {
         e.target.onerror = null;
-        e.target.src = placeholderImage;   
+        e.target.src = 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/avatars/placeholder_img.png';   
     }
 
     render(){
@@ -110,9 +108,6 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
                 `, 'flex flex-column items-center justify-center'
                 , className)}
                 unselectable="on"
-                onselectstart="return false;"
-                // @ts-ignore
-                onMouseDown="return false;"
                 >
                     <TextAtom size="L" className={cx('fw7', css`color: ${COLORS.WHITE.NORMAL}`)}>
                         {generateInitial(name)}
