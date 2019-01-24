@@ -12,13 +12,17 @@ import {
 import COLORS from '../../constants/colors';
 import { isNull } from 'util';
 
-
+interface listdata { //untuk array
+    linkUrl?:string,
+    imageUrl?:string,
+}
 interface IProps {
     className?: any,
     'data-test'?: any,
     type?: string,
     nameIcon?: string,
     icon?: any,
+    items?:listdata[]
 }
 
 interface IState {
@@ -34,34 +38,24 @@ class BannerMolecule extends React.PureComponent<IProps, IState>{
 
     render(){
         const {            
-       
+            
+            items = [],            
+            
         } = this.props;
-
         const { currentSlideIndex } = this.state;
-
-        var images = [
-            'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/banners/banner1.png',
-            'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/banners/banner2.png',
-            'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/banners/banner3.png',
-        ];        
-
         
         return(
             <Carousel
-                    // autoplay={true}
-                    // pastiin durasi berapa
+                    autoplay={true}  
                     dragging={true}
                     swiping={true}
-                    easing="easeCircleInOut"
+                    easing="easeBackIn"
                     renderBottomCenterControls={isNull}
                     cellSpacing={0}
                     wrapAround={true}                    
                     cellAlign='center'
                     slidesToShow={1.25}
-                    afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}
-                    
-                    className={cx('', css``)}
-                  
+                    afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}                                                        
                     renderCenterLeftControls={({ previousSlide }) => (
                         <ButtonAtom 
                             onClick={previousSlide}
@@ -79,14 +73,14 @@ class BannerMolecule extends React.PureComponent<IProps, IState>{
                             <IconAtom name="chevron-right"/>
                         </ButtonAtom>
                     )}
-            >
+            >            
                 {
-                    images.map(function(img, index){
-                        return <img key={ index } src={img} className={css`
+                    items.map(function(item, index){
+                        return <a key={ index } href={item.linkUrl} target="_blank"><img  src={item.imageUrl} className={css`
                             opacity: ${currentSlideIndex === index ? '1' : '0.5'};
                             transition: 0.5s;
-                            `} />
-                    })
+                            `} /></a>
+                    })                    
                 }
           </Carousel>
         )

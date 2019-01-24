@@ -7,6 +7,7 @@ interface IProps {
   className?: string
   width?: string
   height?: string
+  type?: string,
 }
 
 const ImageAtom = ({
