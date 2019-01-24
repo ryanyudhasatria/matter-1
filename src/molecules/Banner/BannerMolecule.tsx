@@ -34,30 +34,26 @@ class BannerMolecule extends React.PureComponent<IProps, IState>{
         currentSlideIndex: 0,
     }
 
-    timer: any = null;
-
     render(){
         const {            
-            
-            items = [],            
-            
+            items = [], 
         } = this.props;
         const { currentSlideIndex } = this.state;
         
         return(
             <Carousel
-                    autoplay={true}  
+                    autoplay={true}
                     dragging={true}
                     swiping={true}
-                   
                     renderBottomCenterControls={isNull}
                     cellSpacing={0}
                     wrapAround={true}                    
                     cellAlign='center'
-                    slidesToShow={1.75}
+                    slidesToShow={1.5}
+                    // transitionMode="scroll"
                     afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}                                                        
                     renderCenterLeftControls={({ previousSlide }) => (
-                        <ButtonAtom 
+                        <ButtonAtom
                             onClick={previousSlide}
                             className={cx('pa3', css`border-radius: 0px 40px 40px 0px; padding: 1rem; font-size: 1rem; color:${COLORS.WHITE.NORMAL}; background: ${COLORS.BLACK.DARKER}`)}
                         >
@@ -76,7 +72,7 @@ class BannerMolecule extends React.PureComponent<IProps, IState>{
             >            
                 {
                     items.map(function(item, index){
-                        return <a key={ index } href={item.linkUrl} target="_blank"><img  src={item.imageUrl} className={css`
+                        return <a key={ index } href={item.linkUrl} target="_blank" className="outline-0"><img src={item.imageUrl} className={css`
                             opacity: ${currentSlideIndex === index ? '1' : '0.5'};
                             transition:0.3s;
                             `} /></a>
