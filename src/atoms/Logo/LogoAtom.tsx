@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { cx, css } from 'emotion';
 
-
 import * as black from './black.png'
 import * as white from './white.png'
 import * as betablack from './betablack.png'

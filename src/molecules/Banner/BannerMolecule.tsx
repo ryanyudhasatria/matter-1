@@ -49,12 +49,12 @@ class BannerMolecule extends React.PureComponent<IProps, IState>{
                     autoplay={true}  
                     dragging={true}
                     swiping={true}
-                    easing="easeBackIn"
+                   
                     renderBottomCenterControls={isNull}
                     cellSpacing={0}
                     wrapAround={true}                    
                     cellAlign='center'
-                    slidesToShow={1.25}
+                    slidesToShow={1.75}
                     afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}                                                        
                     renderCenterLeftControls={({ previousSlide }) => (
                         <ButtonAtom 
@@ -78,7 +78,7 @@ class BannerMolecule extends React.PureComponent<IProps, IState>{
                     items.map(function(item, index){
                         return <a key={ index } href={item.linkUrl} target="_blank"><img  src={item.imageUrl} className={css`
                             opacity: ${currentSlideIndex === index ? '1' : '0.5'};
-                            transition: 0.5s;
+                            transition:0.3s;
                             `} /></a>
                     })                    
                 }
