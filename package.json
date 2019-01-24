@@ -37,6 +37,7 @@
     "d3": "^5.7.0",
     "emotion": "^10.0.6",
     "moment": "^2.23.0",
+    "nuka-carousel": "^4.4.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-markdown": "^4.0.6",
