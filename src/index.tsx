@@ -10,12 +10,14 @@ import {
   IconAtom,
   ImageAtom,
   LinkTextAtom,
+  // LogoAtom,
   ProgressBarAtom,
   TextAtom,
 } from './atoms';
 
 import { AlertMolecule } from './molecules/Alert/AlertMolecule';
 import { AnimatedButtonMolecule } from './molecules/AnimatedButton/AnimatedButtonMolecule';
+import { BannerMolecule } from './molecules/Banner/BannerMolecule';
 import { CourseCardMolecule } from './molecules/CourseCard/CourseCardMolecule';
 // import { HorizontalCourseCardMolecule } from './molecules/HorizontalCourseCard/HorizontalCourseCardMolecule';
 import { CourseProgressCardMolecule } from './molecules/CourseProgressCard/CourseProgressCardMolecule';
@@ -48,6 +50,7 @@ export {
   // MOLECULES
   AlertMolecule,
   AnimatedButtonMolecule,
+  BannerMolecule,
   CourseCardMolecule,
   // HorizontalCourseCardMolecule,
   SkillAssessmentCardMolecule,

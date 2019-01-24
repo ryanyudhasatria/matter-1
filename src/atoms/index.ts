@@ -9,6 +9,7 @@ import { H3Atom } from './H3/H3Atom';
 import { IconAtom } from './Icon/IconAtom';
 import { ImageAtom } from './Image/ImageAtom';
 import { LinkTextAtom } from './LinkText/LinkTextAtom';
+// import { LogoAtom } from './Logo/LogoAtom';
 import { ProgressBarAtom } from './ProgressBar/ProgressBarAtom';
 import { TextAtom } from './Text/TextAtom';
 
@@ -24,6 +25,7 @@ export {
   IconAtom,
   ImageAtom,
   LinkTextAtom,
+  // LogoAtom,
   ProgressBarAtom,
   TextAtom,
 };

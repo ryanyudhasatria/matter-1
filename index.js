@@ -2,11 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
 var React = require('react');
 var emotion = require('emotion');
 var reactFontawesome = require('@fortawesome/react-fontawesome');
 var faIcon = require('@fortawesome/free-solid-svg-icons');
 var reactRouterDom = require('react-router-dom');
+var Carousel = _interopDefault(require('nuka-carousel'));
+var util = require('util');
 var d3 = require('d3');
 var moment_ = require('moment');
 
@@ -362,7 +366,39 @@ var AnimatedButtonMolecule = function (_a) {
 AnimatedButtonMolecule.displayName = 'AnimatedButtonMolecule';
 var templateObject_1$c, templateObject_2$7, templateObject_3$3;
 
-var hoverableCard = emotion.css(templateObject_1$d || (templateObject_1$d = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
+var BannerMolecule = /** @class */ (function (_super) {
+    __extends(BannerMolecule, _super);
+    function BannerMolecule() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = {
+            currentSlideIndex: 0,
+        };
+        return _this;
+    }
+    BannerMolecule.prototype.render = function () {
+        var _this = this;
+        var _a = this.props.items, items = _a === void 0 ? [] : _a;
+        var currentSlideIndex = this.state.currentSlideIndex;
+        return (React.createElement(Carousel, { autoplay: true, dragging: true, swiping: true, renderBottomCenterControls: util.isNull, cellSpacing: 0, wrapAround: true, cellAlign: 'center', slidesToShow: 1.5, 
+            // transitionMode="scroll"
+            afterSlide: function (currentSlideIndex) { return _this.setState({ currentSlideIndex: currentSlideIndex }); }, renderCenterLeftControls: function (_a) {
+                var previousSlide = _a.previousSlide;
+                return (React.createElement(ButtonAtom, { onClick: previousSlide, className: emotion.cx('pa3', emotion.css(templateObject_1$d || (templateObject_1$d = __makeTemplateObject(["border-radius: 0px 40px 40px 0px; padding: 1rem; font-size: 1rem; color:", "; background: ", ""], ["border-radius: 0px 40px 40px 0px; padding: 1rem; font-size: 1rem; color:", "; background: ", ""])), COLORS.WHITE.NORMAL, COLORS.BLACK.DARKER)) },
+                    React.createElement(IconAtom, { name: "chevron-left" })));
+            }, renderCenterRightControls: function (_a) {
+                var nextSlide = _a.nextSlide;
+                return (React.createElement(ButtonAtom, { onClick: nextSlide, className: emotion.cx('pa3', emotion.css(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["border-radius: 40px 0px 0px 40px; padding: 1rem; font-size: 1rem; color:", "; background: ", ""], ["border-radius: 40px 0px 0px 40px; padding: 1rem; font-size: 1rem; color:", "; background: ", ""])), COLORS.WHITE.NORMAL, COLORS.BLACK.DARKER)) },
+                    React.createElement(IconAtom, { name: "chevron-right" })));
+            } }, items.map(function (item, index) {
+            return React.createElement("a", { key: index, href: item.linkUrl, target: "_blank", className: "outline-0" },
+                React.createElement("img", { src: item.imageUrl, className: emotion.css(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["\n                            opacity: ", ";\n                            transition:0.3s;\n                            "], ["\n                            opacity: ", ";\n                            transition:0.3s;\n                            "])), currentSlideIndex === index ? '1' : '0.5') }));
+        })));
+    };
+    return BannerMolecule;
+}(React.PureComponent));
+var templateObject_1$d, templateObject_2$8, templateObject_3$4;
+
+var hoverableCard = emotion.css(templateObject_1$e || (templateObject_1$e = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerColor = '#2F80ED';
 var intermediateColor = '#FB529F';
 var expertColor = '#7143BF';
@@ -404,8 +440,8 @@ var CourseCardMolecule = function (_a) {
     _g = _a.className, 
     // category,
     className = _g === void 0 ? '' : _g, _h = _a.coverImage, coverImage = _h === void 0 ? '' : _h, _j = _a.metadata;
-    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
-        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column' : 'flex-row') + " align-center justify-" + (small ? 'center' : 'start'), hoverableCard, emotion.css(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
+    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
+        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column' : 'flex-row') + " align-center justify-" + (small ? 'center' : 'start'), hoverableCard, emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
             React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_4$2 || (templateObject_4$2 = __makeTemplateObject(["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "], ["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "])), generateGradientByDifficulty(level.name))) }),
             React.createElement("div", { className: "ph3 pt2" },
                 React.createElement("div", { className: emotion.cx('br3 mt3', emotion.css(templateObject_5$2 || (templateObject_5$2 = __makeTemplateObject(["\n            width: 100%;\n            min-height: 180px;\n            background: url(", ");\n            background-size: cover;\n          "], ["\n            width: 100%;\n            min-height: 180px;\n            background: url(", ");\n            background-size: cover;\n          "])), coverImage)) })),
@@ -424,9 +460,9 @@ var CourseCardMolecule = function (_a) {
                         React.createElement("span", { className: "fw6" }, "Hacktiv8")))))));
 };
 CourseCardMolecule.displayName = 'CourseCardMolecule';
-var templateObject_1$d, templateObject_2$8, templateObject_3$4, templateObject_4$2, templateObject_5$2, templateObject_6$2, templateObject_7$2, templateObject_8$2, templateObject_9$1, templateObject_10$1, templateObject_11$1;
+var templateObject_1$e, templateObject_2$9, templateObject_3$5, templateObject_4$2, templateObject_5$2, templateObject_6$2, templateObject_7$2, templateObject_8$2, templateObject_9$1, templateObject_10$1, templateObject_11$1;
 
-var hoverableCard$1 = emotion.css(templateObject_1$e || (templateObject_1$e = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
+var hoverableCard$1 = emotion.css(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerColor$1 = '#2F80ED';
 var intermediateColor$1 = '#FB529F';
 var expertColor$1 = '#7143BF';
@@ -451,8 +487,8 @@ var generateGradientByDifficulty$1 = function (difficulty) {
 };
 var CourseProgressCardMolecule = function (_a) {
     var _b = _a.title, title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.description, description = _d === void 0 ? '' : _d, _e = _a.level, level = _e === void 0 ? { name: '', label: '' } : _e, _f = _a.ProgressBarComponent, ProgressBarComponent = _f === void 0 ? function () { return null; } : _f, _g = _a.FooterComponent, FooterComponent = _g === void 0 ? function () { return null; } : _g, small = _a.small, _h = _a.className, className = _h === void 0 ? '' : _h;
-    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
-        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column h-100' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$1, emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
+    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$a || (templateObject_2$a = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
+        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column h-100' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$1, emotion.css(templateObject_3$6 || (templateObject_3$6 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
             React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "], ["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "])), generateGradientByDifficulty$1(level.name))) }),
             React.createElement("div", { className: "flex flex-column justify-start" },
                 React.createElement("div", { className: "flex flex-column mt3 ph3 " + (small ? 'pv1' : 'pv3 pr3') + " w-100" },
@@ -468,9 +504,9 @@ var CourseProgressCardMolecule = function (_a) {
                     React.createElement(FooterComponent, null))))));
 };
 CourseProgressCardMolecule.displayName = 'CourseProgressCardMolecule';
-var templateObject_1$e, templateObject_2$9, templateObject_3$5, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2;
+var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2;
 
-var hoverableCard$2 = emotion.css(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
+var hoverableCard$2 = emotion.css(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerGradient$2 = 'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
 var intermediateGradient$2 = 'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
 var expertGradient$2 = 'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
@@ -484,8 +520,8 @@ var generateGradientByDifficulty$2 = function (difficulty) {
 };
 var SkillAssessmentCardMolecule = function (_a) {
     var _b = _a.title, title = _b === void 0 ? '' : _b, _c = _a.instructor, _d = _a.description, description = _d === void 0 ? '' : _d, _e = _a.level, level = _e === void 0 ? { name: '', label: '' } : _e, _f = _a.ProgressBarComponent, ProgressBarComponent = _f === void 0 ? function () { return null; } : _f, _g = _a.FooterComponent, FooterComponent = _g === void 0 ? function () { return null; } : _g, small = _a.small, _h = _a.className, className = _h === void 0 ? '' : _h;
-    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$a || (templateObject_2$a = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
-        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column h-100' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$2, emotion.css(templateObject_3$6 || (templateObject_3$6 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
+    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
+        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column h-100' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$2, emotion.css(templateObject_3$7 || (templateObject_3$7 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
             React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_4$4 || (templateObject_4$4 = __makeTemplateObject(["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "], ["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "])), generateGradientByDifficulty$2(level.name))) }),
             React.createElement("div", { className: "flex flex-column justify-start" },
                 React.createElement("div", { className: "flex flex-column mt3 ph3 " + (small ? 'pv1' : 'pv3 pr3') + " w-100" },
@@ -497,9 +533,9 @@ var SkillAssessmentCardMolecule = function (_a) {
                     React.createElement(FooterComponent, null))))));
 };
 SkillAssessmentCardMolecule.displayName = 'SkillAssessmentCardMolecule';
-var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$4, templateObject_5$4, templateObject_6$4;
+var templateObject_1$g, templateObject_2$b, templateObject_3$7, templateObject_4$4, templateObject_5$4, templateObject_6$4;
 
-var hoverableCard$3 = emotion.css(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
+var hoverableCard$3 = emotion.css(templateObject_1$h || (templateObject_1$h = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerGradient$3 = 'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
 var intermediateGradient$3 = 'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
 var expertGradient$3 = 'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
@@ -513,8 +549,8 @@ var generateGradientByDifficulty$3 = function (difficulty) {
 };
 var LearningPathCardMolecule = function (_a) {
     var _b = _a.title, title = _b === void 0 ? '' : _b, _c = _a.instructor, _d = _a.description, description = _d === void 0 ? '' : _d, _e = _a.level, level = _e === void 0 ? { name: '', label: '' } : _e, _f = _a.ProgressBarComponent, ProgressBarComponent = _f === void 0 ? function () { return null; } : _f, _g = _a.FooterComponent, FooterComponent = _g === void 0 ? function () { return null; } : _g, small = _a.small, _h = _a.className, className = _h === void 0 ? '' : _h;
-    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
-        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column h-100' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$3, emotion.css(templateObject_3$7 || (templateObject_3$7 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
+    return (React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_2$c || (templateObject_2$c = __makeTemplateObject(["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "], ["\n      width: ", ";\n      min-width: ", ";\n      @media only screen and (max-width: 968px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      @media only screen and (max-width: 480px) {\n        width: ", ";\n        min-width: ", ";\n      }\n      "])), small ? '20%' : '90%', small ? '250px' : '90%', small ? '55%' : '100%', small ? '250px' : '100%', small ? '75%' : '100%', small ? '250px' : '100%'), className) },
+        React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex " + (small ? 'flex-column h-100' : 'flex-row') + " align-center justify-" + (small ? 'start' : 'start'), hoverableCard$3, emotion.css(templateObject_3$8 || (templateObject_3$8 = __makeTemplateObject(["", ""], ["", ""])), small ? '' : 'height: auto')) },
             React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_4$5 || (templateObject_4$5 = __makeTemplateObject(["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "], ["\n          height: 8px;\n          top: 0;\n          ", "\n          @media only screen and (max-width: 30em) {\n            height: 5px;\n          }\n        "])), generateGradientByDifficulty$3(level.name))) }),
             React.createElement("div", { className: "flex flex-column justify-start" },
                 React.createElement("div", { className: "flex flex-column mt3 ph3 " + (small ? 'pv1' : 'pv3 pr3') + " w-100" },
@@ -526,7 +562,7 @@ var LearningPathCardMolecule = function (_a) {
                     React.createElement(FooterComponent, null))))));
 };
 LearningPathCardMolecule.displayName = 'LearningPathCardMolecule';
-var templateObject_1$g, templateObject_2$b, templateObject_3$7, templateObject_4$5, templateObject_5$5, templateObject_6$5;
+var templateObject_1$h, templateObject_2$c, templateObject_3$8, templateObject_4$5, templateObject_5$5, templateObject_6$5;
 
 var TeacherCardMolecule = /** @class */ (function (_super) {
     __extends(TeacherCardMolecule, _super);
@@ -544,20 +580,20 @@ var TeacherCardMolecule = /** @class */ (function (_super) {
                         React.createElement(AvatarAtom, { src: src, alt: alt, type: "REGULAR_CIRCLE" })),
                     React.createElement("div", { className: "fl" },
                         React.createElement("h1", { className: "f5 lh-copy fw7 mb0" }, name),
-                        React.createElement("p", { className: emotion.cx('f6 lh-copy', emotion.css(templateObject_1$h || (templateObject_1$h = __makeTemplateObject(["margin:0"], ["margin:0"])))) }, instructorRole))),
+                        React.createElement("p", { className: emotion.cx('f6 lh-copy', emotion.css(templateObject_1$i || (templateObject_1$i = __makeTemplateObject(["margin:0"], ["margin:0"])))) }, instructorRole))),
                 React.createElement("div", { className: "dib v-mid" },
                     React.createElement("p", { className: emotion.cx('db f6 ma0 mt3') }, description)))));
     };
     return TeacherCardMolecule;
 }(React.PureComponent));
-var templateObject_1$h;
+var templateObject_1$i;
 
 var avatarCircle$1 = 'border-radius: 100%;';
 var CARD_TYPES$1 = {
-    GREY: emotion.css(templateObject_1$i || (templateObject_1$i = __makeTemplateObject(["\n      display: inline-flex;\n      background: ", ";\n      border-radius: 8px;\n      box-shadow: none;\n      width: 30rem;\n      padding: 30px;\n    "], ["\n      display: inline-flex;\n      background: ", ";\n      border-radius: 8px;\n      box-shadow: none;\n      width: 30rem;\n      padding: 30px;\n    "])), COLORS.GREY.LIGHTER),
+    GREY: emotion.css(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["\n      display: inline-flex;\n      background: ", ";\n      border-radius: 8px;\n      box-shadow: none;\n      width: 30rem;\n      padding: 30px;\n    "], ["\n      display: inline-flex;\n      background: ", ";\n      border-radius: 8px;\n      box-shadow: none;\n      width: 30rem;\n      padding: 30px;\n    "])), COLORS.GREY.LIGHTER),
 };
 var TYPES_LIST$2 = {
-    REGULAR_CIRCLE: emotion.css(templateObject_2$c || (templateObject_2$c = __makeTemplateObject(["\n      ", "\n        background: ", ";\n        width: 48px;\n        height: 48px;\n    "], ["\n      ", "\n        background: ", ";\n        width: 48px;\n        height: 48px;\n    "])), avatarCircle$1, COLORS.RED.NORMAL),
+    REGULAR_CIRCLE: emotion.css(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n      ", "\n        background: ", ";\n        width: 48px;\n        height: 48px;\n    "], ["\n      ", "\n        background: ", ";\n        width: 48px;\n        height: 48px;\n    "])), avatarCircle$1, COLORS.RED.NORMAL),
 };
 var ReviewCardMolecule = /** @class */ (function (_super) {
     __extends(ReviewCardMolecule, _super);
@@ -579,7 +615,7 @@ var ReviewCardMolecule = /** @class */ (function (_super) {
                         React.createElement(AvatarAtom, { src: src, alt: alt, className: emotion.cx('', (TYPES_LIST$2[type]), className) })),
                     React.createElement("div", { className: "fl" },
                         React.createElement("h1", { className: "f5 lh-copy fw7 mb0" }, name),
-                        React.createElement("p", { className: emotion.cx('f6 lh-copy', emotion.css(templateObject_3$8 || (templateObject_3$8 = __makeTemplateObject(["margin:0"], ["margin:0"])))) }, date))),
+                        React.createElement("p", { className: emotion.cx('f6 lh-copy', emotion.css(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["margin:0"], ["margin:0"])))) }, date))),
                 React.createElement("div", { className: "dib v-mid" },
                     React.createElement("div", { className: "" },
                         React.createElement(IconAtom, { className: emotion.cx('', emotion.css(templateObject_4$6 || (templateObject_4$6 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHTEST)), name: "star" }),
@@ -591,7 +627,7 @@ var ReviewCardMolecule = /** @class */ (function (_super) {
     };
     return ReviewCardMolecule;
 }(React.PureComponent));
-var templateObject_1$i, templateObject_2$c, templateObject_3$8, templateObject_4$6, templateObject_5$6, templateObject_6$6, templateObject_7$4, templateObject_8$4;
+var templateObject_1$j, templateObject_2$d, templateObject_3$9, templateObject_4$6, templateObject_5$6, templateObject_6$6, templateObject_7$4, templateObject_8$4;
 
 var FooterMolecule = /** @class */ (function (_super) {
     __extends(FooterMolecule, _super);
@@ -602,15 +638,15 @@ var FooterMolecule = /** @class */ (function (_super) {
     }
     FooterMolecule.prototype.render = function () {
         var _a = this.props, _b = _a.className, className = _b === void 0 ? '' : _b, children = _a.children;
-        return (React.createElement("footer", { "data-test": this.props['data-test'], className: emotion.cx(emotion.css(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["background: ", ""], ["background: ", ""])), COLORS.BLACK.DARKER), className) }, children));
+        return (React.createElement("footer", { "data-test": this.props['data-test'], className: emotion.cx(emotion.css(templateObject_1$k || (templateObject_1$k = __makeTemplateObject(["background: ", ""], ["background: ", ""])), COLORS.BLACK.DARKER), className) }, children));
     };
     return FooterMolecule;
 }(React.PureComponent));
-var templateObject_1$j;
+var templateObject_1$k;
 
-var dotCss = emotion.css(templateObject_1$k || (templateObject_1$k = __makeTemplateObject(["\n  width: 9px;\n  height: 9px;\n  border-radius: 100%;\n"], ["\n  width: 9px;\n  height: 9px;\n  border-radius: 100%;\n"]))); // prev 12
-var fadePurple = emotion.keyframes(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n  0%   { background: #DBE4E8; }\n  25% { background: #645AFF; }\n  50% { background: #645AFF; }\n  75% { background: #DBE4E8; }\n  100% { background: #DBE4E8; }\n"], ["\n  0%   { background: #DBE4E8; }\n  25% { background: #645AFF; }\n  50% { background: #645AFF; }\n  75% { background: #DBE4E8; }\n  100% { background: #DBE4E8; }\n"])));
-var fadeRed = emotion.keyframes(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n  0%   { background: #FF6260; }\n  25% { background: #DBE4E8; }\n  50% { background: #DBE4E8; }\n  75% { background: #FF6260; }\n  100%   { background: #FF6260; }\n"], ["\n  0%   { background: #FF6260; }\n  25% { background: #DBE4E8; }\n  50% { background: #DBE4E8; }\n  75% { background: #FF6260; }\n  100%   { background: #FF6260; }\n"])));
+var dotCss = emotion.css(templateObject_1$l || (templateObject_1$l = __makeTemplateObject(["\n  width: 9px;\n  height: 9px;\n  border-radius: 100%;\n"], ["\n  width: 9px;\n  height: 9px;\n  border-radius: 100%;\n"]))); // prev 12
+var fadePurple = emotion.keyframes(templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["\n  0%   { background: #DBE4E8; }\n  25% { background: #645AFF; }\n  50% { background: #645AFF; }\n  75% { background: #DBE4E8; }\n  100% { background: #DBE4E8; }\n"], ["\n  0%   { background: #DBE4E8; }\n  25% { background: #645AFF; }\n  50% { background: #645AFF; }\n  75% { background: #DBE4E8; }\n  100% { background: #DBE4E8; }\n"])));
+var fadeRed = emotion.keyframes(templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["\n  0%   { background: #FF6260; }\n  25% { background: #DBE4E8; }\n  50% { background: #DBE4E8; }\n  75% { background: #FF6260; }\n  100%   { background: #FF6260; }\n"], ["\n  0%   { background: #FF6260; }\n  25% { background: #DBE4E8; }\n  50% { background: #DBE4E8; }\n  75% { background: #FF6260; }\n  100%   { background: #FF6260; }\n"])));
 var dotPurple = emotion.css(templateObject_4$7 || (templateObject_4$7 = __makeTemplateObject(["\n  background: #645AFF;\n  animation: ", " 2s ease-in-out infinite;\n"], ["\n  background: #645AFF;\n  animation: ", " 2s ease-in-out infinite;\n"])), fadePurple);
 var dotRed = emotion.css(templateObject_5$7 || (templateObject_5$7 = __makeTemplateObject(["\n  background: #DBE4E8;\n  animation: ", " 2s linear infinite;\n"], ["\n  background: #DBE4E8;\n  animation: ", " 2s linear infinite;\n"])), fadeRed);
 var colContainer = emotion.css(templateObject_6$7 || (templateObject_6$7 = __makeTemplateObject(["height: 50px;"], ["height: 50px;"]))); // prev: 73
@@ -631,7 +667,7 @@ var LoaderMolecule = function (_a) {
             React.createElement("div", { className: emotion.cx(dotCss, dotRed) }),
             React.createElement("div", { className: emotion.cx(dotCss, dotPurple) }))));
 };
-var templateObject_1$k, templateObject_2$d, templateObject_3$9, templateObject_4$7, templateObject_5$7, templateObject_6$7, templateObject_7$5;
+var templateObject_1$l, templateObject_2$e, templateObject_3$a, templateObject_4$7, templateObject_5$7, templateObject_6$7, templateObject_7$5;
 
 var InputOrganism = /** @class */ (function (_super) {
     __extends(InputOrganism, _super);
@@ -672,10 +708,10 @@ var InputOrganism = /** @class */ (function (_super) {
         var _a = this.state, isFocus = _a.isFocus, isActive = _a.isActive;
         var _b = this.props, value = _b.value, error = _b.error, name = _b.name, placeholder = _b.placeholder, label = _b.label, icon = _b.icon, className = _b.className, _c = _b.type, type = _c === void 0 ? 'text' : _c, disabled = _b.disabled, height = _b.height, required = _b.required, _d = _b.onKeyUp, onKeyUp = _d === void 0 ? function () { } : _d;
         return (React.createElement("div", { className: emotion.cx('flex flex-column justify-center align-center', className) },
-            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 ph3 pv1 br3 flex flex-row align-start outline-0', emotion.css(templateObject_1$l || (templateObject_1$l = __makeTemplateObject(["\n            background: ", ";\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: ", ";\n            @media screen and (min-width: 30em) {\n              height: ", ";\n            }\n          "], ["\n            background: ", ";\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: ", ";\n            @media screen and (min-width: 30em) {\n              height: ", ";\n            }\n          "])), COLORS.WHITE.NORMAL, disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), type === 'textarea' ? (height || 'auto') : '48px', type === 'textarea' ? (height || 'auto') : '56px')) },
-                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["\n                transition: 0.2s;\n                color: ", "\n              "], ["\n                transition: 0.2s;\n                color: ", "\n              "])), COLORS.BLACK.LIGHT)) })),
+            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 ph3 pv1 br3 flex flex-row align-start outline-0', emotion.css(templateObject_1$m || (templateObject_1$m = __makeTemplateObject(["\n            background: ", ";\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: ", ";\n            @media screen and (min-width: 30em) {\n              height: ", ";\n            }\n          "], ["\n            background: ", ";\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: ", ";\n            @media screen and (min-width: 30em) {\n              height: ", ";\n            }\n          "])), COLORS.WHITE.NORMAL, disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), type === 'textarea' ? (height || 'auto') : '48px', type === 'textarea' ? (height || 'auto') : '56px')) },
+                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n                transition: 0.2s;\n                color: ", "\n              "], ["\n                transition: 0.2s;\n                color: ", "\n              "])), COLORS.BLACK.LIGHT)) })),
                 React.createElement("div", { className: "w-100 ml2 flex flex-column justify-start align-start" },
-                    React.createElement(TextAtom, { size: (isFocus || isActive) ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "], ["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "])), error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#8393A3'), (isFocus || isActive) ? -12 : 12, (isFocus || isActive) ? -13 : 13)) }, required && (isFocus || isActive)
+                    React.createElement(TextAtom, { size: (isFocus || isActive) ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_3$b || (templateObject_3$b = __makeTemplateObject(["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "], ["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "])), error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#8393A3'), (isFocus || isActive) ? -12 : 12, (isFocus || isActive) ? -13 : 13)) }, required && (isFocus || isActive)
                         ? label
                         : !required
                             ? label
@@ -687,7 +723,7 @@ var InputOrganism = /** @class */ (function (_super) {
     };
     return InputOrganism;
 }(React.PureComponent));
-var templateObject_1$l, templateObject_2$e, templateObject_3$a, templateObject_4$8, templateObject_5$8, templateObject_6$8, templateObject_7$6;
+var templateObject_1$m, templateObject_2$f, templateObject_3$b, templateObject_4$8, templateObject_5$8, templateObject_6$8, templateObject_7$6;
 
 var moment = moment_; // issue on https://github.com/jvandemo/generator-angular2-library/issues/221
 var LearningTimeBarChartOrganism = /** @class */ (function (_super) {
@@ -846,11 +882,11 @@ var LearningTimeBarChartOrganism = /** @class */ (function (_super) {
     };
     LearningTimeBarChartOrganism.prototype.render = function () {
         var _a = this.props, id = _a.id, className = _a.className, width = _a.width, height = _a.height;
-        return (React.createElement("div", { key: "learning-bar-" + id, id: id || 'svgWrapper', className: emotion.cx(emotion.css(templateObject_1$m || (templateObject_1$m = __makeTemplateObject(["\n            height: ", "px;\n            width: ", "px;\n        "], ["\n            height: ", "px;\n            width: ", "px;\n        "])), height + 50, width + 50), className) }));
+        return (React.createElement("div", { key: "learning-bar-" + id, id: id || 'svgWrapper', className: emotion.cx(emotion.css(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n            height: ", "px;\n            width: ", "px;\n        "], ["\n            height: ", "px;\n            width: ", "px;\n        "])), height + 50, width + 50), className) }));
     };
     return LearningTimeBarChartOrganism;
 }(React.Component));
-var templateObject_1$m;
+var templateObject_1$n;
 
 exports.AnchorTextAtom = AnchorTextAtom;
 exports.AvatarAtom = AvatarAtom;
@@ -867,6 +903,7 @@ exports.ProgressBarAtom = ProgressBarAtom;
 exports.TextAtom = TextAtom;
 exports.AlertMolecule = AlertMolecule;
 exports.AnimatedButtonMolecule = AnimatedButtonMolecule;
+exports.BannerMolecule = BannerMolecule;
 exports.CourseCardMolecule = CourseCardMolecule;
 exports.SkillAssessmentCardMolecule = SkillAssessmentCardMolecule;
 exports.LearningPathCardMolecule = LearningPathCardMolecule;
