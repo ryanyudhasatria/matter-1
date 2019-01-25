@@ -19,9 +19,9 @@ storiesOf('Molecule.DownloadButton', module)
         })
         (() => (
             <DownloadButtonMolecule
-                name="Unduh"
-                src={iconDownload}
-                alt="unduhicon"
+                description="Unduh"    
+                size=""
+                type=""
             />
     )))
     .add(
@@ -34,8 +34,8 @@ storiesOf('Molecule.DownloadButton', module)
         })
         (() => (
             <DownloadButtonMolecule
-                name="Download"
-                src={iconDownload}
-                alt="unduhicon"
+                description="Download"     
+                size=""
+                type=""          
             />
     )));

@@ -9,11 +9,9 @@ import {
   CardAtom,
   // IconAtom,
   TextAtom,
+  IconAtom,
   // ImageAtom,
 } from '../../atoms';
-
-import * as iconLeft from './clock.png';
-import * as iconCenter from './star.png';
 
 const hoverableCard = css`
   transition: all 0.2s ease-out;
@@ -189,7 +187,7 @@ const HorizontalCourseCardMolecule = ({
                         duration 
                         ?
                             <div className="dtc tc ">
-                                <img className={cx('', css`vertical-align: middle`)} src={iconLeft}/> <b>{duration}</b> of learning time
+                                <IconAtom name="clock" /> <b>{duration}</b> of learning time
                             </div>
                         :
                             <div className="dtc tc ">
@@ -201,7 +199,7 @@ const HorizontalCourseCardMolecule = ({
                         rating 
                         ?
                             <div className="dtc tc ">
-                                <img className={cx('', css`vertical-align: middle; padding-top: -2px;`)} src={iconCenter}/> <b>{rating} <span className="mh1">·</span></b> <b className={cx('underline-ns', css`color: ${COLORS.PURPLE.NORMAL}`)}>{reviewCounts} Reviews</b>
+                                <IconAtom name="star" className={cx('', css`color: ${COLORS.YELLOW.NORMAL}`)}/> <b>{rating} <span className="mh1">·</span></b> <b className={cx('underline-ns', css`color: ${COLORS.PURPLE.NORMAL}`)}>{reviewCounts} Reviews</b>
                             </div>
                         :
                             <div className="dtc tc ">

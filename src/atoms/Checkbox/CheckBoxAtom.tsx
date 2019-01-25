@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { cx, css } from 'emotion';
+import * as style from './CheckBoxAtom.css';
 
 interface IProps {
     className?: any,
@@ -10,6 +11,18 @@ interface IProps {
     htmlFor?:string,
     description?:string,
 }
+
+// const container = {
+//     display: 'block',
+//     position: 'relative',
+//     paddingLeft: '35px',
+//     marginBottom: '12px',
+//     cursor: 'pointer',
+//     fontSize: '22px',
+//     userSelect: 'none',
+// }
+            
+        
 
 class CheckBoxAtom extends React.PureComponent<IProps, any>{
     state = {}
@@ -23,10 +36,10 @@ class CheckBoxAtom extends React.PureComponent<IProps, any>{
         } = this.props;
          
         return (            
-            <div className={cx('flex items-center mb2', css``)}>
-                <input className={cx('mr2', css``)} type="checkbox" id={id} value={value} />
-                <label htmlFor={htmlFor} className={cx('lh-copy', css``)}>{description}</label>
-            </div>  
+            <label className={style.container}>
+                <input type="checkbox" id={id} value={value}/>
+                <label htmlFor={htmlFor} className={cx('', css``)}>{description}</label>
+            </label>
         )
     }
 }
