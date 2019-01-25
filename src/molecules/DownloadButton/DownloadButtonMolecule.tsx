@@ -6,8 +6,8 @@ import COLORS from '../../constants/colors';
 
 import {
     ButtonAtom, 
-    ImageAtom,
-    TextAtom
+    TextAtom,
+    IconAtom
 } from '../../atoms';
 
 interface IProps {
@@ -15,8 +15,9 @@ interface IProps {
     'data-test'?: any,
     type?: string,
     name?: string,
-    src?: string,
-    alt?: string,
+    sizeIcon?: string,
+    typeIcon?: string,
+    description?: string,
 }
 
 class DownloadButtonMolecule extends React.PureComponent<IProps, any>{
@@ -24,9 +25,9 @@ class DownloadButtonMolecule extends React.PureComponent<IProps, any>{
 
     render(){
         const {
-             name = '',
-             src = '',
-             alt = '',
+             description = '',
+             sizeIcon = '',
+             typeIcon = ''
         } = this.props;
 
         return(
@@ -34,12 +35,14 @@ class DownloadButtonMolecule extends React.PureComponent<IProps, any>{
             className={cx('', css`padding: 0.5rem;width: 8rem;display:block;`)}
             type="DEFAULT_PRIMARY"
            >
-            <ImageAtom 
-                className={cx('fl')}
-                src={src}
-                alt={alt}
-            />
-            <TextAtom>{name}</TextAtom>
+                <div className={cx('fl', css`background: ${COLORS.WHITE.NORMAL}; color: ${COLORS.PURPLE.NORMAL}; border-radius: 100%; padding: 0 0.4rem 0 0.4rem;`)}>
+                    <IconAtom 
+                        name="arrow-down"
+                        size={sizeIcon}
+                        type={typeIcon}
+                    />
+                </div>
+            <TextAtom>{description}</TextAtom>
            </ButtonAtom>
         )
     }
