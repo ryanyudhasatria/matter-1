@@ -599,7 +599,7 @@ var generateGradientByDifficulty$2 = function (difficulty) {
 };
 var CourseProgressCardMolecule = function (_a) {
     var _b = _a.title, title = _b === void 0 ? '' : _b, _c = _a.instructor, _d = _a.category, category = _d === void 0 ? { name: '', label: '' } : _d, _e = _a.description, description = _e === void 0 ? '' : _e, _f = _a.level, level = _f === void 0 ? { name: '', label: '' } : _f, _g = _a.ProgressBarComponent, ProgressBarComponent = _g === void 0 ? function () { return null; } : _g, _h = _a.FooterComponent, FooterComponent = _h === void 0 ? function () { return null; } : _h, _j = _a.className, className = _j === void 0 ? '' : _j;
-    return (React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex flex-column h-100 align-center justify-start", hoverableCard$2, className) },
+    return (React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex flex-column align-center justify-start", hoverableCard$2, className) },
         React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n            height: 8px;\n            top: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n              height: 5px;\n            }\n          "], ["\n            height: 8px;\n            top: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n              height: 5px;\n            }\n          "])), generateGradientByDifficulty$2(level.name))) }),
         React.createElement("div", { className: "flex flex-column justify-start" },
             React.createElement("div", { className: "flex flex-column mt3 ph3 pv1 w-100" },

@@ -64,7 +64,7 @@ const CourseProgressCardMolecule = ({
   return (
     <CardAtom
       className={cx(
-        `pb3 relative flex flex-column h-100 align-center justify-start`,
+        `pb3 relative flex flex-column align-center justify-start`,
         hoverableCard,
         className,
       )}
