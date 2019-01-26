@@ -73,6 +73,7 @@ const CourseCardMolecule = ({
   title = '',
   instructor = 'KODE Team',
   description = '',
+  category = { name: '', label: '' },
   level = { name: '', label: '' },
   linkTo = '',
   small,
@@ -83,140 +84,118 @@ const CourseCardMolecule = ({
 }: // ratings = [],
 any) => {
   return (
-    <div
+    <CardAtom
       className={cx(
-        'flex flex-column',
-        css`
-          width: ${small ? '20%' : '90%'};
-          min-width: ${small ? '250px' : '90%'};
-          @media only screen and (max-width: 968px) {
-            width: ${small ? '55%' : '100%'};
-            min-width: ${small ? '250px' : '100%'};
-          }
-          @media only screen and (max-width: 480px) {
-            width: ${small ? '75%' : '100%'};
-            min-width: ${small ? '250px' : '100%'};
-          }
-        `,
-        className
+        `pb3 pa1 relative flex flex-column  align-center justify-start`,
+        hoverableCard,
+        className,
       )}
     >
-      <CardAtom
+      <div
         className={cx(
-          `pb3 relative flex ${
-            small ? 'flex-column' : 'flex-row'
-          } align-center justify-${small ? 'center' : 'start'}`,
-          hoverableCard,
+          'w-100 br2 absolute',
           css`
-            ${small ? '' : 'height: auto'}
+            height: 8px;
+            top: 0;
+            left: 0;
+            ${generateGradientByDifficulty(level.name)}
+            @media only screen and (max-width: 30em) {
+              height: 5px;
+            }
           `
         )}
-      >
+      />
+      <div className="ph3 pt2">
+        <div className="mt3">
+          <img
+            src={coverImage}
+            alt=""
+            className={cx(
+              'br3',
+              css`
+                min-height: 200px;
+                object-fit: cover;
+              `
+            )}
+          />
+        </div>
+      </div>
+      <div className="flex flex-column justify-start">
         <div
-          className={cx(
-            'w-100 br2 absolute',
-            css`
-              height: 8px;
-              top: 0;
-              ${generateGradientByDifficulty(level.name)}
-              @media only screen and (max-width: 30em) {
-                height: 5px;
-              }
-            `
-          )}
-        />
-        <div className="ph3 pt2">
-          <div className="mt3">
-            <img
-              src={coverImage}
-              alt=""
-              className={cx(
-                'br3',
-                css`
-                  min-height: 180px;
-                  object-fit: cover;
-                `
-              )}
-            />
-          </div>
-        </div>
-        <div className="flex flex-column justify-start">
-          <div
-            className={`flex flex-column mt2 ph3 ${
-              small ? 'pv1' : 'pv3 pr3'
-            } w-100`}
+          className={`flex flex-column mt2 ph3 ${
+            small ? 'pv1' : 'pv3 pr3'
+          } w-100`}
+        >
+          <TextAtom
+            size={small ? 'M' : 'L'}
+            className={cx(
+              'lh-title mv2 fw6',
+              css`
+                min-height: ${small ? 40 : 0}px;
+                color: ${COLORS.BLACK.NORMAL};
+              `
+            )}
           >
-            <TextAtom
-              size={small ? 'M' : 'L'}
+            {title}
+          </TextAtom>
+          <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
+            <span
               className={cx(
-                'lh-title mv2 fw6',
+                'fw6',
                 css`
-                  min-height: ${small ? 40 : 0}px;
-                  color: ${COLORS.BLACK.NORMAL};
+                  color: ${COLORS.BLACK.LIGHT};
                 `
               )}
             >
-              {title}
-            </TextAtom>
-            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
-              <span
-                className={cx(
-                  'fw6',
-                  css`
-                    color: ${COLORS.BLACK.LIGHT};
-                  `
-                )}
-              >
-                {instructor.toUpperCase()}
-              </span>
-              <span
-                className={cx(
-                  'mh1 fw6',
-                  css`
-                    color: ${COLORS.BLACK.LIGHT};
-                  `
-                )}
-              >
-                ·
-              </span>
-              <span
-                className={cx(
-                  'fw6',
-                  css`
-                    color: ${generateColorByDifficulty(level.name)};
-                  `
-                )}
-              >
-                {level.label.toUpperCase()}
-              </span>
-            </TextAtom>
-            <TextAtom
-              size="S"
+              {category.label.toUpperCase()}
+            </span>
+            <span
               className={cx(
-                'mt3 lh-copy',
+                'mh1 fw6',
                 css`
-                  color: ${COLORS.BLACK.LIGHTER};
+                  color: ${COLORS.BLACK.LIGHT};
                 `
               )}
             >
-              {description.slice(0, 80)}
-              {description.length > 80 && '...'}
-            </TextAtom>
-            <TextAtom
-              size="S"
+              ·
+            </span>
+            <span
               className={cx(
-                'mt3 lh-copy',
+                'fw6',
                 css`
-                  color: ${COLORS.BLACK.LIGHTER};
+                  color: ${generateColorByDifficulty(level.name)};
                 `
               )}
             >
-              Berkolaborasi dengan <span className="fw6">Hacktiv8</span>
-            </TextAtom>
-          </div>
+              {level.label.toUpperCase()}
+            </span>
+          </TextAtom>
+          <TextAtom
+            size="S"
+            className={cx(
+              'mt3 lh-copy',
+              css`
+                color: ${COLORS.BLACK.LIGHTER};
+              `
+            )}
+          >
+            {description.slice(0, 80)}
+            {description.length > 80 && '...'}
+          </TextAtom>
+          <TextAtom
+            size="S"
+            className={cx(
+              'mt3 lh-copy',
+              css`
+                color: ${COLORS.BLACK.LIGHTER};
+              `
+            )}
+          >
+            Berkolaborasi dengan <span className="fw6">Hacktiv8</span>
+          </TextAtom>
         </div>
-      </CardAtom>
-    </div>
+      </div>
+    </CardAtom>
   );
 };
 

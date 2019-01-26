@@ -20,6 +20,7 @@ storiesOf('Molecule.CourseCard', module)
         small
         className="ml3"
         title="Pengenalan React Native"
+        category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Beginner', label: 'Beginner '}}
         instructor="Riza Fahmi"
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/redis.png"
@@ -29,6 +30,7 @@ storiesOf('Molecule.CourseCard', module)
         small
         className="ml3"
         title="Team Engagement: Dimulai dari Hal-Hal Kecil"
+        category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Beginner', label: 'Beginner '}}
         instructor="Roma Tampubolon"
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/teamengagement.png"
@@ -38,6 +40,7 @@ storiesOf('Molecule.CourseCard', module)
         small
         className="ml3"
         title="High Impact Presentation"
+        category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Intermediate', label: 'Intermediate '}}
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/presentation.png"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
@@ -46,6 +49,7 @@ storiesOf('Molecule.CourseCard', module)
         small
         className="ml3"
         title="Learn How to Learn Programming"
+        category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Expert', label: 'Expert '}}
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/es6.png"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
