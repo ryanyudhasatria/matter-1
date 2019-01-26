@@ -77,11 +77,11 @@ const CourseCardMolecule = ({
   level = { name: '', label: '' },
   linkTo = '',
   small,
-  // category,
   className = '',
   coverImage = '',
-  metadata = null
-}: // ratings = [],
+  // metadata = null,
+  // ratings = [],
+}:
 any) => {
   return (
     <CardAtom
@@ -185,13 +185,13 @@ any) => {
           <TextAtom
             size="S"
             className={cx(
-              'mt3 lh-copy',
+              'mt4 lh-copy',
               css`
                 color: ${COLORS.BLACK.LIGHTER};
               `
             )}
           >
-            Berkolaborasi dengan <span className="fw6">Hacktiv8</span>
+            oleh <strong>{instructor}</strong>
           </TextAtom>
         </div>
       </div>
