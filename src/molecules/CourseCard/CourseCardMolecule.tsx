@@ -101,12 +101,12 @@ const CourseCardMolecule = ({
         `)}
         />
         <div className="ph3 pt2">
-          <div className={cx('br3 mt3', css`
-            width: 100%;
-            min-height: 180px;
-            background: url(${coverImage});
-            background-size: cover;
-          `)} />
+          <div className="mt3">
+            <img src={coverImage} alt="" className={cx('br3', css`
+              min-height: 180px;
+              object-fit: cover;
+            `)} />
+          </div>
         </div>
         <div className="flex flex-column justify-start">
           <div className={`flex flex-column mt2 ph3 ${small ? 'pv1' : 'pv3 pr3'} w-100`}>

@@ -113,13 +113,13 @@ const HorizontalCourseCardMolecule = ({
             <div className={cx('db dtc-ns v-top-ns')}
             >
                 <div
-                    className={cx('mw7 br3', css`                        
-                        min-height: 180px;
-                        width: 13rem;
-                        background: url(${coverImage});
-                        background-size: cover;
-                    `)}
-                />
+                    className={cx('mw7 br3', css`width: 13rem;`)}
+                >
+                    <img src={coverImage} alt="" className={cx('br3', css`
+                    min-height: 180px;
+                    object-fit: cover;
+                    `)} />
+                </div>
             </div>
             <div className="db dtc-ns ph2 pl3-ns">       
                     <TextAtom
