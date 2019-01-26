@@ -19,7 +19,7 @@ import { AlertMolecule } from './molecules/Alert/AlertMolecule';
 import { AnimatedButtonMolecule } from './molecules/AnimatedButton/AnimatedButtonMolecule';
 import { BannerMolecule } from './molecules/Banner/BannerMolecule';
 import { CourseCardMolecule } from './molecules/CourseCard/CourseCardMolecule';
-// import { HorizontalCourseCardMolecule } from './molecules/HorizontalCourseCard/HorizontalCourseCardMolecule';
+import { HorizontalCourseCardMolecule } from './molecules/HorizontalCourseCard/HorizontalCourseCardMolecule';
 import { CourseProgressCardMolecule } from './molecules/CourseProgressCard/CourseProgressCardMolecule';
 import { SkillAssessmentCardMolecule } from './molecules/SkillAssessmentCard/SkillAssessmentCardMolecule';
 import { LearningPathCardMolecule } from './molecules/LearningPathCard/LearningPathCardMolecule';
@@ -52,7 +52,7 @@ export {
   AnimatedButtonMolecule,
   BannerMolecule,
   CourseCardMolecule,
-  // HorizontalCourseCardMolecule,
+  HorizontalCourseCardMolecule,
   SkillAssessmentCardMolecule,
   LearningPathCardMolecule,
   CourseProgressCardMolecule,
