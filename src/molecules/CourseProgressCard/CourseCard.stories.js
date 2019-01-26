@@ -20,8 +20,9 @@ storiesOf('Molecule.CourseProgressCard', module)
     <div className="flex flex-row pa4 w-100 ba b--silver">
       <CourseProgressCardMolecule
         small
-        className="ml3"
+        className="ml3 w-100"
         title="Pengenalan React Native"
+        category={{ name: 'Data Science', label: 'Data Science '}}
         level={{ name: 'Beginner', label: 'Beginner '}}
         instructor="Riza Fahmi"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
@@ -34,27 +35,56 @@ storiesOf('Molecule.CourseProgressCard', module)
           </ButtonAtom>
         )}
       />
-      {/* <CourseProgressCardMolecule
+      <CourseProgressCardMolecule
         small
-        className="ml3"
-        title="Team Engagement: Dimulai dari Hal-Hal Kecil"
+        className="ml3 w-100"
+        title="Pengenalan React Native"
+        category={{ name: 'Data Science', label: 'Data Science '}}
         level={{ name: 'Beginner', label: 'Beginner '}}
-        instructor="Roma Tampubolon"
-        description="Keterlibatan adalah alasan kenapa sebuah tim bisa berhasil. Saat ini, banyak organisasi mengalami tantangan dalam mengelola dan meningkatkan produktivitas di tempat kerja. Di course ini, team leader bisa belajar bagaimana menciptakan lingkungan kerja yang baik dengan cara mengintegrasikan prinsip-prinsip keterlibatan karyawan dan secara positif meningkatkan keterlibatan dan kinerja organisasi."
+        instructor="Riza Fahmi"
+        description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
+        ProgressBarComponent={() => (
+          <ProgressBarAtom progress={0.5} className="mv3" />
+        )}
+        FooterComponent={() => (
+          <ButtonAtom className="self-end mt2" type="SMALL_PRIMARY">
+            Lanjutkan
+          </ButtonAtom>
+        )}
       />
       <CourseProgressCardMolecule
         small
-        className="ml3"
-        title="High Impact Presentation"
-        level={{ name: 'Intermediate', label: 'Intermediate '}}
+        className="ml3 w-100"
+        title="Pengenalan React Native"
+        category={{ name: 'Data Science', label: 'Data Science '}}
+        level={{ name: 'Beginner', label: 'Beginner '}}
+        instructor="Riza Fahmi"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
+        ProgressBarComponent={() => (
+          <ProgressBarAtom progress={0.5} className="mv3" />
+        )}
+        FooterComponent={() => (
+          <ButtonAtom className="self-end mt2" type="SMALL_PRIMARY">
+            Lanjutkan
+          </ButtonAtom>
+        )}
       />
       <CourseProgressCardMolecule
         small
-        className="ml3"
-        title="Learn How to Learn Programming"
-        level={{ name: 'Expert', label: 'Expert '}}
+        className="ml3 w-100"
+        title="Pengenalan React Native"
+        category={{ name: 'Data Science', label: 'Data Science '}}
+        level={{ name: 'Beginner', label: 'Beginner '}}
+        instructor="Riza Fahmi"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
-      /> */}
+        ProgressBarComponent={() => (
+          <ProgressBarAtom progress={0.5} className="mv3" />
+        )}
+        FooterComponent={() => (
+          <ButtonAtom className="self-end mt2" type="SMALL_PRIMARY">
+            Lanjutkan
+          </ButtonAtom>
+        )}
+      />
     </div>
   )));
