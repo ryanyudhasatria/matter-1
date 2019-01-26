@@ -24,31 +24,47 @@ const fadeRed = keyframes`
 `;
 
 const dotPurple = css`
-  background: #645AFF;
+  background: #645aff;
   animation: ${fadePurple} 2s ease-in-out infinite;
 `;
 
 const dotRed = css`
-  background: #DBE4E8;
+  background: #dbe4e8;
   animation: ${fadeRed} 2s linear infinite;
 `;
 
-const colContainer = css`height: 50px;`; // prev: 73
-const rowContainer = css`width: 50px;`; // prev: 73
+const colContainer = css`
+  height: 50px;
+`; // prev: 73
+const rowContainer = css`
+  width: 50px;
+`; // prev: 73
 
 const LoaderMolecule = ({ className = '' }) => (
-  <div className={cx('flex flex-column justify-between align-center', colContainer, className)}>
-    <div className={cx('flex flex-row justify-between align-center', rowContainer)}>
+  <div
+    className={cx(
+      'flex flex-column justify-between align-center',
+      colContainer,
+      className
+    )}
+  >
+    <div
+      className={cx('flex flex-row justify-between align-center', rowContainer)}
+    >
       <div className={cx(dotCss, dotPurple)} />
       <div className={cx(dotCss, dotRed)} />
       <div className={cx(dotCss, dotPurple)} />
     </div>
-    <div className={cx('flex flex-row justify-between align-center', rowContainer)}>
+    <div
+      className={cx('flex flex-row justify-between align-center', rowContainer)}
+    >
       <div className={cx(dotCss, dotRed)} />
       <div className={cx(dotCss, dotPurple)} />
       <div className={cx(dotCss, dotRed)} />
     </div>
-    <div className={cx('flex flex-row justify-between align-center', rowContainer)}>
+    <div
+      className={cx('flex flex-row justify-between align-center', rowContainer)}
+    >
       <div className={cx(dotCss, dotPurple)} />
       <div className={cx(dotCss, dotRed)} />
       <div className={cx(dotCss, dotPurple)} />

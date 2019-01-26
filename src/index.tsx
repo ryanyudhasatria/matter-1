@@ -12,7 +12,7 @@ import {
   LinkTextAtom,
   // LogoAtom,
   ProgressBarAtom,
-  TextAtom,
+  TextAtom
 } from './atoms';
 
 import { AlertMolecule } from './molecules/Alert/AlertMolecule';
@@ -62,5 +62,5 @@ export {
   LoaderMolecule,
   // ORGANISMS
   InputOrganism,
-  LearningTimeBarChartOrganism,
+  LearningTimeBarChartOrganism
 };

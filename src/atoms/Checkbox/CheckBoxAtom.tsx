@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {  css } from 'emotion';
+import { css } from 'emotion';
 
 export const checkmark = css`
   position: absolute;
@@ -7,21 +7,21 @@ export const checkmark = css`
   left: 0;
   height: 24px;
   width: 24px;
-  background-color: #B8C2CC;
+  background-color: #b8c2cc;
   border-radius: 100%;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     display: none;
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
   }
-`
+`;
 
 export const container = css`
   display: block;
@@ -45,12 +45,12 @@ export const container = css`
   }
 
   &:hover input ~ .${checkmark} {
-    background-color: #ccc;  
+    background-color: #ccc;
   }
 
   & input:checked ~ .${checkmark} {
     background-color: #fff;
-    border: 1px solid #1BCBD1;
+    border: 1px solid #1bcbd1;
   }
 
   & input:checked ~ .${checkmark}:after {
@@ -66,7 +66,7 @@ export const container = css`
     top: 4px;
     width: 5px;
     height: 10px;
-    border: solid #1BCBD1;
+    border: solid #1bcbd1;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -83,42 +83,35 @@ export const container = css`
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
-`
+`;
 
 //@ts-ignore
 import COLORS from '../../constants/colors';
 
 interface IProps {
-    className?: any,
-    'data-test'?: any,
-    type?: string,
-    id?:string,
-    value?:string,
-    htmlFor?:string,
-    description?:string,
-}     
-
-class CheckBoxAtom extends React.PureComponent<IProps, any>{
-
-
-    state = {}
-
-    render(){
-        const {
-            id = '',
-            value = '',
-            htmlFor = '',
-            description = '',
-            
-        } = this.props;
-         
-        return (            
-            <label className={container}>{description}
-                <input type="checkbox" id={id} value={value}/>
-                <label htmlFor={htmlFor} className={checkmark}></label>
-            </label>
-        )
-    }
+  className?: any;
+  'data-test'?: any;
+  type?: string;
+  id?: string;
+  value?: string;
+  htmlFor?: string;
+  description?: string;
 }
 
-export { CheckBoxAtom }
+class CheckBoxAtom extends React.PureComponent<IProps, any> {
+  state = {};
+
+  render() {
+    const { id = '', value = '', htmlFor = '', description = '' } = this.props;
+
+    return (
+      <label className={container}>
+        {description}
+        <input type="checkbox" id={id} value={value} />
+        <label htmlFor={htmlFor} className={checkmark} />
+      </label>
+    );
+  }
+}
+
+export { CheckBoxAtom };

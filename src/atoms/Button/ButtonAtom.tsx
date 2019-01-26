@@ -196,7 +196,7 @@ const TYPES = {
     :hover {
       background: ${COLORS.GREY.NORMAL};
     }
-  `,
+  `
 };
 
 // const disabledClass = cx('fw6 f6 pv2 ph3 pointer bw0', css`
@@ -205,24 +205,35 @@ const TYPES = {
 
 const classNames = (type: string, disabled: any) =>
   type.split('_')[0] === 'SMALL'
-    ? cx('fw6 f6 pv2 ph3 pointer bw0', TYPES[type], (disabled ? TYPES.DISABLED : ''))
-    : (type.split('_')[0] === 'DEFAULT'
-      ? cx('fw6 f5 pv3 ph4 pointer bw0', TYPES[type], (disabled ? TYPES.DISABLED : ''))
-      : cx('fw6 f1 pv3 ph2 pointer bw0', TYPES[type], (disabled ? TYPES.DISABLED : ''))
-    );
+    ? cx(
+        'fw6 f6 pv2 ph3 pointer bw0',
+        TYPES[type],
+        disabled ? TYPES.DISABLED : ''
+      )
+    : type.split('_')[0] === 'DEFAULT'
+    ? cx(
+        'fw6 f5 pv3 ph4 pointer bw0',
+        TYPES[type],
+        disabled ? TYPES.DISABLED : ''
+      )
+    : cx(
+        'fw6 f1 pv3 ph2 pointer bw0',
+        TYPES[type],
+        disabled ? TYPES.DISABLED : ''
+      );
 
 interface IProps {
-  children: any,
-  className?: any,
-  'data-test'?: any,
-  disabled?: boolean,
-  isFormInput?: boolean,
-  onClick?: any,
-  type?: string,
+  children: any;
+  className?: any;
+  'data-test'?: any;
+  disabled?: boolean;
+  isFormInput?: boolean;
+  onClick?: any;
+  type?: string;
 }
 
 class ButtonAtom extends React.PureComponent<IProps, any> {
-  state = {}
+  state = {};
 
   render() {
     const {
@@ -231,7 +242,7 @@ class ButtonAtom extends React.PureComponent<IProps, any> {
       type = 'SMALL_PRIMARY',
       onClick = () => {},
       className = '',
-      children,
+      children
     } = this.props;
     return (
       <button

@@ -15,14 +15,14 @@ const animatedLinkText = css`
   &:after {
     display: block;
     content: '';
-    border-bottom: solid 1px ${COLORS.PURPLE.NORMAL};  
-    transform: scaleX(0);  
+    border-bottom: solid 1px ${COLORS.PURPLE.NORMAL};
+    transform: scaleX(0);
     transition: transform 250ms ease-in-out;
-    transform-origin:100% 50%;
+    transform-origin: 100% 50%;
   }
-  &:hover:after { 
+  &:hover:after {
     transform: scaleX(1);
-    transform-origin:0 50%;
+    transform-origin: 0 50%;
   }
 `;
 
@@ -31,12 +31,7 @@ const linkText = css`
   color: inherit;
 `;
 
-const AnchorTextAtom = ({
-  to,
-  animated,
-  className,
-  ...props
-}: any) => (
+const AnchorTextAtom = ({ to, animated, className, ...props }: any) => (
   <a
     href={to}
     {...props}

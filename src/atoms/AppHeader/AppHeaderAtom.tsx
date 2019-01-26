@@ -4,7 +4,7 @@ import { css, cx } from 'emotion';
 const headerCss = css`
   width: 100%;
   padding: 0;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: row;
@@ -19,9 +19,7 @@ const headerCss = css`
 `;
 
 const AppHeaderAtom = ({ children, className }: any) => (
-  <header className={cx(headerCss, className)}>
-    {children}
-  </header>
+  <header className={cx(headerCss, className)}>{children}</header>
 );
 
 AppHeaderAtom.displayName = 'AppHeaderAtom';

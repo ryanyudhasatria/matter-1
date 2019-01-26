@@ -1,0 +1,6 @@
+# top-most EditorConfig file
+root = true
+
+[*.tsx, *.js, *.ts]
+indent_style = space
+indent_size = 2

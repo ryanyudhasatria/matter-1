@@ -17,7 +17,7 @@ storiesOf('Molecule.HorizontalCourseCardMolecule', module)
       `,
     })
     (() => (
-    <div className="flex flex-row pa4 w-100 ba b--silver">
+    <div className="flex flex-column pa4 w-100 ba b--silver">
       <HorizontalCourseCardMolecule
         small
         className="ml3"

@@ -10,7 +10,7 @@ const SIZES = {
   XL: '1.5rem',
   XXL: '2rem',
   XXXL: '2.3rem',
-  UNDEFINED: 'inherit',
+  UNDEFINED: 'inherit'
 };
 
 const SMALL_SIZES = {
@@ -21,13 +21,13 @@ const SMALL_SIZES = {
   XL: '1.2rem',
   XXL: '1.5rem',
   XXXL: '2rem',
-  UNDEFINED: 'inherit',
+  UNDEFINED: 'inherit'
 };
 
 interface IProps {
-  size?: string
-  className?: string
-  children?: React.ReactNode
+  size?: string;
+  className?: string;
+  children?: React.ReactNode;
 }
 
 const textStyle = (props: { size: string }) => css`

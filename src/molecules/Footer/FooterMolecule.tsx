@@ -5,24 +5,26 @@ import { cx, css } from 'emotion';
 import COLORS from '../../constants/colors';
 
 interface IProps {
-  children: any,
-  className?: any,
-  'data-test'?: any,
-  type?: string,
+  children: any;
+  className?: any;
+  'data-test'?: any;
+  type?: string;
 }
 
 class FooterMolecule extends React.PureComponent<IProps, any> {
-  state = {}
+  state = {};
 
   render() {
-    const {
-      className = '',
-      children,
-    } = this.props;
+    const { className = '', children } = this.props;
     return (
       <footer
         data-test={this.props['data-test']}
-        className={cx(css`background: ${COLORS.BLACK.DARKER}`, className)}
+        className={cx(
+          css`
+            background: ${COLORS.BLACK.DARKER};
+          `,
+          className
+        )}
       >
         {children}
       </footer>

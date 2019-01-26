@@ -25,42 +25,38 @@ const alertInfo = `
 `;
 
 const TYPES_LIST = {
-    ALERT_DANGER: css`
+  ALERT_DANGER: css`
       ${alertDanger}
         color:  ${COLORS.WHITE.NORMAL};
     `,
-    ALERT_INFO: css`
+  ALERT_INFO: css`
       ${alertInfo}
         scolor:  ${COLORS.WHITE.NORMAL};
-    `,
-}
+    `
+};
 
 interface IProps {
-    className?: any,
-    'data-test'?: any,
-    type?: string,
-    children: any,
+  className?: any;
+  'data-test'?: any;
+  type?: string;
+  children: any;
 }
 
-class AlertMolecule extends React.PureComponent<IProps, any>{
-    state = {}
+class AlertMolecule extends React.PureComponent<IProps, any> {
+  state = {};
 
-    render(){
-        const {
-            type = '',
-            className = '',
-            children,
-        } = this.props;
+  render() {
+    const { type = '', className = '', children } = this.props;
 
-        return(
-            <div
-                data-test={this.props['data-test']}
-                className={cx((TYPES_LIST[type]), className)}
-            >
-                {children}
-            </div>
-        )
-    }
+    return (
+      <div
+        data-test={this.props['data-test']}
+        className={cx(TYPES_LIST[type], className)}
+      >
+        {children}
+      </div>
+    );
+  }
 }
 
 export { AlertMolecule };
