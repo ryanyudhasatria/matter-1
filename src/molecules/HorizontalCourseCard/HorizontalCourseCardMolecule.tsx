@@ -89,206 +89,187 @@ const HorizontalCourseCardMolecule = ({
 }: // ratings = [],
 any) => {
   return (
-    <div
-      className={cx(
-        'flex flex-column',
+    <CardAtom
+    className={cx(
+        `relative flex flex-column align-center justify-start ph4-ns`,
+        hoverableCard,
         css`
-          width: 90%;
-          min-width: 90%;
-          @media only screen and (max-width: 968px) {
-            width: 100%;
-            min-width: 100%;
-          }
-          @media only screen and (max-width: 480px) {
-            width: 100%;
-            min-width: 100%;
-          }
+        height: auto;
         `,
-        className
-      )}
+        className,
+    )}
     >
-      <CardAtom
+    <div
         className={cx(
-          `relative flex flex-row align-center justify-start`,
-          hoverableCard,
-          css`
-            height: auto;
-          `
+        'w-100 br2 absolute',
+        css`
+            height: 8px;
+            top: 0;
+            left: 0;
+            ${generateGradientByDifficulty(level.name)}
+            @media only screen and (max-width: 30em) {
+            height: 5px;
+            }
+        `
         )}
-      >
+    />
+    <div className="w-100 flex flex-row bb b--black-10 center pt0 pb5 pv4-l pv4-m ph0-ns">
+        <div className={cx('w-25 pv2 db dtc-ns v-top-ns')}>
         <div
-          className={cx(
-            'w-100 br2 absolute',
+            className={cx(
+            'w-100 br3'
+            )}
+        >
+            <img
+            src={coverImage}
+            alt=""
+            className={cx(
+                'w-100 br3',
+                css`
+                min-height: 180px;
+                object-fit: cover;
+                `
+            )}
+            />
+        </div>
+        </div>
+        <div className="w-75 flex flex-column ph4-ns ph3 pv2-ns">
+        <TextAtom
+            size="L"
+            className={cx(
+            'lh-title fw6',
             css`
-              height: 8px;
-              top: 0;
-              ${generateGradientByDifficulty(level.name)}
-              @media only screen and (max-width: 30em) {
-                height: 5px;
-              }
+                min-height: 0px;
+                color: ${COLORS.BLACK.NORMAL};
             `
-          )}
-        />
-        <div className="dt mw7 bb b--black-10 center pt0 pb5 pv5-m pr3-ns pl3-ns pv4-ns">
-          <div className={cx('db dtc-ns v-top-ns')}>
-            <div
-              className={cx(
-                'mw7 br3',
-                css`
-                  width: 13rem;
-                `
-              )}
-            >
-              <img
-                src={coverImage}
-                alt=""
-                className={cx(
-                  'br3',
-                  css`
-                    min-height: 180px;
-                    object-fit: cover;
-                  `
-                )}
-              />
-            </div>
-          </div>
-          <div className="db dtc-ns ph2 pl3-ns">
+            )}
+        >
+            {title}
+        </TextAtom>
+        <TextAtom size="XS" className={`f6 lh-copy mt0`}>
             <TextAtom
-              size="L"
-              className={cx(
-                'lh-title mv2 fw6',
+            size="XS"
+            className={cx(
+                'fw6 db pt2-ns',
                 css`
-                  min-height: 0px;
-                  color: ${COLORS.BLACK.NORMAL};
+                color: ${COLORS.BLACK.LIGHT};
                 `
-              )}
+            )}
             >
-              {title}
-            </TextAtom>
-            <TextAtom size="XS" className={`f6 lh-copy mt3`}>
-              <span
+            {category.toUpperCase()}
+            <span
                 className={cx(
-                  'fw6 db pt2-ns ',
-                  css`
+                'mh1 fw6',
+                css`
                     color: ${COLORS.BLACK.LIGHT};
-                  `
-                )}
-              >
-                {category.toUpperCase()}
-                <span
-                  className={cx(
-                    'mh1 fw6',
-                    css`
-                      color: ${COLORS.BLACK.LIGHT};
-                    `
-                  )}
-                >
-                  ·
-                </span>
-                <span
-                  className={cx(
-                    'fw6',
-                    css`
-                      color: ${generateColorByDifficulty(level.name)};
-                    `
-                  )}
-                >
-                  {level.label.toUpperCase()}
-                </span>
-              </span>
-            </TextAtom>
-            <TextAtom
-              size="S"
-              className={cx(
-                'db mt3 mt3 lh-copy',
-                css`
-                  color: ${COLORS.BLACK.LIGHTER};
                 `
-              )}
+                )}
             >
-              {description ? (
-                <span>
-                  {description.slice(0, 100)}
-                  {description.length > 100 && '...'}
-                </span>
-              ) : null}
+                ·
+            </span>
+            <span
+                className={cx(
+                'fw6',
+                css`
+                    color: ${generateColorByDifficulty(level.name)};
+                `
+                )}
+            >
+                {level.label.toUpperCase()}
+            </span>
             </TextAtom>
-            <TextAtom size="S" className={`db mt3 f6 lh-copy mt3`}>
-              {instructor ? (
-                <div className={cx('lh-copy')}>
-                  <span
-                    className={cx(
-                      'fw6 f7 db pt2-ns',
-                      css`
-                        color: ${COLORS.BLACK.LIGHT};
-                      `
-                    )}
-                  >
-                    PENGAJAR
-                  </span>
-                  <b>{instructor} &nbsp;</b>
-                  <span>{instructorRole}</span>
-                </div>
-              ) : (
-                <div className={cx('lh-copy')} />
-              )}
-
-              {collaborator ? (
-                <div className={cx('lh-copy')}>
-                  <span>In collaboration with </span>
-                  <b>{collaborator}</b>
-                </div>
-              ) : (
-                <div className={cx('lh-copy')} />
-              )}
-            </TextAtom>
-          </div>
-        </div>
-        <div className="dt pv3 flex">
-          <div className="dt dt--fixed">
-            {duration ? (
-              <div className="dtc tc ">
-                <IconAtom name="clock" /> <b>{duration}</b> of learning time
-              </div>
-            ) : (
-              <div className="dtc tc " />
+        </TextAtom>
+        <TextAtom
+            size="S"
+            className={cx(
+            'db mt3 mt3 lh-copy',
+            css`
+                color: ${COLORS.BLACK.LIGHTER};
+            `
             )}
-
-            {rating ? (
-              <div className="dtc tc ">
-                <IconAtom
-                  name="star"
-                  className={cx(
-                    '',
+        >
+            {description && (
+            <span>
+                {description.slice(0, 150)}
+                {description.length > 150 && '...'}
+            </span>
+            )}
+        </TextAtom>
+        <TextAtom size="S" className={`db mt3 f6 lh-copy mt3`}>
+            {instructor ? (
+            <div className={cx('lh-copy')}>
+                <TextAtom
+                size="XS"
+                className={cx(
+                    'fw6 f7 db pt2-ns',
                     css`
-                      color: ${COLORS.YELLOW.NORMAL};
+                    color: ${COLORS.BLACK.LIGHT};
                     `
-                  )}
-                />{' '}
-                <b>
-                  {rating} <span className="mh1">·</span>
-                </b>{' '}
-                <b
-                  className={cx(
-                    'underline-ns',
-                    css`
-                      color: ${COLORS.PURPLE.NORMAL};
-                    `
-                  )}
+                )}
                 >
-                  {reviewCounts} Reviews
-                </b>
-              </div>
-            ) : (
-              <div className="dtc tc " />
-            )}
-            <div className="dtc tc ">
-              <ActionButtonComponent />
+                PENGAJAR
+                </TextAtom>
+                <strong>{instructor} &nbsp;</strong>
+                <span>{instructorRole}</span>
             </div>
-          </div>
+            ) : (
+            <div className={cx('lh-copy')} />
+            )}
+
+            {collaborator ? (
+            <div className={cx('lh-copy')}>
+                <TextAtom>In collaboration with </TextAtom>
+                <b>{collaborator}</b>
+            </div>
+            ) : (
+            <div className={cx('lh-copy')} />
+            )}
+        </TextAtom>
         </div>
-      </CardAtom>
     </div>
+    <div className="flex flex-row justify-between items-center pv3-ns">
+        <div className="flex flex-row">
+        {duration && (
+            <div className="mr3">
+            <TextAtom size="S">
+                <IconAtom name="clock" /> <strong>{duration} jam</strong> waktu belajar
+            </TextAtom>
+            </div>
+        )}
+
+        {rating && (
+            <div className="dtc tc">
+            <TextAtom size="S">
+                <IconAtom
+                name="star"
+                className={cx(
+                    'mr1',
+                    css`
+                    color: ${COLORS.YELLOW.NORMAL};
+                    `
+                )}
+                />
+                <b>
+                {rating} <TextAtom className="mh1">·</TextAtom>
+                </b>
+                <b
+                className={cx(
+                    'underline-ns'
+                )}
+                >
+                {reviewCounts} Reviews
+                </b>
+            </TextAtom>
+            </div>
+        )}
+    </div>
+    <div>
+        <div className="dtc tc">
+            <ActionButtonComponent />
+        </div>
+        </div>
+    </div>
+    </CardAtom>
   );
 };
 

@@ -20,11 +20,14 @@ storiesOf('Molecule.HorizontalCourseCardMolecule', module)
     <div className="flex flex-column pa4 w-100 ba b--silver">
       <HorizontalCourseCardMolecule
         small
-        className="ml3"
+        className="mv3 w-80"
         title="High Impact Presentation"
         level={{ name: 'Intermediate', label: 'Intermediate '}}
         instructor="Roma Tampubolon"
         category="Development"
+        duration="10"
+        rating="5"
+        reviewCounts="32"
         instructorRole="Curriculum Director at Hacktiv8"
         ActionButtonComponent={() => <a className={cx('f6 link dim br-pill ph3 pv2 dib white', css`background: ${COLORS.GREY.LIGHT}; color: ${COLORS.BLACK.NORMAL}`)} href="#0"><b>Lebih lanjut</b></a> }
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/es6.png"
@@ -32,7 +35,7 @@ storiesOf('Molecule.HorizontalCourseCardMolecule', module)
       />
       <HorizontalCourseCardMolecule
         small
-        className="ml3"
+        className="mv3"
         title="Team Engagement: Dimulai dari Hal-Hal Kecil"
         level={{ name: 'Beginner', label: 'Beginner '}}
         instructor=""
@@ -47,7 +50,7 @@ storiesOf('Molecule.HorizontalCourseCardMolecule', module)
       />
       <HorizontalCourseCardMolecule
         small
-        className="ml3"
+        className="mv3"
         title="High Impact Presentation"
         level={{ name: 'Intermediate', label: 'Intermediate '}}
         instructor="Roma Tampubolon"
@@ -63,7 +66,7 @@ storiesOf('Molecule.HorizontalCourseCardMolecule', module)
       />
       <HorizontalCourseCardMolecule
         small
-        className="ml3"
+        className="mv3"
         title="High Impact Presentation"
         level={{ name: 'Intermediate', label: 'Intermediate '}}
         instructor="Roma Tampubolon"
