@@ -30,6 +30,7 @@ import { LoaderMolecule } from './molecules/Loader/LoaderMolecule';
 
 import { InputOrganism } from './organisms/Input/InputOrganism';
 import { LearningTimeBarChartOrganism } from './organisms/LearningTimeBarChart/LearningTimeBarChartOrganism';
+import { SelectOrganism } from './organisms/Select/SelectOrganism';
 
 import { Confirmable } from './renderProps/Confirmable/Confirmable';
 import { Notifiable } from './renderProps/Notifiable/Notifiable';
@@ -66,6 +67,7 @@ export {
   // ORGANISMS
   InputOrganism,
   LearningTimeBarChartOrganism,
+  SelectOrganism,
   // RENDER PROPS
   Confirmable,
   Notifiable,
