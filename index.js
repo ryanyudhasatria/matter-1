@@ -13,6 +13,8 @@ var Carousel = _interopDefault(require('nuka-carousel'));
 var util = require('util');
 var d3 = require('d3');
 var moment_ = require('moment');
+var Modal = require('react-modal');
+var reactMotion = require('react-motion');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1057,6 +1059,209 @@ var LearningTimeBarChartOrganism = /** @class */ (function (_super) {
 }(React.Component));
 var templateObject_1$o;
 
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
+var AppModalDialog = /** @class */ (function (_super) {
+    __extends(AppModalDialog, _super);
+    function AppModalDialog() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = {};
+        _this.closeModal = function () {
+            _this.props.closeConfirmable();
+        };
+        return _this;
+    }
+    AppModalDialog.prototype.render = function () {
+        return (React.createElement("div", null,
+            React.createElement(Modal, { isOpen: this.props.isModalVisible, onAfterOpen: this.afterOpenModal, onRequestClose: this.props.closeConfirmable, className: emotion.cx('bg-white br3 outline-0 flex flex-column', emotion.css(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "], ["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "])))), overlayClassName: emotion.css(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "], ["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "]))), contentLabel: "Confirmation Modal" },
+                React.createElement("div", { className: "flex flex-column" },
+                    React.createElement("div", { className: "flex flex-column ph5-ns ph4 pv4-ns pv3 justify-center align-center items-center" },
+                        React.createElement(IconAtom, { name: "exclamation-circle", type: "LIGHT", className: emotion.cx('mv3 primary-red', emotion.css(templateObject_3$d || (templateObject_3$d = __makeTemplateObject(["font-size: 108px"], ["font-size: 108px"])))) }),
+                        React.createElement(TextAtom, { size: "XL", className: "fw6 mt3 dark2" }, "Apa kamu Yakin?"),
+                        React.createElement(TextAtom, { size: "M", className: "mt2 dark3" }, this.props.message)),
+                    React.createElement("div", { className: "flex flex-row justify-center items-center pv3 ph2 bt b--shade" },
+                        React.createElement(ButtonAtom, { type: "DEFAULT_GREY", onClick: this.props.cancel, className: "ph5 mh1", "data-test": "confirmable-cancel" }, "Batalkan"),
+                        React.createElement(ButtonAtom, { type: "DEFAULT_CTA", onClick: this.props.confirm, className: "ph5 mh1", "data-test": "confirmable-confirm" }, "OK"))))));
+    };
+    return AppModalDialog;
+}(React.Component));
+var Confirmable = /** @class */ (function (_super) {
+    __extends(Confirmable, _super);
+    function Confirmable(props) {
+        var _this = _super.call(this, props) || this;
+        _this.setConfirmation = function (confirmationMessage, confirmableAction) {
+            _this.setState({
+                isVisible: true,
+                message: confirmationMessage,
+                confirmableAction: confirmableAction,
+                confirmableResponse: {
+                    isIdle: true,
+                    isConfirmed: false,
+                },
+            });
+        };
+        _this.showConfirmation = function () {
+            _this.setState({
+                isVisible: true,
+                confirmableResponse: {
+                    isIdle: true,
+                    isConfirmed: false,
+                },
+            });
+        };
+        _this.cancel = function () {
+            _this.setState({
+                isVisible: false,
+                confirmableResponse: {
+                    isIdle: true,
+                    isConfirmed: false,
+                },
+            });
+        };
+        _this.confirm = function () {
+            if (_this.state.confirmableAction) {
+                _this.state.confirmableAction();
+            }
+            _this.setState({
+                isVisible: false,
+                confirmableAction: null,
+                confirmableResponse: {
+                    isIdle: false,
+                    isConfirmed: true,
+                },
+            });
+        };
+        _this.closeConfirmable = function () {
+            _this.setState({ isVisible: false });
+        };
+        _this.state = {
+            isVisible: false,
+            message: props.confirmationMessage || null,
+            confirmableAction: props.confirmableAction || null,
+            confirmableResponse: null,
+        };
+        return _this;
+    }
+    Confirmable.prototype.render = function () {
+        return [
+            React.createElement(AppModalDialog, { key: "confirmable-component-modal", isModalVisible: this.state.isVisible, closeConfirmable: this.closeConfirmable, message: this.state.message, cancel: this.cancel, confirm: this.confirm }),
+            React.createElement("div", { key: "confirmable-component-children" }, this.props.children({
+                confirm: this.setConfirmation,
+                confirmableResponse: this.state.confirmableResponse,
+                showConfirmation: this.showConfirmation,
+            })),
+        ];
+    };
+    return Confirmable;
+}(React.Component));
+var templateObject_1$p, templateObject_2$h, templateObject_3$d;
+
+var genBannerStyle = function (type) {
+    var style = 'color: #FFFFFF;';
+    switch (type) {
+        case 'SUCCESS':
+            style += 'background: #1BCBD1';
+            break;
+        case 'FAILURE':
+            style += 'background: #FF6260';
+            break;
+        case 'LOADING':
+            style += 'background: #FFBA0B';
+            break;
+        default:
+            style += 'background: #1BCBD1';
+            break;
+    }
+    return style;
+};
+var NotificationBannerMolecule = /** @class */ (function (_super) {
+    __extends(NotificationBannerMolecule, _super);
+    function NotificationBannerMolecule() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = { isVisible: true };
+        return _this;
+    }
+    NotificationBannerMolecule.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, type = _a.type, children = _a.children;
+        return (React.createElement(reactMotion.Motion, { defaultStyle: { height: 0 }, style: { height: reactMotion.spring(56) } }, function (value) { return (React.createElement("div", { className: emotion.cx('flex flex-row justify-between align-center fixed w-100 ph3 pv2', emotion.css(templateObject_1$q || (templateObject_1$q = __makeTemplateObject(["z-index: 997; top: 0; left: 0; ", ""], ["z-index: 997; top: 0; left: 0; ", ""])), genBannerStyle(type))), style: { height: value.height, display: _this.state.isVisible ? 'flex' : 'none' } },
+            React.createElement("div", null),
+            typeof children === 'string' ? React.createElement(TextAtom, { className: "self-center" }, children) : children,
+            React.createElement("div", { className: "ph3 flex flex-row self-center justify-end align-center" },
+                React.createElement("div", { role: "button", tabIndex: 0, onKeyPress: function () { }, onClick: _this.props.onClose ? _this.props.onClose : function () { }, className: "overflow-hidden outline-0" },
+                    React.createElement(IconAtom, { name: "times", className: "white self-center" }))))); }));
+    };
+    return NotificationBannerMolecule;
+}(React.Component));
+var templateObject_1$q;
+
+var initialState = {
+    isNotificationVisible: false,
+    message: null,
+    type: null,
+};
+var Notifiable = /** @class */ (function (_super) {
+    __extends(Notifiable, _super);
+    function Notifiable() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = __assign({}, initialState);
+        _this.showNotification = function (_a) {
+            var message = _a.message, type = _a.type;
+            _this.setState({
+                isNotificationVisible: true,
+                message: message,
+                type: type,
+            }); // type: SUCCESS / FAILURE
+            localStorage.setItem('isNotificationVisible', 'true');
+            localStorage.setItem('notificationMessage', message);
+            localStorage.setItem('notificationType', type);
+            setTimeout(function () {
+                _this.setState({
+                    isNotificationVisible: false,
+                    message: message,
+                    type: type,
+                });
+                localStorage.setItem('isNotificationVisible', 'false');
+                localStorage.setItem('notificationMessage', message);
+                localStorage.setItem('notificationType', type);
+            }, 3000);
+        };
+        _this.closeNotification = function () {
+            _this.setState(__assign({}, initialState));
+            localStorage.removeItem('isNotificationVisible');
+            localStorage.removeItem('notificationMessage');
+            localStorage.removeItem('notificationType');
+        };
+        return _this;
+    }
+    Notifiable.prototype.componentDidMount = function () {
+        if (localStorage.getItem('isNotificationVisible')) {
+            this.setState({
+                isNotificationVisible: localStorage.getItem('isNotificationVisible'),
+                message: localStorage.getItem('notificationMessage'),
+                type: localStorage.getItem('notificationType'),
+            });
+        }
+    };
+    Notifiable.prototype.render = function () {
+        var _this = this;
+        var NotificationBannerComponent = function () {
+            if (_this.state.isNotificationVisible) {
+                return (React.createElement(NotificationBannerMolecule, { type: _this.state.type, onClose: _this.closeNotification }, _this.state.message));
+            }
+            return null;
+        };
+        return [
+            React.createElement(NotificationBannerComponent, { key: "notification-wrapper-banner" }),
+            React.createElement("div", { key: "notification-wrapper-child-container" }, this.props.children({
+                isVisible: this.state.isNotificationVisible,
+                showNotification: this.showNotification,
+            })),
+        ];
+    };
+    return Notifiable;
+}(React.Component));
+
 exports.AnchorTextAtom = AnchorTextAtom;
 exports.AvatarAtom = AvatarAtom;
 exports.ButtonAtom = ButtonAtom;
@@ -1084,3 +1289,5 @@ exports.FooterMolecule = FooterMolecule;
 exports.LoaderMolecule = LoaderMolecule;
 exports.InputOrganism = InputOrganism;
 exports.LearningTimeBarChartOrganism = LearningTimeBarChartOrganism;
+exports.Confirmable = Confirmable;
+exports.Notifiable = Notifiable;

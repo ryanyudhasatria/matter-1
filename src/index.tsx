@@ -31,6 +31,9 @@ import { LoaderMolecule } from './molecules/Loader/LoaderMolecule';
 import { InputOrganism } from './organisms/Input/InputOrganism';
 import { LearningTimeBarChartOrganism } from './organisms/LearningTimeBarChart/LearningTimeBarChartOrganism';
 
+import { Confirmable } from './renderProps/Confirmable/Confirmable';
+import { Notifiable } from './renderProps/Notifiable/Notifiable';
+
 export {
   // ATOMS
   AnchorTextAtom,
@@ -62,5 +65,8 @@ export {
   LoaderMolecule,
   // ORGANISMS
   InputOrganism,
-  LearningTimeBarChartOrganism
+  LearningTimeBarChartOrganism,
+  // RENDER PROPS
+  Confirmable,
+  Notifiable,
 };
