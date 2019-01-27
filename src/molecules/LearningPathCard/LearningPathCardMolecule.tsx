@@ -38,7 +38,10 @@ const generateGradientByDifficulty = (difficulty: any) => {
 const LearningPathCardMolecule = ({
   title = '',
   instructor = 'KODE Team',
+  coverImage = null,
+  fullImage = true,
   description = '',
+  courses = [],
   level = { name: '', label: '' },
   ProgressBarComponent = () => null,
   FooterComponent = () => null,
@@ -46,84 +49,94 @@ const LearningPathCardMolecule = ({
   className = ''
 }: any) => {
   return (
-    <div
+    <CardAtom
       className={cx(
-        'flex flex-column',
+        `pb3 relative flex flex-column align-center justify-start`,
+        hoverableCard,
         css`
-          width: ${small ? '20%' : '90%'};
-          min-width: ${small ? '250px' : '90%'};
-          @media only screen and (max-width: 968px) {
-            width: ${small ? '55%' : '100%'};
-            min-width: ${small ? '250px' : '100%'};
-          }
-          @media only screen and (max-width: 480px) {
-            width: ${small ? '75%' : '100%'};
-            min-width: ${small ? '250px' : '100%'};
-          }
+          ${small ? '' : 'height: auto'}
         `,
-        className
+        className,
       )}
     >
-      <CardAtom
+      <div
         className={cx(
-          `pb3 relative flex ${
-            small ? 'flex-column h-100' : 'flex-row'
-          } align-center justify-${small ? 'start' : 'start'}`,
-          hoverableCard,
+          'w-100 br2 absolute',
           css`
-            ${small ? '' : 'height: auto'}
+            height: 8px;
+            top: 0;
+            ${generateGradientByDifficulty(level.name)}
+            @media only screen and (max-width: 30em) {
+              height: 5px;
+            }
           `
         )}
-      >
-        <div
-          className={cx(
-            'w-100 br2 absolute',
-            css`
-              height: 8px;
-              top: 0;
-              ${generateGradientByDifficulty(level.name)}
-              @media only screen and (max-width: 30em) {
-                height: 5px;
-              }
-            `
-          )}
-        />
-        <div className="flex flex-column justify-start">
-          <div
-            className={`flex flex-column mt3 ph3 ${
-              small ? 'pv1' : 'pv3 pr3'
-            } w-100`}
-          >
-            <TextAtom
-              size={small ? 'M' : 'L'}
-              className={cx(
-                'lh-title mv2 fw6',
-                css`
-                  min-height: ${small ? 40 : 0}px;
-                  color: ${COLORS.BLACK.NORMAL};
-                `
-              )}
-            >
-              {title}
-            </TextAtom>
-            <TextAtom
-              size="S"
-              className={cx(
-                'mt3 lh-copy',
-                css`
-                  color: ${COLORS.BLACK.LIGHTER};
-                `
-              )}
-            >
-              {description.slice(0, 100)}
-              {description.length > 100 && '...'}
-            </TextAtom>
-            <ProgressBarComponent />
-            <FooterComponent />
+      />
+      <div className="flex flex-column justify-start">
+        <div className={`flex flex-column w-100`}>
+        {coverImage && (
+          <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
+            <div>
+              <img
+                src={coverImage}
+                alt=""
+                className={cx(
+                  fullImage ? 'br3 br--top' : 'br3',
+                  css`
+                    min-height: 200px;
+                    object-fit: cover;
+                  `
+                )}
+              />
+            </div>
           </div>
+        )}
+        <div className="ph3 flex flex-column">
+          <TextAtom
+            size={small ? 'M' : 'L'}
+            className={cx(
+              'lh-title mv2 fw6',
+              css`
+                color: ${COLORS.BLACK.NORMAL};
+              `
+            )}
+          >
+            {title}
+          </TextAtom>
+          {courses && (
+            <div>
+            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
+                <span
+                  className={cx(
+                    'fw6',
+                    css`
+                      color: ${COLORS.BLACK.LIGHT};
+                    `
+                  )}
+                >
+                  {`${courses.length} kelas di learning path ini`.toUpperCase()}
+                </span>
+              </TextAtom>
+            </div>
+          )}
+          <TextAtom
+            size="S"
+            className={cx(
+              'mv2 lh-copy',
+              css`
+                color: ${COLORS.BLACK.LIGHTER};
+              `
+            )}
+          >
+            {description.slice(0, 100)}
+            {description.length > 100 && '...'}
+          </TextAtom>
+          <ProgressBarComponent />
+          <FooterComponent />
         </div>
-      </CardAtom>
-    </div>
+        </div>
+      </div>
+    </CardAtom>
   );
 };
 

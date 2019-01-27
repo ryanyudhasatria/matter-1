@@ -54,6 +54,8 @@ const generateGradientByDifficulty = (difficulty: any) => {
 const CourseProgressCardMolecule = ({
   title = '',
   instructor = 'KODE Team',
+  coverImage = null,
+  fullImage = true,
   category = { name: '', label: '' },
   description = '',
   level = { name: '', label: '' },
@@ -75,6 +77,7 @@ const CourseProgressCardMolecule = ({
           css`
             height: 8px;
             top: 0;
+            left: 0;
             ${generateGradientByDifficulty(level.name)}
             @media only screen and (max-width: 30em) {
               height: 5px;
@@ -83,8 +86,23 @@ const CourseProgressCardMolecule = ({
         )}
       />
       <div className="flex flex-column justify-start">
+        <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
+          <div>
+            <img
+              src={coverImage}
+              alt=""
+              className={cx(
+                fullImage ? 'br3 br--top' : 'br3',
+                css`
+                  min-height: 200px;
+                  object-fit: cover;
+                `
+              )}
+            />
+          </div>
+        </div>
         <div
-          className={`flex flex-column mt3 ph3 pv1 w-100`}
+          className={`flex flex-column ph3 pv1 w-100`}
         >
           <TextAtom
             size="M"
@@ -129,18 +147,20 @@ const CourseProgressCardMolecule = ({
               {level.label.toUpperCase()}
             </span>
           </TextAtom>
-          <TextAtom
-            size="S"
-            className={cx(
-              'mt3 lh-copy',
-              css`
-                color: ${COLORS.BLACK.LIGHTER};
-              `
-            )}
-          >
-            {description.slice(0, 80)}
-            {description.length > 80 && '...'}
-          </TextAtom>
+          {description && (
+            <TextAtom
+              size="S"
+              className={cx(
+                'mt3 lh-copy',
+                css`
+                  color: ${COLORS.BLACK.LIGHTER};
+                `
+              )}
+            >
+              {description.slice(0, 80)}
+              {description.length > 80 && '...'}
+            </TextAtom>
+          )}
           <ProgressBarComponent />
           <FooterComponent />
         </div>

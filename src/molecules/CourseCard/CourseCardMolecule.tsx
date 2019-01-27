@@ -76,6 +76,7 @@ const CourseCardMolecule = ({
   category = { name: '', label: '' },
   level = { name: '', label: '' },
   linkTo = '',
+  fullImage = true,
   small,
   className = '',
   coverImage = '',
@@ -86,7 +87,7 @@ any) => {
   return (
     <CardAtom
       className={cx(
-        `pb3 pa1 relative flex flex-column  align-center justify-start`,
+        `pb3 relative flex flex-column align-center justify-start`,
         hoverableCard,
         className,
       )}
@@ -105,13 +106,13 @@ any) => {
           `
         )}
       />
-      <div className="ph3 pt2">
-        <div className="mt3">
+      <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
+        <div>
           <img
             src={coverImage}
             alt=""
             className={cx(
-              'br3',
+              fullImage ? 'br3 br--top' : 'br3',
               css`
                 min-height: 200px;
                 object-fit: cover;
@@ -122,77 +123,82 @@ any) => {
       </div>
       <div className="flex flex-column justify-start">
         <div
-          className={`flex flex-column mt2 ph3 ${
-            small ? 'pv1' : 'pv3 pr3'
-          } w-100`}
+          className={`flex flex-column mt1 ph3 pv1 w-100`}
         >
-          <TextAtom
-            size={small ? 'M' : 'L'}
-            className={cx(
-              'lh-title mv2 fw6',
-              css`
-                min-height: ${small ? 40 : 0}px;
-                color: ${COLORS.BLACK.NORMAL};
-              `
-            )}
-          >
-            {title}
-          </TextAtom>
-          <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
-            <span
+          <div className={cx('flex flex-column', css`min-height: 80px`)}>
+            <TextAtom
+              size={small ? 'M' : 'L'}
               className={cx(
-                'fw6',
+                'lh-title mv2 fw6',
                 css`
-                  color: ${COLORS.BLACK.LIGHT};
+                  color: ${COLORS.BLACK.NORMAL};
                 `
               )}
             >
-              {category.label.toUpperCase()}
-            </span>
-            <span
+              {title}
+            </TextAtom>
+            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
+              <span
+                className={cx(
+                  'fw6',
+                  css`
+                    color: ${COLORS.BLACK.LIGHT};
+                  `
+                )}
+              >
+                {category.label.toUpperCase()}
+              </span>
+              <span
+                className={cx(
+                  'mh1 fw6',
+                  css`
+                    color: ${COLORS.BLACK.LIGHT};
+                  `
+                )}
+              >
+                ·
+              </span>
+              <span
+                className={cx(
+                  'fw6',
+                  css`
+                    color: ${generateColorByDifficulty(level.name)};
+                  `
+                )}
+              >
+                {level.label.toUpperCase()}
+              </span>
+            </TextAtom>
+          </div>
+          {description && (
+            <div className="mt3">
+              <TextAtom
+                size="S"
+                className={cx(
+                  'lh-copy',
+                  css`
+                    color: ${COLORS.BLACK.LIGHTER};
+                  `
+                )}
+              >
+                {description && description.slice(0, 80)}
+                {description && description.length > 80 && '...'}
+              </TextAtom>
+            </div>
+          )}
+          <div className="mt3">
+            <TextAtom
+              size="S"
               className={cx(
-                'mh1 fw6',
+                'lh-copy',
                 css`
-                  color: ${COLORS.BLACK.LIGHT};
+                  color: ${COLORS.BLACK.LIGHTER};
                 `
               )}
             >
-              ·
-            </span>
-            <span
-              className={cx(
-                'fw6',
-                css`
-                  color: ${generateColorByDifficulty(level.name)};
-                `
-              )}
-            >
-              {level.label.toUpperCase()}
-            </span>
-          </TextAtom>
-          <TextAtom
-            size="S"
-            className={cx(
-              'mt3 lh-copy',
-              css`
-                color: ${COLORS.BLACK.LIGHTER};
-              `
-            )}
-          >
-            {description.slice(0, 80)}
-            {description.length > 80 && '...'}
-          </TextAtom>
-          <TextAtom
-            size="S"
-            className={cx(
-              'mt4 lh-copy',
-              css`
-                color: ${COLORS.BLACK.LIGHTER};
-              `
-            )}
-          >
-            oleh <strong>{instructor}</strong>
-          </TextAtom>
+              oleh <span className="fw6">{instructor}</span>
+            </TextAtom>
+          </div>
         </div>
       </div>
     </CardAtom>
