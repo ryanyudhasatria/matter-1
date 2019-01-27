@@ -209,7 +209,7 @@ any) => {
                 >
                 PENGAJAR
                 </TextAtom>
-                <strong>{instructor} &nbsp;</strong>
+                <span className="fw6">{instructor} &nbsp;</span>
                 <span>{instructorRole}</span>
             </div>
             ) : (
@@ -218,8 +218,8 @@ any) => {
 
             {collaborator ? (
             <div className={cx('lh-copy')}>
-                <TextAtom>In collaboration with </TextAtom>
-                <b>{collaborator}</b>
+                <TextAtom>Berkolaborasi dengan </TextAtom>
+                <span className="fw6">{collaborator}</span>
             </div>
             ) : (
             <div className={cx('lh-copy')} />
@@ -232,7 +232,7 @@ any) => {
         {duration && (
             <div className="mr3">
             <TextAtom size="S">
-                <IconAtom name="clock" /> <strong>{duration} jam</strong> waktu belajar
+                <IconAtom name="clock" /> <span className="fw6">{duration} jam</span> waktu belajar
             </TextAtom>
             </div>
         )}
