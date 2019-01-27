@@ -13,6 +13,8 @@ var Carousel = _interopDefault(require('nuka-carousel'));
 var util = require('util');
 var d3 = require('d3');
 var moment_ = require('moment');
+var Select = require('react-select');
+var Select__default = _interopDefault(Select);
 var Modal = require('react-modal');
 var reactMotion = require('react-motion');
 
@@ -815,6 +817,152 @@ var LoaderMolecule = function (_a) {
 };
 var templateObject_1$m, templateObject_2$f, templateObject_3$b, templateObject_4$8, templateObject_5$8, templateObject_6$8, templateObject_7$7;
 
+var chartStyle = emotion.css(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n  margin: 0 auto;\n  position: relative;\n  display: block;\n"], ["\n  margin: 0 auto;\n  position: relative;\n  display: block;\n"])));
+var legendStyle = emotion.css(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n  font-size: 14px;\n  color: ", ";\n"], ["\n  font-size: 14px;\n  color: ", ";\n"])), COLORS.GREY.DARKER);
+var tooltipStyle = emotion.css(templateObject_3$c || (templateObject_3$c = __makeTemplateObject(["\n  background: #FFFFFF;\n  border-radius: 8px;\n  box-shadow: 0 0 5px #999999;\n  color: #333;\n  display: none;\n  font-size: 14px;\n  left: 130px;\n  padding: 10px;\n  position: absolute;\n  text-align: center;\n  top: 95px;\n  width: 200px;\n  z-index: 10;\n"], ["\n  background: #FFFFFF;\n  border-radius: 8px;\n  box-shadow: 0 0 5px #999999;\n  color: #333;\n  display: none;\n  font-size: 14px;\n  left: 130px;\n  padding: 10px;\n  position: absolute;\n  text-align: center;\n  top: 95px;\n  width: 200px;\n  z-index: 10;\n"])));
+var disabledRect = emotion.css(templateObject_4$9 || (templateObject_4$9 = __makeTemplateObject(["\n  fill: transparent !important;\n"], ["\n  fill: transparent !important;\n"])));
+var EngagedUserPieChartOrganism = /** @class */ (function (_super) {
+    __extends(EngagedUserPieChartOrganism, _super);
+    function EngagedUserPieChartOrganism() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    EngagedUserPieChartOrganism.prototype.componentDidMount = function () {
+        // define data
+        var dataset = this.props.data;
+        // chart dimensions
+        var width = this.props.width;
+        var height = this.props.height;
+        // a circle chart needs a radius
+        var radius = Math.min(width, height) / 2;
+        // legend dimensions
+        var legendRectSize = 25; // defines the size of the colored squares in legend
+        var legendSpacing = 10; // defines spacing between squares
+        // define color scale
+        // var color = d3.scaleOrdinal(d3.schemeAccent);
+        var color = d3.scaleOrdinal(d3.schemeAccent)
+            .domain(['Aktif', 'Tidak Aktif', 'Pending'])
+            .range([COLORS.GREEN.NORMAL, COLORS.RED.NORMAL, COLORS.YELLOW.NORMAL]);
+        var svg = d3.select("#" + (this.props.id || 'svgWrapper')) // select element in the DOM with id 'chart'
+            .append('svg') // append an svg element to the element we've selected
+            .attr('width', width) // set the width of the svg element we just added
+            .attr('height', height) // set the height of the svg element we just added
+            .append('g') // append 'g' element to the svg element
+            .attr('transform', 'translate(' + (width / 3) + ',' + (height / 2) + ')'); // our reference is now to the 'g' element. centerting the 'g' element to the svg element
+        var arc = d3.arc()
+            .innerRadius(0) // none for pie chart
+            .outerRadius(radius); // size of overall chart
+        var pie = d3.pie() // start and end angles of the segments
+            .value(function (d) { return d.count; }) // how to extract the numerical data from each entry in our dataset
+            .sort(null); // by default, data sorts in oescending value. this will mess with our animation so we set it to null
+        // define tooltip
+        var tooltip = d3.select("#" + (this.props.id || 'svgWrapper')) // select element in the DOM with id 'chart'
+            .append('div') // append a div element to the element we've selected                                    
+            .attr('class', tooltipStyle); // add class 'tooltip' on the divs we just selected
+        tooltip.append('div') // add divs to the tooltip defined above                            
+            .attr('class', 'label'); // add class 'label' on the selection                         
+        tooltip.append('div') // add divs to the tooltip defined above                     
+            .attr('class', 'count'); // add class 'count' on the selection                  
+        tooltip.append('div') // add divs to the tooltip defined above  
+            .attr('class', 'percent'); // add class 'percent' on the selection
+        dataset.forEach(function (d) {
+            d.count = +d.count; // calculate count as we iterate through the data
+            d.enabled = true; // add enabled property to track which entries are checked
+        });
+        // creating the chart
+        var path = svg.selectAll('path') // select all path elements inside the svg. specifically the 'g' element. they don't exist yet but they will be created below
+            .data(pie(dataset)) //associate dataset wit he path elements we're about to create. must pass through the pie function. it magically knows how to extract values and bakes it into the pie
+            .enter() //creates placeholder nodes for each of the values
+            .append('path') // replace placeholders with path elements
+            .attr('d', arc) // define d attribute with arc function above
+            .attr('fill', function (d) { return color(d.data.label); }) // use color scale to define fill of each label in dataset
+            .each(function (d) {
+            // @ts-ignore
+            this._current - d;
+        }); // creates a smooth animation for each track
+        // mouse event handlers are attached to path so they need to come after its definition
+        path.on('mouseover', function (d) {
+            var total = d3.sum(dataset.map(function (d) {
+                return (d.enabled) ? d.count : 0; // checking to see if the entry is enabled. if it isn't, we return 0 and cause other percentages to increase                                      
+            }));
+            var percent = Math.round(1000 * d.data.count / total) / 10; // calculate percent
+            tooltip.select('.label').html(d.data.label); // set current label           
+            tooltip.select('.count').html(d.data.count + " karyawan"); // set current count            
+            tooltip.select('.percent').html(percent + '%'); // set percent calculated above          
+            tooltip.style('display', 'block'); // set display                     
+        });
+        path.on('mouseout', function () {
+            tooltip.style('display', 'none'); // hide tooltip for that element
+        });
+        path.on('mousemove', function (d) {
+            tooltip.style('top', (d3.event.layerY + 10) + 'px') // always 10px below the cursor
+                .style('left', (d3.event.layerX + 10) + 'px'); // always 10px to the right of the mouse
+        });
+        // define legend
+        var legend = svg.selectAll(legendStyle) // selecting elements with class 'legend'
+            .data(color.domain()) // refers to an array of labels from our dataset
+            .enter() // creates placeholder
+            .append('g') // replace placeholders with g elements
+            .attr('class', legendStyle) // each g is given a legend class
+            .attr('transform', function (d, i) {
+            var height = legendRectSize + legendSpacing; // height of element is the height of the colored square plus the spacing      
+            var offset = height * color.domain().length / 2; // vertical offset of the entire legend = height of a single element & half the total number of elements  
+            var horz = 9 * legendRectSize; // the legend is shifted to the left to make room for the text
+            var vert = i * height - offset; // the top of the element is hifted up or down from the center using the offset defiend earlier and the index of the current element 'i'               
+            return 'translate(' + horz + ',' + vert + ')'; //return translation       
+        });
+        // adding colored squares to legend
+        legend.append('rect') // append rectangle squares to legend                                   
+            .attr('width', legendRectSize) // width of rect size is defined above                        
+            .attr('height', legendRectSize) // height of rect size is defined above                      
+            .style('fill', color) // each fill is passed a color
+            .style('stroke', color) // each stroke is passed a color
+            .on('click', function (label) {
+            var rect = d3.select(this); // this refers to the colored squared just clicked
+            var enabled = true; // set enabled true to default
+            var totalEnabled = d3.sum(dataset.map(function (d) {
+                return (d.enabled) ? 1 : 0; // return 1 for each enabled entry. and summing it up
+            }));
+            if (rect.attr('class') === disabledRect) { // if class is disabled
+                rect.attr('class', ''); // remove class disabled
+            }
+            else { // else
+                if (totalEnabled < 2)
+                    return; // if less than two labels are flagged, exit
+                rect.attr('class', disabledRect); // otherwise flag the square disabled
+                enabled = false; // set enabled to false
+            }
+            pie.value(function (d) {
+                if (d.label === label)
+                    d.enabled = enabled; // if entry label matches legend label
+                return (d.enabled) ? d.count : 0; // update enabled property and return count or 0 based on the entry's status
+            });
+            path = path.data(pie(dataset)); // update pie with new data
+            path.transition() // transition of redrawn pie
+                .duration(750) // 
+                .attrTween('d', function (d) {
+                // @ts-ignore
+                var interpolate = d3.interpolate(this._current, d); // this = current path element
+                // @ts-ignore
+                this._current = interpolate(0); // interpolate between current value and the new value of 'd'
+                return function (t) {
+                    return arc(interpolate(t));
+                };
+            });
+        });
+        // adding text to legend
+        legend.append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize - legendSpacing)
+            .text(function (d) { return d; }); // return label
+    };
+    EngagedUserPieChartOrganism.prototype.render = function () {
+        var _a = this.props, id = _a.id, className = _a.className, width = _a.width, height = _a.height;
+        return (React.createElement("div", { key: "engaged-user-pie-" + id, id: id || 'svgWrapper', className: emotion.cx(emotion.css(templateObject_5$9 || (templateObject_5$9 = __makeTemplateObject(["\n            height: ", "px;\n            width: ", "px;\n          "], ["\n            height: ", "px;\n            width: ", "px;\n          "])), height, width), className, chartStyle) }));
+    };
+    return EngagedUserPieChartOrganism;
+}(React.Component));
+var templateObject_1$n, templateObject_2$g, templateObject_3$c, templateObject_4$9, templateObject_5$9;
+
 var InputOrganism = /** @class */ (function (_super) {
     __extends(InputOrganism, _super);
     function InputOrganism() {
@@ -854,15 +1002,15 @@ var InputOrganism = /** @class */ (function (_super) {
         var _a = this.state, isFocus = _a.isFocus, isActive = _a.isActive;
         var _b = this.props, value = _b.value, error = _b.error, name = _b.name, placeholder = _b.placeholder, label = _b.label, icon = _b.icon, className = _b.className, _c = _b.type, type = _c === void 0 ? 'text' : _c, disabled = _b.disabled, height = _b.height, required = _b.required, _d = _b.onKeyUp, onKeyUp = _d === void 0 ? function () { } : _d;
         return (React.createElement("div", { className: emotion.cx('flex flex-column justify-center align-center', className) },
-            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 ph3 pv1 br3 flex flex-row align-start outline-0', emotion.css(templateObject_1$n || (templateObject_1$n = __makeTemplateObject(["\n              background: ", ";\n              cursor: ", ";\n              border: 1px solid\n                ", ";\n              transition: all 0.5s ease;\n              height: ", ";\n              @media screen and (min-width: 30em) {\n                height: ", ";\n              }\n            "], ["\n              background: ", ";\n              cursor: ", ";\n              border: 1px solid\n                ",
+            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 ph3 pv1 br3 flex flex-row align-start outline-0', emotion.css(templateObject_1$o || (templateObject_1$o = __makeTemplateObject(["\n              background: ", ";\n              cursor: ", ";\n              border: 1px solid\n                ", ";\n              transition: all 0.5s ease;\n              height: ", ";\n              @media screen and (min-width: 30em) {\n                height: ", ";\n              }\n            "], ["\n              background: ", ";\n              cursor: ", ";\n              border: 1px solid\n                ",
                     ";\n              transition: all 0.5s ease;\n              height: ", ";\n              @media screen and (min-width: 30em) {\n                height: ", ";\n              }\n            "])), COLORS.WHITE.NORMAL, disabled ? 'not-allowed' : 'pointer', error
                     ? '#EB5757'
                     : isFocus && !disabled
                         ? '#645AFF'
                         : '#E8EDF2', type === 'textarea' ? height || 'auto' : '48px', type === 'textarea' ? height || 'auto' : '56px')) },
-                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHT)) })),
+                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHT)) })),
                 React.createElement("div", { className: "w-100 ml2 flex flex-column justify-start align-start" },
-                    React.createElement(TextAtom, { size: isFocus || isActive ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_3$c || (templateObject_3$c = __makeTemplateObject(["\n                  transition: all 0.4s ease;\n                  color: ", ";\n                  transform: translateY(", "px);\n                  @media screen and (min-width: 30em) {\n                    transform: translateY(", "px);\n                  }\n                "], ["\n                  transition: all 0.4s ease;\n                  color: ",
+                    React.createElement(TextAtom, { size: isFocus || isActive ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_3$d || (templateObject_3$d = __makeTemplateObject(["\n                  transition: all 0.4s ease;\n                  color: ", ";\n                  transform: translateY(", "px);\n                  @media screen and (min-width: 30em) {\n                    transform: translateY(", "px);\n                  }\n                "], ["\n                  transition: all 0.4s ease;\n                  color: ",
                             ";\n                  transform: translateY(", "px);\n                  @media screen and (min-width: 30em) {\n                    transform: translateY(", "px);\n                  }\n                "])), error
                             ? '#EB5757'
                             : isFocus && !disabled
@@ -874,16 +1022,16 @@ var InputOrganism = /** @class */ (function (_super) {
                             : "* " + label),
                     type !== 'textarea' && (React.createElement("input", { ref: function (input) {
                             _this.input = input;
-                        }, type: type, className: emotion.cx('w-100 ph2 outline-0 bn', emotion.css(templateObject_4$9 || (templateObject_4$9 = __makeTemplateObject(["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "], ["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "])), disabled ? 'not-allowed' : 'auto', isFocus || isActive ? '1' : '0', height || 'auto', isFocus || isActive ? -2 : 0)), onKeyUp: onKeyUp, name: name, value: value, placeholder: placeholder, onChange: this.handleChange, onBlur: this.onBlur, disabled: disabled, "data-test": this.props['data-test'] })),
+                        }, type: type, className: emotion.cx('w-100 ph2 outline-0 bn', emotion.css(templateObject_4$a || (templateObject_4$a = __makeTemplateObject(["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "], ["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "])), disabled ? 'not-allowed' : 'auto', isFocus || isActive ? '1' : '0', height || 'auto', isFocus || isActive ? -2 : 0)), onKeyUp: onKeyUp, name: name, value: value, placeholder: placeholder, onChange: this.handleChange, onBlur: this.onBlur, disabled: disabled, "data-test": this.props['data-test'] })),
                     type === 'textarea' && (React.createElement("textarea", { ref: function (input) {
                             _this.input = input;
-                        }, className: emotion.cx('w-100 ph2 outline-0 bn', emotion.css(templateObject_5$9 || (templateObject_5$9 = __makeTemplateObject(["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "], ["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "])), disabled ? 'not-allowed' : 'auto', isFocus || isActive ? '1' : '0', height || 'auto', isFocus || isActive ? -2 : 0)), name: name, value: value, placeholder: placeholder, onChange: this.handleChange, onKeyUp: onKeyUp, onBlur: this.onBlur, disabled: disabled, "data-test": this.props['data-test'] }))),
+                        }, className: emotion.cx('w-100 ph2 outline-0 bn', emotion.css(templateObject_5$a || (templateObject_5$a = __makeTemplateObject(["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "], ["\n                    font-size: 0.8rem;\n                    cursor: ", ";\n                    background: transparent;\n                    opacity: ", ";\n                    height: ", ";\n                    transition: all 0.4s ease;\n                    margin-top: -0.5px;\n                    transform: translateY(", "px);\n                    @media screen and (min-width: 30em) {\n                      font-size: 1rem;\n                      margin: 0;\n                    }\n                  "])), disabled ? 'not-allowed' : 'auto', isFocus || isActive ? '1' : '0', height || 'auto', isFocus || isActive ? -2 : 0)), name: name, value: value, placeholder: placeholder, onChange: this.handleChange, onKeyUp: onKeyUp, onBlur: this.onBlur, disabled: disabled, "data-test": this.props['data-test'] }))),
                 error && (React.createElement(IconAtom, { name: "exclamation-circle", className: emotion.cx('f3 self-center', emotion.css(templateObject_6$9 || (templateObject_6$9 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.RED.NORMAL)) }))),
             React.createElement("div", { className: "mt2" }, error && (React.createElement(TextAtom, { size: "S", className: emotion.cx('self-center', emotion.css(templateObject_7$8 || (templateObject_7$8 = __makeTemplateObject(["\n                  color: #eb5757;\n                "], ["\n                  color: #eb5757;\n                "])))) }, error)))));
     };
     return InputOrganism;
 }(React.PureComponent));
-var templateObject_1$n, templateObject_2$g, templateObject_3$c, templateObject_4$9, templateObject_5$9, templateObject_6$9, templateObject_7$8;
+var templateObject_1$o, templateObject_2$h, templateObject_3$d, templateObject_4$a, templateObject_5$a, templateObject_6$9, templateObject_7$8;
 
 var moment = moment_; // issue on https://github.com/jvandemo/generator-angular2-library/issues/221
 var LearningTimeBarChartOrganism = /** @class */ (function (_super) {
@@ -1053,11 +1201,80 @@ var LearningTimeBarChartOrganism = /** @class */ (function (_super) {
     };
     LearningTimeBarChartOrganism.prototype.render = function () {
         var _a = this.props, id = _a.id, className = _a.className, width = _a.width, height = _a.height;
-        return (React.createElement("div", { key: "learning-bar-" + id, id: id || 'svgWrapper', className: emotion.cx(emotion.css(templateObject_1$o || (templateObject_1$o = __makeTemplateObject(["\n            height: ", "px;\n            width: ", "px;\n          "], ["\n            height: ", "px;\n            width: ", "px;\n          "])), height + 50, width + 50), className) }));
+        return (React.createElement("div", { key: "learning-bar-" + id, id: id || 'svgWrapper', className: emotion.cx(emotion.css(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n            height: ", "px;\n            width: ", "px;\n          "], ["\n            height: ", "px;\n            width: ", "px;\n          "])), height + 50, width + 50), className) }));
     };
     return LearningTimeBarChartOrganism;
 }(React.Component));
-var templateObject_1$o;
+var templateObject_1$p;
+
+var DropdownIndicator = function (props) { return Select.components.DropdownIndicator && (React.createElement(Select.components.DropdownIndicator, __assign({}, props),
+    React.createElement("div", { className: emotion.cx('dropdown-circle br-100 bg-dark6 flex flex-column justify-center items-center', emotion.css(templateObject_1$q || (templateObject_1$q = __makeTemplateObject(["width: 32px; height: 32px;"], ["width: 32px; height: 32px;"])))) },
+        React.createElement(IconAtom, { name: "angle-down", type: "REGULAR", className: "dropdown-icon f3 dark3 self-center" })))); };
+var SelectOrganism = /** @class */ (function (_super) {
+    __extends(SelectOrganism, _super);
+    function SelectOrganism() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = {
+            isFocus: false,
+            isActive: !!_this.props.value,
+        };
+        _this.onFocus = function () {
+            _this.setState({ isFocus: true });
+            if (_this.selectRef) {
+                _this.selectRef.focus();
+            }
+        };
+        _this.onBlur = function () {
+            _this.setState({ isFocus: false });
+        };
+        _this.handleChange = function (e) {
+            _this.props.onChange(e.value || null);
+            _this.setState({ isActive: true });
+        };
+        return _this;
+    }
+    SelectOrganism.prototype.render = function () {
+        var _this = this;
+        var _a = this.state, isFocus = _a.isFocus, isActive = _a.isActive;
+        var _b = this.props, value = _b.value, options = _b.options, error = _b.error, name = _b.name, placeholder = _b.placeholder, label = _b.label, icon = _b.icon, className = _b.className, disabled = _b.disabled, required = _b.required;
+        return (React.createElement("div", __assign({ className: emotion.cx('flex flex-column justify-center align-center', className) }, this.props),
+            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 pl3 pr2 pv1 br3 flex flex-row align-center outline-0', emotion.css(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "], ["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "])), disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), isFocus ? '#645AFF' : '#F5F7FA', isFocus ? '#FFFFFF' : '#8393A3')) },
+                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHT)) })),
+                React.createElement("div", { className: "w-100 ml2 flex flex-column justify-start align-start" },
+                    React.createElement(TextAtom, { size: (isFocus || isActive) ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_4$b || (templateObject_4$b = __makeTemplateObject(["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "], ["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "])), error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#8393A3'), (isFocus || isActive) ? -12 : 12, (isFocus || isActive) ? -13 : 13)) }, required && (isFocus || isActive)
+                        ? label
+                        : !required
+                            ? label
+                            : "* " + label),
+                    React.createElement(Select__default, { ref: function (ref) { _this.selectRef = ref; }, components: { DropdownIndicator: DropdownIndicator }, placeholder: placeholder, options: options, value: options.filter(function (opt) { return opt.value === value; })[0], name: name, onChange: this.handleChange, onBlur: this.onBlur, onFocus: this.onFocus, className: "dropdown-selector", styles: {
+                            control: function () { return ({
+                                borderColor: 'transparent',
+                                borderRadius: 4,
+                                borderStyle: 'solid',
+                                borderWidth: 1,
+                                // boxShadow: null,
+                                boxSizing: 'border-box',
+                                cursor: 'default',
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                justifyContent: 'space-between',
+                                minHeight: 38,
+                                outline: '0 !important',
+                                position: 'relative',
+                                transition: 'all 100ms',
+                            }); },
+                            indicatorSeparator: function (base) { return (__assign({}, base, { display: 'none' })); },
+                            container: function (base) { return (__assign({}, base, { marginTop: (isFocus || isActive) ? -15 : -18 })); },
+                            valueContainer: function (base) { return (__assign({}, base, { border: 0, padding: '10px 0', visibility: (isFocus || isActive) ? 'visible' : 'hidden', paddingLeft: 5 })); },
+                            singleValue: function (base) { return (__assign({}, base)); },
+                            option: function (base) { return (__assign({}, base, { padding: '10px 20px', borderBottom: '1px solid #F5F7FA' })); },
+                        } })),
+                error && (React.createElement(IconAtom, { name: "exclamation-circle", className: emotion.cx('f3 self-center primaryred', emotion.css(templateObject_5$b || (templateObject_5$b = __makeTemplateObject([""], [""])))) }))),
+            React.createElement("div", { className: "mt1" }, error && (React.createElement(TextAtom, { size: "S", className: emotion.cx('ml4 self-center', emotion.css(templateObject_6$a || (templateObject_6$a = __makeTemplateObject(["color: #EB5757"], ["color: #EB5757"])))) }, error)))));
+    };
+    return SelectOrganism;
+}(React.Component));
+var templateObject_1$q, templateObject_2$i, templateObject_3$e, templateObject_4$b, templateObject_5$b, templateObject_6$a;
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
@@ -1073,13 +1290,13 @@ var AppModalDialog = /** @class */ (function (_super) {
     }
     AppModalDialog.prototype.render = function () {
         return (React.createElement("div", null,
-            React.createElement(Modal, { isOpen: this.props.isModalVisible, onAfterOpen: this.afterOpenModal, onRequestClose: this.props.closeConfirmable, className: emotion.cx('bg-white br3 outline-0 flex flex-column', emotion.css(templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "], ["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "])))), overlayClassName: emotion.css(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "], ["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "]))), contentLabel: "Confirmation Modal" },
+            React.createElement(Modal, { isOpen: this.props.isModalVisible, onAfterOpen: this.afterOpenModal, onRequestClose: this.props.closeConfirmable, className: emotion.cx('bg-white br3 outline-0 flex flex-column', emotion.css(templateObject_1$r || (templateObject_1$r = __makeTemplateObject(["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "], ["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "])))), overlayClassName: emotion.css(templateObject_2$j || (templateObject_2$j = __makeTemplateObject(["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "], ["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "]))), contentLabel: "Confirmation Modal" },
                 React.createElement("div", { className: "flex flex-column" },
                     React.createElement("div", { className: "flex flex-column ph5-ns ph4 pv4-ns pv3 justify-center align-center items-center" },
-                        React.createElement(IconAtom, { name: "exclamation-circle", type: "LIGHT", className: emotion.cx('mv3 primary-red', emotion.css(templateObject_3$d || (templateObject_3$d = __makeTemplateObject(["font-size: 108px"], ["font-size: 108px"])))) }),
-                        React.createElement(TextAtom, { size: "XL", className: "fw6 mt3 dark2" }, "Apa kamu Yakin?"),
-                        React.createElement(TextAtom, { size: "M", className: "mt2 dark3" }, this.props.message)),
-                    React.createElement("div", { className: "flex flex-row justify-center items-center pv3 ph2 bt b--shade" },
+                        React.createElement(IconAtom, { name: "exclamation-circle", type: "LIGHT", className: emotion.cx('mv3', emotion.css(templateObject_3$f || (templateObject_3$f = __makeTemplateObject(["font-size: 108px; color: ", ""], ["font-size: 108px; color: ", ""])), COLORS.RED.NORMAL)) }),
+                        React.createElement(TextAtom, { size: "XL", className: emotion.cx('fw6 mt3', emotion.css(templateObject_4$c || (templateObject_4$c = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.NORMAL)) }, "Apa kamu Yakin?"),
+                        React.createElement(TextAtom, { size: "M", className: emotion.cx('mt2', emotion.css(templateObject_5$c || (templateObject_5$c = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.LIGHTER)) }, this.props.message)),
+                    React.createElement("div", { className: emotion.cx('flex flex-row justify-center items-center pv3 ph2 bt', emotion.css(templateObject_6$b || (templateObject_6$b = __makeTemplateObject(["border-color: ", ""], ["border-color: ", ""])), COLORS.GREY.NORMAL)) },
                         React.createElement(ButtonAtom, { type: "DEFAULT_GREY", onClick: this.props.cancel, className: "ph5 mh1", "data-test": "confirmable-cancel" }, "Batalkan"),
                         React.createElement(ButtonAtom, { type: "DEFAULT_CTA", onClick: this.props.confirm, className: "ph5 mh1", "data-test": "confirmable-confirm" }, "OK"))))));
     };
@@ -1154,7 +1371,7 @@ var Confirmable = /** @class */ (function (_super) {
     };
     return Confirmable;
 }(React.Component));
-var templateObject_1$p, templateObject_2$h, templateObject_3$d;
+var templateObject_1$r, templateObject_2$j, templateObject_3$f, templateObject_4$c, templateObject_5$c, templateObject_6$b;
 
 var genBannerStyle = function (type) {
     var style = 'color: #FFFFFF;';
@@ -1184,7 +1401,7 @@ var NotificationBannerMolecule = /** @class */ (function (_super) {
     NotificationBannerMolecule.prototype.render = function () {
         var _this = this;
         var _a = this.props, type = _a.type, children = _a.children;
-        return (React.createElement(reactMotion.Motion, { defaultStyle: { height: 0 }, style: { height: reactMotion.spring(56) } }, function (value) { return (React.createElement("div", { className: emotion.cx('flex flex-row justify-between align-center fixed w-100 ph3 pv2', emotion.css(templateObject_1$q || (templateObject_1$q = __makeTemplateObject(["z-index: 997; top: 0; left: 0; ", ""], ["z-index: 997; top: 0; left: 0; ", ""])), genBannerStyle(type))), style: { height: value.height, display: _this.state.isVisible ? 'flex' : 'none' } },
+        return (React.createElement(reactMotion.Motion, { defaultStyle: { height: 0 }, style: { height: reactMotion.spring(56) } }, function (value) { return (React.createElement("div", { className: emotion.cx('flex flex-row justify-between align-center fixed w-100 ph3 pv2', emotion.css(templateObject_1$s || (templateObject_1$s = __makeTemplateObject(["z-index: 997; top: 0; left: 0; ", ""], ["z-index: 997; top: 0; left: 0; ", ""])), genBannerStyle(type))), style: { height: value.height, display: _this.state.isVisible ? 'flex' : 'none' } },
             React.createElement("div", null),
             typeof children === 'string' ? React.createElement(TextAtom, { className: "self-center" }, children) : children,
             React.createElement("div", { className: "ph3 flex flex-row self-center justify-end align-center" },
@@ -1193,7 +1410,7 @@ var NotificationBannerMolecule = /** @class */ (function (_super) {
     };
     return NotificationBannerMolecule;
 }(React.Component));
-var templateObject_1$q;
+var templateObject_1$s;
 
 var initialState = {
     isNotificationVisible: false,
@@ -1287,7 +1504,9 @@ exports.TeacherCardMolecule = TeacherCardMolecule;
 exports.ReviewCardMolecule = ReviewCardMolecule;
 exports.FooterMolecule = FooterMolecule;
 exports.LoaderMolecule = LoaderMolecule;
+exports.EngagedUserPieChartOrganism = EngagedUserPieChartOrganism;
 exports.InputOrganism = InputOrganism;
 exports.LearningTimeBarChartOrganism = LearningTimeBarChartOrganism;
+exports.SelectOrganism = SelectOrganism;
 exports.Confirmable = Confirmable;
 exports.Notifiable = Notifiable;

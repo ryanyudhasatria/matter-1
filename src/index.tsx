@@ -28,6 +28,7 @@ import { ReviewCardMolecule } from './molecules/ReviewCard/ReviewCardMolecule';
 import { FooterMolecule } from './molecules/Footer/FooterMolecule';
 import { LoaderMolecule } from './molecules/Loader/LoaderMolecule';
 
+import { EngagedUserPieChartOrganism } from './organisms/EngagedUserPieChart/EngagedUserPieChartOrganism';
 import { InputOrganism } from './organisms/Input/InputOrganism';
 import { LearningTimeBarChartOrganism } from './organisms/LearningTimeBarChart/LearningTimeBarChartOrganism';
 import { SelectOrganism } from './organisms/Select/SelectOrganism';
@@ -65,6 +66,7 @@ export {
   FooterMolecule,
   LoaderMolecule,
   // ORGANISMS
+  EngagedUserPieChartOrganism,
   InputOrganism,
   LearningTimeBarChartOrganism,
   SelectOrganism,
