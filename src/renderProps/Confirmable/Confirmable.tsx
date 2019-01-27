@@ -4,6 +4,9 @@ import { css, cx } from 'emotion';
 
 import { ButtonAtom, IconAtom, TextAtom } from '../../atoms';
 
+// @ts-ignore
+import COLORS from '../../constants/colors';
+
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 
@@ -46,11 +49,11 @@ class AppModalDialog extends React.Component<any, any> {
         >
           <div className="flex flex-column">
             <div className="flex flex-column ph5-ns ph4 pv4-ns pv3 justify-center align-center items-center">
-              <IconAtom name="exclamation-circle" type="LIGHT" className={cx('mv3 primary-red', css`font-size: 108px`)} />
-              <TextAtom size="XL" className="fw6 mt3 dark2">Apa kamu Yakin?</TextAtom>
-              <TextAtom size="M" className="mt2 dark3">{this.props.message}</TextAtom>
+              <IconAtom name="exclamation-circle" type="LIGHT" className={cx('mv3', css`font-size: 108px; color: ${COLORS.RED.NORMAL}`)} />
+              <TextAtom size="XL" className={cx('fw6 mt3', css`color: ${COLORS.BLACK.NORMAL}`)}>Apa kamu Yakin?</TextAtom>
+              <TextAtom size="M" className={cx('mt2', css`color: ${COLORS.BLACK.LIGHTER}`)}>{this.props.message}</TextAtom>
             </div>
-            <div className="flex flex-row justify-center items-center pv3 ph2 bt b--shade">
+            <div className={cx('flex flex-row justify-center items-center pv3 ph2 bt', css`border-color: ${COLORS.GREY.NORMAL}`)}>
               <ButtonAtom
                 type="DEFAULT_GREY"
                 onClick={this.props.cancel}

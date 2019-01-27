@@ -33,13 +33,13 @@ storiesOf('RenderProps.Confirmable', module)
     (() => (
       <div>
         <Confirmable
-          confirmationMessage="Apakah kamu yakin?"
+          confirmationMessage="Perubahan tidak dapat dikembalikan"
           confirmableAction={() => alert('all done!!!')}
         >
-          {({ confirm }) => (
+          {({ showConfirmation }) => (
             <div className="pa6">
               <button
-                onClick={confirm}
+                onClick={showConfirmation}
               >
                 Show Confirmation
               </button>
