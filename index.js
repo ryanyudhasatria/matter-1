@@ -462,17 +462,17 @@ var CourseCardMolecule = function (_a) {
                         React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_6$2 || (templateObject_6$2 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, category.label.toUpperCase()),
                         React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_7$2 || (templateObject_7$2 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
                         React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_8$2 || (templateObject_8$2 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), generateColorByDifficulty(level.name))) }, level.label.toUpperCase()))),
-                description && (React.createElement("div", { className: "mt3" },
-                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_9$1 || (templateObject_9$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) },
+                description && (React.createElement("div", { className: emotion.cx('mt3', emotion.css(templateObject_9$1 || (templateObject_9$1 = __makeTemplateObject(["min-height: 65px"], ["min-height: 65px"])))) },
+                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_10$1 || (templateObject_10$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) },
                         description && description.slice(0, 80),
                         description && description.length > 80 && '...'))),
                 React.createElement("div", { className: "mt3" },
-                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_10$1 || (templateObject_10$1 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) },
+                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_11$1 || (templateObject_11$1 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) },
                         "oleh ",
                         React.createElement("span", { className: "fw6" }, instructor)))))));
 };
 CourseCardMolecule.displayName = 'CourseCardMolecule';
-var templateObject_1$e, templateObject_2$9, templateObject_3$5, templateObject_4$2, templateObject_5$2, templateObject_6$2, templateObject_7$2, templateObject_8$2, templateObject_9$1, templateObject_10$1;
+var templateObject_1$e, templateObject_2$9, templateObject_3$5, templateObject_4$2, templateObject_5$2, templateObject_6$2, templateObject_7$2, templateObject_8$2, templateObject_9$1, templateObject_10$1, templateObject_11$1;
 
 var hoverableCard$1 = emotion.css(templateObject_1$f || (templateObject_1$f = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerColor$1 = '#2F80ED';
@@ -560,7 +560,7 @@ var HorizontalCourseCardMolecule = function (_a) {
                         " waktu belajar"))),
                 rating && (React.createElement("div", { className: "dtc tc" },
                     React.createElement(TextAtom, { size: "S" },
-                        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_11$1 || (templateObject_11$1 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.YELLOW.NORMAL)) }),
+                        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_11$2 || (templateObject_11$2 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.YELLOW.NORMAL)) }),
                         React.createElement("b", null,
                             rating,
                             " ",
@@ -573,7 +573,7 @@ var HorizontalCourseCardMolecule = function (_a) {
                     React.createElement(ActionButtonComponent, null))))));
 };
 HorizontalCourseCardMolecule.displayName = 'HorizontalCourseCardMolecule';
-var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2, templateObject_10$2, templateObject_11$1;
+var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2, templateObject_10$2, templateObject_11$2;
 
 var hoverableCard$2 = emotion.css(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerColor$2 = '#2F80ED';
@@ -612,20 +612,21 @@ var CourseProgressCardMolecule = function (_a) {
             React.createElement("div", { className: emotion.cx("" + (fullImage ? '' : 'ph3 pt2')) },
                 React.createElement("div", null,
                     React.createElement("img", { src: coverImage, alt: "", className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_3$7 || (templateObject_3$7 = __makeTemplateObject(["\n                  min-height: 200px;\n                  object-fit: cover;\n                "], ["\n                  min-height: 200px;\n                  object-fit: cover;\n                "])))) }))),
-            React.createElement("div", { className: "flex flex-column ph3 pv1 w-100" },
-                React.createElement(TextAtom, { size: "M", className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_4$4 || (templateObject_4$4 = __makeTemplateObject(["\n                color: ", ";\n              "], ["\n                color: ", ";\n              "])), COLORS.BLACK.NORMAL)) }, title),
-                React.createElement(TextAtom, { size: "XS", className: "f6 lh-copy" },
-                    React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_5$4 || (templateObject_5$4 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHT)) }, category.label.toUpperCase()),
-                    React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_6$4 || (templateObject_6$4 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
-                    React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_7$4 || (templateObject_7$4 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), generateColorByDifficulty$2(level.name))) }, level.label.toUpperCase())),
-                description && (React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_8$4 || (templateObject_8$4 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) },
+            React.createElement("div", { className: emotion.cx('flex flex-column ph3 pv1 w-100') },
+                React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_4$4 || (templateObject_4$4 = __makeTemplateObject(["height: 70px"], ["height: 70px"])))) },
+                    React.createElement(TextAtom, { size: "M", className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_5$4 || (templateObject_5$4 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.NORMAL)) }, title),
+                    React.createElement(TextAtom, { size: "XS", className: "f6 lh-copy" },
+                        React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_6$4 || (templateObject_6$4 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, category.label.toUpperCase()),
+                        React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_7$4 || (templateObject_7$4 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
+                        React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_8$4 || (templateObject_8$4 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), generateColorByDifficulty$2(level.name))) }, level.label.toUpperCase()))),
+                React.createElement("div", { className: emotion.cx('mt3', emotion.css(templateObject_9$3 || (templateObject_9$3 = __makeTemplateObject(["height: 65px"], ["height: 65px"])))) }, description && (React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_10$3 || (templateObject_10$3 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) },
                     description.slice(0, 80),
-                    description.length > 80 && '...')),
+                    description.length > 80 && '...'))),
                 React.createElement(ProgressBarComponent, null),
                 React.createElement(FooterComponent, null)))));
 };
 CourseProgressCardMolecule.displayName = 'CourseProgressCardMolecule';
-var templateObject_1$g, templateObject_2$b, templateObject_3$7, templateObject_4$4, templateObject_5$4, templateObject_6$4, templateObject_7$4, templateObject_8$4;
+var templateObject_1$g, templateObject_2$b, templateObject_3$7, templateObject_4$4, templateObject_5$4, templateObject_6$4, templateObject_7$4, templateObject_8$4, templateObject_9$3, templateObject_10$3;
 
 var hoverableCard$3 = emotion.css(templateObject_1$h || (templateObject_1$h = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerGradient$3 = 'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';

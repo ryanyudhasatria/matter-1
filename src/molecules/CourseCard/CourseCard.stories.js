@@ -18,7 +18,7 @@ storiesOf('Molecule.CourseCard', module)
     <div className="flex flex-row pa4 w-100 ba b--silver">
       <CourseCardMolecule
         small
-        className="ml3"
+        className="ml3 w-25"
         title="Pengenalan React Native"
         category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Beginner', label: 'Beginner '}}
@@ -28,7 +28,7 @@ storiesOf('Molecule.CourseCard', module)
       />
       <CourseCardMolecule
         small
-        className="ml3"
+        className="ml3 w-25"
         title="Team Engagement: Dimulai dari Hal-Hal Kecil"
         category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Beginner', label: 'Beginner '}}
@@ -38,16 +38,16 @@ storiesOf('Molecule.CourseCard', module)
       />
       <CourseCardMolecule
         small
-        className="ml3"
+        className="ml3 w-25"
         title="High Impact Presentation"
         category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Intermediate', label: 'Intermediate '}}
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/presentation.png"
-        description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
+        description="Pelajari dasar"
       />
       <CourseCardMolecule
         small
-        className="ml3"
+        className="ml3 w-25"
         title="Learn How to Learn Programming"
         category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
         level={{ name: 'Expert', label: 'Expert '}}

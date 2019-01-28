@@ -102,65 +102,69 @@ const CourseProgressCardMolecule = ({
           </div>
         </div>
         <div
-          className={`flex flex-column ph3 pv1 w-100`}
+          className={cx('flex flex-column ph3 pv1 w-100')}
         >
-          <TextAtom
-            size="M"
-            className={cx(
-              'lh-title mv2 fw6',
-              css`
-                color: ${COLORS.BLACK.NORMAL};
-              `
-            )}
-          >
-            {title}
-          </TextAtom>
-          <TextAtom size="XS" className={`f6 lh-copy`}>
-            <span
-              className={cx(
-                'fw6',
-                css`
-                  color: ${COLORS.BLACK.LIGHT};
-                `
-              )}
-            >
-              {category.label.toUpperCase()}
-            </span>
-            <span
-              className={cx(
-                'mh1 fw6',
-                css`
-                  color: ${COLORS.BLACK.LIGHT};
-                `
-              )}
-            >
-              ·
-            </span>
-            <span
-              className={cx(
-                'fw6',
-                css`
-                  color: ${generateColorByDifficulty(level.name)};
-                `
-              )}
-            >
-              {level.label.toUpperCase()}
-            </span>
-          </TextAtom>
-          {description && (
+          <div className={cx('flex flex-column', css`height: 70px`)}>
             <TextAtom
-              size="S"
+              size="M"
               className={cx(
-                'mt3 lh-copy',
+                'lh-title mv2 fw6',
                 css`
-                  color: ${COLORS.BLACK.LIGHTER};
+                  color: ${COLORS.BLACK.NORMAL};
                 `
               )}
             >
-              {description.slice(0, 80)}
-              {description.length > 80 && '...'}
+              {title}
             </TextAtom>
-          )}
+            <TextAtom size="XS" className={`f6 lh-copy`}>
+              <span
+                className={cx(
+                  'fw6',
+                  css`
+                    color: ${COLORS.BLACK.LIGHT};
+                  `
+                )}
+              >
+                {category.label.toUpperCase()}
+              </span>
+              <span
+                className={cx(
+                  'mh1 fw6',
+                  css`
+                    color: ${COLORS.BLACK.LIGHT};
+                  `
+                )}
+              >
+                ·
+              </span>
+              <span
+                className={cx(
+                  'fw6',
+                  css`
+                    color: ${generateColorByDifficulty(level.name)};
+                  `
+                )}
+              >
+                {level.label.toUpperCase()}
+              </span>
+            </TextAtom>
+          </div>
+          <div className={cx('mt3', css`height: 65px`)}>
+            {description && (
+              <TextAtom
+                size="S"
+                className={cx(
+                  'mt3 lh-copy',
+                  css`
+                    color: ${COLORS.BLACK.LIGHTER};
+                  `
+                )}
+              >
+                {description.slice(0, 80)}
+                {description.length > 80 && '...'}
+              </TextAtom>
+            )}
+          </div>
           <ProgressBarComponent />
           <FooterComponent />
         </div>

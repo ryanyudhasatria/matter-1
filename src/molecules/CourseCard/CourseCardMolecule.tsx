@@ -171,7 +171,7 @@ any) => {
             </TextAtom>
           </div>
           {description && (
-            <div className="mt3">
+            <div className={cx('mt3', css`min-height: 65px`)}>
               <TextAtom
                 size="S"
                 className={cx(
