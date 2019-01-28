@@ -1438,9 +1438,9 @@ var Notifiable = /** @class */ (function (_super) {
                     message: message,
                     type: type,
                 });
-                localStorage.setItem('isNotificationVisible', 'false');
-                localStorage.setItem('notificationMessage', message);
-                localStorage.setItem('notificationType', type);
+                localStorage.removeItem('isNotificationVisible');
+                localStorage.removeItem('notificationMessage');
+                localStorage.removeItem('notificationType');
             }, 3000);
         };
         _this.closeNotification = function () {
@@ -1455,8 +1455,8 @@ var Notifiable = /** @class */ (function (_super) {
         if (localStorage.getItem('isNotificationVisible')) {
             this.setState({
                 isNotificationVisible: localStorage.getItem('isNotificationVisible'),
-                message: localStorage.getItem('notificationMessage'),
-                type: localStorage.getItem('notificationType'),
+                message: localStorage.getItem('notificationMessage') || '',
+                type: localStorage.getItem('notificationType') || 'SUCCESS',
             });
         }
     };

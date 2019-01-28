@@ -19,8 +19,8 @@ class Notifiable extends React.Component<IProps, any> {
     if (localStorage.getItem('isNotificationVisible')) {
       this.setState({
         isNotificationVisible: localStorage.getItem('isNotificationVisible'),
-        message: localStorage.getItem('notificationMessage'),
-        type: localStorage.getItem('notificationType'),
+        message: localStorage.getItem('notificationMessage') || '',
+        type: localStorage.getItem('notificationType') || 'SUCCESS',
       });
     }
   }
@@ -41,9 +41,9 @@ class Notifiable extends React.Component<IProps, any> {
         message,
         type,
       });
-      localStorage.setItem('isNotificationVisible', 'false');
-      localStorage.setItem('notificationMessage', message);
-      localStorage.setItem('notificationType', type);
+      localStorage.removeItem('isNotificationVisible');
+      localStorage.removeItem('notificationMessage');
+      localStorage.removeItem('notificationType');
     }, 3000);
   }
 
