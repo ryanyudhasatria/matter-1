@@ -29,6 +29,13 @@ interface IState {
 }
 
 class BannerMolecule extends React.PureComponent<IProps, IState> {
+
+  componentDidUpdate() {
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 0);
+  }
+
   state = {
     currentSlideIndex: 0
   };
@@ -44,10 +51,11 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
         swiping={true}
         renderBottomCenterControls={isNull}
         cellSpacing={0}
+        slideWidth={1}
+        speed={600}
         wrapAround={true}
         cellAlign="center"
-        slidesToShow={1.5}
-        // transitionMode="scroll"
+        slidesToShow={1.25}        
         afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}
         renderCenterLeftControls={({ previousSlide }) => (
           <ButtonAtom

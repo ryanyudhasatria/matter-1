@@ -30,6 +30,14 @@ storiesOf('Molecule.Banner', module)
                 {
                     linkUrl: 'http://www.kesini.com',
                     imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/banners/banner3.png'
+                },
+                {
+                    linkUrl: 'http://www.kesini.com',
+                    imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/banners/banner1.png'
+                },
+                {
+                    linkUrl: 'http://www.kesini.com',
+                    imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/banners/banner2.png'
                 }
             ]}            
             />                            
