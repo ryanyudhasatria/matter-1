@@ -18,6 +18,7 @@ storiesOf('Molecule.Banner', module)
         })
         (() =>(
             <BannerMolecule    
+            slidesToShow="1.2"
             items={[
                 {
                     linkUrl: 'http://www.google.com',
