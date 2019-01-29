@@ -22,6 +22,7 @@ interface IProps {
   nameIcon?: string;
   icon?: any;
   items?: listdata[];
+  slidesToShow?: number;
 }
 
 interface IState {
@@ -29,25 +30,36 @@ interface IState {
 }
 
 class BannerMolecule extends React.PureComponent<IProps, IState> {
+
+  componentDidUpdate() {
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 0);
+  }
+
   state = {
     currentSlideIndex: 0
   };
 
+  
+
   render() {
-    const { items = [] } = this.props;
+    
+    const { items = [], slidesToShow } = this.props;
     const { currentSlideIndex } = this.state;
 
     return (
       <Carousel
-        autoplay={true}
+        autoplay={false}
         dragging={true}
         swiping={true}
         renderBottomCenterControls={isNull}
         cellSpacing={0}
+        slideWidth={1}
+        speed={600}
         wrapAround={true}
         cellAlign="center"
-        slidesToShow={1.5}
-        // transitionMode="scroll"
+        slidesToShow={slidesToShow}        
         afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}
         renderCenterLeftControls={({ previousSlide }) => (
           <ButtonAtom
@@ -85,6 +97,8 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
         )}
       >
         {items.map(function(item, index) {
+          console.log('data', window.innerWidth)
+          console.log('data2', window.innerHeight)
           return (
             <a
               key={index}
@@ -94,14 +108,16 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
             >
               <img
                 src={item.imageUrl}
-                className={css`
+                className={cx('', css`
                   opacity: ${currentSlideIndex === index ? '1' : '0.5'};
                   transition: 0.3s;
-                `}
+                  width: 100%;
+                `)}
               />
             </a>
           );
-        })}
+        })
+        }
       </Carousel>
     );
   }
