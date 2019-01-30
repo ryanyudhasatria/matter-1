@@ -4,13 +4,20 @@ import { css, cx } from 'emotion';
 
 import { IconAtom, TextAtom } from '../../atoms';
 
+import * as angleDown from './angle-down.png';
+import * as angleDownGray from './angle-down-gray.png';
+
 // @ts-ignore
 import COLORS from '../../constants/colors';
 
 const DropdownIndicator = (props: any) => components.DropdownIndicator && (
   <components.DropdownIndicator {...props}>
     <div className={cx('dropdown-circle br-100 bg-dark6 flex flex-column justify-center items-center', css`width: 32px; height: 32px;`)}>
-      <IconAtom name="angle-down" type="REGULAR" className="dropdown-icon f3 dark3 self-center" />
+      {/* <IconAtom name="angle-down" type="REGULAR" className="dropdown-icon f3 dark3 self-center" /> */}
+      {/* <ImageAtom
+        src={onFocus ?}
+        alt="angle down"
+      /> */}
     </div>
   </components.DropdownIndicator>
 );
@@ -68,6 +75,9 @@ class SelectOrganism extends React.Component<any, any> {
             height: 48px;
             & .dropdown-circle {
               background: ${isFocus ? '#645AFF' : '#F5F7FA'};
+              background-image: url( ${isFocus ? angleDown : angleDownGray } );
+              background-repeat: no-repeat; 
+              background-position: center center;
             }
             & .dropdown-icon {
               color: ${isFocus ? '#FFFFFF' : '#8393A3'};

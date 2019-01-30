@@ -134,6 +134,28 @@ const TYPES = {
       background: ${COLORS.PURPLE.DARKER};
     }
   `,
+  DEFAULT_PURPLE: css`
+    ${defaultBase}
+    background: ${COLORS.PURPLE.NORMAL};
+    color: ${COLORS.WHITE.NORMAL};
+    :hover {
+      background: ${COLORS.PURPLE.LIGHT};
+    }
+    :active {
+      background: ${COLORS.PURPLE.DARKER};
+    }
+  `,
+  DEFAULT_PURPLE_GRADIENT: css`
+    ${defaultBase}
+    background: ${COLORS.PURPLE_GRADIENT.NORMAL};
+    color: ${COLORS.WHITE.NORMAL};
+    :hover {
+      background: ${COLORS.PURPLE.LIGHT};
+    }
+    :active {
+      background: ${COLORS.PURPLE.DARKER};
+    }
+  `,
   DEFAULT_GREY: css`
     ${defaultBase}
     background: #EDF0F2;
