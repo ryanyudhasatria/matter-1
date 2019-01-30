@@ -39,4 +39,36 @@ storiesOf('Atom.Button', module)
     >
       Click Me
     </ButtonAtom>
+  )))
+  .add(
+    'Purple Button',
+    withInfo({
+      styles,
+      text: `
+        purple button. Only use this type of button for CTA
+      `,
+    })
+    (() => (
+    <ButtonAtom  
+      onClick={action('button-click')}
+      type={text('Type', 'DEFAULT_PURPLE')}
+    >
+      Click Me
+    </ButtonAtom>
+  )))
+  .add(
+    'Purple Gradient Button',
+    withInfo({
+      styles,
+      text: `
+        purple gradient button. Only use this type of button for CTA
+      `,
+    })
+    (() => (
+    <ButtonAtom  
+      onClick={action('button-click')}
+      type={text('Type', 'DEFAULT_PURPLE_GRADIENT')}
+    >
+      Click Me
+    </ButtonAtom>
   )));

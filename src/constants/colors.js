@@ -13,6 +13,9 @@ export default {
     LIGHTER: '#A29CFF',
     LIGHTEST: '#C1BDFF',
   },
+  PURPLE_GRADIENT: {
+    NORMAL: 'linear-gradient(270deg, #7143BF 0%, #C86DD7 100%)',
+  },
   GREEN: {
     DARKER: '#18B7BC',
     NORMAL: '#1BCBD1',
