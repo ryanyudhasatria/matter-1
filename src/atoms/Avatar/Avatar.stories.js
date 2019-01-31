@@ -100,7 +100,7 @@ storiesOf('Atom.Avatar', module)
       />
   )))
   .add(
-    'Small Rounded No Image',
+    'Small Circle No Image',
     withInfo({
         styles,
         text: `
@@ -114,7 +114,7 @@ storiesOf('Atom.Avatar', module)
       />
   )))
   .add(
-    'Regular Rounded No Image',
+    'Regular Circle No Image',
     withInfo({
         styles,
         text: `
@@ -124,11 +124,11 @@ storiesOf('Atom.Avatar', module)
     (() => (
         <AvatarAtom
             type={text('Type', 'REGULAR_CIRCLE')} 
-            name={text('Name', 'John Doe')}
+            name={text('Name', 'C V')}
         />
   )))
   .add(
-    'Large Rounded No Image',
+    'Large Circle No Image',
     withInfo({
         styles,
         text: `

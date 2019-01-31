@@ -18,6 +18,6 @@ storiesOf('Organism.Date', module)
         <DateOrganism            
             maxYear= "2020"
             minYear= "2018"            
-            onChange={() => {}}
+            onChange={(value) => { console.log(value) }} // DD-MM-YYYY
         />  
   )));
