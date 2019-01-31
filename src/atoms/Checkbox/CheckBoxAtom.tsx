@@ -49,8 +49,7 @@ export const container = css`
   }
 
   & input:checked ~ .${checkmark} {
-    background-color: #fff;
-    border: 1px solid #1bcbd1;
+    background-color: #1bcbd1;    
   }
 
   & input:checked ~ .${checkmark}:after {
@@ -66,7 +65,7 @@ export const container = css`
     top: 4px;
     width: 5px;
     height: 10px;
-    border: solid #1bcbd1;
+    border: solid #fff;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
