@@ -96,6 +96,7 @@ class SelectOrganism extends React.Component<any, any> {
                 css`
                   transition: 0.2s;
                   color: ${COLORS.BLACK.LIGHT};
+                  margin-top: -0.35rem;
                 `
               )}
             />

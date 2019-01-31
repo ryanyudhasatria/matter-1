@@ -14,7 +14,7 @@ const generateInitial = (name = 'User') => {
   if (names.length === 1) {
     return name[0];
   } else {
-    return names[0][0] + (names[1][0] ? names[1][0] : '');
+    return names[0][0] + (names[1][0] ? names[1][0] : '');    
   }
 };
 
@@ -65,6 +65,7 @@ interface IProps {
   alt?: string;
   name?: string;
   children?: any;
+  textColor?:any;
 }
 
 class AvatarAtom extends React.PureComponent<IProps, any> {
@@ -81,9 +82,13 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
       type = '',
       className = '',
       alt,
+      // textColor,
       src = this.props.src,
-      name = 'User'
+      name = 'User',
+      // textColor,
     } = this.props;
+
+    
 
     if (src) {
       return (
@@ -95,11 +100,55 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
           className={cx(TYPES_LIST[type], className)}
         />
       );
-    } else {
+    } else {      
+      let background = '';
+
+      if(generateInitial(name[0]) == 'A' || 
+         generateInitial(name[0]) == 'F' || 
+         generateInitial(name[0]) == 'K' || 
+         generateInitial(name[0]) == 'P' || 
+         generateInitial(name[0]) == 'U' || 
+         generateInitial(name[0]) == 'Z')
+      {
+        background = COLORS.RED.NORMAL;
+      }
+      else if(generateInitial(name[0]) == 'B' || 
+              generateInitial(name[0]) == 'G' || 
+              generateInitial(name[0]) == 'L' || 
+              generateInitial(name[0]) == 'Q' || 
+              generateInitial(name[0]) == 'V')
+      {
+        background = COLORS.GREEN.NORMAL;
+      }
+      else if(generateInitial(name[0]) == 'C' || 
+              generateInitial(name[0]) == 'H' || 
+              generateInitial(name[0]) == 'M' || 
+              generateInitial(name[0]) == 'R' || 
+              generateInitial(name[0]) == 'W')
+      {
+        background = COLORS.PURPLE.NORMAL;
+      }
+      else if(generateInitial(name[0]) == 'D' || 
+              generateInitial(name[0]) == 'I' || 
+              generateInitial(name[0]) == 'N' || 
+              generateInitial(name[0]) == 'S' || 
+              generateInitial(name[0]) == 'X')
+      {
+        background = COLORS.BLUE.NORMAL;
+      }
+      else if(generateInitial(name[0]) == 'E' || 
+              generateInitial(name[0]) == 'J' || 
+              generateInitial(name[0]) == 'O' || 
+              generateInitial(name[0]) == 'T' || 
+              generateInitial(name[0]) == 'Y')
+      {
+        background = COLORS.YELLOW.NORMAL;
+      };
+
       return (
         <div
           data-test={this.props['data-test']}
-          className={cx(
+          className={cx(            
             TYPES_LIST[type],
             css`
               -moz-user-select: none;
@@ -107,6 +156,7 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
               -ms-user-select: none;
               user-select: none;
               -o-user-select: none;
+              background: ${background};
             `,
             'flex flex-column items-center justify-center',
             className
@@ -121,7 +171,7 @@ class AvatarAtom extends React.PureComponent<IProps, any> {
                 color: ${COLORS.WHITE.NORMAL};
               `
             )}
-          >
+          >                 
             {generateInitial(name)}
           </TextAtom>
         </div>
