@@ -428,6 +428,11 @@ var BannerMolecule = /** @class */ (function (_super) {
         };
         return _this;
     }
+    BannerMolecule.prototype.componentWillMount = function () {
+        setTimeout(function () {
+            window.dispatchEvent(new Event('resize'));
+        }, 0);
+    };
     BannerMolecule.prototype.componentDidUpdate = function () {
         setTimeout(function () {
             window.dispatchEvent(new Event('resize'));
