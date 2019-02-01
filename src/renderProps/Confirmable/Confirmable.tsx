@@ -132,7 +132,6 @@ class Confirmable extends React.Component<IProps, any> {
     }
     this.setState({
       isVisible: false,
-      confirmableAction: null,
       confirmableResponse: {
         isIdle: false,
         isConfirmed: true,

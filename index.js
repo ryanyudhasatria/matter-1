@@ -88,6 +88,9 @@ var COLORS = {
     LIGHTER: '#A29CFF',
     LIGHTEST: '#C1BDFF',
   },
+  PURPLE_GRADIENT: {
+    NORMAL: 'linear-gradient(270deg, #7143BF 0%, #C86DD7 100%)',
+  },
   GREEN: {
     DARKER: '#18B7BC',
     NORMAL: '#1BCBD1',
@@ -191,12 +194,53 @@ var AvatarAtom = /** @class */ (function (_super) {
         return _this;
     }
     AvatarAtom.prototype.render = function () {
-        var _a = this.props, _b = _a.type, type = _b === void 0 ? '' : _b, _c = _a.className, className = _c === void 0 ? '' : _c, alt = _a.alt, _d = _a.src, src = _d === void 0 ? this.props.src : _d, _e = _a.name, name = _e === void 0 ? 'User' : _e;
+        var _a = this.props, _b = _a.type, type = _b === void 0 ? '' : _b, _c = _a.className, className = _c === void 0 ? '' : _c, alt = _a.alt, 
+        // textColor,
+        _d = _a.src, 
+        // textColor,
+        src = _d === void 0 ? this.props.src : _d, _e = _a.name, name = _e === void 0 ? 'User' : _e;
         if (src) {
             return (React.createElement("img", { onError: this.noImage.bind(this), src: src, alt: alt, "data-test": this.props['data-test'], className: emotion.cx(TYPES_LIST[type], className) }));
         }
         else {
-            return (React.createElement("div", { "data-test": this.props['data-test'], className: emotion.cx(TYPES_LIST[type], emotion.css(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n              -moz-user-select: none;\n              -webkit-user-select: none;\n              -ms-user-select: none;\n              user-select: none;\n              -o-user-select: none;\n            "], ["\n              -moz-user-select: none;\n              -webkit-user-select: none;\n              -ms-user-select: none;\n              user-select: none;\n              -o-user-select: none;\n            "]))), 'flex flex-column items-center justify-center', className), unselectable: "on" },
+            var background = '';
+            if (generateInitial(name[0]) == 'A' ||
+                generateInitial(name[0]) == 'F' ||
+                generateInitial(name[0]) == 'K' ||
+                generateInitial(name[0]) == 'P' ||
+                generateInitial(name[0]) == 'U' ||
+                generateInitial(name[0]) == 'Z') {
+                background = COLORS.RED.NORMAL;
+            }
+            else if (generateInitial(name[0]) == 'B' ||
+                generateInitial(name[0]) == 'G' ||
+                generateInitial(name[0]) == 'L' ||
+                generateInitial(name[0]) == 'Q' ||
+                generateInitial(name[0]) == 'V') {
+                background = COLORS.GREEN.NORMAL;
+            }
+            else if (generateInitial(name[0]) == 'C' ||
+                generateInitial(name[0]) == 'H' ||
+                generateInitial(name[0]) == 'M' ||
+                generateInitial(name[0]) == 'R' ||
+                generateInitial(name[0]) == 'W') {
+                background = COLORS.PURPLE.NORMAL;
+            }
+            else if (generateInitial(name[0]) == 'D' ||
+                generateInitial(name[0]) == 'I' ||
+                generateInitial(name[0]) == 'N' ||
+                generateInitial(name[0]) == 'S' ||
+                generateInitial(name[0]) == 'X') {
+                background = COLORS.BLUE.NORMAL;
+            }
+            else if (generateInitial(name[0]) == 'E' ||
+                generateInitial(name[0]) == 'J' ||
+                generateInitial(name[0]) == 'O' ||
+                generateInitial(name[0]) == 'T' ||
+                generateInitial(name[0]) == 'Y') {
+                background = COLORS.YELLOW.NORMAL;
+            }
+            return (React.createElement("div", { "data-test": this.props['data-test'], className: emotion.cx(TYPES_LIST[type], emotion.css(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n              -moz-user-select: none;\n              -webkit-user-select: none;\n              -ms-user-select: none;\n              user-select: none;\n              -o-user-select: none;\n              background: ", ";\n            "], ["\n              -moz-user-select: none;\n              -webkit-user-select: none;\n              -ms-user-select: none;\n              user-select: none;\n              -o-user-select: none;\n              background: ", ";\n            "])), background), 'flex flex-column items-center justify-center', className), unselectable: "on" },
                 React.createElement(TextAtom, { size: "L", className: emotion.cx('fw7', emotion.css(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n                color: ", ";\n              "], ["\n                color: ", ";\n              "])), COLORS.WHITE.NORMAL)) }, generateInitial(name))));
         }
     };
@@ -216,13 +260,15 @@ var TYPES = {
     SMALL_TRANSPARENT: emotion.css(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    ", "\n    background: transparent;\n    color: ", ";\n    :hover {\n      background: transparent;\n    }\n  "], ["\n    ", "\n    background: transparent;\n    color: ", ";\n    :hover {\n      background: transparent;\n    }\n  "])), smallBase, COLORS.PURPLE.NORMAL),
     DEFAULT_CTA: emotion.css(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :focus {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :focus {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.RED.NORMAL, COLORS.WHITE.NORMAL, COLORS.RED.LIGHT, COLORS.RED.LIGHT, COLORS.RED.DARKER),
     DEFAULT_PRIMARY: emotion.css(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL, COLORS.PURPLE.LIGHT, COLORS.PURPLE.DARKER),
-    DEFAULT_GREY: emotion.css(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n    ", "\n    background: #EDF0F2;\n    color: #394654;\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: #EDF0F2;\n    color: #394654;\n    :hover {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.GREY.LIGHT),
-    DEFAULT_WHITE: emotion.css(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.WHITE.NORMAL, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL),
-    WITH_ICON_CTA: emotion.css(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.RED.NORMAL, COLORS.WHITE.NORMAL, COLORS.RED.LIGHT, COLORS.RED.DARKER),
-    WITH_ICON_PRIMARY: emotion.css(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL, COLORS.PURPLE.LIGHT, COLORS.PURPLE.DARKER),
-    WITH_ICON_GREY: emotion.css(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.GREY.NORMAL, COLORS.BLACK.NORMAL, COLORS.GREY.LIGHT),
-    WITH_ICON_WHITE: emotion.css(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.WHITE.NORMAL, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL),
-    DISABLED: emotion.css(templateObject_18 || (templateObject_18 = __makeTemplateObject(["\n    background: ", ";\n    color: ", ";\n    opacity: 0.8;\n    cursor: not-allowed !important;\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    background: ", ";\n    color: ", ";\n    opacity: 0.8;\n    cursor: not-allowed !important;\n    :hover {\n      background: ", ";\n    }\n  "])), COLORS.GREY.NORMAL, COLORS.WHITE.NORMAL, COLORS.GREY.NORMAL)
+    DEFAULT_PURPLE: emotion.css(templateObject_12 || (templateObject_12 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL, COLORS.PURPLE.LIGHT, COLORS.PURPLE.DARKER),
+    DEFAULT_PURPLE_GRADIENT: emotion.css(templateObject_13 || (templateObject_13 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.PURPLE_GRADIENT.NORMAL, COLORS.WHITE.NORMAL, COLORS.PURPLE.LIGHT, COLORS.PURPLE.DARKER),
+    DEFAULT_GREY: emotion.css(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n    ", "\n    background: #EDF0F2;\n    color: #394654;\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: #EDF0F2;\n    color: #394654;\n    :hover {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.GREY.LIGHT),
+    DEFAULT_WHITE: emotion.css(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "])), defaultBase, COLORS.WHITE.NORMAL, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL),
+    WITH_ICON_CTA: emotion.css(templateObject_16 || (templateObject_16 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.RED.NORMAL, COLORS.WHITE.NORMAL, COLORS.RED.LIGHT, COLORS.RED.DARKER),
+    WITH_ICON_PRIMARY: emotion.css(templateObject_17 || (templateObject_17 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n    :active {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL, COLORS.PURPLE.LIGHT, COLORS.PURPLE.DARKER),
+    WITH_ICON_GREY: emotion.css(templateObject_18 || (templateObject_18 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.GREY.NORMAL, COLORS.BLACK.NORMAL, COLORS.GREY.LIGHT),
+    WITH_ICON_WHITE: emotion.css(templateObject_19 || (templateObject_19 = __makeTemplateObject(["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    ", "\n    background: ", ";\n    color: ", ";\n    :hover {\n      background: ", ";\n    }\n  "])), withIconBase, COLORS.WHITE.NORMAL, COLORS.PURPLE.NORMAL, COLORS.WHITE.NORMAL),
+    DISABLED: emotion.css(templateObject_20 || (templateObject_20 = __makeTemplateObject(["\n    background: ", ";\n    color: ", ";\n    opacity: 0.8;\n    cursor: not-allowed !important;\n    :hover {\n      background: ", ";\n    }\n  "], ["\n    background: ", ";\n    color: ", ";\n    opacity: 0.8;\n    cursor: not-allowed !important;\n    :hover {\n      background: ", ";\n    }\n  "])), COLORS.GREY.NORMAL, COLORS.WHITE.NORMAL, COLORS.GREY.NORMAL)
 };
 // const disabledClass = cx('fw6 f6 pv2 ph3 pointer bw0', css`
 //   ${smallBase}
@@ -247,7 +293,7 @@ var ButtonAtom = /** @class */ (function (_super) {
     };
     return ButtonAtom;
 }(React.PureComponent));
-var templateObject_1$3, templateObject_2$2, templateObject_3$1, templateObject_4$1, templateObject_5$1, templateObject_6$1, templateObject_7$1, templateObject_8$1, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17, templateObject_18;
+var templateObject_1$3, templateObject_2$2, templateObject_3$1, templateObject_4$1, templateObject_5$1, templateObject_6$1, templateObject_7$1, templateObject_8$1, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17, templateObject_18, templateObject_19, templateObject_20;
 
 var CARD_TYPES = {
     DEFAULT: emotion.css(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n    display: inline-flex;\n    background: #ffffff;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.15);\n    border-radius: 8px;\n  "], ["\n    display: inline-flex;\n    background: #ffffff;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.15);\n    border-radius: 8px;\n  "]))),
@@ -382,13 +428,16 @@ var BannerMolecule = /** @class */ (function (_super) {
         };
         return _this;
     }
+    BannerMolecule.prototype.componentDidUpdate = function () {
+        setTimeout(function () {
+            window.dispatchEvent(new Event('resize'));
+        }, 0);
+    };
     BannerMolecule.prototype.render = function () {
         var _this = this;
-        var _a = this.props.items, items = _a === void 0 ? [] : _a;
+        var _a = this.props, _b = _a.items, items = _b === void 0 ? [] : _b, slidesToShow = _a.slidesToShow;
         var currentSlideIndex = this.state.currentSlideIndex;
-        return (React.createElement(Carousel, { autoplay: true, dragging: true, swiping: true, renderBottomCenterControls: util.isNull, cellSpacing: 0, wrapAround: true, cellAlign: "center", slidesToShow: 1.5, 
-            // transitionMode="scroll"
-            afterSlide: function (currentSlideIndex) { return _this.setState({ currentSlideIndex: currentSlideIndex }); }, renderCenterLeftControls: function (_a) {
+        return (React.createElement(Carousel, { autoplay: false, dragging: true, swiping: true, renderBottomCenterControls: util.isNull, cellSpacing: 0, slideWidth: 1, speed: 600, wrapAround: true, cellAlign: "center", slidesToShow: slidesToShow, afterSlide: function (currentSlideIndex) { return _this.setState({ currentSlideIndex: currentSlideIndex }); }, renderCenterLeftControls: function (_a) {
                 var previousSlide = _a.previousSlide;
                 return (React.createElement(ButtonAtom, { onClick: previousSlide, className: emotion.cx('pa3', emotion.css(templateObject_1$d || (templateObject_1$d = __makeTemplateObject(["\n                border-radius: 0px 40px 40px 0px;\n                padding: 1rem;\n                font-size: 1rem;\n                color: ", ";\n                background: ", ";\n              "], ["\n                border-radius: 0px 40px 40px 0px;\n                padding: 1rem;\n                font-size: 1rem;\n                color: ", ";\n                background: ", ";\n              "])), COLORS.WHITE.NORMAL, COLORS.BLACK.DARKER)) },
                     React.createElement(IconAtom, { name: "chevron-left" })));
@@ -397,8 +446,10 @@ var BannerMolecule = /** @class */ (function (_super) {
                 return (React.createElement(ButtonAtom, { onClick: nextSlide, className: emotion.cx('pa3', emotion.css(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n                border-radius: 40px 0px 0px 40px;\n                padding: 1rem;\n                font-size: 1rem;\n                color: ", ";\n                background: ", ";\n              "], ["\n                border-radius: 40px 0px 0px 40px;\n                padding: 1rem;\n                font-size: 1rem;\n                color: ", ";\n                background: ", ";\n              "])), COLORS.WHITE.NORMAL, COLORS.BLACK.DARKER)) },
                     React.createElement(IconAtom, { name: "chevron-right" })));
             } }, items.map(function (item, index) {
+            console.log('data', window.innerWidth);
+            console.log('data2', window.innerHeight);
             return (React.createElement("a", { key: index, href: item.linkUrl, target: "_blank", className: "outline-0" },
-                React.createElement("img", { src: item.imageUrl, className: emotion.css(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["\n                  opacity: ", ";\n                  transition: 0.3s;\n                "], ["\n                  opacity: ", ";\n                  transition: 0.3s;\n                "])), currentSlideIndex === index ? '1' : '0.5') })));
+                React.createElement("img", { src: item.imageUrl, className: emotion.cx('', emotion.css(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["\n                  opacity: ", ";\n                  transition: 0.3s;\n                  width: 100%;\n                "], ["\n                  opacity: ", ";\n                  transition: 0.3s;\n                  width: 100%;\n                "])), currentSlideIndex === index ? '1' : '0.5')) })));
         })));
     };
     return BannerMolecule;
@@ -1209,8 +1260,7 @@ var LearningTimeBarChartOrganism = /** @class */ (function (_super) {
 var templateObject_1$p;
 
 var DropdownIndicator = function (props) { return Select.components.DropdownIndicator && (React.createElement(Select.components.DropdownIndicator, __assign({}, props),
-    React.createElement("div", { className: emotion.cx('dropdown-circle br-100 bg-dark6 flex flex-column justify-center items-center', emotion.css(templateObject_1$q || (templateObject_1$q = __makeTemplateObject(["width: 32px; height: 32px;"], ["width: 32px; height: 32px;"])))) },
-        React.createElement(IconAtom, { name: "angle-down", type: "REGULAR", className: "dropdown-icon f3 dark3 self-center" })))); };
+    React.createElement("div", { className: emotion.cx('dropdown-circle br-100 bg-dark6 flex flex-column justify-center items-center', emotion.css(templateObject_1$q || (templateObject_1$q = __makeTemplateObject(["width: 32px; height: 32px;"], ["width: 32px; height: 32px;"])))) }))); };
 var SelectOrganism = /** @class */ (function (_super) {
     __extends(SelectOrganism, _super);
     function SelectOrganism() {
@@ -1239,8 +1289,8 @@ var SelectOrganism = /** @class */ (function (_super) {
         var _a = this.state, isFocus = _a.isFocus, isActive = _a.isActive;
         var _b = this.props, value = _b.value, options = _b.options, error = _b.error, name = _b.name, placeholder = _b.placeholder, label = _b.label, icon = _b.icon, className = _b.className, disabled = _b.disabled, required = _b.required;
         return (React.createElement("div", __assign({ className: emotion.cx('flex flex-column justify-center align-center', className) }, this.props),
-            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 pl3 pr2 pv1 br3 flex flex-row align-center outline-0', emotion.css(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "], ["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "])), disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), isFocus ? '#645AFF' : '#F5F7FA', isFocus ? '#FFFFFF' : '#8393A3')) },
-                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHT)) })),
+            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 pl3 pr2 pv1 br3 flex flex-row align-center outline-0', emotion.css(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n              background-image: url( ", " );\n              background-repeat: no-repeat; \n              background-position: center center;\n              background-size: 1.25rem 0.74rem;\n              background-position-y: 0.7rem;\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "], ["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n              background-image: url( ", " );\n              background-repeat: no-repeat; \n              background-position: center center;\n              background-size: 1.25rem 0.74rem;\n              background-position-y: 0.7rem;\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "])), disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), isFocus ? '#645AFF' : '#F5F7FA', isFocus ? 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-white.png' : 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-black.png', isFocus ? '#FFFFFF' : '#8393A3')) },
+                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                  margin-top: -0.35rem;\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                  margin-top: -0.35rem;\n                "])), COLORS.BLACK.LIGHT)) })),
                 React.createElement("div", { className: "w-100 ml2 flex flex-column justify-start align-start" },
                     React.createElement(TextAtom, { size: (isFocus || isActive) ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_4$b || (templateObject_4$b = __makeTemplateObject(["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "], ["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "])), error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#8393A3'), (isFocus || isActive) ? -12 : 12, (isFocus || isActive) ? -13 : 13)) }, required && (isFocus || isActive)
                         ? label
@@ -1342,7 +1392,6 @@ var Confirmable = /** @class */ (function (_super) {
             }
             _this.setState({
                 isVisible: false,
-                confirmableAction: null,
                 confirmableResponse: {
                     isIdle: false,
                     isConfirmed: true,
