@@ -6,7 +6,6 @@ import COLORS from '../../constants/colors';
 
 import { 
     CardAtom,
-    // TextAtom
 } from '../../atoms';
 
 
@@ -18,14 +17,9 @@ class WidgetCardMolecule extends React.PureComponent<any, any> {
     render() {
       
       const { 
-          heading = () => {},
-          content = () => {},
-
-        //   headingComponent = () => {},        
+        HeadingComponent = () => {},
+        ContentComponent = () => {},       
        } = this.props;
-
-      console.log('data', this.props)
-    //   const headingComponent: any = () => {}
 
       return (
         <CardAtom
@@ -34,16 +28,13 @@ class WidgetCardMolecule extends React.PureComponent<any, any> {
         >
           <article className={cx('center mw5 mw6-ns hidden', css``)}>
           {
-              (typeof heading === 'string' || heading instanceof String)
+              (typeof HeadingComponent === 'string' || HeadingComponent instanceof String)
 
               ? (
-                  <h1 className={cx('f4 mv0 pv2 ph3', css``)}>string {heading}</h1>
+                  <h1 className={cx('f4 mv0 pv2 ph3', css``)}>{HeadingComponent}</h1>
               )
               : (
-                  <div>
-                    not string {heading}       
-                               
-                  </div>
+                 <HeadingComponent />
               )
           }
               
@@ -52,18 +43,16 @@ class WidgetCardMolecule extends React.PureComponent<any, any> {
                   
               <div className={cx('pa3', css``)}>       
               {
-                   (typeof content === 'string' || content instanceof String) 
+                   (typeof ContentComponent === 'string' || ContentComponent instanceof String) 
 
                    ? (
                         <p className={cx('f6 f5-ns lh-copy measure mv0', css``)}>
-                            {content}
+                            {ContentComponent}
                         </p>
                    )
                    :
                    (
-                        <div>
-                            not string {content}                    
-                        </div>
+                        <ContentComponent />
                    )
               }        
                   

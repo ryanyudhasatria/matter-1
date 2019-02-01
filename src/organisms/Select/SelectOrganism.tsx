@@ -4,8 +4,8 @@ import { css, cx } from 'emotion';
 
 import { IconAtom, TextAtom } from '../../atoms';
 
-import * as angleDown from './angle-down.png';
-import * as angleDownGray from './angle-down-gray.png';
+// import * as angleDown from './angle-down.png';
+// import * as angleDownGray from './angle-down-gray.png';
 
 // @ts-ignore
 import COLORS from '../../constants/colors';
@@ -75,9 +75,11 @@ class SelectOrganism extends React.Component<any, any> {
             height: 48px;
             & .dropdown-circle {
               background: ${isFocus ? '#645AFF' : '#F5F7FA'};
-              background-image: url( ${isFocus ? angleDown : angleDownGray } );
+              background-image: url( ${isFocus ? 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-white.png' : 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-black.png' } );
               background-repeat: no-repeat; 
               background-position: center center;
+              background-size: 1.25rem 0.74rem;
+              background-position-y: 0.7rem;
             }
             & .dropdown-icon {
               color: ${isFocus ? '#FFFFFF' : '#8393A3'};
