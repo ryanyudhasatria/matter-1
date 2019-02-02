@@ -8,8 +8,8 @@ import COLORS from '../../constants/colors';
 import {
   CardAtom,
   // IconAtom,
-  TextAtom
-  // ImageAtom,
+  TextAtom,
+  ImageAtom,
 } from '../../atoms';
 
 const hoverableCard = css`
@@ -108,9 +108,11 @@ any) => {
       />
       <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
         <div>
-          <img
+          <ImageAtom
             src={coverImage}
             alt=""
+            height="200px"
+            width="auto"
             className={cx(
               fullImage ? 'br3 br--top' : 'br3',
               css`
@@ -181,8 +183,7 @@ any) => {
                   `
                 )}
               >
-                {description && description.slice(0, 80)}
-                {description && description.length > 80 && '...'}
+                {description}
               </TextAtom>
             </div>
           )}

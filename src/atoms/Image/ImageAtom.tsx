@@ -14,25 +14,21 @@ interface IProps {
 const ImageAtom = ({
   src,
   alt,
-  className
-}: // width,
-// height,
+  className,
+  width,
+  height,
+}:
 IProps) => (
-  <div>
-            <Image 
-              // src="http://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg"
-              // alt={alt} 
-              // className={className} 
-
-              src={'https://wallpaperbrowse.com/media/images/hd-wallpapers-1.jpg'}
-          width={520} height={520}
-          style={{objectFit: 'cover'}} // Style your <img> 
-          delay={25}
-          duration={3} // Customize the animation duration (s).
-              
-            />
-            </div>
-           );
+  <Image
+    src={src}
+    width={width} height={height}
+    alt={alt}
+    className={className}
+    style={{objectFit: 'cover'}} // Style your <img> 
+    delay={25}
+    duration={0.9} // Customize the animation duration (s).
+/>
+);
 
 ImageAtom.displayName = 'ImageAtom';
 

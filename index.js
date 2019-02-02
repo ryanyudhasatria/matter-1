@@ -8,6 +8,7 @@ var React = require('react');
 var emotion = require('emotion');
 var reactFontawesome = require('@fortawesome/react-fontawesome');
 var faIcon = require('@fortawesome/free-solid-svg-icons');
+var Image = require('react-shimmer');
 var reactRouterDom = require('react-router-dom');
 var Carousel = _interopDefault(require('nuka-carousel'));
 var util = require('util');
@@ -361,8 +362,8 @@ var IconAtom = function (props) {
 IconAtom.displayName = 'IconAtom';
 
 var ImageAtom = function (_a) {
-    var src = _a.src, alt = _a.alt, className = _a.className;
-    return React.createElement("img", { src: src, alt: alt, className: className });
+    var src = _a.src, alt = _a.alt, className = _a.className, width = _a.width, height = _a.height;
+    return (React.createElement(Image, { src: src, width: width, height: height, alt: alt, className: className, style: { objectFit: 'cover' }, delay: 25, duration: 0.9 }));
 };
 ImageAtom.displayName = 'ImageAtom';
 
@@ -422,20 +423,20 @@ var templateObject_1$c, templateObject_2$7, templateObject_3$3;
 var BannerMolecule = /** @class */ (function (_super) {
     __extends(BannerMolecule, _super);
     function BannerMolecule() {
+        // componentDidMount() {
+        //   window.dispatchEvent(new Event('resize'));
+        // }
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        // componentDidUpdate() {
+        //   setTimeout(() => {
+        //       window.dispatchEvent(new Event('resize'));
+        //   }, 0);
+        // }
         _this.state = {
             currentSlideIndex: 0
         };
         return _this;
     }
-    BannerMolecule.prototype.componentDidMount = function () {
-        window.dispatchEvent(new Event('resize'));
-    };
-    BannerMolecule.prototype.componentDidUpdate = function () {
-        setTimeout(function () {
-            window.dispatchEvent(new Event('resize'));
-        }, 0);
-    };
     BannerMolecule.prototype.render = function () {
         var _this = this;
         var _a = this.props, _b = _a.items, items = _b === void 0 ? [] : _b, slidesToShow = _a.slidesToShow;
@@ -507,7 +508,7 @@ var CourseCardMolecule = function (_a) {
         React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n            height: 8px;\n            top: 0;\n            left: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n              height: 5px;\n            }\n          "], ["\n            height: 8px;\n            top: 0;\n            left: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n              height: 5px;\n            }\n          "])), generateGradientByDifficulty(level.name))) }),
         React.createElement("div", { className: emotion.cx("" + (fullImage ? '' : 'ph3 pt2')) },
             React.createElement("div", null,
-                React.createElement("img", { src: coverImage, alt: "", className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["\n                min-height: 200px;\n                object-fit: cover;\n              "], ["\n                min-height: 200px;\n                object-fit: cover;\n              "])))) }))),
+                React.createElement(ImageAtom, { src: coverImage, alt: "", height: "200px", width: "auto", className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["\n                min-height: 200px;\n                object-fit: cover;\n              "], ["\n                min-height: 200px;\n                object-fit: cover;\n              "])))) }))),
         React.createElement("div", { className: "flex flex-column justify-start" },
             React.createElement("div", { className: "flex flex-column mt1 ph3 pv1 w-100" },
                 React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_4$2 || (templateObject_4$2 = __makeTemplateObject(["min-height: 80px"], ["min-height: 80px"])))) },
@@ -517,9 +518,7 @@ var CourseCardMolecule = function (_a) {
                         React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_7$2 || (templateObject_7$2 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
                         React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_8$2 || (templateObject_8$2 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), generateColorByDifficulty(level.name))) }, level.label.toUpperCase()))),
                 description && (React.createElement("div", { className: emotion.cx('mt3', emotion.css(templateObject_9$1 || (templateObject_9$1 = __makeTemplateObject(["min-height: 65px"], ["min-height: 65px"])))) },
-                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_10$1 || (templateObject_10$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) },
-                        description && description.slice(0, 80),
-                        description && description.length > 80 && '...'))),
+                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_10$1 || (templateObject_10$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) }, description))),
                 React.createElement("div", { className: "mt3" },
                     React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_11$1 || (templateObject_11$1 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) },
                         "oleh ",
@@ -589,9 +588,7 @@ var HorizontalCourseCardMolecule = function (_a) {
                         category.toUpperCase(),
                         React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_7$3 || (templateObject_7$3 = __makeTemplateObject(["\n                    color: ", ";\n                "], ["\n                    color: ", ";\n                "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
                         React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_8$3 || (templateObject_8$3 = __makeTemplateObject(["\n                    color: ", ";\n                "], ["\n                    color: ", ";\n                "])), generateColorByDifficulty$1(level.name))) }, level.label.toUpperCase()))),
-                React.createElement(TextAtom, { size: "S", className: emotion.cx('db mt3 mt3 lh-copy', emotion.css(templateObject_9$2 || (templateObject_9$2 = __makeTemplateObject(["\n                color: ", ";\n            "], ["\n                color: ", ";\n            "])), COLORS.BLACK.LIGHTER)) }, description && (React.createElement("span", null,
-                    description.slice(0, 150),
-                    description.length > 150 && '...'))),
+                React.createElement(TextAtom, { size: "S", className: emotion.cx('db mt3 mt3 lh-copy', emotion.css(templateObject_9$2 || (templateObject_9$2 = __makeTemplateObject(["\n                color: ", ";\n            "], ["\n                color: ", ";\n            "])), COLORS.BLACK.LIGHTER)) }, description),
                 React.createElement(TextAtom, { size: "S", className: "db mt3 f6 lh-copy mt3" },
                     instructor ? (React.createElement("div", { className: emotion.cx('lh-copy') },
                         React.createElement(TextAtom, { size: "XS", className: emotion.cx('fw6 f7 db pt2-ns', emotion.css(templateObject_10$2 || (templateObject_10$2 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.BLACK.LIGHT)) }, "PENGAJAR"),
@@ -673,9 +670,7 @@ var CourseProgressCardMolecule = function (_a) {
                         React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_6$4 || (templateObject_6$4 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, category.label.toUpperCase()),
                         React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_7$4 || (templateObject_7$4 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
                         React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_8$4 || (templateObject_8$4 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), generateColorByDifficulty$2(level.name))) }, level.label.toUpperCase()))),
-                React.createElement("div", { className: emotion.cx('mt3', emotion.css(templateObject_9$3 || (templateObject_9$3 = __makeTemplateObject(["height: 65px"], ["height: 65px"])))) }, description && (React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_10$3 || (templateObject_10$3 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) },
-                    description.slice(0, 80),
-                    description.length > 80 && '...'))),
+                React.createElement("div", { className: emotion.cx('mt3', emotion.css(templateObject_9$3 || (templateObject_9$3 = __makeTemplateObject(["height: 65px"], ["height: 65px"])))) }, description && (React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_10$3 || (templateObject_10$3 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.LIGHTER)) }, description))),
                 React.createElement(ProgressBarComponent, null),
                 React.createElement(FooterComponent, null)))));
 };
@@ -705,9 +700,7 @@ var SkillAssessmentCardMolecule = function (_a) {
             React.createElement("div", { className: "flex flex-column justify-start" },
                 React.createElement("div", { className: "flex flex-column mt3 ph3 " + (small ? 'pv1' : 'pv3 pr3') + " w-100" },
                     React.createElement(TextAtom, { size: small ? 'M' : 'L', className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_5$5 || (templateObject_5$5 = __makeTemplateObject(["\n                  min-height: ", "px;\n                  color: ", ";\n                "], ["\n                  min-height: ", "px;\n                  color: ", ";\n                "])), small ? 40 : 0, COLORS.BLACK.NORMAL)) }, title),
-                    React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_6$5 || (templateObject_6$5 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) },
-                        description.slice(0, 100),
-                        description.length > 100 && '...'),
+                    React.createElement(TextAtom, { size: "S", className: emotion.cx('mt3 lh-copy', emotion.css(templateObject_6$5 || (templateObject_6$5 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) }, description),
                     React.createElement(ProgressBarComponent, null),
                     React.createElement(FooterComponent, null))))));
 };
@@ -743,9 +736,7 @@ var LearningPathCardMolecule = function (_a) {
                     courses && (React.createElement("div", null,
                         React.createElement(TextAtom, { size: "XS", className: "f6 lh-copy " + (small ? '' : 'mt3') },
                             React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_6$6 || (templateObject_6$6 = __makeTemplateObject(["\n                      color: ", ";\n                    "], ["\n                      color: ", ";\n                    "])), COLORS.BLACK.LIGHT)) }, (courses.length + " kelas di learning path ini").toUpperCase())))),
-                    React.createElement(TextAtom, { size: "S", className: emotion.cx('mv2 lh-copy', emotion.css(templateObject_7$5 || (templateObject_7$5 = __makeTemplateObject(["\n                color: ", ";\n              "], ["\n                color: ", ";\n              "])), COLORS.BLACK.LIGHTER)) },
-                        description.slice(0, 100),
-                        description.length > 100 && '...'),
+                    React.createElement(TextAtom, { size: "S", className: emotion.cx('mv2 lh-copy', emotion.css(templateObject_7$5 || (templateObject_7$5 = __makeTemplateObject(["\n                color: ", ";\n              "], ["\n                color: ", ";\n              "])), COLORS.BLACK.LIGHTER)) }, description),
                     React.createElement(ProgressBarComponent, null),
                     React.createElement(FooterComponent, null))))));
 };
@@ -1292,8 +1283,8 @@ var SelectOrganism = /** @class */ (function (_super) {
         var _a = this.state, isFocus = _a.isFocus, isActive = _a.isActive;
         var _b = this.props, value = _b.value, options = _b.options, error = _b.error, name = _b.name, placeholder = _b.placeholder, label = _b.label, icon = _b.icon, className = _b.className, disabled = _b.disabled, required = _b.required;
         return (React.createElement("div", __assign({ className: emotion.cx('flex flex-column justify-center align-center', className) }, this.props),
-            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 pl3 pr2 pv1 br3 flex flex-row align-center outline-0', emotion.css(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n              background-image: url( ", " );\n              background-repeat: no-repeat; \n              background-position: center center;\n              background-size: 1.25rem 0.74rem;\n              background-position-y: 0.7rem;\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "], ["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n              background-image: url( ", " );\n              background-repeat: no-repeat; \n              background-position: center center;\n              background-size: 1.25rem 0.74rem;\n              background-position-y: 0.7rem;\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "])), disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), isFocus ? '#645AFF' : '#F5F7FA', isFocus ? 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-white.png' : 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-black.png', isFocus ? '#FFFFFF' : '#8393A3')) },
-                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                  margin-top: -0.35rem;\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                  margin-top: -0.35rem;\n                "])), COLORS.BLACK.LIGHT)) })),
+            React.createElement("div", { role: "button", onClick: this.onFocus, tabIndex: 0, onKeyPress: this.onFocus, onFocus: this.onFocus, className: emotion.cx('w-100 pl3 pr2 pv1 br3 flex flex-row align-center outline-0', emotion.css(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n              background-image: url( ", " );\n              background-repeat: no-repeat; \n              background-position: center center;\n              background-size: 1.25rem 0.74rem;\n              background-position-y: 0.7rem;\n              margin-top: ", ";\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "], ["\n            cursor: ", ";\n            border: 1px solid ", ";\n            transition: all 0.5s ease;\n            height: 48px;\n            & .dropdown-circle {\n              background: ", ";\n              background-image: url( ", " );\n              background-repeat: no-repeat; \n              background-position: center center;\n              background-size: 1.25rem 0.74rem;\n              background-position-y: 0.7rem;\n              margin-top: ", ";\n            }\n            & .dropdown-icon {\n              color: ", ";\n            }\n            @media screen and (min-width: 30em) {\n              height: 56px;\n            }\n          "])), disabled ? 'not-allowed' : 'pointer', error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#E8EDF2'), isFocus ? '#645AFF' : '#F5F7FA', isFocus ? 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-white.png' : 'https://s3-ap-southeast-1.amazonaws.com/kode-images/public/web-app/arrow-down-black.png', isFocus || isActive ? '5px' : '0px', isFocus ? '#FFFFFF' : '#8393A3')) },
+                icon && (React.createElement(IconAtom, { name: icon, className: emotion.cx('self-center', emotion.css(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n                  transition: 0.2s;\n                  color: ", ";\n                  margin-top: -4px;\n                "], ["\n                  transition: 0.2s;\n                  color: ", ";\n                  margin-top: -4px;\n                "])), COLORS.BLACK.LIGHT)) })),
                 React.createElement("div", { className: "w-100 ml2 flex flex-column justify-start align-start" },
                     React.createElement(TextAtom, { size: (isFocus || isActive) ? 'XS' : 'M', className: emotion.cx('bg-white ph2 self-start', emotion.css(templateObject_4$b || (templateObject_4$b = __makeTemplateObject(["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "], ["\n                transition: all 0.4s ease;\n                color: ", ";\n                transform: translateY(", "px);\n                @media screen and (min-width: 30em) {\n                  transform: translateY(", "px);\n                }\n              "])), error ? '#EB5757' : ((isFocus && !disabled) ? '#645AFF' : '#8393A3'), (isFocus || isActive) ? -12 : 12, (isFocus || isActive) ? -13 : 13)) }, required && (isFocus || isActive)
                         ? label
@@ -1316,6 +1307,7 @@ var SelectOrganism = /** @class */ (function (_super) {
                                 outline: '0 !important',
                                 position: 'relative',
                                 transition: 'all 100ms',
+                                marginTop: (isFocus || isActive) ? '-5.5px' : '0px',
                             }); },
                             indicatorSeparator: function (base) { return (__assign({}, base, { display: 'none' })); },
                             container: function (base) { return (__assign({}, base, { marginTop: (isFocus || isActive) ? -15 : -18 })); },

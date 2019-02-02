@@ -188,12 +188,7 @@ any) => {
             `
             )}
         >
-            {description && (
-            <span>
-                {description.slice(0, 150)}
-                {description.length > 150 && '...'}
-            </span>
-            )}
+            {description}
         </TextAtom>
         <TextAtom size="S" className={`db mt3 f6 lh-copy mt3`}>
             {instructor ? (

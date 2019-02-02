@@ -30,16 +30,15 @@ interface IState {
 }
 
 class BannerMolecule extends React.PureComponent<IProps, IState> {
+  // componentDidMount() {
+  //   window.dispatchEvent(new Event('resize'));
+  // }
 
-  componentDidMount() {
-    window.dispatchEvent(new Event('resize'));
-  }
-
-  componentDidUpdate() {
-    setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-    }, 0);
-  }
+  // componentDidUpdate() {
+  //   setTimeout(() => {
+  //       window.dispatchEvent(new Event('resize'));
+  //   }, 0);
+  // }
 
   state = {
     currentSlideIndex: 0

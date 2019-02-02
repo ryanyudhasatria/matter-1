@@ -115,8 +115,7 @@ const SkillAssessmentCardMolecule = ({
                 `
               )}
             >
-              {description.slice(0, 100)}
-              {description.length > 100 && '...'}
+              {description}
             </TextAtom>
             <ProgressBarComponent />
             <FooterComponent />

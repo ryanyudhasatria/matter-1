@@ -160,8 +160,7 @@ const CourseProgressCardMolecule = ({
                   `
                 )}
               >
-                {description.slice(0, 80)}
-                {description.length > 80 && '...'}
+                {description}
               </TextAtom>
             )}
           </div>
