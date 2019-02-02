@@ -508,7 +508,10 @@ var CourseCardMolecule = function (_a) {
         React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n            height: 8px;\n            top: 0;\n            left: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n              height: 5px;\n            }\n          "], ["\n            height: 8px;\n            top: 0;\n            left: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n              height: 5px;\n            }\n          "])), generateGradientByDifficulty(level.name))) }),
         React.createElement("div", { className: emotion.cx("" + (fullImage ? '' : 'ph3 pt2')) },
             React.createElement("div", null,
-                React.createElement(ImageAtom, { src: coverImage, alt: "", height: "200px", width: "auto", className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["\n                min-height: 200px;\n                object-fit: cover;\n              "], ["\n                min-height: 200px;\n                object-fit: cover;\n              "])))) }))),
+                React.createElement("img", { src: coverImage, alt: "", 
+                    // height="200px"
+                    // width="auto"
+                    className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["\n                min-height: 200px;\n                object-fit: cover;\n              "], ["\n                min-height: 200px;\n                object-fit: cover;\n              "])))) }))),
         React.createElement("div", { className: "flex flex-column justify-start" },
             React.createElement("div", { className: "flex flex-column mt1 ph3 pv1 w-100" },
                 React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_4$2 || (templateObject_4$2 = __makeTemplateObject(["min-height: 80px"], ["min-height: 80px"])))) },

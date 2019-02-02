@@ -9,7 +9,7 @@ import {
   CardAtom,
   // IconAtom,
   TextAtom,
-  ImageAtom,
+  // ImageAtom,
 } from '../../atoms';
 
 const hoverableCard = css`
@@ -108,11 +108,11 @@ any) => {
       />
       <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
         <div>
-          <ImageAtom
+          <img
             src={coverImage}
             alt=""
-            height="200px"
-            width="auto"
+            // height="200px"
+            // width="auto"
             className={cx(
               fullImage ? 'br3 br--top' : 'br3',
               css`
