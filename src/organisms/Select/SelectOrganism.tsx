@@ -80,6 +80,7 @@ class SelectOrganism extends React.Component<any, any> {
               background-position: center center;
               background-size: 1.25rem 0.74rem;
               background-position-y: 0.7rem;
+              margin-top: ${isFocus || isActive ? '5px' : '0px'};
             }
             & .dropdown-icon {
               color: ${isFocus ? '#FFFFFF' : '#8393A3'};
@@ -98,7 +99,7 @@ class SelectOrganism extends React.Component<any, any> {
                 css`
                   transition: 0.2s;
                   color: ${COLORS.BLACK.LIGHT};
-                  margin-top: -0.35rem;
+                  margin-top: -4px;
                 `
               )}
             />
@@ -148,6 +149,7 @@ class SelectOrganism extends React.Component<any, any> {
                   outline: '0 !important',
                   position: 'relative',
                   transition: 'all 100ms',
+                  marginTop: (isFocus || isActive) ? '-5.5px' : '0px',
                 }),
                 indicatorSeparator: base => ({
                   ...base,
@@ -161,7 +163,7 @@ class SelectOrganism extends React.Component<any, any> {
                   ...base,
                   border: 0,
                   padding: '10px 0',
-                  visibility: (isFocus || isActive) ? 'visible' : 'hidden',
+                  visibility: (isFocus || isActive) ? 'visible' : 'hidden',                  
                   paddingLeft: 5,
                 }),
                 singleValue: base => ({

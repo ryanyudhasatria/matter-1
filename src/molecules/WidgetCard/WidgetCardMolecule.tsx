@@ -18,42 +18,55 @@ class WidgetCardMolecule extends React.PureComponent<any, any> {
       
       const { 
         HeadingComponent = () => {},
-        ContentComponent = () => {},       
+        ContentComponent = () => {},                  
        } = this.props;
 
       return (
         <CardAtom
           type="DEFAULT"
-          className={cx('', css``)}
+          className={cx('w-50', css``)}
         >
-          <article className={cx('center mw5 mw6-ns hidden', css``)}>
+          <article className={cx('pa3', css`width: 100%`)}>
           {
               (typeof HeadingComponent === 'string' || HeadingComponent instanceof String)
 
-              ? (
-                  <h1 className={cx('f4 mv0 pv2 ph3', css``)}>{HeadingComponent}</h1>
-              )
-              : (
+              ? 
+              //HEADING IF STRING 
+              ( 
+                <div className={cx('mv0 ph3 pt3', css``)}>
+                  <h1 className={cx('f3 mb0 mt0', css`color: ${COLORS.BLACK.NORMAL}`)}>{HeadingComponent}</h1>                      
+                </div>           
+              ) 
+              //END HEADING IF STRING 
+              : 
+              //HEADING IF COMPONENT 
+              ( 
                  <HeadingComponent />
-              )
+              ) 
+              //END HEADING IF COMPONENT
           }
               
           
-              <hr className={cx('ma3', css`border: 0.5px solid ${COLORS.BLACK.LIGHT}; margin-bottom: 0;`)}/>
+              <hr className={cx('ma3', css`border: 0.5px solid ${COLORS.BLACK.LIGHTEST}; margin-bottom: 0;`)}/>
                   
               <div className={cx('pa3', css``)}>       
               {
                    (typeof ContentComponent === 'string' || ContentComponent instanceof String) 
 
-                   ? (
+                   ? 
+                   //CONTENT IF STRING 
+                   (
                         <p className={cx('f6 f5-ns lh-copy measure mv0', css``)}>
                             {ContentComponent}
                         </p>
-                   )
+                   ) 
+                   //END CONTENT IF STRING 
                    :
-                   (
+                   //CONTENT IF COMPONENT
+                   ( 
                         <ContentComponent />
                    )
+                   //END CONTENT IF COMPONENT 
               }        
                   
               </div>                   
