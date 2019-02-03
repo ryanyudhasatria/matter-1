@@ -73,7 +73,7 @@ const HorizontalCourseCardMolecule = ({
   // slug = '',
   title = '',
   instructor = 'KODE Team',
-  category = '',
+  category = { name: '', label: '' },
   instructorRole = '',
   collaborator = '',
   description = '',
@@ -81,7 +81,6 @@ const HorizontalCourseCardMolecule = ({
   rating = '',
   reviewCounts = '',
   level = { name: '', label: '' },
-  // category,
   className = '',
   coverImage = '',
   metadata = null,
@@ -126,7 +125,8 @@ any) => {
             className={cx(
                 'w-100 br3',
                 css`
-                min-height: 180px;
+                height: 230px;
+                width: 230px;
                 object-fit: cover;
                 `
             )}
@@ -156,17 +156,7 @@ any) => {
                 `
             )}
             >
-            {category.toUpperCase()}
-            <span
-                className={cx(
-                'mh1 fw6',
-                css`
-                    color: ${COLORS.BLACK.LIGHT};
-                `
-                )}
-            >
-                ·
-            </span>
+            {category && category.label && `${category.label.toUpperCase()} · `}
             <span
                 className={cx(
                 'fw6',
@@ -175,7 +165,7 @@ any) => {
                 `
                 )}
             >
-                {level.label.toUpperCase()}
+                {level && level.label && level.label.toUpperCase()}
             </span>
             </TextAtom>
         </TextAtom>

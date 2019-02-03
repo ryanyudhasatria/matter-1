@@ -573,28 +573,23 @@ var HorizontalCourseCardMolecule = function (_a) {
     // slug = '',
     _b = _a.title, 
     // slug = '',
-    title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.category, category = _d === void 0 ? '' : _d, _e = _a.instructorRole, instructorRole = _e === void 0 ? '' : _e, _f = _a.collaborator, collaborator = _f === void 0 ? '' : _f, _g = _a.description, description = _g === void 0 ? '' : _g, _h = _a.duration, duration = _h === void 0 ? '' : _h, _j = _a.rating, rating = _j === void 0 ? '' : _j, _k = _a.reviewCounts, reviewCounts = _k === void 0 ? '' : _k, _l = _a.level, level = _l === void 0 ? { name: '', label: '' } : _l, 
-    // category,
-    _m = _a.className, 
-    // category,
-    className = _m === void 0 ? '' : _m, _o = _a.coverImage, coverImage = _o === void 0 ? '' : _o, _p = _a.metadata, _q = _a.ActionButtonComponent, ActionButtonComponent = _q === void 0 ? function () { return null; } : _q;
+    title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.category, category = _d === void 0 ? { name: '', label: '' } : _d, _e = _a.instructorRole, instructorRole = _e === void 0 ? '' : _e, _f = _a.collaborator, collaborator = _f === void 0 ? '' : _f, _g = _a.description, description = _g === void 0 ? '' : _g, _h = _a.duration, duration = _h === void 0 ? '' : _h, _j = _a.rating, rating = _j === void 0 ? '' : _j, _k = _a.reviewCounts, reviewCounts = _k === void 0 ? '' : _k, _l = _a.level, level = _l === void 0 ? { name: '', label: '' } : _l, _m = _a.className, className = _m === void 0 ? '' : _m, _o = _a.coverImage, coverImage = _o === void 0 ? '' : _o, _p = _a.metadata, _q = _a.ActionButtonComponent, ActionButtonComponent = _q === void 0 ? function () { return null; } : _q;
     return (React.createElement(CardAtom, { className: emotion.cx("relative flex flex-column align-center justify-start ph4-ns", hoverableCard$1, emotion.css(templateObject_2$a || (templateObject_2$a = __makeTemplateObject(["\n        height: auto;\n        "], ["\n        height: auto;\n        "]))), className) },
         React.createElement("div", { className: emotion.cx('w-100 br2 absolute', emotion.css(templateObject_3$6 || (templateObject_3$6 = __makeTemplateObject(["\n            height: 8px;\n            top: 0;\n            left: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n            height: 5px;\n            }\n        "], ["\n            height: 8px;\n            top: 0;\n            left: 0;\n            ", "\n            @media only screen and (max-width: 30em) {\n            height: 5px;\n            }\n        "])), generateGradientByDifficulty$1(level.name))) }),
         React.createElement("div", { className: "w-100 flex flex-row bb b--black-10 center pt0 pb5 pv4-l pv4-m ph0-ns" },
             React.createElement("div", { className: emotion.cx('w-25 pv2 db dtc-ns v-top-ns') },
                 React.createElement("div", { className: emotion.cx('w-100 br3') },
-                    React.createElement("img", { src: coverImage, alt: "", className: emotion.cx('w-100 br3', emotion.css(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n                min-height: 180px;\n                object-fit: cover;\n                "], ["\n                min-height: 180px;\n                object-fit: cover;\n                "])))) }))),
+                    React.createElement("img", { src: coverImage, alt: "", className: emotion.cx('w-100 br3', emotion.css(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n                height: 230px;\n                width: 230px;\n                object-fit: cover;\n                "], ["\n                height: 230px;\n                width: 230px;\n                object-fit: cover;\n                "])))) }))),
             React.createElement("div", { className: "w-75 flex flex-column ph4-ns ph3 pv2-ns" },
                 React.createElement(TextAtom, { size: "L", className: emotion.cx('lh-title fw6', emotion.css(templateObject_5$3 || (templateObject_5$3 = __makeTemplateObject(["\n                min-height: 0px;\n                color: ", ";\n            "], ["\n                min-height: 0px;\n                color: ", ";\n            "])), COLORS.BLACK.NORMAL)) }, title),
                 React.createElement(TextAtom, { size: "XS", className: "f6 lh-copy mt0" },
                     React.createElement(TextAtom, { size: "XS", className: emotion.cx('fw6 db pt2-ns', emotion.css(templateObject_6$3 || (templateObject_6$3 = __makeTemplateObject(["\n                color: ", ";\n                "], ["\n                color: ", ";\n                "])), COLORS.BLACK.LIGHT)) },
-                        category.toUpperCase(),
-                        React.createElement("span", { className: emotion.cx('mh1 fw6', emotion.css(templateObject_7$3 || (templateObject_7$3 = __makeTemplateObject(["\n                    color: ", ";\n                "], ["\n                    color: ", ";\n                "])), COLORS.BLACK.LIGHT)) }, "\u00B7"),
-                        React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_8$3 || (templateObject_8$3 = __makeTemplateObject(["\n                    color: ", ";\n                "], ["\n                    color: ", ";\n                "])), generateColorByDifficulty$1(level.name))) }, level.label.toUpperCase()))),
-                React.createElement(TextAtom, { size: "S", className: emotion.cx('db mt3 mt3 lh-copy', emotion.css(templateObject_9$2 || (templateObject_9$2 = __makeTemplateObject(["\n                color: ", ";\n            "], ["\n                color: ", ";\n            "])), COLORS.BLACK.LIGHTER)) }, description),
+                        category && category.label && category.label.toUpperCase() + " \u00B7 ",
+                        React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_7$3 || (templateObject_7$3 = __makeTemplateObject(["\n                    color: ", ";\n                "], ["\n                    color: ", ";\n                "])), generateColorByDifficulty$1(level.name))) }, level && level.label && level.label.toUpperCase()))),
+                React.createElement(TextAtom, { size: "S", className: emotion.cx('db mt3 mt3 lh-copy', emotion.css(templateObject_8$3 || (templateObject_8$3 = __makeTemplateObject(["\n                color: ", ";\n            "], ["\n                color: ", ";\n            "])), COLORS.BLACK.LIGHTER)) }, description),
                 React.createElement(TextAtom, { size: "S", className: "db mt3 f6 lh-copy mt3" },
                     instructor ? (React.createElement("div", { className: emotion.cx('lh-copy') },
-                        React.createElement(TextAtom, { size: "XS", className: emotion.cx('fw6 f7 db pt2-ns', emotion.css(templateObject_10$2 || (templateObject_10$2 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.BLACK.LIGHT)) }, "PENGAJAR"),
+                        React.createElement(TextAtom, { size: "XS", className: emotion.cx('fw6 f7 db pt2-ns', emotion.css(templateObject_9$2 || (templateObject_9$2 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.BLACK.LIGHT)) }, "PENGAJAR"),
                         React.createElement("span", { className: "fw6" },
                             instructor,
                             " \u00A0"),
@@ -614,7 +609,7 @@ var HorizontalCourseCardMolecule = function (_a) {
                         " waktu belajar"))),
                 rating && (React.createElement("div", { className: "dtc tc" },
                     React.createElement(TextAtom, { size: "S" },
-                        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_11$2 || (templateObject_11$2 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.YELLOW.NORMAL)) }),
+                        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_10$2 || (templateObject_10$2 = __makeTemplateObject(["\n                    color: ", ";\n                    "], ["\n                    color: ", ";\n                    "])), COLORS.YELLOW.NORMAL)) }),
                         React.createElement("b", null,
                             rating,
                             " ",
@@ -627,7 +622,7 @@ var HorizontalCourseCardMolecule = function (_a) {
                     React.createElement(ActionButtonComponent, null))))));
 };
 HorizontalCourseCardMolecule.displayName = 'HorizontalCourseCardMolecule';
-var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2, templateObject_10$2, templateObject_11$2;
+var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$3, templateObject_6$3, templateObject_7$3, templateObject_8$3, templateObject_9$2, templateObject_10$2;
 
 var hoverableCard$2 = emotion.css(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerColor$2 = '#2F80ED';

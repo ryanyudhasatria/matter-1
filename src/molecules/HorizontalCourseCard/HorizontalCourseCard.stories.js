@@ -24,7 +24,7 @@ storiesOf('Molecule.HorizontalCourseCardMolecule', module)
         title="High Impact Presentation"
         level={{ name: 'Intermediate', label: 'Intermediate '}}
         instructor="Roma Tampubolon"
-        category="Development"
+        category={{ name: 'Programming', label: 'Programming '}}
         duration="10"
         rating="5"
         reviewCounts="32"
