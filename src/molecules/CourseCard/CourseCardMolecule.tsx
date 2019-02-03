@@ -80,6 +80,7 @@ const CourseCardMolecule = ({
   small,
   className = '',
   coverImage = '',
+  badge = '',
   // metadata = null,
   // ratings = [],
 }:
@@ -92,6 +93,18 @@ any) => {
         className,
       )}
     >
+      {badge && (
+        <div className={cx('absolute right-0 ph1', css`
+          top: 20px;
+          background: ${COLORS.GREEN.NORMAL};
+          color: ${COLORS.WHITE.NORMAL};
+        `)}
+        >
+          <TextAtom size="XS" className="fw6 ttu">
+            kelas baru
+          </TextAtom>
+        </div>
+      )}
       <div
         className={cx(
           'w-100 br2 absolute',
