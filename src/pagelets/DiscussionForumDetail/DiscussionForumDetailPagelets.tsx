@@ -8,6 +8,8 @@ import {
     ButtonAtom
 } from '../../atoms';
 
+import { InputOrganism } from '../../organisms';
+
 //@ts-ignore
 import COLORS from '../../constants/colors';
 
@@ -75,7 +77,7 @@ class DiscussionForumDetailPagelets extends React.PureComponent<IProps, any> {
                            <TextAtom size="M" className={cx('db', css``)} >Follow Response</TextAtom>
                         </ButtonAtom>
                         
-                        <hr className={cx('dib w-100', css`border-color: ${COLORS.BLACK.LIGHTEST}; border-width: 0.5px;`)}/>
+                        <hr className={cx('dib w-100', css`border-color: ${COLORS.BLACK.LIGHTEST}; border-width: 0.5px; margin: 0;`)}/>
 
                         <div className={cx('dt dt--fixed', css``)}>
                             <div className="dtc tl pv4 w-10 v-mid">
@@ -87,7 +89,13 @@ class DiscussionForumDetailPagelets extends React.PureComponent<IProps, any> {
                                 />     
                             </div>
                             <div className="dtc tl pv4 w-80 v-mid">
-                                <input id="name" placeholder="Add an answer" className={cx('input-reset ba b--black-20 pa2 mb2 db w-100', css`padding: 1rem; margin: 0;`)} type="text" aria-describedby="name-desc" />
+                                <InputOrganism
+                                    type="text"
+                                    label="Add an answer"
+                                    placeholder="Add an answer"
+                                    icon=""
+                                    className={cx('w-100', css`display: inline`)}
+                                />                                    
                             </div>
                         </div>
                     </div>               
