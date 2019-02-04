@@ -226,6 +226,9 @@ const TYPES = {
     border-color: ${COLORS.GREEN.DARKER};
     border-radius: 4px;
     border-style: solid;
+    :hover {
+      color: ${COLORS.BLACK.NORMAL}
+    }
   `,
 };
 

@@ -19,7 +19,7 @@ interface IProps {
     srcResponse?: string;
     altResponse?: string;  
     question?: string;
-    description?: string;
+    description?: any;
     response?: string;
     username?:string;
     time?:any;
@@ -35,7 +35,7 @@ class DiscussionForumDetailPagelets extends React.PureComponent<IProps, any> {
             srcResponse,
             altResponse,
             question,
-            description,
+            description = '',
             // response,
             username,
             time,
@@ -64,7 +64,8 @@ class DiscussionForumDetailPagelets extends React.PureComponent<IProps, any> {
                             } ago
                         </TextAtom>
                         <TextAtom size="M" className={cx('db mb4', css``)}>
-                            {description}
+                            {description.substring(0, 200)+'...'}
+                            {console.log('data',description)}
                         </TextAtom>
                         <ButtonAtom 
                             onClick="button-click"
@@ -74,7 +75,7 @@ class DiscussionForumDetailPagelets extends React.PureComponent<IProps, any> {
                            <TextAtom size="M" className={cx('db', css``)} >Follow Response</TextAtom>
                         </ButtonAtom>
                         
-                        <hr className={cx('dib w-90', css`border-color: ${COLORS.BLACK.LIGHTEST}; border-width: 0.5px;`)}/>
+                        <hr className={cx('dib w-100', css`border-color: ${COLORS.BLACK.LIGHTEST}; border-width: 0.5px;`)}/>
 
                         <div className={cx('dt dt--fixed', css``)}>
                             <div className="dtc tl pv4 w-10 v-mid">
@@ -86,7 +87,7 @@ class DiscussionForumDetailPagelets extends React.PureComponent<IProps, any> {
                                 />     
                             </div>
                             <div className="dtc tl pv4 w-80 v-mid">
-                                <input id="name" placeholder="Add an answer" className={cx('input-reset ba b--black-20 pa2 mb2 db w-90', css`padding: 1rem; margin: 0;`)} type="text" aria-describedby="name-desc" />
+                                <input id="name" placeholder="Add an answer" className={cx('input-reset ba b--black-20 pa2 mb2 db w-100', css`padding: 1rem; margin: 0;`)} type="text" aria-describedby="name-desc" />
                             </div>
                         </div>
                     </div>               
