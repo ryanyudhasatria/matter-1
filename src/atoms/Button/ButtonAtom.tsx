@@ -218,7 +218,15 @@ const TYPES = {
     :hover {
       background: ${COLORS.GREY.NORMAL};
     }
-  `
+  `,
+  DISCUSSION_FORUM: css`
+    background: ${COLORS.WHITE.NORMAL};
+    color: ${COLORS.BLACK.LIGHT};
+    border-width: 2px;
+    border-color: ${COLORS.GREEN.DARKER};
+    border-radius: 4px;
+    border-style: solid;
+  `,
 };
 
 // const disabledClass = cx('fw6 f6 pv2 ph3 pointer bw0', css`

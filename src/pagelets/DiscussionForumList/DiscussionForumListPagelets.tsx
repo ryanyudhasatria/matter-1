@@ -17,7 +17,7 @@ interface IProps {
     response?: string;
 }
 
-class DiscussionForumPagelets extends React.PureComponent<IProps, any> {
+class DiscussionForumListPagelets extends React.PureComponent<IProps, any> {
     render() {
 
         const {
@@ -36,7 +36,7 @@ class DiscussionForumPagelets extends React.PureComponent<IProps, any> {
                         src={src}
                         alt={alt}
                         type="LARGE_CIRCLE"   
-                        className={cx('', css`    display: inline-flex;`)}                     
+                        className={cx('', css`display: inline-flex;`)}                     
                     />     
                 </div>
                 <div className="dtc tl pv4 w-80 v-mid">
@@ -61,4 +61,4 @@ class DiscussionForumPagelets extends React.PureComponent<IProps, any> {
     }
 }
 
-export { DiscussionForumPagelets };
+export { DiscussionForumListPagelets };
