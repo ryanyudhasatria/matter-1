@@ -12,9 +12,16 @@ const avatarRounded = 'border-radius: .25rem;';
 const generateInitial = (name = 'User') => {
   const names = name.trim().split(' ');
   if (names.length === 1) {
-    return name[0];
-  } else {
-    return names[0][0] + (names[1][0] ? names[1][0] : '');    
+    console.log('A')
+    return name[0];    
+  }
+  else if (names[0][0] != null && names[1][0] != null ) {
+    console.log('B')
+    return names[0][0] + ((names[1][0] != null )? names[1][0] : '');    
+  }
+  else {
+    console.log('C')
+    return names[0][0] + ((names[1][0] == null )? names[2][0] : '');    
   }
 };
 
