@@ -12,7 +12,7 @@ try {
   Modal.setAppElement('#root');
 } catch (e) {
   try {
-    Modal.setAppElement('#__gatsby');
+    Modal.setAppElement('#___gatsby');
   } catch (e) {}
 }
 
