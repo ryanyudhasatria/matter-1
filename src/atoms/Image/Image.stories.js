@@ -16,9 +16,14 @@ storiesOf('Atom.Image', module)
       `,
     })
     (() => (
-    <ImageAtom
-      src="http://infinitydream.net/adriatic/wp-content/uploads/2017/01/avatar03.jpg"
-      alt="john"
-      className={css`width: 100px`}
-    />
+    <div>
+      <ImageAtom
+        src="https://i.imgur.com/tsXAZrq.jpg"
+        alt="john"
+        width={1000}
+        height={1000}
+        delay={25}
+        duration={0.9}
+      />
+    </div>
   )));

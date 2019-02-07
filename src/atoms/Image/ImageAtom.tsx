@@ -6,30 +6,39 @@ interface IProps {
   src: string;
   alt: string;
   className?: string;
-  width?: string;
-  height?: string;
+  width?: number;
+  height?: number;
   type?: string;
+  delay?: number;
+  duration?: number;
 }
 
-const ImageAtom = ({
-  src,
-  alt,
-  className,
-  width,
-  height,
-}:
-IProps) => (
-  <Image
-    src={src}
-    width={width} height={height}
-    alt={alt}
-    className={className}
-    style={{objectFit: 'cover'}} // Style your <img> 
-    delay={25}
-    duration={0.9} // Customize the animation duration (s).
-/>
-);
-
-ImageAtom.displayName = 'ImageAtom';
+class ImageAtom extends React.PureComponent<IProps, any>{
+  render(){
+    const {
+      src,
+      alt,
+      className,
+      width,
+      height,
+      delay,
+      duration
+    } = this.props;
+    return (
+      <div>
+        <Image
+            src={src}
+            width={width} 
+            height={height}
+            alt={alt}
+            className={className}
+            style={{objectFit: 'cover'}} // Style your <img> 
+            delay={delay}
+            duration={duration} // Customize the animation duration (s).
+        />
+      </div>
+    )
+  }
+}
 
 export { ImageAtom };

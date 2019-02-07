@@ -124,7 +124,7 @@ storiesOf('Atom.Avatar', module)
     (() => (
         <AvatarAtom
             type={text('Type', 'REGULAR_CIRCLE')} 
-            name={text('Name', 'C V')}
+            name={text('Name', ' A  B')}
         />
   )))
   .add(

@@ -8,7 +8,13 @@ import { ButtonAtom, IconAtom, TextAtom } from '../../atoms';
 import COLORS from '../../constants/colors';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+try {
+  Modal.setAppElement('#root');
+} catch (e) {
+  try {
+    Modal.setAppElement('#__gatsby');
+  } catch (e) {}
+}
 
 class AppModalDialog extends React.Component<any, any> {
   state = {}

@@ -45,6 +45,7 @@
     "nuka-carousel": "^4.4.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-js-shimmer": "^1.0.0",
     "react-markdown": "^4.0.6",
     "react-modal": "^3.8.1",
     "react-motion": "^0.5.2",
