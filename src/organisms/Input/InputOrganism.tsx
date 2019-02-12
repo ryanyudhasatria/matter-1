@@ -208,14 +208,14 @@ class InputOrganism extends React.PureComponent<any, any> {
             />
           )}
         </div>
-        <div className="mt2">
+        <div className="mt2 mb2">
           {error && (
             <TextAtom
               size="S"
               className={cx(
                 'self-center',
                 css`
-                  color: #eb5757;
+                  color: #eb5757;                  
                 `
               )}
             >
