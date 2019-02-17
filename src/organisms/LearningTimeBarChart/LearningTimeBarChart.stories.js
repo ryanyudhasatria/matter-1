@@ -113,4 +113,30 @@ storiesOf('Organism.LearningTimeBarChart', module)
         { date: '2018-12-30', duration: 1500 },
       ]}
     />
+  )))
+  .add(
+    'All zeroes Dataset BarChart',
+    withInfo({
+      styles,
+      text: `
+        Small Dataset BarChart
+      `,
+    })
+    (() => (
+    <LearningTimeBarChartOrganism
+      id="learning-time-1"
+      width={500}
+      height={400}
+      type="SMALL"
+      data={[
+        { date: '2018-12-12', duration: 0 },
+        { date: '2018-12-13', duration: 0 },
+        { date: '2018-12-14', duration: 0 },
+        { date: '2018-12-15', duration: 0 },
+        { date: '2018-12-16', duration: 0 },
+        { date: '2018-12-17', duration: 0 },
+        { date: '2018-12-18', duration: 0 },
+      ]}
+      className={css`padding: 20px`}
+    />
   )));

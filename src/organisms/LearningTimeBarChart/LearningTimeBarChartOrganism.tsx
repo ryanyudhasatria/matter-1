@@ -190,10 +190,10 @@ class LearningTimeBarChartOrganism extends React.Component<IProps, any> {
 
   renderYAxisText = (d: IBarData) => {
     if (this.props.type === 'SMALL')
-      return `${Math.floor(d.duration / 60)} menit`;
-    if (this.props.type === 'MEDIUM') return `${Math.floor(d.duration / 60)}m`;
-    if (this.props.type === 'LARGE') return `${Math.floor(d.duration / 60)}`;
-    return `${Math.floor(d.duration / 60)} menit`;
+      return `${Math.ceil(d.duration / 60)} menit`;
+    if (this.props.type === 'MEDIUM') return `${Math.ceil(d.duration / 60)}m`;
+    if (this.props.type === 'LARGE') return `${Math.ceil(d.duration / 60)}`;
+    return `${Math.ceil(d.duration / 60)} menit`;
   };
 
   renderXAxisText = (d: IBarData) => {
