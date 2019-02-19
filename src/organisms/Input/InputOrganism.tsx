@@ -151,6 +151,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                       font-size: 1rem;
                       margin: 0;
                     }
+                    color: #000;
                   `
                 )}
                 onKeyUp={onKeyUp}
@@ -183,6 +184,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                       font-size: 1rem;
                       margin: 0;
                     }
+                    color: #000;
                   `
                 )}
                 name={name}
