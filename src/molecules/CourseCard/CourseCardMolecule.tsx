@@ -146,17 +146,39 @@ any) => {
               className={cx(
                 'lh-title mv2 fw6',
                 css`
+                  display: block;
+                  display: -webkit-box;
+                  text-align: left;
+                  margin: 0px;
+                  line-height: 1.4;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;    
+                  margin-top: .5rem;
+                  margin-bottom: .5rem; 
                   color: ${COLORS.BLACK.NORMAL};
                 `
               )}
             >
               {title}
             </TextAtom>
-            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
+            <TextAtom size="XS" className={cx(`f6 lh-copy ${small ? '' : 'mt3'}`, css`
+              display: block;
+              display: -webkit-box;
+              text-align: left;
+              margin: 0px;
+              line-height: 1.4;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            `)} >
               <span
                 className={cx(
                   'fw6',
                   css`
+                    
                     color: ${COLORS.BLACK.LIGHT};
                   `
                 )}
@@ -192,6 +214,15 @@ any) => {
                 className={cx(
                   'lh-copy',
                   css`
+                    display: block;
+                    display: -webkit-box;                    
+                    height: 60px;
+                    margin: 0 auto;
+                    line-height: 1.4;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     color: ${COLORS.BLACK.LIGHTER};
                   `
                 )}
