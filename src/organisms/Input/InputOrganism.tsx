@@ -167,6 +167,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                 onBlur={this.onBlur}
                 disabled={disabled}
                 data-test={this.props['data-test']}
+                style={{ color: `${COLORS.BLACK.DARKER}` }}
               />
             )}
             {type === 'textarea' && (
@@ -201,6 +202,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                 onBlur={this.onBlur}
                 disabled={disabled}
                 data-test={this.props['data-test']}
+                style={{ color: `${COLORS.BLACK.DARKER}` }}
               />
             )}
           </div>
