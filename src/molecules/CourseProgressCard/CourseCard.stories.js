@@ -26,7 +26,7 @@ storiesOf('Molecule.CourseProgressCard', module)
         level={{ name: 'Beginner', label: 'Beginner '}}
         instructor="Riza Fahmi"
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/redis.png"
-        description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
+        description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini! Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
         ProgressBarComponent={() => (
           <ProgressBarAtom progress={0.5} className="mv3" />
         )}
