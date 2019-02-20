@@ -140,7 +140,7 @@ any) => {
         <div
           className={`flex flex-column mt1 ph3 pv1 w-100`}
         >
-          <div className={cx('flex flex-column', css`min-height: 80px`)}>
+          <div className={cx('flex flex-column', css`min-height: 100px`)}>
             <TextAtom
               size={small ? 'M' : 'L'}
               className={cx(
