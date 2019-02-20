@@ -40,24 +40,24 @@ const generateColorByDifficulty = (difficulty: any) => {
   }
 };
 
-const beginnerGradient =
-  'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
-const intermediateGradient =
-  'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
-const expertGradient =
-  'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
+// const beginnerGradient =
+//   'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
+// const intermediateGradient =
+//   'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
+// const expertGradient =
+//   'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
 
-const generateGradientByDifficulty = (difficulty: any) => {
-  switch (difficulty.toUpperCase()) {
-    case 'EXPERT':
-      return expertGradient;
-    case 'INTERMEDIATE':
-      return intermediateGradient;
-    case 'BEGINNER':
-    default:
-      return beginnerGradient;
-  }
-};
+// const generateGradientByDifficulty = (difficulty: any) => {
+//   switch (difficulty.toUpperCase()) {
+//     case 'EXPERT':
+//       return expertGradient;
+//     case 'INTERMEDIATE':
+//       return intermediateGradient;
+//     case 'BEGINNER':
+//     default:
+//       return beginnerGradient;
+//   }
+// };
 
 // const courseRating = (ratings: any): any => {
 //   let rating;
@@ -105,7 +105,7 @@ any) => {
           </TextAtom>
         </div>
       )}
-      <div
+      {/* <div
         className={cx(
           'w-100 br2 absolute',
           css`
@@ -118,7 +118,7 @@ any) => {
             }
           `
         )}
-      />
+      /> */}
       <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
         <div>
           <img
@@ -146,17 +146,39 @@ any) => {
               className={cx(
                 'lh-title mv2 fw6',
                 css`
+                  display: block;
+                  display: -webkit-box;
+                  text-align: left;
+                  margin: 0px;
+                  line-height: 1.4;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;    
+                  margin-top: .5rem;
+                  margin-bottom: .5rem; 
                   color: ${COLORS.BLACK.NORMAL};
                 `
               )}
             >
               {title}
             </TextAtom>
-            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
+            <TextAtom size="XS" className={cx(`f6 lh-copy ${small ? '' : 'mt3'}`, css`
+              display: block;
+              display: -webkit-box;
+              text-align: left;
+              margin: 0px;
+              line-height: 1.4;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            `)} >
               <span
                 className={cx(
-                  'fw6',
+                  'fw6 dib',
                   css`
+                    
                     color: ${COLORS.BLACK.LIGHT};
                   `
                 )}
@@ -192,6 +214,15 @@ any) => {
                 className={cx(
                   'lh-copy',
                   css`
+                    display: block;
+                    display: -webkit-box;                    
+                    height: 60px;
+                    margin: 0 auto;
+                    line-height: 1.4;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     color: ${COLORS.BLACK.LIGHTER};
                   `
                 )}

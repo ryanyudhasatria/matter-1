@@ -139,6 +139,10 @@ class InputOrganism extends React.PureComponent<any, any> {
                 className={cx(
                   'w-100 ph2 outline-0 bn',
                   css`
+                    ::placeholder {
+                      color: ${COLORS.BLACK.LIGHT};       
+                      opacity: 1;
+                    }                  
                     font-size: 0.8rem;
                     cursor: ${disabled ? 'not-allowed' : 'auto'};
                     background: transparent;
@@ -163,6 +167,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                 onBlur={this.onBlur}
                 disabled={disabled}
                 data-test={this.props['data-test']}
+                style={{ color: `${COLORS.BLACK.DARKER}` }}
               />
             )}
             {type === 'textarea' && (
@@ -197,6 +202,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                 onBlur={this.onBlur}
                 disabled={disabled}
                 data-test={this.props['data-test']}
+                style={{ color: `${COLORS.BLACK.DARKER}` }}
               />
             )}
           </div>
