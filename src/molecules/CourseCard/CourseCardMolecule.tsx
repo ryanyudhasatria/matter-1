@@ -40,24 +40,24 @@ const generateColorByDifficulty = (difficulty: any) => {
   }
 };
 
-const beginnerGradient =
-  'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
-const intermediateGradient =
-  'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
-const expertGradient =
-  'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
+// const beginnerGradient =
+//   'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
+// const intermediateGradient =
+//   'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
+// const expertGradient =
+//   'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
 
-const generateGradientByDifficulty = (difficulty: any) => {
-  switch (difficulty.toUpperCase()) {
-    case 'EXPERT':
-      return expertGradient;
-    case 'INTERMEDIATE':
-      return intermediateGradient;
-    case 'BEGINNER':
-    default:
-      return beginnerGradient;
-  }
-};
+// const generateGradientByDifficulty = (difficulty: any) => {
+//   switch (difficulty.toUpperCase()) {
+//     case 'EXPERT':
+//       return expertGradient;
+//     case 'INTERMEDIATE':
+//       return intermediateGradient;
+//     case 'BEGINNER':
+//     default:
+//       return beginnerGradient;
+//   }
+// };
 
 // const courseRating = (ratings: any): any => {
 //   let rating;
@@ -105,7 +105,7 @@ any) => {
           </TextAtom>
         </div>
       )}
-      <div
+      {/* <div
         className={cx(
           'w-100 br2 absolute',
           css`
@@ -118,7 +118,7 @@ any) => {
             }
           `
         )}
-      />
+      /> */}
       <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
         <div>
           <img
