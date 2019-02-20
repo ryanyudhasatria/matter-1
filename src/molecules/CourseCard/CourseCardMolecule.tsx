@@ -176,7 +176,7 @@ any) => {
             `)} >
               <span
                 className={cx(
-                  'fw6',
+                  'fw6 dib',
                   css`
                     
                     color: ${COLORS.BLACK.LIGHT};
