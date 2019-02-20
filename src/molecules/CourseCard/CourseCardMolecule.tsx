@@ -151,7 +151,7 @@ any) => {
                   text-align: left;
                   margin: 0px;
                   line-height: 1.4;
-                  -webkit-line-clamp: 2;
+                  -webkit-line-clamp: 3;
                   -webkit-box-orient: vertical;
                   overflow: hidden;
                   text-overflow: ellipsis;    
@@ -173,28 +173,7 @@ any) => {
               -webkit-box-orient: vertical;
               overflow: hidden;
               text-overflow: ellipsis;
-            `)} >
-              <span
-                className={cx(
-                  'fw6 dib',
-                  css`
-                    
-                    color: ${COLORS.BLACK.LIGHT};
-                  `
-                )}
-              >
-                {category.label.toUpperCase()}
-              </span>
-              <span
-                className={cx(
-                  'mh1 fw6',
-                  css`
-                    color: ${COLORS.BLACK.LIGHT};
-                  `
-                )}
-              >
-                ·
-              </span>
+            `)}>
               <span
                 className={cx(
                   'fw6',
@@ -207,7 +186,7 @@ any) => {
               </span>
             </TextAtom>
           </div>
-          {description && (
+          {/* {description && (
             <div className={cx('mt3', css`min-height: 65px`)}>
               <TextAtom
                 size="S"
@@ -230,7 +209,7 @@ any) => {
                 {description}
               </TextAtom>
             </div>
-          )}
+          )} */}
           <div className="mt3">
             <TextAtom
               size="S"
@@ -241,7 +220,7 @@ any) => {
                 `
               )}
             >
-              oleh <span className="fw6">{instructor}</span>
+              <span className="fw6">{instructor}</span>
             </TextAtom>
           </div>
         </div>
