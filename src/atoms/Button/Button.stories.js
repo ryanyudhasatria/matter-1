@@ -57,6 +57,22 @@ storiesOf('Atom.Button', module)
     </ButtonAtom>
   )))
   .add(
+    'Grey Button',
+    withInfo({
+      styles,
+      text: `
+        grey button. Only use this type of button for CTA
+      `,
+    })
+    (() => (
+    <ButtonAtom  
+      onClick={action('button-click')}
+      type={text('Type', 'GREY_PURPLE_HOVER')}
+    >
+      Click Me
+    </ButtonAtom>
+  )))
+  .add(
     'Purple Gradient Button',
     withInfo({
       styles,

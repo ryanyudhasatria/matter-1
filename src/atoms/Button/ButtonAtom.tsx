@@ -159,11 +159,11 @@ const TYPES = {
   DEFAULT_GREY: css`
     ${defaultBase}
     background: #EDF0F2;
-    color: #394654;
+    color: ${COLORS.BLACK.NORMAL};
     :hover {
       background: ${COLORS.GREY.LIGHT};
     }
-  `,
+  `,  
   DEFAULT_WHITE: css`
     ${defaultBase}
     background: ${COLORS.WHITE.NORMAL};
@@ -228,6 +228,18 @@ const TYPES = {
     border-style: solid;
     :hover {
       color: ${COLORS.BLACK.NORMAL}
+    }
+  `,
+  GREY_PURPLE_HOVER: css`
+    ${smallBase}
+    background: #E8EDF2;
+    color: ${COLORS.BLACK.NORMAL};
+    :hover {
+      background: ${COLORS.PURPLE.LIGHT};
+      color: ${COLORS.WHITE.NORMAL};
+    }
+    :active {
+      background: ${COLORS.PURPLE.DARKER};      
     }
   `,
 };
