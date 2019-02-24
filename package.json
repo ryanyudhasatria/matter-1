@@ -53,6 +53,7 @@
     "react-select": "^2.3.0",
     "react-shimmer": "^1.0.2",
     "react-simple-tooltip": "^2.3.3",
+    "react-tooltip": "^3.9.2",
     "tslint": "^5.12.1"
   },
   "scripts": {
