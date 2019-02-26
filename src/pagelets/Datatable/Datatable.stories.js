@@ -16,38 +16,13 @@ storiesOf('Pagelets.Datatable', module)
         Datatable
       `,
     })
-    (() => (
-      <div>
-        {/* <DatatablePagelets
-        title="stories"
-        columns={[
-            {
-            name: 'Title',
-            selector: 'title',
-            sortable: false,
-            },
-            {
-            name: 'Year',
-            selector: 'year',
-            sortable: true,
-            right: true,
-            },
-        ]}
-        data={[
-            { id: 1, title: 'Conansss the Barbarian', year: '1982' }, 
-            { id: 2, title: 'Avenger', year: '2018' },
-        ]}
-      /> */}
-
+    (() => (      
         <DatatablePagelets
-         className={cx('', css`
-            border: 2px solid #d9d4ff;
-            border-radius: 8px;
-            background: #EFEDFF;
-            margin: 10px;
-            max-width: 1049px;
+        theme={text('Type', 'themeOne')}
+        className={cx('', css`
+            
          `)}
-        title="my data"
+        title="Daftar Anggota"
         columns={[
             {
             name: 'Nama',
@@ -59,13 +34,13 @@ storiesOf('Pagelets.Datatable', module)
             name: 'Email',
             selector: 'email',
             sortable: true,    
-            cell: row => <div style={{ fontWeight: 'normal', fontSize: '19px' }}>{row.email}</div>,        
+            cell: row => <div style={{ fontWeight: 'normal', fontSize: '18px' }}>{row.email}</div>,        
             },
             {
             name: 'Tipe',
             selector: 'type',
             sortable: true,   
-            cell: row => <div style={{ fontWeight: 'normal', fontSize: '19px' }}>{row.type}</div>,         
+            cell: row => <div style={{ fontWeight: 'normal', fontSize: '18px' }}>{row.type}</div>,         
             },
         ]}
         data={[
@@ -74,5 +49,4 @@ storiesOf('Pagelets.Datatable', module)
             { id: 3, name: 'Juinal William', email: 'juinal@kode.id', type: 'Member' },
         ]}
       />
-      </div>
   )));
