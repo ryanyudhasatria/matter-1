@@ -10,7 +10,7 @@ import {
   IconAtom,
   ImageAtom,
   LinkTextAtom,
-  LogoAtom,
+  // LogoAtom,
   ProgressBarAtom,
   TextAtom
 } from './atoms';
@@ -63,7 +63,7 @@ export {
       IconAtom,
       ImageAtom,
       LinkTextAtom,
-      LogoAtom,
+      // LogoAtom,
       ProgressBarAtom,
       TextAtom,
 
