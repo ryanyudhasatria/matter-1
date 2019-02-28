@@ -3,7 +3,7 @@ import * as React from 'react';
 import { css, cx } from 'emotion';
 
 // import { IconAtom, TextAtom } from '../../atoms';
-import { SelectOrganism } from '../../organisms';
+import { SelectOrganism } from '../../organisms/Select/SelectOrganism';
 
 // import * as angleDown from './angle-down.png';
 // import * as angleDownGray from './angle-down-gray.png';
