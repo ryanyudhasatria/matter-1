@@ -17,5 +17,5 @@ storiesOf('Molecule.MarkdownRenderer', module)
             `,
         })
         (() => (
-            <MarkdownRendererMolecule content={} />
+            <MarkdownRendererMolecule content={note} />
     )));

@@ -18,6 +18,14 @@ storiesOf('Molecule.DropdownMenu', module)
         })
         (() => (
             <DropdownMenuMolecule
-              label="my lable"
+              label="Dropdown Menu"
+              className="ml5-ns ml0"
+              items = {[
+                  {
+                    label: 'Ubah nama',
+                    handleClick: '',
+                  },
+              ]}
+              data-test="organization-control-user-menu"
             />
     )));

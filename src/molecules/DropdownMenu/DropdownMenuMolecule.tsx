@@ -11,12 +11,19 @@ import {
 //@ts-ignore
 import COLORS from '../../constants/colors';
 
+interface item {
+  label?:string
+  handleClick?: any
+  component?: any
+}
+
 interface IProps {
-  className?: any;
-  'data-test'?: any;
-  type?: string;
-  children: any;
-  label?:string;
+  className?: any
+  'data-test'?: any
+  type?: string
+  children: any
+  label?:string
+  items?:item[]
 }
 
 class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
@@ -46,6 +53,7 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
   render() {   
     const { isExpanded } = this.state;
     const {
+        items = [],
         label
     } = this.props;
 
@@ -74,7 +82,55 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
               `
           )}
           >
-          
+           {items.map((item: any, idx: any) => {
+            if (item.component) {
+              return (
+                <div
+                  key={idx}
+                  id={`dropdownmenu-${idx}`}
+                  role="button"
+                  tabIndex={idx}
+                  className={cx('w-100 pointer pv3 ph3-ns ph2 outline-0', css`
+                    display: ${isExpanded ? 'flex' : 'flex'};
+                    width: auto;
+                    min-width: 150px;
+                    transition: 0.2s;
+                    :hover {
+                      background: #F5F7FA;
+                      transition: 0.2s;
+                    }
+                  `)}
+                  data-test={`${this.props['data-test']}-${idx}`}
+                >
+                  {item.component()}
+                </div>
+              );
+            }
+
+            return (
+              <div
+                key={idx}
+                id={`dropdownmenu-${idx}`}
+                role="button"
+                tabIndex={idx}
+                onKeyPress={item.handleClick}
+                onClick={item.handleClick}
+                className={cx('w-100 pointer pv3 ph3-ns ph2 outline-0', css`
+                  display: ${isExpanded ? 'flex' : 'flex'};
+                  width: auto;
+                  min-width: 150px;
+                  transition: 0.2s;
+                  :hover {
+                    background: #F5F7FA;
+                    transition: 0.2s;
+                  }
+                `)}
+                data-test={`${this.props['data-test']}-${idx}`}
+              >
+                <TextAtom size="S" className={cx('', css`white-space: pre;`)}>{item.label}</TextAtom>
+              </div>
+            );
+          })}
           </CardAtom>
       </div>
     );
