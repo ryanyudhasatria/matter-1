@@ -16,6 +16,6 @@ storiesOf('Molecule.MarkdownRenderer', module)
                 default MarkdownRenderer
             `,
         })
-        (() => (
-            <MarkdownRendererMolecule content={note} />
+        (() => (            
+            <MarkdownRendererMolecule content={`#woi`} />              
     )));
