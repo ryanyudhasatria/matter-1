@@ -9,8 +9,8 @@ import {
   CardAtom,
   // IconAtom,
   TextAtom,
-  IconAtom
-  // ImageAtom,
+  IconAtom,
+  ImageAtom,
 } from '../../atoms';
 
 const hoverableCard = css`
@@ -119,14 +119,18 @@ any) => {
             'w-100 br3'
             )}
         >
-            <img
+            <ImageAtom
             src={coverImage}
             alt=""
+            width={100}
+            height={100}
+            delay={25}
+            duration={0.9}
             className={cx(
                 'w-100 br3',
                 css`
-                height: 230px;
-                width: 230px;
+                height: 230px !important;
+                width: 230px !important;
                 object-fit: cover;
                 `
             )}

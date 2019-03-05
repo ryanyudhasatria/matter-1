@@ -7,7 +7,7 @@ import COLORS from '../../constants/colors';
 
 import {
   CardAtom,
-  // IconAtom,
+  IconAtom,
   TextAtom,
   // ImageAtom,
 } from '../../atoms';
@@ -21,6 +21,33 @@ const hoverableCard = css`
     box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);
   }
 `;
+
+const themeHeader = css `
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 100%;
+  border-radius: 0.5rem 0.5rem 0 0;
+  height: 73px;
+  opacity: 0.5;
+  margin: 0;
+  position: absolute;
+`
+
+const HEADER_THEMES = {
+  DEFAULT: css`
+    ${themeHeader}
+    background: none;
+  `,
+  BLACK: css`
+    ${themeHeader}
+    background: linear-gradient(180deg, #1C2229 -16.46%, rgba(255, 255, 255, 0) 87.8%);
+  `,
+  BLUE: css`
+    ${themeHeader}
+    background: ${COLORS.BLUE.NORMAL}
+  `
+}
 
 const beginnerColor = '#2F80ED';
 const intermediateColor = '#FB529F';
@@ -67,7 +94,7 @@ const generateColorByDifficulty = (difficulty: any) => {
 //   }
 //   return rating;
 // };
-
+ 
 const CourseCardMolecule = ({
   // slug = '',
   title = '',
@@ -81,11 +108,16 @@ const CourseCardMolecule = ({
   className = '',
   coverImage = '',
   badge = '',
+  duration = '',
+  rating = '',  
   // metadata = null,
   // ratings = [],
+  type = '',
+  onBookmark = () => {},
 }:
 any) => {
   return (
+    
     <CardAtom
       className={cx(
         `pb3 relative flex flex-column align-center justify-start`,
@@ -93,6 +125,7 @@ any) => {
         className,
       )}
     >
+    <div>
       {badge && (
         <div className={cx('absolute right-0 ph1', css`
           top: 20px;
@@ -118,9 +151,25 @@ any) => {
             }
           `
         )}
-      /> */}
+      /> */}      
       <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
-        <div>
+        <div className={cx(HEADER_THEMES[type], css``, className)} />
+        <div
+          role="button"
+          className={cx('absolute white outline-0', css`
+            right: 45px;
+            top: 15px;
+            z-index: 2;
+            :hover {
+              color: white;
+            }
+          `)}
+          onKeyPress={() => {}}
+          onClick={onBookmark ? onBookmark : () => {} }
+          tabIndex={0}
+        >
+          <IconAtom name="bookmark" type="LIGHT" className="f3" />
+        </div>
           <img
             src={coverImage}
             alt=""
@@ -185,6 +234,37 @@ any) => {
                 {level.label.toUpperCase()}
               </span>
             </TextAtom>
+
+            <div className={cx('flex flex-row justify-between items-center', css`padding: .5rem 0 0 0 `)}>
+            <div className="flex flex-row">
+              {duration && (
+                  <div className="mr3">
+                  <TextAtom size="S">
+                      <IconAtom name="clock" /> <span className="fw6">{duration} </span>
+                  </TextAtom>
+                  </div>
+              )}
+
+              {rating && (
+                  <div className="dtc tc">
+                  <TextAtom size="S">
+                      <IconAtom
+                      name="star"
+                      className={cx(
+                          'mr1',
+                          css`
+                          color: ${COLORS.YELLOW.NORMAL};
+                          `
+                      )}
+                      />
+                      <b>
+                      {rating}
+                      </b>                    
+                  </TextAtom>
+                  </div>
+              )}
+            </div>
+          </div>
           </div>
           {/* {description && (
             <div className={cx('mt3', css`min-height: 65px`)}>
@@ -209,7 +289,7 @@ any) => {
                 {description}
               </TextAtom>
             </div>
-          )} */}
+          )} */}          
           <div className="mt3">
             <TextAtom
               size="S"
@@ -224,7 +304,7 @@ any) => {
             </TextAtom>
           </div>
         </div>
-      </div>
+      </div>      
     </CardAtom>
   );
 };
