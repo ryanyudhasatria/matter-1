@@ -94,6 +94,22 @@ const generateColorByDifficulty = (difficulty: any) => {
 //   }
 //   return rating;
 // };
+
+const renderDuration = (seconds: number): string => {
+  if (seconds < 60) return `${seconds} detik`;
+  if (seconds < 3600) return `${(seconds / 60).toPrecision(2)} menit`;
+  return `${(seconds / 3600).toPrecision(2)} jam`;
+}
+
+const renderStars = (rating: number): any => {
+  return ([
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+  ]);
+}
  
 const CourseCardMolecule = ({
   // slug = '',
@@ -108,17 +124,17 @@ const CourseCardMolecule = ({
   className = '',
   coverImage = '',
   badge = '',
-  duration = '',
-  rating = '',  
+  duration = 0,
+  rating = 0,  
   // metadata = null,
   // ratings = [],
-  type = '',
+  headerType = '',
+  isBookmarked = false,
   onBookmark = () => {},
   IconComponent = () => null,
 }:
 any) => {
   return (
-    
     <CardAtom
       className={cx(
         `pb3 relative flex flex-column align-center justify-start`,
@@ -154,7 +170,7 @@ any) => {
         )}
       /> */}      
       <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
-        <div className={cx(HEADER_THEMES[type], css``, className)} />
+        <div className={cx(HEADER_THEMES[headerType], css``, className)} />
         <div
           role="button"
           className={cx('absolute white outline-0', css`
@@ -169,7 +185,7 @@ any) => {
           onClick={onBookmark ? onBookmark : () => {} }
           tabIndex={0}
         >
-          <IconComponent />
+          {isBookmarked ? <IconAtom name="bookmark" className={cx('f3', css`color: ${COLORS.WHITE.NORMAL}`)} /> : <IconComponent />}
         </div>
           <img
             src={coverImage}
@@ -190,7 +206,7 @@ any) => {
         <div
           className={`flex flex-column mt1 ph3 pv1 w-100`}
         >
-          <div className={cx('flex flex-column', css`min-height: 100px`)}>
+          <div className={cx('flex flex-column', css`min-height: 110px`)}>
             <TextAtom
               size={small ? 'M' : 'L'}
               className={cx(
@@ -213,96 +229,88 @@ any) => {
             >
               {title}
             </TextAtom>
-            <TextAtom size="XS" className={cx(`f6 lh-copy ${small ? '' : 'mt3'}`, css`
-              display: block;
-              display: -webkit-box;
-              text-align: left;
-              margin: 0px;
-              line-height: 1.4;
-              -webkit-line-clamp: 1;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-              text-overflow: ellipsis;
-            `)}>
-              <span
-                className={cx(
-                  'fw6',
-                  css`
-                    color: ${generateColorByDifficulty(level.name)};
-                  `
-                )}
-              >
-                {level.label.toUpperCase()}
-              </span>
-            </TextAtom>
-
-            <div className={cx('flex flex-row justify-between items-center', css`padding: .5rem 0 0 0 `)}>
-            <div className="flex flex-row">
-              {duration && (
-                  <div className="mr3">
-                  <TextAtom size="S">
-                      <IconAtom name="clock" /> <span className="fw6">{duration} </span>
-                  </TextAtom>
-                  </div>
-              )}
-
-              {rating && (
-                  <div className="dtc tc">
-                  <TextAtom size="S">
-                      <IconAtom
-                      name="star"
-                      className={cx(
-                          'mr1',
-                          css`
-                          color: ${COLORS.YELLOW.NORMAL};
-                          `
-                      )}
-                      />
-                      <b>
-                      {rating}
-                      </b>                    
-                  </TextAtom>
-                  </div>
-              )}
-            </div>
-          </div>
-          </div>
-          {/* {description && (
-            <div className={cx('mt3', css`min-height: 65px`)}>
+            <div className="">
               <TextAtom
                 size="S"
                 className={cx(
                   'lh-copy',
                   css`
-                    display: block;
-                    display: -webkit-box;                    
-                    height: 60px;
-                    margin: 0 auto;
-                    line-height: 1.4;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    color: ${COLORS.BLACK.LIGHTER};
+                    color: ${COLORS.BLACK.NORMAL};
                   `
                 )}
               >
-                {description}
+                <span className="">{instructor}</span>
               </TextAtom>
             </div>
-          )} */}          
-          <div className="mt3">
+            <div className="mt2">
+              <TextAtom size="XS" className={cx(`f6 lh-copy ${small ? '' : 'mt3'}`, css`
+                display: block;
+                display: -webkit-box;
+                text-align: left;
+                margin: 0px;
+                line-height: 1.4;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              `)}>
+                <span
+                  className={cx(
+                    'fw6',
+                    css`
+                      color: ${generateColorByDifficulty(level.name)};
+                    `
+                  )}
+                >
+                  {level.label.toUpperCase()}
+                </span>
+              </TextAtom>
+            </div>
+          </div>
+          {/* {description && (
+            <div className={cx('mt3', css`min-height: 65px`)}>
             <TextAtom
-              size="S"
-              className={cx(
-                'lh-copy',
-                css`
-                  color: ${COLORS.BLACK.LIGHTER};
-                `
+            size="S"
+            className={cx(
+              'lh-copy',
+              css`
+              display: block;
+              display: -webkit-box;                    
+              height: 60px;
+              margin: 0 auto;
+              line-height: 1.4;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              color: ${COLORS.BLACK.LIGHTER};
+              `
               )}
-            >
-              <span className="fw6">{instructor}</span>
-            </TextAtom>
+              >
+              {description}
+              </TextAtom>
+              </div>
+            )} */}
+          <div className={cx('flex flex-row justify-between items-center', css`padding: .5rem 0 0 0 `)}>
+              <div className="flex flex-row">
+                {duration && (
+                  <div className="mr3">
+                  <TextAtom size="S" className={css`color: ${COLORS.BLACK.NORMAL}`}>
+                      <IconAtom name="clock" className={css`color: ${COLORS.BLACK.NORMAL}`} /> <span className="fw6">{renderDuration(duration)}</span>
+                  </TextAtom>
+                  </div>
+                )}
+                {(typeof rating === 'number') && (
+                  <div className="">
+                  <TextAtom size="S" className={css`color: ${COLORS.BLACK.NORMAL}`}>
+                    {renderStars(rating)}
+                    <span className="fw6">
+                    {rating.toPrecision(2)}
+                    </span>            
+                  </TextAtom>
+                  </div>
+                )}
+              </div>
           </div>
         </div>
       </div>      
