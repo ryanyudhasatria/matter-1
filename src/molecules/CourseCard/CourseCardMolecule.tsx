@@ -28,8 +28,8 @@ const themeHeader = css `
   z-index: 1;
   width: 100%;
   border-radius: 0.5rem 0.5rem 0 0;
-  height: 73px;
-  opacity: 0.5;
+  height: 100px;
+  opacity: 0.8;
   margin: 0;
   position: absolute;
 `
@@ -41,11 +41,11 @@ const HEADER_THEMES = {
   `,
   BLACK: css`
     ${themeHeader}
-    background: linear-gradient(180deg, #1C2229 -16.46%, rgba(255, 255, 255, 0) 87.8%);
+    background: linear-gradient(180deg, ${COLORS.BLACK.DARKER} -16.46%, rgba(255, 255, 255, 0) 87.8%);
   `,
   BLUE: css`
     ${themeHeader}
-    background: ${COLORS.BLUE.NORMAL}
+    background: linear-gradient(180deg, ${COLORS.BLUE.NORMAL} -16.46%, rgba(255, 255, 255, 0) 87.8%);
   `
 }
 
@@ -114,6 +114,7 @@ const CourseCardMolecule = ({
   // ratings = [],
   type = '',
   onBookmark = () => {},
+  IconComponent = () => null,
 }:
 any) => {
   return (
@@ -157,7 +158,7 @@ any) => {
         <div
           role="button"
           className={cx('absolute white outline-0', css`
-            right: 45px;
+            right: 15px;
             top: 15px;
             z-index: 2;
             :hover {
@@ -168,7 +169,7 @@ any) => {
           onClick={onBookmark ? onBookmark : () => {} }
           tabIndex={0}
         >
-          <IconAtom name="bookmark" type="LIGHT" className="f3" />
+          <IconComponent />
         </div>
           <img
             src={coverImage}

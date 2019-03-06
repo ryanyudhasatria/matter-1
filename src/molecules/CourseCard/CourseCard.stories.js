@@ -5,6 +5,7 @@ import { text } from '@storybook/addon-knobs';
 
 import styles from '../../styles';
 import { CourseCardMolecule } from './CourseCardMolecule';
+import { IconAtom } from '../../atoms/Icon/IconAtom';
 
 storiesOf('Molecule.CourseCard', module)
   .add(
@@ -18,8 +19,11 @@ storiesOf('Molecule.CourseCard', module)
     (() => (
     <div className="flex flex-row pa4 w-100 ba b--silver">
       <CourseCardMolecule
+        IconComponent={() => (
+          <IconAtom name="bookmark" type="LIGHT" className="f3" />
+        )}
         small
-        type={text('Type', 'NONE')}
+        type={text('Type', 'BLACK')}
         className="ml3 w-25"
         title="Pengenalan React Native"
         category={{ name: 'DATA SCIENCE', label: 'Data Science'}}
@@ -31,6 +35,9 @@ storiesOf('Molecule.CourseCard', module)
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
       />
       <CourseCardMolecule
+        IconComponent={() => (
+          <IconAtom name="bookmark" type="LIGHT" className="f3" />
+        )}
         small
         type={text('Type', 'BLACK')}
         className="ml3 w-25"
