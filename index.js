@@ -18,6 +18,7 @@ var Select__default = _interopDefault(Select);
 var d3 = require('d3');
 var moment_ = require('moment');
 var DataTable = require('react-data-table-component');
+var Modal = require('react-modal');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1759,6 +1760,175 @@ var LoadingPagelets = /** @class */ (function (_super) {
 }(React.PureComponent));
 var templateObject_1$A;
 
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+// try {
+//   Modal.setAppElement('#root');
+// } catch (e) {
+//   try {
+//     Modal.setAppElement('#___gatsby');
+//   } catch (e) {}
+// }
+var AppModalDialog = /** @class */ (function (_super) {
+    __extends(AppModalDialog, _super);
+    function AppModalDialog() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = {};
+        _this.closeModal = function () {
+            _this.props.closeConfirmable();
+        };
+        return _this;
+    }
+    AppModalDialog.prototype.render = function () {
+        return (React.createElement("div", null,
+            React.createElement(Modal, { isOpen: this.props.isModalVisible, onAfterOpen: this.afterOpenModal, onRequestClose: this.props.closeConfirmable, className: emotion.cx('bg-white br3 outline-0 flex flex-column', emotion.css(templateObject_1$B || (templateObject_1$B = __makeTemplateObject(["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "], ["\n            position: absolute;\n            box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);\n            top: 50%;\n            left: 50%;\n            right: auto;\n            bottom: auto;\n            margin-right: -50%;\n            transform: translate(-50%, -50%);\n          "])))), overlayClassName: emotion.css(templateObject_2$r || (templateObject_2$r = __makeTemplateObject(["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "], ["\n            position: fixed;\n            width: 100vw;\n            height: 100vh;\n            top: 0;\n            left: 0;\n            background: rgba(0, 0, 0, .2);\n            z-index: 998;\n          "]))), contentLabel: "Confirmation Modal" },
+                React.createElement("div", { className: "flex flex-column" },
+                    React.createElement("div", { className: "flex flex-column ph5-ns ph4 pv4-ns pv3 justify-center align-center items-center" },
+                        React.createElement(IconAtom, { name: "exclamation-circle", type: "LIGHT", className: emotion.cx('mv3', emotion.css(templateObject_3$l || (templateObject_3$l = __makeTemplateObject(["font-size: 108px; color: ", ""], ["font-size: 108px; color: ", ""])), COLORS.RED.NORMAL)) }),
+                        React.createElement(TextAtom, { size: "XL", className: emotion.cx('fw6 mt3', emotion.css(templateObject_4$i || (templateObject_4$i = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.NORMAL)) }, "Apa kamu Yakin?"),
+                        React.createElement(TextAtom, { size: "M", className: emotion.cx('mt2', emotion.css(templateObject_5$g || (templateObject_5$g = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.LIGHTER)) }, this.props.message)),
+                    React.createElement("div", { className: emotion.cx('flex flex-row justify-center items-center pv3 ph2 bt', emotion.css(templateObject_6$f || (templateObject_6$f = __makeTemplateObject(["border-color: ", ""], ["border-color: ", ""])), COLORS.GREY.NORMAL)) },
+                        React.createElement(ButtonAtom, { type: "DEFAULT_GREY", onClick: this.props.cancel, className: "ph5 mh1", "data-test": "confirmable-cancel" }, "Batalkan"),
+                        React.createElement(ButtonAtom, { type: "DEFAULT_CTA", onClick: this.props.confirm, className: "ph5 mh1", "data-test": "confirmable-confirm" }, "OK"))))));
+    };
+    return AppModalDialog;
+}(React.Component));
+var Confirmable = /** @class */ (function (_super) {
+    __extends(Confirmable, _super);
+    function Confirmable(props) {
+        var _this = _super.call(this, props) || this;
+        _this.setConfirmation = function (confirmationMessage, confirmableAction) {
+            _this.setState({
+                isVisible: true,
+                message: confirmationMessage,
+                confirmableAction: confirmableAction,
+                confirmableResponse: {
+                    isIdle: true,
+                    isConfirmed: false,
+                },
+            });
+        };
+        _this.showConfirmation = function () {
+            _this.setState({
+                isVisible: true,
+                confirmableResponse: {
+                    isIdle: true,
+                    isConfirmed: false,
+                },
+            });
+        };
+        _this.cancel = function () {
+            _this.setState({
+                isVisible: false,
+                confirmableResponse: {
+                    isIdle: true,
+                    isConfirmed: false,
+                },
+            });
+        };
+        _this.confirm = function () {
+            if (_this.state.confirmableAction) {
+                _this.state.confirmableAction();
+            }
+            _this.setState({
+                isVisible: false,
+                confirmableResponse: {
+                    isIdle: false,
+                    isConfirmed: true,
+                },
+            });
+        };
+        _this.closeConfirmable = function () {
+            _this.setState({ isVisible: false });
+        };
+        _this.state = {
+            isVisible: false,
+            message: props.confirmationMessage || null,
+            confirmableAction: props.confirmableAction || null,
+            confirmableResponse: null,
+        };
+        return _this;
+    }
+    Confirmable.prototype.render = function () {
+        return [
+            React.createElement(AppModalDialog, { key: "confirmable-component-modal", isModalVisible: this.state.isVisible, closeConfirmable: this.closeConfirmable, message: this.state.message, cancel: this.cancel, confirm: this.confirm }),
+            React.createElement("div", { key: "confirmable-component-children" }, this.props.children({
+                confirm: this.setConfirmation,
+                confirmableResponse: this.state.confirmableResponse,
+                showConfirmation: this.showConfirmation,
+            })),
+        ];
+    };
+    return Confirmable;
+}(React.Component));
+var templateObject_1$B, templateObject_2$r, templateObject_3$l, templateObject_4$i, templateObject_5$g, templateObject_6$f;
+
+var initialState = {
+    isNotificationVisible: false,
+    message: null,
+    type: null,
+};
+var Notifiable = /** @class */ (function (_super) {
+    __extends(Notifiable, _super);
+    function Notifiable() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = __assign({}, initialState);
+        _this.showNotification = function (_a) {
+            var message = _a.message, type = _a.type;
+            _this.setState({
+                isNotificationVisible: true,
+                message: message,
+                type: type,
+            }); // type: SUCCESS / FAILURE
+            localStorage.setItem('isNotificationVisible', 'true');
+            localStorage.setItem('notificationMessage', message);
+            localStorage.setItem('notificationType', type);
+            setTimeout(function () {
+                _this.setState({
+                    isNotificationVisible: false,
+                    message: message,
+                    type: type,
+                });
+                localStorage.removeItem('isNotificationVisible');
+                localStorage.removeItem('notificationMessage');
+                localStorage.removeItem('notificationType');
+            }, 3000);
+        };
+        _this.closeNotification = function () {
+            _this.setState(__assign({}, initialState));
+            localStorage.removeItem('isNotificationVisible');
+            localStorage.removeItem('notificationMessage');
+            localStorage.removeItem('notificationType');
+        };
+        return _this;
+    }
+    Notifiable.prototype.componentDidMount = function () {
+        if (localStorage.getItem('isNotificationVisible')) {
+            this.setState({
+                isNotificationVisible: localStorage.getItem('isNotificationVisible'),
+                message: localStorage.getItem('notificationMessage') || '',
+                type: localStorage.getItem('notificationType') || 'SUCCESS',
+            });
+        }
+    };
+    Notifiable.prototype.render = function () {
+        var _this = this;
+        var NotificationBannerComponent = function () {
+            if (_this.state.isNotificationVisible) {
+                return (React.createElement(NotificationBannerMolecule, { type: _this.state.type, onClose: _this.closeNotification }, _this.state.message));
+            }
+            return null;
+        };
+        return [
+            React.createElement(NotificationBannerComponent, { key: "notification-wrapper-banner" }),
+            React.createElement("div", { key: "notification-wrapper-child-container" }, this.props.children({
+                isVisible: this.state.isNotificationVisible,
+                showNotification: this.showNotification,
+            })),
+        ];
+    };
+    return Notifiable;
+}(React.Component));
+
 exports.AnchorTextAtom = AnchorTextAtom;
 exports.AvatarAtom = AvatarAtom;
 exports.ButtonAtom = ButtonAtom;
@@ -1798,3 +1968,5 @@ exports.DatatablePagelets = DatatablePagelets;
 exports.DiscussionForumDetailPagelets = DiscussionForumDetailPagelets;
 exports.DiscussionForumListPagelets = DiscussionForumListPagelets;
 exports.LoadingPagelets = LoadingPagelets;
+exports.Confirmable = Confirmable;
+exports.Notifiable = Notifiable;
