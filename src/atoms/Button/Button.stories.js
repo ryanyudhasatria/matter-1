@@ -73,6 +73,22 @@ storiesOf('Atom.Button', module)
     </ButtonAtom>
   )))
   .add(
+    'Red Button',
+    withInfo({
+      styles,
+      text: `
+        red button. Only use this type of button for CTA
+      `,
+    })
+    (() => (
+    <ButtonAtom  
+      onClick={action('button-click')}
+      type={text('Type', 'DEFAULT_RED')}
+    >
+      Click Me
+    </ButtonAtom>
+  )))
+  .add(
     'Purple Gradient Button',
     withInfo({
       styles,

@@ -145,6 +145,17 @@ const TYPES = {
       background: ${COLORS.PURPLE.DARKER};
     }
   `,
+  DEFAULT_RED: css`
+    ${defaultBase}
+    background: ${COLORS.RED.NORMAL};
+    color: ${COLORS.GREY.LIGHT};
+    :hover {
+      background: ${COLORS.RED.DARKER};
+    }
+    :active {
+      background: ${COLORS.RED.LIGHT};
+    }
+  `,
   DEFAULT_PURPLE_GRADIENT: css`
     ${defaultBase}
     background: ${COLORS.PURPLE_GRADIENT.NORMAL};
