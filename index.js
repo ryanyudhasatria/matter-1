@@ -540,55 +540,69 @@ var generateColorByDifficulty = function (difficulty) {
 //   }
 //   return rating;
 // };
+var renderDuration = function (seconds) {
+    if (seconds < 60)
+        return seconds + " detik";
+    if (seconds < 3600)
+        return (seconds / 60).toPrecision(2) + " menit";
+    return (seconds / 3600).toPrecision(2) + " jam";
+};
+var renderStars = function (rating) {
+    return ([
+        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_6$2 || (templateObject_6$2 = __makeTemplateObject(["color: ", ";"], ["color: ", ";"])), rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT)) }),
+        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_7$2 || (templateObject_7$2 = __makeTemplateObject(["color: ", ";"], ["color: ", ";"])), rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT)) }),
+        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_8$2 || (templateObject_8$2 = __makeTemplateObject(["color: ", ";"], ["color: ", ";"])), rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT)) }),
+        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_9$1 || (templateObject_9$1 = __makeTemplateObject(["color: ", ";"], ["color: ", ";"])), rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT)) }),
+        React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_10$1 || (templateObject_10$1 = __makeTemplateObject(["color: ", ";"], ["color: ", ";"])), rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT)) }),
+    ]);
+};
 var CourseCardMolecule = function (_a) {
     var  
     // slug = '',
     _b = _a.title, 
     // slug = '',
-    title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.description, _e = _a.category, _f = _a.level, level = _f === void 0 ? { name: '', label: '' } : _f, _g = _a.linkTo, _h = _a.fullImage, fullImage = _h === void 0 ? true : _h, small = _a.small, _j = _a.className, className = _j === void 0 ? '' : _j, _k = _a.coverImage, coverImage = _k === void 0 ? '' : _k, _l = _a.badge, badge = _l === void 0 ? '' : _l, _m = _a.duration, duration = _m === void 0 ? '' : _m, _o = _a.rating, rating = _o === void 0 ? '' : _o, 
+    title = _b === void 0 ? '' : _b, _c = _a.instructor, instructor = _c === void 0 ? 'KODE Team' : _c, _d = _a.description, _e = _a.category, _f = _a.level, level = _f === void 0 ? { name: '', label: '' } : _f, _g = _a.linkTo, _h = _a.fullImage, fullImage = _h === void 0 ? true : _h, small = _a.small, _j = _a.className, className = _j === void 0 ? '' : _j, _k = _a.coverImage, coverImage = _k === void 0 ? '' : _k, _l = _a.badge, badge = _l === void 0 ? '' : _l, _m = _a.duration, duration = _m === void 0 ? 0 : _m, _o = _a.rating, rating = _o === void 0 ? 0 : _o, 
     // metadata = null,
     // ratings = [],
-    _p = _a.type, 
+    _p = _a.headerType, 
     // metadata = null,
     // ratings = [],
-    type = _p === void 0 ? '' : _p, _q = _a.onBookmark, onBookmark = _q === void 0 ? function () { } : _q, _r = _a.IconComponent, IconComponent = _r === void 0 ? function () { return null; } : _r;
+    headerType = _p === void 0 ? '' : _p, _q = _a.isBookmarked, isBookmarked = _q === void 0 ? false : _q, _r = _a.onBookmark, onBookmark = _r === void 0 ? function () { } : _r, _s = _a.IconComponent, IconComponent = _s === void 0 ? function () { return null; } : _s;
     return (React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex flex-column align-center justify-start", hoverableCard, className) },
         React.createElement("div", null,
-            badge && (React.createElement("div", { className: emotion.cx('absolute right-0 ph1', emotion.css(templateObject_6$2 || (templateObject_6$2 = __makeTemplateObject(["\n          top: 20px;\n          background: ", ";\n          color: ", ";\n        "], ["\n          top: 20px;\n          background: ", ";\n          color: ", ";\n        "])), COLORS.GREEN.NORMAL, COLORS.WHITE.NORMAL)) },
+            badge && (React.createElement("div", { className: emotion.cx('absolute right-0 ph1', emotion.css(templateObject_11$1 || (templateObject_11$1 = __makeTemplateObject(["\n          top: 20px;\n          background: ", ";\n          color: ", ";\n        "], ["\n          top: 20px;\n          background: ", ";\n          color: ", ";\n        "])), COLORS.GREEN.NORMAL, COLORS.WHITE.NORMAL)) },
                 React.createElement(TextAtom, { size: "XS", className: "fw6 ttu" }, "kelas baru"))),
             React.createElement("div", { className: emotion.cx("" + (fullImage ? '' : 'ph3 pt2')) },
-                React.createElement("div", { className: emotion.cx(HEADER_THEMES[type], emotion.css(templateObject_7$2 || (templateObject_7$2 = __makeTemplateObject([""], [""]))), className) }),
-                React.createElement("div", { role: "button", className: emotion.cx('absolute white outline-0', emotion.css(templateObject_8$2 || (templateObject_8$2 = __makeTemplateObject(["\n            right: 15px;\n            top: 15px;\n            z-index: 2;\n            :hover {\n              color: white;\n            }\n          "], ["\n            right: 15px;\n            top: 15px;\n            z-index: 2;\n            :hover {\n              color: white;\n            }\n          "])))), onKeyPress: function () { }, onClick: onBookmark ? onBookmark : function () { }, tabIndex: 0 },
-                    React.createElement(IconComponent, null)),
+                React.createElement("div", { className: emotion.cx(HEADER_THEMES[headerType], emotion.css(templateObject_12$1 || (templateObject_12$1 = __makeTemplateObject([""], [""]))), className) }),
+                React.createElement("div", { role: "button", className: emotion.cx('absolute white outline-0', emotion.css(templateObject_13$1 || (templateObject_13$1 = __makeTemplateObject(["\n            right: 15px;\n            top: 15px;\n            z-index: 2;\n            :hover {\n              color: white;\n            }\n          "], ["\n            right: 15px;\n            top: 15px;\n            z-index: 2;\n            :hover {\n              color: white;\n            }\n          "])))), onKeyPress: function () { }, onClick: onBookmark ? onBookmark : function () { }, tabIndex: 0 }, isBookmarked ? React.createElement(IconAtom, { name: "bookmark", className: emotion.cx('f3', emotion.css(templateObject_14$1 || (templateObject_14$1 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.WHITE.NORMAL)) }) : React.createElement(IconComponent, null)),
                 React.createElement("img", { src: coverImage, alt: "", 
                     // height="200px"
                     // width="auto"
-                    className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_9$1 || (templateObject_9$1 = __makeTemplateObject(["\n                min-height: 200px;\n                object-fit: cover;\n              "], ["\n                min-height: 200px;\n                object-fit: cover;\n              "])))) }))),
+                    className: emotion.cx(fullImage ? 'br3 br--top' : 'br3', emotion.css(templateObject_15$1 || (templateObject_15$1 = __makeTemplateObject(["\n                min-height: 200px;\n                object-fit: cover;\n              "], ["\n                min-height: 200px;\n                object-fit: cover;\n              "])))) }))),
         React.createElement("div", { className: "flex flex-column justify-start" },
             React.createElement("div", { className: "flex flex-column mt1 ph3 pv1 w-100" },
-                React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_10$1 || (templateObject_10$1 = __makeTemplateObject(["min-height: 100px"], ["min-height: 100px"])))) },
-                    React.createElement(TextAtom, { size: small ? 'M' : 'L', className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_11$1 || (templateObject_11$1 = __makeTemplateObject(["\n                  display: block;\n                  display: -webkit-box;\n                  text-align: left;\n                  margin: 0px;\n                  line-height: 1.4;\n                  -webkit-line-clamp: 3;\n                  -webkit-box-orient: vertical;\n                  overflow: hidden;\n                  text-overflow: ellipsis;    \n                  margin-top: .5rem;\n                  margin-bottom: .5rem; \n                  color: ", ";\n                "], ["\n                  display: block;\n                  display: -webkit-box;\n                  text-align: left;\n                  margin: 0px;\n                  line-height: 1.4;\n                  -webkit-line-clamp: 3;\n                  -webkit-box-orient: vertical;\n                  overflow: hidden;\n                  text-overflow: ellipsis;    \n                  margin-top: .5rem;\n                  margin-bottom: .5rem; \n                  color: ", ";\n                "])), COLORS.BLACK.NORMAL)) }, title),
-                    React.createElement(TextAtom, { size: "XS", className: emotion.cx("f6 lh-copy " + (small ? '' : 'mt3'), emotion.css(templateObject_12$1 || (templateObject_12$1 = __makeTemplateObject(["\n              display: block;\n              display: -webkit-box;\n              text-align: left;\n              margin: 0px;\n              line-height: 1.4;\n              -webkit-line-clamp: 1;\n              -webkit-box-orient: vertical;\n              overflow: hidden;\n              text-overflow: ellipsis;\n            "], ["\n              display: block;\n              display: -webkit-box;\n              text-align: left;\n              margin: 0px;\n              line-height: 1.4;\n              -webkit-line-clamp: 1;\n              -webkit-box-orient: vertical;\n              overflow: hidden;\n              text-overflow: ellipsis;\n            "])))) },
-                        React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_13$1 || (templateObject_13$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), generateColorByDifficulty(level.name))) }, level.label.toUpperCase())),
-                    React.createElement("div", { className: emotion.cx('flex flex-row justify-between items-center', emotion.css(templateObject_14$1 || (templateObject_14$1 = __makeTemplateObject(["padding: .5rem 0 0 0 "], ["padding: .5rem 0 0 0 "])))) },
-                        React.createElement("div", { className: "flex flex-row" },
-                            duration && (React.createElement("div", { className: "mr3" },
-                                React.createElement(TextAtom, { size: "S" },
-                                    React.createElement(IconAtom, { name: "clock" }),
-                                    " ",
-                                    React.createElement("span", { className: "fw6" },
-                                        duration,
-                                        " ")))),
-                            rating && (React.createElement("div", { className: "dtc tc" },
-                                React.createElement(TextAtom, { size: "S" },
-                                    React.createElement(IconAtom, { name: "star", className: emotion.cx('mr1', emotion.css(templateObject_15$1 || (templateObject_15$1 = __makeTemplateObject(["\n                          color: ", ";\n                          "], ["\n                          color: ", ";\n                          "])), COLORS.YELLOW.NORMAL)) }),
-                                    React.createElement("b", null, rating))))))),
-                React.createElement("div", { className: "mt3" },
-                    React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_16$1 || (templateObject_16$1 = __makeTemplateObject(["\n                  color: ", ";\n                "], ["\n                  color: ", ";\n                "])), COLORS.BLACK.LIGHTER)) },
-                        React.createElement("span", { className: "fw6" }, instructor)))))));
+                React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_16$1 || (templateObject_16$1 = __makeTemplateObject(["min-height: 110px"], ["min-height: 110px"])))) },
+                    React.createElement(TextAtom, { size: small ? 'M' : 'L', className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_17$1 || (templateObject_17$1 = __makeTemplateObject(["\n                  display: block;\n                  display: -webkit-box;\n                  text-align: left;\n                  margin: 0px;\n                  line-height: 1.4;\n                  -webkit-line-clamp: 3;\n                  -webkit-box-orient: vertical;\n                  overflow: hidden;\n                  text-overflow: ellipsis;    \n                  margin-top: .5rem;\n                  margin-bottom: .5rem; \n                  color: ", ";\n                "], ["\n                  display: block;\n                  display: -webkit-box;\n                  text-align: left;\n                  margin: 0px;\n                  line-height: 1.4;\n                  -webkit-line-clamp: 3;\n                  -webkit-box-orient: vertical;\n                  overflow: hidden;\n                  text-overflow: ellipsis;    \n                  margin-top: .5rem;\n                  margin-bottom: .5rem; \n                  color: ", ";\n                "])), COLORS.BLACK.NORMAL)) }, title),
+                    React.createElement("div", { className: "" },
+                        React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_18$1 || (templateObject_18$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.NORMAL)) },
+                            React.createElement("span", { className: "" }, instructor))),
+                    React.createElement("div", { className: "mt2" },
+                        React.createElement(TextAtom, { size: "XS", className: emotion.cx("f6 lh-copy " + (small ? '' : 'mt3'), emotion.css(templateObject_19$1 || (templateObject_19$1 = __makeTemplateObject(["\n                display: block;\n                display: -webkit-box;\n                text-align: left;\n                margin: 0px;\n                line-height: 1.4;\n                -webkit-line-clamp: 1;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n              "], ["\n                display: block;\n                display: -webkit-box;\n                text-align: left;\n                margin: 0px;\n                line-height: 1.4;\n                -webkit-line-clamp: 1;\n                -webkit-box-orient: vertical;\n                overflow: hidden;\n                text-overflow: ellipsis;\n              "])))) },
+                            React.createElement("span", { className: emotion.cx('fw6', emotion.css(templateObject_20$1 || (templateObject_20$1 = __makeTemplateObject(["\n                      color: ", ";\n                    "], ["\n                      color: ", ";\n                    "])), generateColorByDifficulty(level.name))) }, level.label.toUpperCase())))),
+                React.createElement("div", { className: emotion.cx('flex flex-row justify-between items-center', emotion.css(templateObject_21$1 || (templateObject_21$1 = __makeTemplateObject(["padding: .5rem 0 0 0 "], ["padding: .5rem 0 0 0 "])))) },
+                    React.createElement("div", { className: "flex flex-row" },
+                        duration && (React.createElement("div", { className: "mr3" },
+                            React.createElement(TextAtom, { size: "S", className: emotion.css(templateObject_22$1 || (templateObject_22$1 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.NORMAL) },
+                                React.createElement(IconAtom, { name: "clock", className: emotion.css(templateObject_23$1 || (templateObject_23$1 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.NORMAL) }),
+                                " ",
+                                React.createElement("span", { className: "fw6" }, renderDuration(duration))))),
+                        (typeof rating === 'number') && (React.createElement("div", { className: "" },
+                            React.createElement(TextAtom, { size: "S", className: emotion.css(templateObject_24 || (templateObject_24 = __makeTemplateObject(["color: ", ""], ["color: ", ""])), COLORS.BLACK.NORMAL) },
+                                renderStars(rating),
+                                React.createElement("span", { className: "fw6" }, rating.toPrecision(2)))))))))));
 };
 CourseCardMolecule.displayName = 'CourseCardMolecule';
-var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$2, templateObject_6$2, templateObject_7$2, templateObject_8$2, templateObject_9$1, templateObject_10$1, templateObject_11$1, templateObject_12$1, templateObject_13$1, templateObject_14$1, templateObject_15$1, templateObject_16$1;
+var templateObject_1$f, templateObject_2$a, templateObject_3$6, templateObject_4$3, templateObject_5$2, templateObject_6$2, templateObject_7$2, templateObject_8$2, templateObject_9$1, templateObject_10$1, templateObject_11$1, templateObject_12$1, templateObject_13$1, templateObject_14$1, templateObject_15$1, templateObject_16$1, templateObject_17$1, templateObject_18$1, templateObject_19$1, templateObject_20$1, templateObject_21$1, templateObject_22$1, templateObject_23$1, templateObject_24;
 
 var hoverableCard$1 = emotion.css(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"], ["\n  transition: all 0.2s ease-out;\n  box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.1);\n  :hover {\n    transform: translateY(0px);\n    transition: all 0.2s ease-out;\n    box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.2);\n  }\n"])));
 var beginnerColor$1 = '#2F80ED';
