@@ -50,52 +50,61 @@ import {
   LoadingPagelets
 } from './pagelets';
 
+import {
+  Confirmable,
+  Notifiable
+} from './renderProps';
+
 export {
   // Atom
-      AnchorTextAtom,
-      AvatarAtom,
-      ButtonAtom,
-      CardAtom,
-      ClassroomHeaderAtom,
-      H1Atom,
-      H2Atom,
-      H3Atom,
-      IconAtom,
-      ImageAtom,
-      LinkTextAtom,
-      // LogoAtom,
-      ProgressBarAtom,
-      TextAtom,
+  AnchorTextAtom,
+  AvatarAtom,
+  ButtonAtom,
+  CardAtom,
+  ClassroomHeaderAtom,
+  H1Atom,
+  H2Atom,
+  H3Atom,
+  IconAtom,
+  ImageAtom,
+  LinkTextAtom,
+  // LogoAtom,
+  ProgressBarAtom,
+  TextAtom,
 
-  // Molecule
-      AlertMolecule,
-      AnimatedButtonMolecule,
-      BannerMolecule,
-      CheckerMolecule,
-      CourseCardMolecule,
-      CourseProgressCardMolecule,
-      DownloadButtonMolecule,
-      FooterMolecule,
-      HorizontalCourseCardMolecule,
-      LearningPathCardMolecule,
-      LoaderMolecule,
-      NotificationBannerMolecule,
-      NumberSliderMolecule,
-      ReviewCardMolecule,
-      SkillAssessmentCardMolecule,
-      TeacherCardMolecule,
-      WidgetCardMolecule,
+  //  Molecule
+  AlertMolecule,
+  AnimatedButtonMolecule,
+  BannerMolecule,
+  CheckerMolecule,
+  CourseCardMolecule,
+  CourseProgressCardMolecule,
+  DownloadButtonMolecule,
+  FooterMolecule,
+  HorizontalCourseCardMolecule,
+  LearningPathCardMolecule,
+  LoaderMolecule,
+  NotificationBannerMolecule,
+  NumberSliderMolecule,
+  ReviewCardMolecule,
+  SkillAssessmentCardMolecule,
+  TeacherCardMolecule,
+  WidgetCardMolecule,
 
-  // Organism
-      DateOrganism,
-      EngagedUserPieChartOrganism,
-      InputOrganism,
-      LearningTimeBarChartOrganism,
-      SelectOrganism,
+  //  Organism
+  DateOrganism,
+  EngagedUserPieChartOrganism,
+  InputOrganism,
+  LearningTimeBarChartOrganism,
+  SelectOrganism,
 
-  // Pagelets
-      DatatablePagelets,
-      DiscussionForumDetailPagelets,
-      DiscussionForumListPagelets,
-      LoadingPagelets
+  //  Pagelets
+  DatatablePagelets,
+  DiscussionForumDetailPagelets,
+  DiscussionForumListPagelets,
+  LoadingPagelets,
+  
+  //  Render Props
+  Confirmable,
+  Notifiable,
 }
