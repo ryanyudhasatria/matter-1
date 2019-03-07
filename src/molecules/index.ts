@@ -6,7 +6,7 @@ import { CourseCardMolecule } from './CourseCard/CourseCardMolecule';
 import { CourseProgressCardMolecule } from './CourseProgressCard/CourseProgressCardMolecule';
 import { DownloadButtonMolecule } from './DownloadButton/DownloadButtonMolecule';
 import { FooterMolecule } from './Footer/FooterMolecule';
-import { HorizontalCourseCardMolecule} from './HorizontalCourseCard/HorizontalCourseCardMolecule';
+import { HorizontalCourseCardMolecule } from './HorizontalCourseCard/HorizontalCourseCardMolecule';
 import { LearningPathCardMolecule } from './LearningPathCard/LearningPathCardMolecule';
 import { LoaderMolecule } from './Loader/LoaderMolecule';
 import { NotificationBannerMolecule } from './NotificationBanner/NotificationBannerMolecule';

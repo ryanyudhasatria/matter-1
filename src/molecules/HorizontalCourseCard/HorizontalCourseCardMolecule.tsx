@@ -60,6 +60,22 @@ const generateGradientByDifficulty = (difficulty: any) => {
   }
 };
 
+const renderDuration = (seconds: number): string => {
+  if (seconds < 60) return `${seconds} detik`;
+  if (seconds < 3600) return `${(seconds / 60).toPrecision(2)} menit`;
+  return `${(seconds / 3600).toPrecision(2)} jam`;
+}
+
+const renderStars = (rating: number): any => {
+  return ([
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+  ]);
+}
+
 // const courseRating = (ratings: any): any => {
 //   let rating;
 //   if (ratings.length !== 0) {
@@ -73,7 +89,7 @@ const HorizontalCourseCardMolecule = ({
   // slug = '',
   title = '',
   instructor = 'KODE Team',
-  category = { name: '', label: '' },
+  // category = { name: '', label: '' },
   instructorRole = '',
   collaborator = '',
   description = '',
@@ -129,8 +145,8 @@ any) => {
             className={cx(
                 'w-100 br3',
                 css`
-                height: 230px !important;
-                width: 230px !important;
+                height: 180px !important;
+                width: 180px !important;
                 object-fit: cover;
                 `
             )}
@@ -160,7 +176,6 @@ any) => {
                 `
             )}
             >
-            {category && category.label && `${category.label.toUpperCase()} · `}
             <span
                 className={cx(
                 'fw6',
@@ -178,15 +193,26 @@ any) => {
             className={cx(
             'db mt3 mt3 lh-copy',
             css`
-                color: ${COLORS.BLACK.LIGHTER};
+                display: block;
+                display: -webkit-box;
+                text-align: left;
+                margin: 0px;
+                line-height: 1.4;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;    
+                margin-top: .5rem;
+                margin-bottom: .5rem;
+                color: ${COLORS.BLACK.NORMAL};
             `
             )}
         >
             {description}
         </TextAtom>
-        <TextAtom size="S" className={`db mt3 f6 lh-copy mt3`}>
+        <TextAtom size="S" className={`db mt2 f6 lh-copy`}>
             {instructor ? (
-            <div className={cx('lh-copy')}>
+            <div className={cx('lh-copy', css`color: ${COLORS.BLACK.NORMAL};`)}>
                 <TextAtom
                 size="XS"
                 className={cx(
@@ -221,7 +247,7 @@ any) => {
         {duration && (
             <div className="mr3">
             <TextAtom size="S">
-                <IconAtom name="clock" /> <span className="fw6">{duration} jam</span> waktu belajar
+                <IconAtom name="clock" /> <span className="fw6">{renderDuration(duration)}</span> waktu belajar
             </TextAtom>
             </div>
         )}
@@ -229,25 +255,17 @@ any) => {
         {rating && (
             <div className="dtc tc">
             <TextAtom size="S">
-                <IconAtom
-                name="star"
-                className={cx(
-                    'mr1',
-                    css`
-                    color: ${COLORS.YELLOW.NORMAL};
-                    `
-                )}
-                />
-                <b>
-                {rating} <TextAtom className="mh1">·</TextAtom>
-                </b>
-                <b
+                {renderStars(rating)}
+                <span className="fw6">
+                {rating.toPrecision(2)}
+                </span>
+                {/* <b
                 className={cx(
                     'underline-ns'
                 )}
                 >
                 {reviewCounts} Reviews
-                </b>
+                </b> */}
             </TextAtom>
             </div>
         )}
