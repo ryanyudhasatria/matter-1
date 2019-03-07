@@ -56,8 +56,8 @@ const CourseProgressCardMolecule = ({
   instructor = 'KODE Team',
   coverImage = null,
   fullImage = true,
-  category = { name: '', label: '' },
-  description = '',
+  // category = { name: '', label: '' },
+  // description = '',
   level = { name: '', label: '' },
   ProgressBarComponent = () => null,
   FooterComponent = () => null,
@@ -111,7 +111,7 @@ const CourseProgressCardMolecule = ({
             <TextAtom
               size="M"
               className={cx(
-                'lh-title mv2 fw6',
+                'lh-title fw6',
                 css`
                   display: block;
                   display: -webkit-box;
@@ -122,13 +122,34 @@ const CourseProgressCardMolecule = ({
                   -webkit-box-orient: vertical;
                   overflow: hidden;
                   text-overflow: ellipsis;    
+                  margin-top: .5rem;                        
+                  color: ${COLORS.BLACK.NORMAL};
+                `
+              )}
+            >
+              {title}
+            </TextAtom>
+            <TextAtom
+              size="S"
+              className={cx(
+                '',
+                css`
+                  display: block;
+                  display: -webkit-box;
+                  text-align: left;
+                  margin: 0px;
+                  line-height: 1.4;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;    
                   margin-top: .5rem;
                   margin-bottom: .5rem;                               
                   color: ${COLORS.BLACK.NORMAL};
                 `
               )}
             >
-              {title}
+              {instructor}
             </TextAtom>
             <TextAtom size="XS" className={cx('f6 lh-copy', css`
                 display: block;
@@ -141,7 +162,7 @@ const CourseProgressCardMolecule = ({
                 overflow: hidden;
                 text-overflow: ellipsis;    
               `)}>
-              <span
+              {/* <span
                 className={cx(
                   'fw6',
                   css`
@@ -160,7 +181,7 @@ const CourseProgressCardMolecule = ({
                 )}
               >
                 ·
-              </span>
+              </span> */}
               <span
                 className={cx(
                   'fw6',
@@ -173,7 +194,7 @@ const CourseProgressCardMolecule = ({
               </span>
             </TextAtom>
           </div>
-          <div className={cx('mt3', css`height: 65px;`)}>
+          {/* <div className={cx('mt3', css`height: 65px;`)}>
             {description && (
               <TextAtom
                 size="S"
@@ -196,7 +217,7 @@ const CourseProgressCardMolecule = ({
                 {description}
               </TextAtom>
             )}
-          </div>
+          </div> */}
           <ProgressBarComponent />
           <FooterComponent />
         </div>
