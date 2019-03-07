@@ -31,6 +31,7 @@ storiesOf('Molecule.CourseCard', module)
         instructor="Riza Fahmi"
         rating={1}
         duration={8340}
+        LinkComponent={({ children }) => <a href="#">{children}</a>}
         coverImage="https://s3-ap-southeast-1.amazonaws.com/kode-images/public/course-covers/redis.png"
         description="Pelajari dasar-dasar React dan mulai perjalananmu sebagai React Developer dan ikutilah perjalanan pembelajaran ini!"
       />

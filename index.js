@@ -515,31 +515,6 @@ var generateColorByDifficulty = function (difficulty) {
             return beginnerColor;
     }
 };
-// const beginnerGradient =
-//   'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
-// const intermediateGradient =
-//   'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
-// const expertGradient =
-//   'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
-// const generateGradientByDifficulty = (difficulty: any) => {
-//   switch (difficulty.toUpperCase()) {
-//     case 'EXPERT':
-//       return expertGradient;
-//     case 'INTERMEDIATE':
-//       return intermediateGradient;
-//     case 'BEGINNER':
-//     default:
-//       return beginnerGradient;
-//   }
-// };
-// const courseRating = (ratings: any): any => {
-//   let rating;
-//   if (ratings.length !== 0) {
-//     const reducer = (accumulator: any, currentValue: any) => accumulator + currentValue;
-//     rating = Math.floor(ratings.map((r: any) => parseInt(r.rating, 10)).reduce(reducer) / ratings.length);
-//   }
-//   return rating;
-// };
 var renderDuration = function (seconds) {
     if (seconds < 60)
         return seconds + " detik";
@@ -573,7 +548,7 @@ var CourseCardMolecule = function (_a) {
     _m = _a.headerType, 
     // metadata = null,
     // ratings = [],
-    headerType = _m === void 0 ? '' : _m, _o = _a.isBookmarked, isBookmarked = _o === void 0 ? false : _o, _p = _a.onBookmark, onBookmark = _p === void 0 ? function () { } : _p, _q = _a.IconComponent, IconComponent = _q === void 0 ? function () { return null; } : _q;
+    headerType = _m === void 0 ? '' : _m, _o = _a.isBookmarked, isBookmarked = _o === void 0 ? false : _o, _p = _a.onBookmark, onBookmark = _p === void 0 ? function () { } : _p, _q = _a.LinkComponent, LinkComponent = _q === void 0 ? function (props) { return props.children; } : _q, _r = _a.IconComponent, IconComponent = _r === void 0 ? function () { return null; } : _r;
     return (React.createElement(CardAtom, { className: emotion.cx("pb3 relative flex flex-column align-center justify-start", hoverableCard, className) },
         React.createElement("div", null,
             badge && (React.createElement("div", { className: emotion.cx('absolute right-0 ph1', emotion.css(templateObject_11$1 || (templateObject_11$1 = __makeTemplateObject(["\n          top: 20px;\n          background: ", ";\n          color: ", ";\n        "], ["\n          top: 20px;\n          background: ", ";\n          color: ", ";\n        "])), COLORS.GREEN.NORMAL, COLORS.WHITE.NORMAL)) },
@@ -588,7 +563,8 @@ var CourseCardMolecule = function (_a) {
         React.createElement("div", { className: "flex flex-column justify-start" },
             React.createElement("div", { className: "flex flex-column mt1 ph3 pv1 w-100" },
                 React.createElement("div", { className: emotion.cx('flex flex-column', emotion.css(templateObject_16$1 || (templateObject_16$1 = __makeTemplateObject(["min-height: 110px"], ["min-height: 110px"])))) },
-                    React.createElement(TextAtom, { size: small ? 'M' : 'L', className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_17$1 || (templateObject_17$1 = __makeTemplateObject(["\n                  display: block;\n                  display: -webkit-box;\n                  text-align: left;\n                  margin: 0px;\n                  line-height: 1.4;\n                  -webkit-line-clamp: 3;\n                  -webkit-box-orient: vertical;\n                  overflow: hidden;\n                  text-overflow: ellipsis;    \n                  margin-top: .5rem;\n                  margin-bottom: .5rem; \n                  color: ", ";\n                "], ["\n                  display: block;\n                  display: -webkit-box;\n                  text-align: left;\n                  margin: 0px;\n                  line-height: 1.4;\n                  -webkit-line-clamp: 3;\n                  -webkit-box-orient: vertical;\n                  overflow: hidden;\n                  text-overflow: ellipsis;    \n                  margin-top: .5rem;\n                  margin-bottom: .5rem; \n                  color: ", ";\n                "])), COLORS.BLACK.NORMAL)) }, title),
+                    React.createElement(LinkComponent, null,
+                        React.createElement(TextAtom, { size: small ? 'M' : 'L', className: emotion.cx('lh-title mv2 fw6', emotion.css(templateObject_17$1 || (templateObject_17$1 = __makeTemplateObject(["\n                    display: block;\n                    display: -webkit-box;\n                    text-align: left;\n                    margin: 0px;\n                    line-height: 1.4;\n                    -webkit-line-clamp: 3;\n                    -webkit-box-orient: vertical;\n                    overflow: hidden;\n                    text-overflow: ellipsis;    \n                    margin-top: .5rem;\n                    margin-bottom: .5rem; \n                    color: ", ";\n                  "], ["\n                    display: block;\n                    display: -webkit-box;\n                    text-align: left;\n                    margin: 0px;\n                    line-height: 1.4;\n                    -webkit-line-clamp: 3;\n                    -webkit-box-orient: vertical;\n                    overflow: hidden;\n                    text-overflow: ellipsis;    \n                    margin-top: .5rem;\n                    margin-bottom: .5rem; \n                    color: ", ";\n                  "])), COLORS.BLACK.NORMAL)) }, title)),
                     React.createElement("div", { className: "" },
                         React.createElement(TextAtom, { size: "S", className: emotion.cx('lh-copy', emotion.css(templateObject_18$1 || (templateObject_18$1 = __makeTemplateObject(["\n                    color: ", ";\n                  "], ["\n                    color: ", ";\n                  "])), COLORS.BLACK.NORMAL)) },
                             React.createElement("span", { className: "" }, instructor))),

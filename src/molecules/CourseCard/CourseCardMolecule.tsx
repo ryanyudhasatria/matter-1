@@ -67,34 +67,6 @@ const generateColorByDifficulty = (difficulty: any) => {
   }
 };
 
-// const beginnerGradient =
-//   'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
-// const intermediateGradient =
-//   'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
-// const expertGradient =
-//   'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
-
-// const generateGradientByDifficulty = (difficulty: any) => {
-//   switch (difficulty.toUpperCase()) {
-//     case 'EXPERT':
-//       return expertGradient;
-//     case 'INTERMEDIATE':
-//       return intermediateGradient;
-//     case 'BEGINNER':
-//     default:
-//       return beginnerGradient;
-//   }
-// };
-
-// const courseRating = (ratings: any): any => {
-//   let rating;
-//   if (ratings.length !== 0) {
-//     const reducer = (accumulator: any, currentValue: any) => accumulator + currentValue;
-//     rating = Math.floor(ratings.map((r: any) => parseInt(r.rating, 10)).reduce(reducer) / ratings.length);
-//   }
-//   return rating;
-// };
-
 const renderDuration = (seconds: number): string => {
   if (seconds < 60) return `${seconds} detik`;
   if (seconds < 3600) return `${(seconds / 60).toPrecision(2)} menit`;
@@ -131,6 +103,7 @@ const CourseCardMolecule = ({
   headerType = '',
   isBookmarked = false,
   onBookmark = () => {},
+  LinkComponent = (props: any) => props.children, 
   IconComponent = () => null,
 }:
 any) => {
@@ -207,28 +180,30 @@ any) => {
           className={`flex flex-column mt1 ph3 pv1 w-100`}
         >
           <div className={cx('flex flex-column', css`min-height: 110px`)}>
-            <TextAtom
-              size={small ? 'M' : 'L'}
-              className={cx(
-                'lh-title mv2 fw6',
-                css`
-                  display: block;
-                  display: -webkit-box;
-                  text-align: left;
-                  margin: 0px;
-                  line-height: 1.4;
-                  -webkit-line-clamp: 3;
-                  -webkit-box-orient: vertical;
-                  overflow: hidden;
-                  text-overflow: ellipsis;    
-                  margin-top: .5rem;
-                  margin-bottom: .5rem; 
-                  color: ${COLORS.BLACK.NORMAL};
-                `
-              )}
-            >
-              {title}
-            </TextAtom>
+            <LinkComponent>
+              <TextAtom
+                size={small ? 'M' : 'L'}
+                className={cx(
+                  'lh-title mv2 fw6',
+                  css`
+                    display: block;
+                    display: -webkit-box;
+                    text-align: left;
+                    margin: 0px;
+                    line-height: 1.4;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;    
+                    margin-top: .5rem;
+                    margin-bottom: .5rem; 
+                    color: ${COLORS.BLACK.NORMAL};
+                  `
+                )}
+              >
+                {title}
+              </TextAtom>
+            </LinkComponent>
             <div className="">
               <TextAtom
                 size="S"
