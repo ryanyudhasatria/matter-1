@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
-import { AvatarAtom, CardAtom, IconAtom } from '../../atoms';
+import { AvatarAtom, CardAtom, IconAtom } from "../../atoms";
 
-const avatarCircle = 'border-radius: 100%;';
+const avatarCircle = "border-radius: 100%;";
 
 const CARD_TYPES = {
   GREY: css`
@@ -16,7 +16,7 @@ const CARD_TYPES = {
     box-shadow: none;
     width: 30rem;
     padding: 30px;
-  `
+  `,
 };
 
 const TYPES_LIST = {
@@ -25,12 +25,12 @@ const TYPES_LIST = {
         background: ${COLORS.RED.NORMAL};
         width: 48px;
         height: 48px;
-    `
+    `,
 };
 
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
   typeCard?: string;
   src?: string;
@@ -44,30 +44,30 @@ interface IProps {
 }
 
 class ReviewCardMolecule extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
+  public render() {
     const {
-      type = '',
-      typeCard = '',
-      className = '',
+      type = "",
+      typeCard = "",
+      className = "",
       src,
       alt,
       name,
       date,
       rating,
-      description
+      description,
     } = this.props;
 
-    var indents = [];
-    for (var i = 0; i < this.props.level; i++) {
+    const indents = [];
+    for (let i = 0; i < this.props.level; i++) {
       indents.push(<span className="indent" key={i} />);
     }
 
     return (
       <CardAtom
-        className={cx('', CARD_TYPES[typeCard], className)}
-        data-test={this.props['data-test']}
+        className={cx("", CARD_TYPES[typeCard], className)}
+        data-test={this.props["data-test"]}
       >
         <div>
           <div className="h3 db">
@@ -75,17 +75,17 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any> {
               <AvatarAtom
                 src={src}
                 alt={alt}
-                className={cx('', TYPES_LIST[type], className)}
+                className={cx("", TYPES_LIST[type], className)}
               />
             </div>
             <div className="fl">
               <h1 className="f5 lh-copy fw7 mb0">{name}</h1>
               <p
                 className={cx(
-                  'f6 lh-copy',
+                  "f6 lh-copy",
                   css`
                     margin: 0;
-                  `
+                  `,
                 )}
               >
                 {date}
@@ -96,61 +96,61 @@ class ReviewCardMolecule extends React.PureComponent<IProps, any> {
             <div className="">
               <IconAtom
                 className={cx(
-                  '',
+                  "",
                   css`
                     color: ${rating >= 1
                       ? COLORS.YELLOW.NORMAL
                       : COLORS.BLACK.LIGHTEST};
-                  `
+                  `,
                 )}
                 name="star"
               />
               <IconAtom
                 className={cx(
-                  '',
+                  "",
                   css`
                     color: ${rating >= 2
                       ? COLORS.YELLOW.NORMAL
                       : COLORS.BLACK.LIGHTEST};
-                  `
+                  `,
                 )}
                 name="star"
               />
               <IconAtom
                 className={cx(
-                  '',
+                  "",
                   css`
                     color: ${rating >= 3
                       ? COLORS.YELLOW.NORMAL
                       : COLORS.BLACK.LIGHTEST};
-                  `
+                  `,
                 )}
                 name="star"
               />
               <IconAtom
                 className={cx(
-                  '',
+                  "",
                   css`
                     color: ${rating >= 4
                       ? COLORS.YELLOW.NORMAL
                       : COLORS.BLACK.LIGHTEST};
-                  `
+                  `,
                 )}
                 name="star"
               />
               <IconAtom
                 className={cx(
-                  '',
+                  "",
                   css`
                     color: ${rating >= 5
                       ? COLORS.YELLOW.NORMAL
                       : COLORS.BLACK.LIGHTEST};
-                  `
+                  `,
                 )}
                 name="star"
               />
             </div>
-            <p className={cx('db f6')}>{description}</p>
+            <p className={cx("db f6")}>{description}</p>
           </div>
         </div>
       </CardAtom>

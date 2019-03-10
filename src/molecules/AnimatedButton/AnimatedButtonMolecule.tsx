@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-import { ButtonAtom, TextAtom, IconAtom } from '../../atoms';
+import { ButtonAtom, IconAtom, TextAtom } from "../../atoms";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 const AnimatedButtonMolecule = ({
   className,
@@ -18,7 +18,7 @@ const AnimatedButtonMolecule = ({
     disabled={disabled}
     onClick={onClick}
     className={cx(
-      'flex flex-row justify-between align-center',
+      "flex flex-row justify-between align-center",
       css`
         min-width: 300px;
         .i1 {
@@ -59,7 +59,7 @@ const AnimatedButtonMolecule = ({
         }
       `}
       `,
-      className
+      className,
     )}
   >
     <div style={{ width: 32, height: 32 }} />
@@ -71,26 +71,26 @@ const AnimatedButtonMolecule = ({
     <div className="self-center ph2">
       <div
         className="br-100 flex flex-row justify-center align-center bg-white"
-        style={{ width: 32, height: 32, overflow: 'hidden' }}
+        style={{ width: 32, height: 32, overflow: "hidden" }}
       >
         {
           <IconAtom
             name={icon}
             className={cx(
-              'i1 self-center f7',
+              "i1 self-center f7",
               css`
                 ${disabled && `color: ${COLORS.GREY.NORMAL}`}
-              `
+              `,
             )}
           />
         }
         <IconAtom
           name={icon}
           className={cx(
-            'i2 self-center f7',
+            "i2 self-center f7",
             css`
               ${disabled && `color: ${COLORS.GREY.NORMAL}`}
-            `
+            `,
           )}
         />
       </div>
@@ -98,6 +98,6 @@ const AnimatedButtonMolecule = ({
   </ButtonAtom>
 );
 
-AnimatedButtonMolecule.displayName = 'AnimatedButtonMolecule';
+AnimatedButtonMolecule.displayName = "AnimatedButtonMolecule";
 
 export { AnimatedButtonMolecule };

@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
 import {
-    CardAtom,
     AvatarAtom,
+    CardAtom,
     TextAtom,
-} from '../../atoms';
+} from "../../atoms";
 
 interface IProps {
     className?: any;
-    'data-test'?: any; 
+    "data-test"?: any;
     src?: string;
-    alt?: string;  
+    alt?: string;
     question?: string;
     description?: string;
     response?: string;
 }
 
 class DiscussionForumListPagelets extends React.PureComponent<IProps, any> {
-    render() {
+    public render() {
 
         const {
             src,
@@ -27,37 +27,37 @@ class DiscussionForumListPagelets extends React.PureComponent<IProps, any> {
             description,
             response,
         } = this.props;
-        
+
         return (
-            <CardAtom type="DEFAULT" className={cx('ma2', )}>
-                <div className={cx('dt dt--fixed', css``)}>
+            <CardAtom type="DEFAULT" className={cx("ma2" )}>
+                <div className={cx("dt dt--fixed", css``)}>
                 <div className="dtc tc pv4 w-10 v-mid">
-                    <AvatarAtom 
+                    <AvatarAtom
                         src={src}
                         alt={alt}
-                        type="LARGE_CIRCLE"   
-                        className={cx('', css`display: inline-flex;`)}                     
-                    />     
+                        type="LARGE_CIRCLE"
+                        className={cx("", css`display: inline-flex;`)}
+                    />
                 </div>
                 <div className="dtc tl pv4 w-80 v-mid">
-                    <TextAtom size="L" className={cx('fw7 db mb2', css``)}>
+                    <TextAtom size="L" className={cx("fw7 db mb2", css``)}>
                         {question}
                     </TextAtom>
-                    <TextAtom className={cx('db', css``)}>
+                    <TextAtom className={cx("db", css``)}>
                         {description}
                     </TextAtom>
                 </div>
                 <div className="dtc tc pv4 w-10 v-mid">
-                    <TextAtom size="L" className={cx('db mb2 fw7 tc', css``)}>
+                    <TextAtom size="L" className={cx("db mb2 fw7 tc", css``)}>
                         {response}
                     </TextAtom>
-                    <TextAtom className={cx('tc db', css``)}>
+                    <TextAtom className={cx("tc db", css``)}>
                         Respon
                     </TextAtom>
                 </div>
                 </div>
             </CardAtom>
-        )
+        );
     }
 }
 

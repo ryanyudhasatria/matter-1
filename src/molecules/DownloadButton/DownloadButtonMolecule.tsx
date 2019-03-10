@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
-import { ButtonAtom, TextAtom, IconAtom } from '../../atoms';
+import { ButtonAtom, IconAtom, TextAtom } from "../../atoms";
 
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
   name?: string;
   sizeIcon?: string;
@@ -17,32 +17,32 @@ interface IProps {
 }
 
 class DownloadButtonMolecule extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
-    const { description = '', sizeIcon = '', typeIcon = '' } = this.props;
+  public render() {
+    const { description = "", sizeIcon = "", typeIcon = "" } = this.props;
 
     return (
       <ButtonAtom
         className={cx(
-          '',
+          "",
           css`
             padding: 0.5rem;
             width: 8rem;
             display: block;
-          `
+          `,
         )}
         type="DEFAULT_PRIMARY"
       >
         <div
           className={cx(
-            'fl',
+            "fl",
             css`
               background: ${COLORS.WHITE.NORMAL};
               color: ${COLORS.PURPLE.NORMAL};
               border-radius: 100%;
               padding: 0 0.4rem 0 0.4rem;
-            `
+            `,
           )}
         >
           <IconAtom name="arrow-down" size={sizeIcon} type={typeIcon} />

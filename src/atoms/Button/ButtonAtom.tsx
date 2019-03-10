@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 const smallBase = css`
   border: 0;
@@ -77,20 +77,20 @@ const TYPES = {
       background: ${COLORS.RED.LIGHT};
     }
   `,
-  SMALL_GREY: css`
-    ${smallBase}
-    background: ${COLORS.GREY.NORMAL};
-    color: ${COLORS.BLACK.LIGHT};
-    :hover {
-      background: ${COLORS.GREY.LIGHT};
-    }
-  `,
   SMALL_GREEN: css`
     ${smallBase}
     background: ${COLORS.GREEN.NORMAL};
     color: ${COLORS.WHITE.NORMAL};
     :hover {
       background: ${COLORS.GREEN.DARKER};
+    }
+  `,
+  SMALL_GREY: css`
+    ${smallBase}
+    background: ${COLORS.GREY.NORMAL};
+    color: ${COLORS.BLACK.LIGHT};
+    :hover {
+      background: ${COLORS.GREY.LIGHT};
     }
   `,
   SMALL_WHITE: css`
@@ -174,7 +174,7 @@ const TYPES = {
     :hover {
       background: ${COLORS.GREY.LIGHT};
     }
-  `,  
+  `,
   DEFAULT_WHITE: css`
     ${defaultBase}
     background: ${COLORS.WHITE.NORMAL};
@@ -250,7 +250,7 @@ const TYPES = {
       color: ${COLORS.WHITE.NORMAL};
     }
     :active {
-      background: ${COLORS.PURPLE.DARKER};      
+      background: ${COLORS.PURPLE.DARKER};
     }
   `,
 };
@@ -260,28 +260,28 @@ const TYPES = {
 // `);
 
 const classNames = (type: string, disabled: any) =>
-  type.split('_')[0] === 'SMALL'
+  type.split("_")[0] === "SMALL"
     ? cx(
-        'fw6 f6 pv2 ph3 pointer bw0',
+        "fw6 f6 pv2 ph3 pointer bw0",
         TYPES[type],
-        disabled ? TYPES.DISABLED : ''
+        disabled ? TYPES.DISABLED : "",
       )
-    : type.split('_')[0] === 'DEFAULT'
+    : type.split("_")[0] === "DEFAULT"
     ? cx(
-        'fw6 f5 pv3 ph4 pointer bw0',
+        "fw6 f5 pv3 ph4 pointer bw0",
         TYPES[type],
-        disabled ? TYPES.DISABLED : ''
+        disabled ? TYPES.DISABLED : "",
       )
     : cx(
-        'fw6 f1 pv3 ph2 pointer bw0',
+        "fw6 f1 pv3 ph2 pointer bw0",
         TYPES[type],
-        disabled ? TYPES.DISABLED : ''
+        disabled ? TYPES.DISABLED : "",
       );
 
 interface IProps {
   children: any;
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   disabled?: boolean;
   isFormInput?: boolean;
   onClick?: any;
@@ -289,24 +289,24 @@ interface IProps {
 }
 
 class ButtonAtom extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
+  public render() {
     const {
       isFormInput = false,
       disabled = false,
-      type = 'SMALL_PRIMARY',
+      type = "SMALL_PRIMARY",
       onClick = () => {},
-      className = '',
-      children
+      className = "",
+      children,
     } = this.props;
     return (
       <button
-        data-test={this.props['data-test']}
-        type={isFormInput ? 'submit' : 'button'}
+        data-test={this.props["data-test"]}
+        type={isFormInput ? "submit" : "button"}
         disabled={disabled}
         onClick={disabled ? () => {} : onClick}
-        className={cx('outline-0', classNames(type, disabled), className)}
+        className={cx("outline-0", classNames(type, disabled), className)}
       >
         {children}
       </button>

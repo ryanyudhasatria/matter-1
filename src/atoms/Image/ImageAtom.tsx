@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 // import { cx } from 'emotion';
-import * as Image from 'react-shimmer';
+import * as Image from "react-shimmer";
 
 interface IProps {
   src: string;
@@ -13,8 +13,8 @@ interface IProps {
   duration?: number;
 }
 
-class ImageAtom extends React.PureComponent<IProps, any>{
-  render(){
+class ImageAtom extends React.PureComponent<IProps, any> {
+  public render() {
     const {
       src,
       alt,
@@ -22,22 +22,22 @@ class ImageAtom extends React.PureComponent<IProps, any>{
       width,
       height,
       delay,
-      duration
+      duration,
     } = this.props;
     return (
       <div>
         <Image
             src={src}
-            width={width} 
+            width={width}
             height={height}
             alt={alt}
             className={className}
-            style={{objectFit: 'cover'}} // Style your <img> 
+            style={{objectFit: "cover"}} // Style your <img>
             delay={delay}
             duration={duration} // Customize the animation duration (s).
         />
       </div>
-    )
+    );
   }
 }
 

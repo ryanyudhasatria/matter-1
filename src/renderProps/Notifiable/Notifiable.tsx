@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { NotificationBannerMolecule } from '../../molecules/NotificationBanner/NotificationBannerMolecule';
+import { NotificationBannerMolecule } from "../../molecules/NotificationBanner/NotificationBannerMolecule";
 
 const initialState = {
   isNotificationVisible: false,
@@ -9,31 +9,31 @@ const initialState = {
 };
 
 interface IProps {
-  children: any
+  children: any;
 }
 
 class Notifiable extends React.Component<IProps, any> {
-  state = { ...initialState }
+  public state = { ...initialState };
 
-  componentDidMount() {
-    if (localStorage.getItem('isNotificationVisible')) {
+  public componentDidMount() {
+    if (localStorage.getItem("isNotificationVisible")) {
       this.setState({
-        isNotificationVisible: localStorage.getItem('isNotificationVisible'),
-        message: localStorage.getItem('notificationMessage') || '',
-        type: localStorage.getItem('notificationType') || 'SUCCESS',
+        isNotificationVisible: localStorage.getItem("isNotificationVisible"),
+        message: localStorage.getItem("notificationMessage") || "",
+        type: localStorage.getItem("notificationType") || "SUCCESS",
       });
     }
   }
 
-  showNotification = ({ message, type }: any) => {
+  public showNotification = ({ message, type }: any) => {
     this.setState({
       isNotificationVisible: true,
       message,
       type,
     }); // type: SUCCESS / FAILURE
-    localStorage.setItem('isNotificationVisible', 'true');
-    localStorage.setItem('notificationMessage', message);
-    localStorage.setItem('notificationType', type);
+    localStorage.setItem("isNotificationVisible", "true");
+    localStorage.setItem("notificationMessage", message);
+    localStorage.setItem("notificationType", type);
 
     setTimeout(() => {
       this.setState({
@@ -41,20 +41,20 @@ class Notifiable extends React.Component<IProps, any> {
         message,
         type,
       });
-      localStorage.removeItem('isNotificationVisible');
-      localStorage.removeItem('notificationMessage');
-      localStorage.removeItem('notificationType');
+      localStorage.removeItem("isNotificationVisible");
+      localStorage.removeItem("notificationMessage");
+      localStorage.removeItem("notificationType");
     }, 3000);
   }
 
-  closeNotification = () => {
+  public closeNotification = () => {
     this.setState({ ...initialState });
-    localStorage.removeItem('isNotificationVisible');
-    localStorage.removeItem('notificationMessage');
-    localStorage.removeItem('notificationType');
+    localStorage.removeItem("isNotificationVisible");
+    localStorage.removeItem("notificationMessage");
+    localStorage.removeItem("notificationType");
   }
 
-  render() {
+  public render() {
     const NotificationBannerComponent = () => {
       if (this.state.isNotificationVisible) {
         return (

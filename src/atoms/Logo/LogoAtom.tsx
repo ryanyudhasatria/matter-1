@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-import * as black from './black.png';
-import * as white from './white.png';
-import * as betablack from './betablack.png';
-import * as betawhite from './betawhite.png';
+import * as betablack from "./betablack.png";
+import * as betawhite from "./betawhite.png";
+import * as black from "./black.png";
+import * as white from "./white.png";
 
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
   src: string;
   alt?: string;
@@ -17,23 +17,23 @@ interface IProps {
 }
 
 class LogoAtom extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
-    const { type = '', alt = '', width = '', height = '' } = this.props;
+  public render() {
+    const { type = "", alt = "", width = "", height = "" } = this.props;
 
     let logo = null;
 
-    if (type === 'BLACK') {
+    if (type === "BLACK") {
       logo = black;
     }
-    if (type === 'WHITE') {
+    if (type === "WHITE") {
       logo = white;
     }
-    if (type === 'BETABLACK') {
+    if (type === "BETABLACK") {
       logo = betablack;
     }
-    if (type === 'BETAWHITE') {
+    if (type === "BETAWHITE") {
       logo = betawhite;
     }
 
@@ -41,8 +41,8 @@ class LogoAtom extends React.PureComponent<IProps, any> {
       <img
         src={logo}
         alt={alt}
-        data-test={this.props['data-test']}
-        className={cx('', css``)}
+        data-test={this.props["data-test"]}
+        className={cx("", css``)}
         width={width}
         height={height}
       />

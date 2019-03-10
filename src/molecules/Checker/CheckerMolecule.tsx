@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
-import { IconAtom, ButtonAtom } from '../../atoms';
+import { ButtonAtom, IconAtom } from "../../atoms";
 
 const TYPES_LIST = {
   NORMAL: css`
@@ -22,12 +22,12 @@ const TYPES_LIST = {
       background: ${COLORS.GREEN.NORMAL};
       opacity: 1;
     }
-  `
+  `,
 };
 
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: any;
   name?: string;
   description?: string;
@@ -36,23 +36,23 @@ interface IProps {
 
 const CheckerMolecule = (
   props: IProps = {
-    name: '',
-    type: '',
-    className: '',
-    description: '',
-    nameIcon: ''
-  }
+    name: "",
+    type: "",
+    className: "",
+    description: "",
+    nameIcon: "",
+  },
 ) => {
   return (
     <ButtonAtom
       className={cx(
-        'f6 link dim br-pill ph3 pa3 w-10 tc fw7 mb2 dib relative',
-        css`min-width: 8rem;`,   
+        "f6 link dim br-pill ph3 pa3 w-10 tc fw7 mb2 dib relative",
+        css`min-width: 8rem;`,
         TYPES_LIST[props.type],
-        props.className
+        props.className,
       )}
     >
-      {props.description} <IconAtom className={cx('fr', css`position: absolute; right: 1rem;`)} name={props.nameIcon} />
+      {props.description} <IconAtom className={cx("fr", css`position: absolute; right: 1rem;`)} name={props.nameIcon} />
     </ButtonAtom>
   );
 };

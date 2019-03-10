@@ -1,50 +1,50 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-import { IconAtom, TextAtom } from '../../atoms';
+import { IconAtom, TextAtom } from "../../atoms";
 
 // @ts-ignore
-import COLORS from '../../constants/colors';
+import COLORS from "../../constants/colors";
 
 class InputOrganism extends React.PureComponent<any, any> {
+
+  public state = {
+    isFocus: false,
+    isActive: !!this.props.value,
+  };
   private input: HTMLInputElement | HTMLTextAreaElement | null;
 
-  state = {
-    isFocus: false,
-    isActive: !!this.props.value
-  };
-
-  onFocus = () => {
+  public onFocus = () => {
     this.setState({ isFocus: true });
     if (this.input) {
       this.input.focus();
     }
-  };
+  }
 
-  onBlur = () => {
+  public onBlur = () => {
     this.setState({ isFocus: false });
     if (this.props.onBlur) {
       this.props.onBlur();
     }
-  };
+  }
 
-  onScroll = () => {
+  public onScroll = () => {
     if (this.input) {
       window.scrollTo({
         top: this.input.offsetTop - 200,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
-  };
+  }
 
-  handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  public handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     this.props.onChange(e);
     this.setState({ isActive: !!e.target.value });
-  };
+  }
 
-  render() {
+  public render() {
     const { isFocus, isActive } = this.state;
     const {
       value,
@@ -54,18 +54,18 @@ class InputOrganism extends React.PureComponent<any, any> {
       label,
       icon,
       className,
-      type = 'text',
+      type = "text",
       disabled,
       height,
       required,
-      onKeyUp = () => {}
+      onKeyUp = () => {},
     } = this.props;
 
     return (
       <div
         className={cx(
-          'flex flex-column justify-center align-center',
-          className
+          "flex flex-column justify-center align-center",
+          className,
         )}
       >
         <div
@@ -75,53 +75,53 @@ class InputOrganism extends React.PureComponent<any, any> {
           onKeyPress={this.onFocus}
           onFocus={this.onFocus}
           className={cx(
-            'w-100 ph3 pv1 br3 flex flex-row align-start outline-0',
+            "w-100 ph3 pv1 br3 flex flex-row align-start outline-0",
             css`
               background: ${COLORS.WHITE.NORMAL};
-              cursor: ${disabled ? 'not-allowed' : 'pointer'};
+              cursor: ${disabled ? "not-allowed" : "pointer"};
               border: 1px solid
                 ${error
-                  ? '#EB5757'
+                  ? "#EB5757"
                   : isFocus && !disabled
-                  ? '#645AFF'
-                  : '#E8EDF2'};
+                  ? "#645AFF"
+                  : "#E8EDF2"};
               transition: all 0.5s ease;
-              height: ${type === 'textarea' ? height || 'auto' : '48px'};
+              height: ${type === "textarea" ? height || "auto" : "48px"};
               @media screen and (min-width: 30em) {
-                height: ${type === 'textarea' ? height || 'auto' : '56px'};
+                height: ${type === "textarea" ? height || "auto" : "56px"};
               }
-            `
+            `,
           )}
         >
           {icon && (
             <IconAtom
               name={icon}
               className={cx(
-                'self-center',
+                "self-center",
                 css`
                   transition: 0.2s;
                   color: ${COLORS.BLACK.LIGHT};
-                `
+                `,
               )}
             />
           )}
           <div className="w-100 ml2 flex flex-column justify-start align-start">
             <TextAtom
-              size={isFocus || isActive ? 'XS' : 'M'}
+              size={isFocus || isActive ? "XS" : "M"}
               className={cx(
-                'bg-white ph2 self-start',
+                "bg-white ph2 self-start",
                 css`
                   transition: all 0.4s ease;
                   color: ${error
-                    ? '#EB5757'
+                    ? "#EB5757"
                     : isFocus && !disabled
-                    ? '#645AFF'
-                    : '#8393A3'};
+                    ? "#645AFF"
+                    : "#8393A3"};
                   transform: translateY(${isFocus || isActive ? -12 : 12}px);
                   @media screen and (min-width: 30em) {
                     transform: translateY(${isFocus || isActive ? -13 : 13}px);
                   }
-                `
+                `,
               )}
             >
               {required && (isFocus || isActive)
@@ -130,24 +130,24 @@ class InputOrganism extends React.PureComponent<any, any> {
                 ? label
                 : `* ${label}`}
             </TextAtom>
-            {type !== 'textarea' && (
+            {type !== "textarea" && (
               <input
-                ref={input => {
+                ref={(input) => {
                   this.input = input;
                 }}
                 type={type}
                 className={cx(
-                  'w-100 ph2 outline-0 bn',
+                  "w-100 ph2 outline-0 bn",
                   css`
                     ::placeholder {
-                      color: ${COLORS.BLACK.LIGHT};       
+                      color: ${COLORS.BLACK.LIGHT};
                       opacity: 1;
-                    }                  
+                    }
                     font-size: 0.8rem;
-                    cursor: ${disabled ? 'not-allowed' : 'auto'};
+                    cursor: ${disabled ? "not-allowed" : "auto"};
                     background: transparent;
-                    opacity: ${isFocus || isActive ? '1' : '0'};
-                    height: ${height || 'auto'};
+                    opacity: ${isFocus || isActive ? "1" : "0"};
+                    height: ${height || "auto"};
                     transition: all 0.4s ease;
                     margin-top: -0.5px;
                     transform: translateY(${isFocus || isActive ? -2 : 0}px);
@@ -157,7 +157,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                     }
                     color: ${COLORS.BLACK.DARKER};
                     background: ${COLORS.WHITE.NORMAL};
-                  `
+                  `,
                 )}
                 onKeyUp={onKeyUp}
                 name={name}
@@ -166,23 +166,23 @@ class InputOrganism extends React.PureComponent<any, any> {
                 onChange={this.handleChange}
                 onBlur={this.onBlur}
                 disabled={disabled}
-                data-test={this.props['data-test']}
+                data-test={this.props["data-test"]}
                 style={{ color: `${COLORS.BLACK.DARKER}` }}
               />
             )}
-            {type === 'textarea' && (
+            {type === "textarea" && (
               <textarea
-                ref={input => {
+                ref={(input) => {
                   this.input = input;
                 }}
                 className={cx(
-                  'w-100 ph2 outline-0 bn',
+                  "w-100 ph2 outline-0 bn",
                   css`
                     font-size: 0.8rem;
-                    cursor: ${disabled ? 'not-allowed' : 'auto'};
+                    cursor: ${disabled ? "not-allowed" : "auto"};
                     background: transparent;
-                    opacity: ${isFocus || isActive ? '1' : '0'};
-                    height: ${height || 'auto'};
+                    opacity: ${isFocus || isActive ? "1" : "0"};
+                    height: ${height || "auto"};
                     transition: all 0.4s ease;
                     margin-top: -0.5px;
                     transform: translateY(${isFocus || isActive ? -2 : 0}px);
@@ -192,7 +192,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                     }
                     color: ${COLORS.BLACK.DARKER};
                     background: ${COLORS.WHITE.NORMAL};
-                  `
+                  `,
                 )}
                 name={name}
                 value={value}
@@ -201,7 +201,7 @@ class InputOrganism extends React.PureComponent<any, any> {
                 onKeyUp={onKeyUp}
                 onBlur={this.onBlur}
                 disabled={disabled}
-                data-test={this.props['data-test']}
+                data-test={this.props["data-test"]}
                 style={{ color: `${COLORS.BLACK.DARKER}` }}
               />
             )}
@@ -210,10 +210,10 @@ class InputOrganism extends React.PureComponent<any, any> {
             <IconAtom
               name="exclamation-circle"
               className={cx(
-                'f3 self-center',
+                "f3 self-center",
                 css`
                   color: ${COLORS.RED.NORMAL};
-                `
+                `,
               )}
             />
           )}
@@ -223,10 +223,10 @@ class InputOrganism extends React.PureComponent<any, any> {
             <TextAtom
               size="S"
               className={cx(
-                'self-center',
+                "self-center",
                 css`
-                  color: #eb5757;                  
-                `
+                  color: #eb5757;
+                `,
               )}
             >
               {error}

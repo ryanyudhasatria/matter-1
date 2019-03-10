@@ -1,46 +1,46 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
 import {
     ButtonAtom,
     CardAtom,
-    TextAtom,
     IconAtom,
-} from '../../atoms';
+    TextAtom,
+} from "../../atoms";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 interface item {
-  label?:string
-  handleClick?: any
-  component?: any
+  label?: string;
+  handleClick?: any;
+  component?: any;
 }
 
 interface IProps {
-  className?: any
-  'data-test'?: any
-  type?: string
-  children: any
-  label?:string
-  items?:item[]
+  className?: any;
+  "data-test"?: any;
+  type?: string;
+  children: any;
+  label?: string;
+  items?: item[];
 }
 
 class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
-  state = {
+  public state = {
     isExpanded: false,
-  }
-  dropdownMenuWrapper: any;
+  };
+  public dropdownMenuWrapper: any;
 
-  componentWillMount() {
-    document.addEventListener('mousedown', this.handlePageClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handlePageClick);
+  public componentWillMount() {
+    document.addEventListener("mousedown", this.handlePageClick);
   }
 
-  handlePageClick = (e: any) => {
+  public componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handlePageClick);
+  }
+
+  public handlePageClick = (e: any) => {
     if (this.dropdownMenuWrapper) {
       if (this.dropdownMenuWrapper.contains(e.target)) {
         this.setState({ isExpanded: !this.state.isExpanded });
@@ -50,28 +50,28 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
     }
   }
 
-  render() {   
+  public render() {
     const { isExpanded } = this.state;
     const {
         items = [],
-        label
+        label,
     } = this.props;
 
     return (
       <div ref={(dropdownMenuWrapper) => { this.dropdownMenuWrapper = dropdownMenuWrapper; }}
-      className={cx('relative dib', this.props.className)}
+      className={cx("relative dib", this.props.className)}
       >
           <ButtonAtom
-            type={isExpanded ? 'SMALL_PRIMARY' : 'SMALL_GREY'}
+            type={isExpanded ? "SMALL_PRIMARY" : "SMALL_GREY"}
             onClick={() => {}}
             className="outline-0"
-            data-test={this.props['data-test']}
+            data-test={this.props["data-test"]}
           >
               <TextAtom>{label}</TextAtom>
               <IconAtom name="angle-down" className="ml2" />
           </ButtonAtom>
           <CardAtom className={
-              cx('absolute flex flex-column top-0 right-0', 
+              cx("absolute flex flex-column top-0 right-0",
               css`
                 max-height: ${isExpanded ? 1000 : 0}px;
                 opacity: ${isExpanded ? 1 : 0};
@@ -79,7 +79,7 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
                 overflow: hidden;
                 transition: max-height 0.2s linear, opacity 0.2s linear, top 0.2s linear;
                 z-index: 999;
-              `
+              `,
           )}
           >
            {items.map((item: any, idx: any) => {
@@ -90,8 +90,8 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
                   id={`dropdownmenu-${idx}`}
                   role="button"
                   tabIndex={idx}
-                  className={cx('w-100 pointer pv3 ph3-ns ph2 outline-0', css`
-                    display: ${isExpanded ? 'flex' : 'flex'};
+                  className={cx("w-100 pointer pv3 ph3-ns ph2 outline-0", css`
+                    display: ${isExpanded ? "flex" : "flex"};
                     width: auto;
                     min-width: 150px;
                     transition: 0.2s;
@@ -100,7 +100,7 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
                       transition: 0.2s;
                     }
                   `)}
-                  data-test={`${this.props['data-test']}-${idx}`}
+                  data-test={`${this.props["data-test"]}-${idx}`}
                 >
                   {item.component()}
                 </div>
@@ -115,8 +115,8 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
                 tabIndex={idx}
                 onKeyPress={item.handleClick}
                 onClick={item.handleClick}
-                className={cx('w-100 pointer pv3 ph3-ns ph2 outline-0', css`
-                  display: ${isExpanded ? 'flex' : 'flex'};
+                className={cx("w-100 pointer pv3 ph3-ns ph2 outline-0", css`
+                  display: ${isExpanded ? "flex" : "flex"};
                   width: auto;
                   min-width: 150px;
                   transition: 0.2s;
@@ -125,9 +125,9 @@ class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
                     transition: 0.2s;
                   }
                 `)}
-                data-test={`${this.props['data-test']}-${idx}`}
+                data-test={`${this.props["data-test"]}-${idx}`}
               >
-                <TextAtom size="S" className={cx('', css`white-space: pre;`)}>{item.label}</TextAtom>
+                <TextAtom size="S" className={cx("", css`white-space: pre;`)}>{item.label}</TextAtom>
               </div>
             );
           })}

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { css, cx, keyframes } from 'emotion';
+import { css, cx, keyframes } from "emotion";
+import * as React from "react";
 
 const dotCss = css`
   width: 9px;
@@ -40,30 +40,30 @@ const rowContainer = css`
   width: 50px;
 `; // prev: 73
 
-const LoaderMolecule = ({ className = '' }) => (
+const LoaderMolecule = ({ className = "" }) => (
   <div
     className={cx(
-      'flex flex-column justify-between align-center',
+      "flex flex-column justify-between align-center",
       colContainer,
-      className
+      className,
     )}
   >
     <div
-      className={cx('flex flex-row justify-between align-center', rowContainer)}
+      className={cx("flex flex-row justify-between align-center", rowContainer)}
     >
       <div className={cx(dotCss, dotPurple)} />
       <div className={cx(dotCss, dotRed)} />
       <div className={cx(dotCss, dotPurple)} />
     </div>
     <div
-      className={cx('flex flex-row justify-between align-center', rowContainer)}
+      className={cx("flex flex-row justify-between align-center", rowContainer)}
     >
       <div className={cx(dotCss, dotRed)} />
       <div className={cx(dotCss, dotPurple)} />
       <div className={cx(dotCss, dotRed)} />
     </div>
     <div
-      className={cx('flex flex-row justify-between align-center', rowContainer)}
+      className={cx("flex flex-row justify-between align-center", rowContainer)}
     >
       <div className={cx(dotCss, dotPurple)} />
       <div className={cx(dotCss, dotRed)} />

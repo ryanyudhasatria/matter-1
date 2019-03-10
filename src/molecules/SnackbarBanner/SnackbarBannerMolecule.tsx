@@ -1,25 +1,25 @@
-import * as React from 'react';
-import { Motion, spring } from 'react-motion';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
+import { Motion, spring } from "react-motion";
 
-import { TextAtom, IconAtom } from '../../atoms';
+import { IconAtom, TextAtom } from "../../atoms";
 
 const genBannerStyle = (type: any) => {
-  let style = 'color: #FFFFFF;';
+  let style = "color: #FFFFFF;";
   switch (type) {
-    case 'SUCCESS': style += 'background: #1BCBD1'; break;
-    case 'FAILURE': style += 'background: #FF6260'; break;
-    case 'LOADING': style += 'background: #FFBA0B'; break;
-    default: style += 'background: #1BCBD1'; break;
+    case "SUCCESS": style += "background: #1BCBD1"; break;
+    case "FAILURE": style += "background: #FF6260"; break;
+    case "LOADING": style += "background: #FFBA0B"; break;
+    default: style += "background: #1BCBD1"; break;
   }
 
   return style;
 };
 
 class SnackbarBannerMolecule extends React.Component<any, any> {
-  state = { isVisible: true }
+  public state = { isVisible: true };
 
-  render() {
+  public render() {
     const { type, children } = this.props;
 
     return (
@@ -29,11 +29,13 @@ class SnackbarBannerMolecule extends React.Component<any, any> {
       >
         {(value: any) => (
           <div
-            className={cx('flex flex-row justify-between align-center fixed w-100 ph3 pv2', css`z-index: 997; bottom: 0; left: 0; ${genBannerStyle(type)}`)}
-            style={{ height: value.height, display: this.state.isVisible ? 'flex' : 'none' }}
+            className={cx("flex flex-row justify-between align-center fixed w-100 ph3 pv2", css`
+              z-index: 997; bottom: 0; left: 0; ${genBannerStyle(type)}
+            `)}
+            style={{ height: value.height, display: this.state.isVisible ? "flex" : "none" }}
           >
             <div />
-            {typeof children === 'string' ? <TextAtom className="self-center">{children}</TextAtom> : children}
+            {typeof children === "string" ? <TextAtom className="self-center">{children}</TextAtom> : children}
             <div className="ph3 flex flex-row self-center justify-end align-center">
               <div
                 role="button"

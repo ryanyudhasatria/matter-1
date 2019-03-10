@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
 const CARD_TYPES = {
   DEFAULT: css`
@@ -18,7 +18,7 @@ const CARD_TYPES = {
     display: inline-flex;
     background: #f5f7fa;
     border-radius: 8px;
-  `
+  `,
 };
 
 interface IProps {
@@ -28,7 +28,7 @@ interface IProps {
 }
 
 const CardAtom = (props: IProps) => {
-  const { type = 'DEFAULT', className = '', children = null } = props;
+  const { type = "DEFAULT", className = "", children = null } = props;
 
   return (
     <div {...props} className={cx(CARD_TYPES[type], className)}>
@@ -37,6 +37,6 @@ const CardAtom = (props: IProps) => {
   );
 };
 
-CardAtom.displayName = 'CardAtom';
+CardAtom.displayName = "CardAtom";
 
 export { CardAtom };

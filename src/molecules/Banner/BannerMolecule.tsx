@@ -1,23 +1,23 @@
-import * as React from 'react';
+import * as React from "react";
 // import { cx, css } from 'emotion';
 
-import Carousel from 'nuka-carousel';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import Carousel from "nuka-carousel";
 
-import { ButtonAtom, IconAtom } from '../../atoms';
+import { ButtonAtom, IconAtom } from "../../atoms";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
-import { isNull } from 'util';
+// @ts-ignore
+import { isNull } from "util";
+import COLORS from "../../constants/colors";
 
 interface listdata {
-  //untuk array
+  // untuk array
   linkUrl?: string;
   imageUrl?: string;
 }
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
   nameIcon?: string;
   icon?: any;
@@ -40,14 +40,12 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
   //   }, 0);
   // }
 
-  state = {
-    currentSlideIndex: 0
+  public state = {
+    currentSlideIndex: 0,
   };
 
-  
+  public render() {
 
-  render() {
-    
     const { items = [], slidesToShow } = this.props;
     const { currentSlideIndex } = this.state;
 
@@ -62,20 +60,20 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
         speed={600}
         wrapAround={true}
         cellAlign="center"
-        slidesToShow={slidesToShow}        
-        afterSlide={currentSlideIndex => this.setState({ currentSlideIndex })}
+        slidesToShow={slidesToShow}
+        afterSlide={(currentSlideIndex) => this.setState({ currentSlideIndex })}
         renderCenterLeftControls={({ previousSlide }) => (
           <ButtonAtom
             onClick={previousSlide}
             className={cx(
-              'pa3',
+              "pa3",
               css`
                 border-radius: 0px 40px 40px 0px;
                 padding: 1rem;
                 font-size: 1rem;
                 color: ${COLORS.WHITE.NORMAL};
                 background: ${COLORS.BLACK.DARKER};
-              `
+              `,
             )}
           >
             <IconAtom name="chevron-left" />
@@ -85,14 +83,14 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
           <ButtonAtom
             onClick={nextSlide}
             className={cx(
-              'pa3',
+              "pa3",
               css`
                 border-radius: 40px 0px 0px 40px;
                 padding: 1rem;
                 font-size: 1rem;
                 color: ${COLORS.WHITE.NORMAL};
                 background: ${COLORS.BLACK.DARKER};
-              `
+              `,
             )}
           >
             <IconAtom name="chevron-right" />
@@ -100,8 +98,8 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
         )}
       >
         {items.map(function(item, index) {
-          console.log('data', window.innerWidth)
-          console.log('data2', window.innerHeight)
+          console.log("data", window.innerWidth);
+          console.log("data2", window.innerHeight);
           return (
             <a
               key={index}
@@ -111,8 +109,8 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
             >
               <img
                 src={item.imageUrl}
-                className={cx('', css`
-                  opacity: ${currentSlideIndex === index ? '1' : '0.5'};
+                className={cx("", css`
+                  opacity: ${currentSlideIndex === index ? "1" : "0.5"};
                   transition: 0.3s;
                   width: 100%;
                 `)}

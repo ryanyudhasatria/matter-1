@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
-import { CardAtom, TextAtom } from '../../atoms';
+import { CardAtom, TextAtom } from "../../atoms";
 
 const hoverableCard = css`
   transition: all 0.2s ease-out;
@@ -17,36 +17,36 @@ const hoverableCard = css`
 `;
 
 const beginnerGradient =
-  'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
+  "background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;";
 const intermediateGradient =
-  'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
+  "background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;";
 const expertGradient =
-  'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
+  "background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;";
 
 const generateGradientByDifficulty = (difficulty: any) => {
   switch (difficulty.toUpperCase()) {
-    case 'EXPERT':
+    case "EXPERT":
       return expertGradient;
-    case 'INTERMEDIATE':
+    case "INTERMEDIATE":
       return intermediateGradient;
-    case 'BEGINNER':
+    case "BEGINNER":
     default:
       return beginnerGradient;
   }
 };
 
 const LearningPathCardMolecule = ({
-  title = '',
-  instructor = 'KODE Team',
+  title = "",
+  instructor = "KODE Team",
   coverImage = null,
   fullImage = true,
-  description = '',
+  description = "",
   courses = [],
-  level = { name: '', label: '' },
+  level = { name: "", label: "" },
   ProgressBarComponent = () => null,
   FooterComponent = () => null,
   small,
-  className = ''
+  className = "",
 }: any) => {
   return (
     <CardAtom
@@ -54,14 +54,14 @@ const LearningPathCardMolecule = ({
         `pb3 relative flex flex-column align-center justify-start`,
         hoverableCard,
         css`
-          ${small ? '' : 'height: auto'}
+          ${small ? "" : "height: auto"}
         `,
         className,
       )}
     >
       <div
         className={cx(
-          'w-100 br2 absolute',
+          "w-100 br2 absolute",
           css`
             height: 8px;
             top: 0;
@@ -69,23 +69,23 @@ const LearningPathCardMolecule = ({
             @media only screen and (max-width: 30em) {
               height: 5px;
             }
-          `
+          `,
         )}
       />
       <div className="flex flex-column justify-start">
         <div className={`flex flex-column w-100`}>
         {coverImage && (
-          <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
+          <div className={cx(`${fullImage ? "" : "ph3 pt2"}`)}>
             <div>
               <img
                 src={coverImage}
                 alt=""
                 className={cx(
-                  fullImage ? 'br3 br--top' : 'br3',
+                  fullImage ? "br3 br--top" : "br3",
                   css`
                     min-height: 200px;
                     object-fit: cover;
-                  `
+                  `,
                 )}
               />
             </div>
@@ -93,25 +93,25 @@ const LearningPathCardMolecule = ({
         )}
         <div className="ph3 flex flex-column">
           <TextAtom
-            size={small ? 'M' : 'L'}
+            size={small ? "M" : "L"}
             className={cx(
-              'lh-title mv2 fw6',
+              "lh-title mv2 fw6",
               css`
                 color: ${COLORS.BLACK.NORMAL};
-              `
+              `,
             )}
           >
             {title}
           </TextAtom>
           {courses && (
             <div>
-            <TextAtom size="XS" className={`f6 lh-copy ${small ? '' : 'mt3'}`}>
+            <TextAtom size="XS" className={`f6 lh-copy ${small ? "" : "mt3"}`}>
                 <span
                   className={cx(
-                    'fw6',
+                    "fw6",
                     css`
                       color: ${COLORS.BLACK.LIGHT};
-                    `
+                    `,
                   )}
                 >
                   {`${courses.length} kelas di learning path ini`.toUpperCase()}
@@ -122,10 +122,10 @@ const LearningPathCardMolecule = ({
           <TextAtom
             size="S"
             className={cx(
-              'mv2 lh-copy',
+              "mv2 lh-copy",
               css`
                 color: ${COLORS.BLACK.LIGHTER};
-              `
+              `,
             )}
           >
             {description}
@@ -139,6 +139,6 @@ const LearningPathCardMolecule = ({
   );
 };
 
-LearningPathCardMolecule.displayName = 'LearningPathCardMolecule';
+LearningPathCardMolecule.displayName = "LearningPathCardMolecule";
 
 export { LearningPathCardMolecule };

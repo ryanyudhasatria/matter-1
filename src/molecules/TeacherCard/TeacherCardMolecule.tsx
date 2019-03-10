@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
-import { AvatarAtom, CardAtom } from '../../atoms';
+import { AvatarAtom, CardAtom } from "../../atoms";
 
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
   typeCard?: string;
   src?: string;
@@ -22,16 +22,16 @@ interface IProps {
 }
 
 class TeacherCardMolecule extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
+  public render() {
     const { src, alt, name, instructorRole, description } = this.props;
 
     return (
       <CardAtom
         className="flex w-25 pa3"
         type="GREY"
-        data-test={this.props['data-test']}
+        data-test={this.props["data-test"]}
       >
         <div>
           <div className="h3 db">
@@ -42,10 +42,10 @@ class TeacherCardMolecule extends React.PureComponent<IProps, any> {
               <h1 className="f5 lh-copy fw7 mb0">{name}</h1>
               <p
                 className={cx(
-                  'f6 lh-copy',
+                  "f6 lh-copy",
                   css`
                     margin: 0;
-                  `
+                  `,
                 )}
               >
                 {instructorRole}
@@ -53,7 +53,7 @@ class TeacherCardMolecule extends React.PureComponent<IProps, any> {
             </div>
           </div>
           <div className="dib v-mid">
-            <p className={cx('db f6 ma0 mt3')}>{description}</p>
+            <p className={cx("db f6 ma0 mt3")}>{description}</p>
           </div>
         </div>
       </CardAtom>

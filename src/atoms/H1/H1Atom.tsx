@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
 const h1 = css`
   font-weight: 700;
@@ -18,6 +18,6 @@ const H1Atom = (props: any) => (
   </h1>
 );
 
-H1Atom.displayName = 'H1';
+H1Atom.displayName = "H1";
 
 export { H1Atom };

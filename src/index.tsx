@@ -12,10 +12,10 @@ import {
   LinkTextAtom,
   // LogoAtom,
   ProgressBarAtom,
-  TextAtom
-} from './atoms';
+  TextAtom,
+} from "./atoms";
 
-import { 
+import {
   AlertMolecule,
   AnimatedButtonMolecule,
   BannerMolecule,
@@ -32,28 +32,28 @@ import {
   ReviewCardMolecule,
   SkillAssessmentCardMolecule,
   TeacherCardMolecule,
-  WidgetCardMolecule
-} from './molecules';
+  WidgetCardMolecule,
+} from "./molecules";
 
 import {
   DateOrganism,
   EngagedUserPieChartOrganism,
   InputOrganism,
   LearningTimeBarChartOrganism,
-  SelectOrganism
-} from './organisms';
+  SelectOrganism,
+} from "./organisms";
 
 import {
   DatatablePagelets,
   DiscussionForumDetailPagelets,
   DiscussionForumListPagelets,
-  LoadingPagelets
-} from './pagelets';
+  LoadingPagelets,
+} from "./pagelets";
 
 import {
   Confirmable,
-  Notifiable
-} from './renderProps';
+  Notifiable,
+} from "./renderProps";
 
 export {
   // Atom
@@ -103,8 +103,8 @@ export {
   DiscussionForumDetailPagelets,
   DiscussionForumListPagelets,
   LoadingPagelets,
-  
+
   //  Render Props
   Confirmable,
   Notifiable,
-}
+};

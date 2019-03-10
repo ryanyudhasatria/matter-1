@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
-import { Link } from 'react-router-dom';
+import { css, cx } from "emotion";
+import * as React from "react";
+import { Link } from "react-router-dom";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 const animatedLinkText = css`
   width: auto;
@@ -36,11 +36,11 @@ const LinkTextAtom = ({ to, animated, className, ...props }: any) => (
   <Link
     to={to}
     {...props}
-    data-test={props['data-test']}
+    data-test={props["data-test"]}
     className={cx(animated ? animatedLinkText : linkText, className)}
   />
 );
 
-LinkTextAtom.displayName = 'LinkTextAtom';
+LinkTextAtom.displayName = "LinkTextAtom";
 
 export { LinkTextAtom };

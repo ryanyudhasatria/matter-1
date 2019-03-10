@@ -1,11 +1,11 @@
-import * as React from 'react';
-import * as Modal from 'react-modal';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
+import * as Modal from "react-modal";
 
-import { ButtonAtom, IconAtom, TextAtom } from '../../atoms';
+import { ButtonAtom, IconAtom, TextAtom } from "../../atoms";
 
 // @ts-ignore
-import COLORS from '../../constants/colors';
+import COLORS from "../../constants/colors";
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 // try {
@@ -17,22 +17,22 @@ import COLORS from '../../constants/colors';
 // }
 
 class AppModalDialog extends React.Component<any, any> {
-  state = {}
+  public state = {};
 
-  closeModal = () => {
+  public afterOpenModal: any;
+
+  public closeModal = () => {
     this.props.closeConfirmable();
   }
 
-  afterOpenModal: any
-
-  render() {
+  public render() {
     return (
       <div>
         <Modal
           isOpen={this.props.isModalVisible}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.props.closeConfirmable}
-          className={cx('bg-white br3 outline-0 flex flex-column', css`
+          className={cx("bg-white br3 outline-0 flex flex-column", css`
             position: absolute;
             box-shadow: 0px 4px 24px rgba(57, 70, 84, 0.06);
             top: 50%;
@@ -55,11 +55,29 @@ class AppModalDialog extends React.Component<any, any> {
         >
           <div className="flex flex-column">
             <div className="flex flex-column ph5-ns ph4 pv4-ns pv3 justify-center align-center items-center">
-              <IconAtom name="exclamation-circle" type="LIGHT" className={cx('mv3', css`font-size: 108px; color: ${COLORS.RED.NORMAL}`)} />
-              <TextAtom size="XL" className={cx('fw6 mt3', css`color: ${COLORS.BLACK.NORMAL}`)}>Apa kamu Yakin?</TextAtom>
-              <TextAtom size="M" className={cx('mt2', css`color: ${COLORS.BLACK.LIGHTER}`)}>{this.props.message}</TextAtom>
+              <IconAtom
+                name="exclamation-circle"
+                type="LIGHT"
+                className={cx("mv3", css`font-size: 108px; color: ${COLORS.RED.NORMAL}`)}
+              />
+              <TextAtom
+                size="XL"
+                className={cx("fw6 mt3", css`color: ${COLORS.BLACK.NORMAL}`)}
+              >
+                Apa kamu Yakin?
+              </TextAtom>
+              <TextAtom
+                size="M"
+                className={cx("mt2", css`color: ${COLORS.BLACK.LIGHTER}`)}
+              >
+                {this.props.message}
+              </TextAtom>
             </div>
-            <div className={cx('flex flex-row justify-center items-center pv3 ph2 bt', css`border-color: ${COLORS.GREY.NORMAL}`)}>
+            <div
+              className={cx("flex flex-row justify-center items-center pv3 ph2 bt", css`
+                border-color: ${COLORS.GREY.NORMAL}
+              `)}
+            >
               <ButtonAtom
                 type="DEFAULT_GREY"
                 onClick={this.props.cancel}
@@ -78,7 +96,6 @@ class AppModalDialog extends React.Component<any, any> {
               </ButtonAtom>
             </div>
           </div>
-
         </Modal>
       </div>
     );
@@ -86,7 +103,7 @@ class AppModalDialog extends React.Component<any, any> {
 }
 
 interface IProps {
-  children: any
+  children: any;
 }
 
 class Confirmable extends React.Component<IProps, any> {
@@ -100,7 +117,7 @@ class Confirmable extends React.Component<IProps, any> {
     };
   }
 
-  setConfirmation = (confirmationMessage: String, confirmableAction: any) => {
+  public setConfirmation = (confirmationMessage: string, confirmableAction: any) => {
     this.setState({
       isVisible: true,
       message: confirmationMessage,
@@ -112,7 +129,7 @@ class Confirmable extends React.Component<IProps, any> {
     });
   }
 
-  showConfirmation = () => {
+  public showConfirmation = () => {
     this.setState({
       isVisible: true,
       confirmableResponse: {
@@ -122,7 +139,7 @@ class Confirmable extends React.Component<IProps, any> {
     });
   }
 
-  cancel = () => {
+  public cancel = () => {
     this.setState({
       isVisible: false,
       confirmableResponse: {
@@ -132,7 +149,7 @@ class Confirmable extends React.Component<IProps, any> {
     });
   }
 
-  confirm = () => {
+  public confirm = () => {
     if (this.state.confirmableAction) {
       this.state.confirmableAction();
     }
@@ -145,11 +162,11 @@ class Confirmable extends React.Component<IProps, any> {
     });
   }
 
-  closeConfirmable = () => {
+  public closeConfirmable = () => {
     this.setState({ isVisible: false });
   }
 
-  render() {
+  public render() {
     return [
       <AppModalDialog
         key="confirmable-component-modal"

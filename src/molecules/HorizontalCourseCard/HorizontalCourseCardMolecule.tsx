@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 // import Image from 'react-shimmer';
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 import {
   CardAtom,
   // IconAtom,
-  TextAtom,
   IconAtom,
   ImageAtom,
-} from '../../atoms';
+  TextAtom,
+} from "../../atoms";
 
 const hoverableCard = css`
   transition: all 0.2s ease-out;
@@ -23,58 +23,73 @@ const hoverableCard = css`
   }
 `;
 
-const beginnerColor = '#2F80ED';
-const intermediateColor = '#FB529F';
-const expertColor = '#7143BF';
+const beginnerColor = "#2F80ED";
+const intermediateColor = "#FB529F";
+const expertColor = "#7143BF";
 
 // const starColor = '#F8BA32';
 
 const generateColorByDifficulty = (difficulty: any) => {
   switch (difficulty.toUpperCase()) {
-    case 'EXPERT':
+    case "EXPERT":
       return expertColor;
-    case 'INTERMEDIATE':
+    case "INTERMEDIATE":
       return intermediateColor;
-    case 'BEGINNER':
+    case "BEGINNER":
     default:
       return beginnerColor;
   }
 };
 
 const beginnerGradient =
-  'background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;';
+  "background: linear-gradient(270deg, #645AFF 0%, #5AC4FF 100%); border-radius: 8px 8px 0px 0px;";
 const intermediateGradient =
-  'background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;';
+  "background: linear-gradient(90deg, #FB529F 0%, #FFA844 100%); border-radius: 8px 8px 0px 0px;";
 const expertGradient =
-  'background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;';
+  "background: linear-gradient(270deg, #7143BF 0%, #C86DD7 100%); border-radius: 8px 8px 0px 0px;";
 
 const generateGradientByDifficulty = (difficulty: any) => {
   switch (difficulty.toUpperCase()) {
-    case 'EXPERT':
+    case "EXPERT":
       return expertGradient;
-    case 'INTERMEDIATE':
+    case "INTERMEDIATE":
       return intermediateGradient;
-    case 'BEGINNER':
+    case "BEGINNER":
     default:
       return beginnerGradient;
   }
 };
 
 const renderDuration = (seconds: number): string => {
-  if (seconds < 60) return `${seconds} detik`;
-  if (seconds < 3600) return `${(seconds / 60).toPrecision(2)} menit`;
+  if (seconds < 60) { return `${seconds} detik`; }
+  if (seconds < 3600) { return `${(seconds / 60).toPrecision(2)} menit`; }
   return `${(seconds / 3600).toPrecision(2)} jam`;
-}
+};
 
 const renderStars = (rating: number): any => {
   return ([
-    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx('mr1', css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
   ]);
-}
+};
 
 // const courseRating = (ratings: any): any => {
 //   let rating;
@@ -87,20 +102,20 @@ const renderStars = (rating: number): any => {
 
 const HorizontalCourseCardMolecule = ({
   // slug = '',
-  title = '',
-  instructor = 'KODE Team',
+  title = "",
+  instructor = "KODE Team",
   // category = { name: '', label: '' },
-  instructorRole = '',
-  collaborator = '',
-  description = '',
-  duration = '',
-  rating = '',
-  reviewCounts = '',
-  level = { name: '', label: '' },
-  className = '',
-  coverImage = '',
+  instructorRole = "",
+  collaborator = "",
+  description = "",
+  duration = "",
+  rating = "",
+  reviewCounts = "",
+  level = { name: "", label: "" },
+  className = "",
+  coverImage = "",
   metadata = null,
-  ActionButtonComponent = () => null
+  ActionButtonComponent = () => null,
 }: // ratings = [],
 any) => {
   return (
@@ -116,7 +131,7 @@ any) => {
     >
     <div
         className={cx(
-        'w-100 br2 absolute',
+        "w-100 br2 absolute",
         css`
             height: 8px;
             top: 0;
@@ -125,14 +140,14 @@ any) => {
             @media only screen and (max-width: 30em) {
             height: 5px;
             }
-        `
+        `,
         )}
     />
     <div className="w-100 flex flex-row bb b--black-10 center pt0 pb5 pv4-l pv4-m ph0-ns">
-        <div className={cx('w-25 pv2 db dtc-ns v-top-ns')}>
+        <div className={cx("w-25 pv2 db dtc-ns v-top-ns")}>
         <div
             className={cx(
-            'w-100 br3'
+            "w-100 br3",
             )}
         >
             <ImageAtom
@@ -143,12 +158,12 @@ any) => {
             delay={25}
             duration={0.9}
             className={cx(
-                'w-100 br3',
+                "w-100 br3",
                 css`
                 height: 180px !important;
                 width: 180px !important;
                 object-fit: cover;
-                `
+                `,
             )}
             />
         </div>
@@ -157,11 +172,11 @@ any) => {
         <TextAtom
             size="L"
             className={cx(
-            'lh-title fw6',
+            "lh-title fw6",
             css`
                 min-height: 0px;
                 color: ${COLORS.BLACK.NORMAL};
-            `
+            `,
             )}
         >
             {title}
@@ -170,18 +185,18 @@ any) => {
             <TextAtom
             size="XS"
             className={cx(
-                'fw6 db pt2-ns',
+                "fw6 db pt2-ns",
                 css`
                 color: ${COLORS.BLACK.LIGHT};
-                `
+                `,
             )}
             >
             <span
                 className={cx(
-                'fw6',
+                "fw6",
                 css`
                     color: ${generateColorByDifficulty(level.name)};
-                `
+                `,
                 )}
             >
                 {level && level.label && level.label.toUpperCase()}
@@ -191,7 +206,7 @@ any) => {
         <TextAtom
             size="S"
             className={cx(
-            'db mt3 mt3 lh-copy',
+            "db mt3 mt3 lh-copy",
             css`
                 display: block;
                 display: -webkit-box;
@@ -201,25 +216,25 @@ any) => {
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                text-overflow: ellipsis;    
+                text-overflow: ellipsis;
                 margin-top: .5rem;
                 margin-bottom: .5rem;
                 color: ${COLORS.BLACK.NORMAL};
-            `
+            `,
             )}
         >
             {description}
         </TextAtom>
         <TextAtom size="S" className={`db mt2 f6 lh-copy`}>
             {instructor ? (
-            <div className={cx('lh-copy', css`color: ${COLORS.BLACK.NORMAL};`)}>
+            <div className={cx("lh-copy", css`color: ${COLORS.BLACK.NORMAL};`)}>
                 <TextAtom
                 size="XS"
                 className={cx(
-                    'fw6 f7 db pt2-ns',
+                    "fw6 f7 db pt2-ns",
                     css`
                     color: ${COLORS.BLACK.LIGHT};
-                    `
+                    `,
                 )}
                 >
                 PENGAJAR
@@ -228,16 +243,16 @@ any) => {
                 <span>{instructorRole}</span>
             </div>
             ) : (
-            <div className={cx('lh-copy')} />
+            <div className={cx("lh-copy")} />
             )}
 
             {collaborator ? (
-            <div className={cx('lh-copy')}>
+            <div className={cx("lh-copy")}>
                 <TextAtom>Berkolaborasi dengan </TextAtom>
                 <span className="fw6">{collaborator}</span>
             </div>
             ) : (
-            <div className={cx('lh-copy')} />
+            <div className={cx("lh-copy")} />
             )}
         </TextAtom>
         </div>
@@ -280,6 +295,6 @@ any) => {
   );
 };
 
-HorizontalCourseCardMolecule.displayName = 'HorizontalCourseCardMolecule';
+HorizontalCourseCardMolecule.displayName = "HorizontalCourseCardMolecule";
 
 export { HorizontalCourseCardMolecule };

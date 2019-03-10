@@ -1,29 +1,29 @@
-import * as React from 'react';
-import { cx, css } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
 // @ts-ignore
-import COLORS from '../../constants/colors';
+import COLORS from "../../constants/colors";
 
 interface IProps {
   children: any;
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
 }
 
 class FooterMolecule extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
-    const { className = '', children } = this.props;
+  public render() {
+    const { className = "", children } = this.props;
     return (
       <footer
-        data-test={this.props['data-test']}
+        data-test={this.props["data-test"]}
         className={cx(
           css`
             background: ${COLORS.BLACK.DARKER};
           `,
-          className
+          className,
         )}
       >
         {children}

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { css } from 'emotion';
+import { css } from "emotion";
+import * as React from "react";
 
 export const checkmark = css`
   position: absolute;
@@ -49,7 +49,7 @@ export const container = css`
   }
 
   & input:checked ~ .${checkmark} {
-    background-color: #1bcbd1;    
+    background-color: #1bcbd1;
   }
 
   & input:checked ~ .${checkmark}:after {
@@ -84,12 +84,12 @@ export const container = css`
   }
 `;
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 interface IProps {
   className?: any;
-  'data-test'?: any;
+  "data-test"?: any;
   type?: string;
   id?: string;
   value?: string;
@@ -98,10 +98,10 @@ interface IProps {
 }
 
 class CheckBoxAtom extends React.PureComponent<IProps, any> {
-  state = {};
+  public state = {};
 
-  render() {
-    const { id = '', value = '', htmlFor = '', description = '' } = this.props;
+  public render() {
+    const { id = "", value = "", htmlFor = "", description = "" } = this.props;
 
     return (
       <label className={container}>

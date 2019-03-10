@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
 const animatedLinkText = css`
   width: auto;
@@ -35,11 +35,11 @@ const AnchorTextAtom = ({ to, animated, className, ...props }: any) => (
   <a
     href={to}
     {...props}
-    data-test={props['data-test']}
+    data-test={props["data-test"]}
     className={cx(animated ? animatedLinkText : linkText, className)}
   />
 );
 
-AnchorTextAtom.displayName = 'AnchorTextAtom';
+AnchorTextAtom.displayName = "AnchorTextAtom";
 
 export { AnchorTextAtom };

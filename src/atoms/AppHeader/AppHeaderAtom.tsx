@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
 const headerCss = css`
   width: 100%;
@@ -22,6 +22,6 @@ const AppHeaderAtom = ({ children, className }: any) => (
   <header className={cx(headerCss, className)}>{children}</header>
 );
 
-AppHeaderAtom.displayName = 'AppHeaderAtom';
+AppHeaderAtom.displayName = "AppHeaderAtom";
 
 export { AppHeaderAtom };

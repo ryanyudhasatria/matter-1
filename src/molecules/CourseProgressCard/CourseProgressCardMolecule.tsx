@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { css, cx } from 'emotion';
+import { css, cx } from "emotion";
+import * as React from "react";
 
-//@ts-ignore
-import COLORS from '../../constants/colors';
+// @ts-ignore
+import COLORS from "../../constants/colors";
 
-import { CardAtom, TextAtom } from '../../atoms';
+import { CardAtom, TextAtom } from "../../atoms";
 
 const hoverableCard = css`
   transition: all 0.2s ease-out;
@@ -16,17 +16,17 @@ const hoverableCard = css`
   }
 `;
 
-const beginnerColor = '#2F80ED';
-const intermediateColor = '#FB529F';
-const expertColor = '#7143BF';
+const beginnerColor = "#2F80ED";
+const intermediateColor = "#FB529F";
+const expertColor = "#7143BF";
 
 const generateColorByDifficulty = (difficulty: any) => {
   switch (difficulty.toUpperCase()) {
-    case 'EXPERT':
+    case "EXPERT":
       return expertColor;
-    case 'INTERMEDIATE':
+    case "INTERMEDIATE":
       return intermediateColor;
-    case 'BEGINNER':
+    case "BEGINNER":
     default:
       return beginnerColor;
   }
@@ -52,23 +52,23 @@ const generateColorByDifficulty = (difficulty: any) => {
 // };
 
 const CourseProgressCardMolecule = ({
-  title = '',
-  instructor = 'KODE Team',
+  title = "",
+  instructor = "KODE Team",
   coverImage = null,
   fullImage = true,
   // category = { name: '', label: '' },
   // description = '',
-  level = { name: '', label: '' },
+  level = { name: "", label: "" },
   ProgressBarComponent = () => null,
   FooterComponent = () => null,
-  className = ''
+  className = "",
 }: any) => {
   return (
     <CardAtom
       className={cx(
         `pb3 relative flex flex-column align-center justify-start`,
         css`
-          
+
         `,
         hoverableCard,
         className,
@@ -89,29 +89,29 @@ const CourseProgressCardMolecule = ({
         )}
       /> */}
       <div className="flex flex-column justify-start">
-        <div className={cx(`${fullImage ? '' : 'ph3 pt2'}`)}>
+        <div className={cx(`${fullImage ? "" : "ph3 pt2"}`)}>
           <div>
             <img
               src={coverImage}
               alt=""
               className={cx(
-                fullImage ? 'br3 br--top' : 'br3',
+                fullImage ? "br3 br--top" : "br3",
                 css`
                   min-height: 200px;
                   object-fit: cover;
-                `
+                `,
               )}
             />
           </div>
         </div>
         <div
-          className={cx('flex flex-column ph3 pv1 w-100')}
+          className={cx("flex flex-column ph3 pv1 w-100")}
         >
-          <div className={cx('flex flex-column', css`min-height: 80px;`)}>
+          <div className={cx("flex flex-column", css`min-height: 80px;`)}>
             <TextAtom
               size="M"
               className={cx(
-                'lh-title fw6',
+                "lh-title fw6",
                 css`
                   display: block;
                   display: -webkit-box;
@@ -121,10 +121,10 @@ const CourseProgressCardMolecule = ({
                   -webkit-line-clamp: 2;
                   -webkit-box-orient: vertical;
                   overflow: hidden;
-                  text-overflow: ellipsis;    
-                  margin-top: .5rem;                        
+                  text-overflow: ellipsis;
+                  margin-top: .5rem;
                   color: ${COLORS.BLACK.NORMAL};
-                `
+                `,
               )}
             >
               {title}
@@ -132,7 +132,7 @@ const CourseProgressCardMolecule = ({
             <TextAtom
               size="S"
               className={cx(
-                '',
+                "",
                 css`
                   display: block;
                   display: -webkit-box;
@@ -142,16 +142,16 @@ const CourseProgressCardMolecule = ({
                   -webkit-line-clamp: 1;
                   -webkit-box-orient: vertical;
                   overflow: hidden;
-                  text-overflow: ellipsis;    
+                  text-overflow: ellipsis;
                   margin-top: .5rem;
-                  margin-bottom: .5rem;                               
+                  margin-bottom: .5rem;
                   color: ${COLORS.BLACK.NORMAL};
-                `
+                `,
               )}
             >
               {instructor}
             </TextAtom>
-            <TextAtom size="XS" className={cx('f6 lh-copy', css`
+            <TextAtom size="XS" className={cx("f6 lh-copy", css`
                 display: block;
                 display: -webkit-box;
                 text-align: left;
@@ -160,7 +160,7 @@ const CourseProgressCardMolecule = ({
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                text-overflow: ellipsis;    
+                text-overflow: ellipsis;
               `)}>
               {/* <span
                 className={cx(
@@ -184,10 +184,10 @@ const CourseProgressCardMolecule = ({
               </span> */}
               <span
                 className={cx(
-                  'fw6',
+                  "fw6",
                   css`
                     color: ${generateColorByDifficulty(level.name)};
-                  `
+                  `,
                 )}
               >
                 {level.label.toUpperCase()}
@@ -202,7 +202,7 @@ const CourseProgressCardMolecule = ({
                   'mt3 lh-copy',
                   css`
                     display: block;
-                    display: -webkit-box;                    
+                    display: -webkit-box;
                     height: 60px;
                     margin: 0 auto;
                     line-height: 1.4;
@@ -226,6 +226,6 @@ const CourseProgressCardMolecule = ({
   );
 };
 
-CourseProgressCardMolecule.displayName = 'CourseProgressCardMolecule';
+CourseProgressCardMolecule.displayName = "CourseProgressCardMolecule";
 
 export { CourseProgressCardMolecule };
