@@ -29,7 +29,10 @@ class NotificationBannerMolecule extends React.Component<any, any> {
       >
         {(value: any) => (
           <div
-            className={cx("flex flex-row justify-between align-center fixed w-100 ph3 pv2", css`z-index: 997; top: 0; left: 0; ${genBannerStyle(type)}`)}
+            className={cx("flex flex-row justify-between align-center fixed w-100 ph3 pv2", css`
+              z-index: 997; top: 0; left: 0;
+              ${genBannerStyle(type)}
+            `)}
             style={{ height: value.height, display: this.state.isVisible ? "flex" : "none" }}
           >
             <div />

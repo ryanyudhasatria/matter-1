@@ -6,22 +6,23 @@ import Carousel from "nuka-carousel";
 
 import { ButtonAtom, IconAtom } from "../../atoms";
 
-// @ts-ignore
 import { isNull } from "util";
+// @ts-ignore
 import COLORS from "../../constants/colors";
 
-interface listdata {
+interface IListData {
   // untuk array
   linkUrl?: string;
   imageUrl?: string;
 }
+
 interface IProps {
   className?: any;
   "data-test"?: any;
   type?: string;
   nameIcon?: string;
   icon?: any;
-  items?: listdata[];
+  items?: IListData[];
   slidesToShow?: number;
 }
 
@@ -61,7 +62,7 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
         wrapAround={true}
         cellAlign="center"
         slidesToShow={slidesToShow}
-        afterSlide={(currentSlideIndex) => this.setState({ currentSlideIndex })}
+        afterSlide={(currentSlideIndex1) => this.setState({ currentSlideIndex: currentSlideIndex1 })}
         renderCenterLeftControls={({ previousSlide }) => (
           <ButtonAtom
             onClick={previousSlide}
@@ -97,9 +98,7 @@ class BannerMolecule extends React.PureComponent<IProps, IState> {
           </ButtonAtom>
         )}
       >
-        {items.map(function(item, index) {
-          console.log("data", window.innerWidth);
-          console.log("data2", window.innerHeight);
+        {items.map((item, index) => {
           return (
             <a
               key={index}

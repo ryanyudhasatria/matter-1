@@ -75,11 +75,31 @@ const renderDuration = (seconds: number): string => {
 
 const renderStars = (rating: number): any => {
   return ([
-    <IconAtom name="star" className={cx("mr1", css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx("mr1", css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx("mr1", css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx("mr1", css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
-    <IconAtom name="star" className={cx("mr1", css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)} />,
+    <IconAtom
+      key="star-1"
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 1 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      key="star-2"
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 2 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      key="star-3"
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 3 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      key="star-4"
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 4 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
+    <IconAtom
+      key="star-5"
+      name="star"
+      className={cx("mr1", css`color: ${rating >= 5 ? COLORS.YELLOW.NORMAL : COLORS.BLACK.LIGHT};`)}
+    />,
   ]);
 };
 
@@ -158,7 +178,9 @@ any) => {
           onClick={onBookmark ? onBookmark : () => {} }
           tabIndex={0}
         >
-          {isBookmarked ? <IconAtom name="bookmark" className={cx("f3", css`color: ${COLORS.WHITE.NORMAL}`)} /> : <IconComponent />}
+          {isBookmarked
+            ? <IconAtom name="bookmark" className={cx("f3", css`color: ${COLORS.WHITE.NORMAL}`)} />
+            : <IconComponent />}
         </div>
           <img
             src={coverImage}
@@ -271,7 +293,13 @@ any) => {
                 {duration && (
                   <div className="mr3">
                   <TextAtom size="S" className={css`color: ${COLORS.BLACK.NORMAL}`}>
-                      <IconAtom name="clock" className={css`color: ${COLORS.BLACK.NORMAL}`} /> <span className="fw6">{renderDuration(duration)}</span>
+                    <IconAtom
+                      name="clock"
+                      className={css`color: ${COLORS.BLACK.NORMAL}`}
+                    />
+                    <span className="fw6">
+                      {renderDuration(duration)}
+                    </span>
                   </TextAtom>
                   </div>
                 )}

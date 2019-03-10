@@ -83,7 +83,8 @@ class EngagedUserPieChartOrganism extends React.Component<IProps, any> {
     .attr("width", width) // set the width of the svg element we just added
     .attr("height", height) // set the height of the svg element we just added
     .append("g") // append 'g' element to the svg element
-    .attr("transform", "translate(" + (width / 3) + "," + (height / 2) + ")"); // our reference is now to the 'g' element. centerting the 'g' element to the svg element
+    // our reference is now to the 'g' element. centerting the 'g' element to the svg element
+    .attr("transform", "translate(" + (width / 3) + "," + (height / 2) + ")");
 
     const arc: any = d3.arc()
     .innerRadius(0) // none for pie chart
@@ -107,9 +108,9 @@ class EngagedUserPieChartOrganism extends React.Component<IProps, any> {
     tooltip.append("div") // add divs to the tooltip defined above
     .attr("class", "percent"); // add class 'percent' on the selection
 
-    dataset.forEach(function(d: any) {
-    d.count = +d.count; // calculate count as we iterate through the data
-    d.enabled = true; // add enabled property to track which entries are checked
+    dataset.forEach((d: any) => {
+      d.count = +d.count; // calculate count as we iterate through the data
+      d.enabled = true; // add enabled property to track which entries are checked
     });
 
     // creating the chart
@@ -132,9 +133,9 @@ class EngagedUserPieChartOrganism extends React.Component<IProps, any> {
 
     // mouse event handlers are attached to path so they need to come after its definition
     path.on("mouseover", (d: any) => {  // when mouse enters div
-      const total = d3.sum(dataset.map((d: any) => { // calculate the total number of tickets in the dataset
+      const total = d3.sum(dataset.map((dt: any) => { // calculate the total number of tickets in the dataset
       // checking to see if the entry is enabled. if it isn't, we return 0 and cause other percentages to increase
-      return (d.enabled) ? d.count : 0;
+      return (dt.enabled) ? dt.count : 0;
       }));
       const percent = Math.round(1000 * d.data.count / total) / 10; // calculate percent
       tooltip.select(".label").html(d.data.label); // set current label

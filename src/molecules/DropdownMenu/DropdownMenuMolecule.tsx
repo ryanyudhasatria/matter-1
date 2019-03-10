@@ -11,7 +11,7 @@ import {
 // @ts-ignore
 import COLORS from "../../constants/colors";
 
-interface item {
+interface Iitem {
   label?: string;
   handleClick?: any;
   component?: any;
@@ -23,7 +23,7 @@ interface IProps {
   type?: string;
   children: any;
   label?: string;
-  items?: item[];
+  items?: Iitem[];
 }
 
 class DropdownMenuMolecule extends React.PureComponent<IProps, any> {
