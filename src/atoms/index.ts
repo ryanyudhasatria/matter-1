@@ -2,6 +2,7 @@ import { AnchorTextAtom } from "./AnchorText/AnchorTextAtom";
 import { AvatarAtom } from "./Avatar/AvatarAtom";
 import { ButtonAtom } from "./Button/ButtonAtom";
 import { CardAtom } from "./Card/CardAtom";
+import { CheckBoxAtom } from "./Checkbox/CheckBoxAtom";
 import { ClassroomHeaderAtom } from "./ClassroomHeader/ClassroomHeaderAtom";
 import { H1Atom } from "./H1/H1Atom";
 import { H2Atom } from "./H2/H2Atom";
@@ -18,6 +19,7 @@ export {
   AvatarAtom,
   ButtonAtom,
   CardAtom,
+  CheckBoxAtom,
   ClassroomHeaderAtom,
   H1Atom,
   H2Atom,
