@@ -22,7 +22,7 @@ class WidgetCardMolecule extends React.PureComponent<any, any> {
       return (
         <CardAtom
           type="DEFAULT"
-          className={cx("w-50", css``)}
+          className={cx("w-100 mv4", css``)}
         >
           <article className={cx("pa3", css`width: 100%`)}>
           {
